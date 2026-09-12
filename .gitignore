@@ -1,0 +1,18 @@
+# secrets: never commit them. This repository needs no private key at all - trades are signed in the
+# human's own browser wallet - but a .env may still hold RPC keys or wallet addresses.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+node_modules/
+dist/
+
+# discovery file and token of the running signer page (npm run signer)
+.signer.json
+.signer-token
+
+# local run logs: may contain wallet addresses and transaction hashes
+*.log
+*.jsonl

@@ -1,0 +1,30 @@
+{
+  "name": "trading-bot-opus-5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Forecast-driven trading for Seer prediction markets: research, estimate, reconcile with the market, size against real quotes, and trade only with a human signing every transaction.",
+  "type": "module",
+  "scripts": {
+    "scan": "tsx src/scan.ts",
+    "market": "tsx src/market-report.ts",
+    "odds": "tsx src/odds.ts",
+    "plan": "tsx src/trade-plan.ts",
+    "fleet": "tsx src/fleet.ts",
+    "trade": "tsx src/trade-run.ts",
+    "watch": "tsx src/watch-liquidity.ts",
+    "portfolio": "tsx src/portfolio.ts",
+    "redeem": "tsx src/redeem.ts",
+    "signer": "tsx src/signer.ts",
+    "verify-dex": "tsx src/verify-dex.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "viem": "^2.56.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.1",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
