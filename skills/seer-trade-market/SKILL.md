@@ -86,7 +86,13 @@ Work out what physically determines the answer, then go and look at it. In order
    If the question resolves on an official poll, proposal, vote or report, the source is the body that runs it.
 2. **Check whether the answer is already partly known.** Votes that are open, polls with visible tallies,
    drafts already merged, deadlines already missed. A surprising share of short-dated markets are decided
-   before they close, and the price often has not caught up. This is where the real edge lives.
+   before they close, and the price often has not caught up. This is where the real edge lives. Zcash coinholder
+   polls on Valar's shielded vote chain are the live example: the ZEC weights stay encrypted until the tally,
+   but the number of ballot splits per option is public while the poll runs, at
+   `https://prod.vote-chain-primary.valargroup.org/shielded-vote/v1/vote-summary/<round_id>` (round ids are in
+   `https://voting.valargroup.org/prod/dynamic-voting-config.json`). On the NU7 poll those counts showed every
+   leader two days before close while the Seer prices still sat at the creator's seed. Counts are not ZEC
+   weight: a few whales can still flip a question, so weigh them against the last ZEC-weighted poll.
 3. **Find the base rate.** How have the last N instances of this same process gone? Governance polls,
    grant rounds and protocol upgrades are repeat games with strong priors.
 4. **Find who votes / decides, and what they want.** For coinholder or token votes, turnout concentration
@@ -203,9 +209,14 @@ Then, and only then:
 3. Start the signer **on the market's chain**: `npm run signer -- --chain <id> --wallet <rabby|metamask>`. The
    signer page asks the wallet to switch to the chain *it* serves on every load, so a signer started without
    `--chain` silently drags the wallet back to the repository default (Gnosis) every time the human refreshes.
-   Set `CHAIN_ID` in `.env` to match the markets being traded.
+   Set `CHAIN_ID` in `.env` to match the markets being traded. Keep one signer tab open, not two: a second tab
+   competes for the wallet. While idle the page may flip to "not answering" every half minute because Chrome
+   suspends the extension; that is noise, and the page reconnects by itself once a transaction is queued.
 4. Only after an explicit go-ahead does the human run it with `--yes`, **exactly once**, confirming each
-   transaction in their wallet. Verify the resulting balances onchain before doing anything else.
+   transaction in their wallet. Verify the resulting balances onchain before doing anything else. The `--yes` run goes in a terminal
+   separate from the one running `npm run signer`: the signer window only waits, and a human watching it sees
+   no wallet prompt until the trade command has queued something. Every run also writes its full output to
+   `.trade-logs/<timestamp>-<pid>.log`; read that file instead of asking for a paste.
 
 Re-quote immediately before executing. These pools are thin enough that an hour-old quote is fiction.
 
@@ -226,7 +237,8 @@ Re-quote immediately before executing. These pools are thin enough that an hour-
   accidental second invocation doubled a 300-token short: the first fill was 0.5129 (EV +$14.14), the second
   0.6128 (EV -$15.83), and the book's whole edge was gone. `npm run trade` now refuses to add to an existing
   position without `--allow-add`. If a command seems stuck, check the wallet's balances onchain; do not press it
-  again.
+  again. In the second live run the same `--yes` command was started four times in ninety seconds because no
+  wallet prompt had appeared yet: the first run filled all six legs and the guard refused the other three.
 - **Watch the terminal from the first `--yes`.** While a human is executing, read their terminal output as it
   lands instead of waiting to be asked. A warning that arrives after the transaction confirmed is worthless.
 - **Account for the lockup.** Capital is stuck until the oracle finalizes: the question opens, someone
@@ -313,7 +325,7 @@ RISKS      <the 2-3 things most likely to make this wrong>
 | `npm run market -- <ref>` | step 0: question, pool prices, real depth, timetable, complete-set check |
 | `npm run plan -- <ref> --own <p,..> --weight <w> --bankroll <X>` | steps 3–4: reconcile, quote both routes at every size, apply limits, print the surviving trade |
 | `npm run fleet -- <fleet.json> --bankroll <X>` | several markets on one event sized as one position: common failure factor applied once, total exposure capped, correlated worst case reported |
-| `npm run trade -- <ref> --outcome <i> --route <direct\|split\|fade> --size <x> --expect-account 0x.. --dry-run\|--yes` | the only command that spends; human signs every transaction. Refuses a wrong wallet, a wrong network, or adding to an open position without `--allow-add` |
+| `npm run trade -- <ref> --outcome <i> --route <direct\|split\|fade> --size <x> --expect-account 0x.. --dry-run\|--yes` | the only command that spends; human signs every transaction. Refuses a wrong wallet, a wrong network, or adding to an open position without `--allow-add`; writes its full output to `.trade-logs/` |
 | `npm run watch -- <market...> [--interval 60] [--for 7200]` | poll drained markets and exit the moment any pool has live liquidity again |
 | `npm run portfolio -- --account 0x.. [--filter zcash]` | open positions, marked at what they could really exit at |
 | `npm run redeem -- <ref> --yes` | cash in after the oracle finalizes |

@@ -717,13 +717,16 @@ function unresponsive(){
   if(n>=2){ const b=$('connect'); b.textContent='Reload'; b.onclick=()=>{ try{ sessionStorage.removeItem('seer-signer-reconnects') }catch(e){} location.reload() }; b.hidden=false }
 }
 function answered(){ noAnswerSince=0; wakeAsked=false }
+// A wallet's background process can take several seconds to wake after the browser suspends it (Rabby on Chrome
+// does this about 30 s after its last request). A short probe timeout reads that slow wake-up as a dead link and
+// sends nothing; 15 s covers a cold start, and a link that is really dead still ends in a reload.
 async function metamaskAlive(){
-  try{ await withTimeout(eth.request({method:'eth_chainId'}),5000,''+W()+''); answered(); return true }
+  try{ await withTimeout(eth.request({method:'eth_chainId'}),15000,''+W()+''); answered(); return true }
   catch(e){ if(e&&/no answer/.test(e.message)) return false; return true }
 }
 // no prompt: answers with the account as soon as '+W()+' is unlocked and this page is allowed
 async function silentAccounts(){
-  try{ const a=(await withTimeout(eth.request({method:'eth_accounts'}),6000,''+W()+''))||[]; answered(); return a }
+  try{ const a=(await withTimeout(eth.request({method:'eth_accounts'}),15000,''+W()+''))||[]; answered(); return a }
   catch(e){ if(e&&/no answer/.test(e.message)) unresponsive(); else lastError=(e&&e.message)||String(e); return [] }
 }
 function showConnect(msg){ setStatus(msg,'wait'); $('connect').hidden=false }
@@ -782,16 +785,25 @@ function armAutoRetry(){
 // sending: if '+W()+' says it is locked, ask for accounts, which opens the unlock window, and wait for the unlock.
 const isLockedError=e=>/locked/i.test((e&&e.message)||String(e));
 // '+W()+' still lists the connected account while locked, so ask its own isUnlocked() where available
+// true = unlocked, false = the wallet SAID it is locked, null = the wallet gave no answer in time. Only a definite
+// "locked" holds the transaction back. A wallet that merely does not answer is not known to be locked, and sending
+// anyway is safe: a locked wallet either opens its own unlock window in front of the request, or rejects it with a
+// "locked" error that work() catches and retries after the unlock. Waiting here instead meant a slow wallet was
+// shown as locked and the transaction was never sent at all.
 async function isUnlocked(){
-  try{ if(eth._metamask&&eth._metamask.isUnlocked) return !!(await withTimeout(eth._metamask.isUnlocked(),5000,''+W()+'')) }catch(e){}
-  return (await silentAccounts()).length>0;
+  if(eth._metamask&&eth._metamask.isUnlocked){
+    try{ return !!(await withTimeout(eth._metamask.isUnlocked(),15000,''+W()+'')) }
+    catch(e){ if(e&&/no answer/.test(e.message)) return null }
+  }
+  try{ const a=(await withTimeout(eth.request({method:'eth_accounts'}),15000,''+W()+''))||[]; answered(); return a.length>0 }
+  catch(e){ if(e&&/no answer/.test(e.message)) return null; lastError=(e&&e.message)||String(e); return false }
 }
 async function ensureUnlocked(){
-  if(await isUnlocked()) return true;
+  if((await isUnlocked())!==false) return true;
   setStatus('<span class="wait">'+W()+' is locked: enter your password in the '+W()+' window</span> (no window? click the '+W()+' icon in the toolbar)...','wait');
   alertUser('Unlock '+W()+'');
   try{ eth.request({method:'eth_requestAccounts'}).catch(()=>{}) }catch(e){} // opens the unlock screen
-  for(let i=0;i<200;i++){ await sleep(3000); if(await isUnlocked()) return true }
+  for(let i=0;i<200;i++){ await sleep(3000); if((await isUnlocked())!==false) return true }
   return false;
 }
 async function work(p){
