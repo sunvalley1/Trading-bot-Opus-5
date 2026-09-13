@@ -1,0 +1,19 @@
+{
+  "at": "2026-09-13T09:01:48.813Z",
+  "account": "0x017859431458cEdac674344f6031d41c9A68a858",
+  "status": "success",
+  "hash": "0x524358030887df69d4287fc34cd39e74ed76400f10125939a8925cbf57ba0bf0",
+  "approvalHash": "0x648b4f3c8e8f702c60f2e643c3d6bd02d1cb41c3914fd62080116552ed357999",
+  "block": "156845641",
+  "cash": "548",
+  "v4ImmediateTokens": "72.743362535311010914",
+  "reissuance2031Tokens": "69.793565985133580946",
+  "allowance": "0",
+  "eth": "0.000699990183659767",
+  "totalSpent": 52,
+  "totalUSD": 57.68817516782793,
+  "latest": 4,
+  "pending": 4,
+  "queued": 0,
+  "signed": 4
+}

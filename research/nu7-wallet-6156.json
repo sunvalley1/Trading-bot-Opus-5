@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-09-13T09:13:13.829Z",
+  "block": "156846008",
+  "chain": 10,
+  "account": "0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe",
+  "ETH": "0.0008",
+  "sUSDS": "700",
+  "USDSperSUSDS": 1.1093888374918575,
+  "budgetUSD": 1000,
+  "budgetSUSDS": 901.3972073676464,
+  "liquidUSD": 776.5721862443003,
+  "pegAssumption": "USDS equals approximately $1",
+  "rateSource": "https://github.com/sparkdotfi/spark-address-registry/blob/master/src/Optimism.sol"
+}

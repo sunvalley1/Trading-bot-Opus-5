@@ -1,0 +1,1897 @@
+{
+  "at": "2026-09-13T06:46:13.367Z",
+  "block": "156841598",
+  "info": {
+    "id": "0xC03Bf1725b72Ab5765b639c582853EDE9AfB26a6",
+    "marketName": "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?",
+    "outcomes": [
+      "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+      "Delay NU7 until every applicable approved feature is deemed complete",
+      "I do not support this NU7 plan",
+      "Invalid result"
+    ],
+    "parentMarket": {
+      "id": "0x0000000000000000000000000000000000000000",
+      "marketName": "",
+      "outcomes": [],
+      "wrappedTokens": [],
+      "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "payoutReported": false,
+      "payoutNumerators": []
+    },
+    "parentOutcome": "0",
+    "collateralToken": "0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0",
+    "wrappedTokens": [
+      "0x7D4Bc377fAC1f1bA5fCC25F3599a70a821592667",
+      "0x5923F0810D5f4188F3D8164c0f4Df7CCFFAB1db0",
+      "0x669E0c9C605aaEDFff1F375fCb6ebb2D5BbfB719",
+      "0x12E1F677b221Cf2FF6c71Ed996cCf3fa5f8d4DD9"
+    ],
+    "outcomesSupply": "488846716607318371861",
+    "lowerBound": "0",
+    "upperBound": "0",
+    "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "collateralToken1": "0x0000000000000000000000000000000000000000",
+    "collateralToken2": "0x0000000000000000000000000000000000000000",
+    "conditionId": "0x451817a362e71d5589bdaa87c03a9856a06ef4d27bdba0923a334579c76a8939",
+    "questionId": "0x3848093b8186b1212d1928115db066c6f1812d639ec646843998d36f0318f7d4",
+    "templateId": "2",
+    "questions": [
+      {
+        "content_hash": "0x3f784aa828fb3d5060ea812862ed69665b973eb2517fe612945b64001e82e968",
+        "arbitrator": "0x5AFa42b30955f137e10f89dfb5EF1542a186F90e",
+        "opening_ts": 1788912000,
+        "timeout": 302400,
+        "finalize_ts": 0,
+        "is_pending_arbitration": false,
+        "bounty": "0",
+        "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "history_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "bond": "0",
+        "min_bond": "5000000000000000"
+      }
+    ],
+    "questionsIds": [
+      "0x8f52209cc84918c9aa7e5c94ecf0b9c9b5d49efb3f47ae480a3a7e5bafe79de0"
+    ],
+    "encodedQuestions": [
+      "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?␟\"Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline\",\"Delay NU7 until every applicable approved feature is deemed complete\",\"I do not support this NU7 plan\"␟misc␟en_US"
+    ],
+    "payoutReported": false,
+    "payoutNumerators": [
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "snap": {
+    "chainId": 10,
+    "market": "0xc03bf1725b72ab5765b639c582853ede9afb26a6",
+    "name": "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?",
+    "outcomes": [
+      "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+      "Delay NU7 until every applicable approved feature is deemed complete",
+      "I do not support this NU7 plan",
+      "Invalid result"
+    ],
+    "invalidIndex": 3,
+    "collateral": "0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0",
+    "collateralSymbol": "sUSDS",
+    "collateralDecimals": 18,
+    "pools": [
+      {
+        "index": 0,
+        "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+        "token": "0x7D4Bc377fAC1f1bA5fCC25F3599a70a821592667",
+        "symbol": "ZNU7V3Q5SHIP",
+        "pool": "0x5619D7A10569Cd88569FAfDF175F3FDAB9971662",
+        "exists": true,
+        "fee": 100,
+        "outcomeIsToken0": true,
+        "liquidity": "2101513454453458630543",
+        "outcomeBalance": "388846716607318371861",
+        "collateralBalance": "1461059165078003623566",
+        "price": 0.6999949444431314
+      },
+      {
+        "index": 1,
+        "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+        "token": "0x5923F0810D5f4188F3D8164c0f4Df7CCFFAB1db0",
+        "symbol": "ZNU7V3Q5DELAY",
+        "pool": "0xF379528546C11F69118118A34685ad45394380C0",
+        "exists": true,
+        "fee": 100,
+        "outcomeIsToken0": true,
+        "liquidity": "392839874811935165305",
+        "outcomeBalance": "488846716607318371861",
+        "collateralBalance": "118688101171913681622",
+        "price": 0.19673132225917486
+      },
+      {
+        "index": 2,
+        "outcome": "I do not support this NU7 plan",
+        "token": "0x669E0c9C605aaEDFff1F375fCb6ebb2D5BbfB719",
+        "symbol": "ZNU7V3Q5NOSUPPORT",
+        "pool": "0x4362Dec96d3ad27d924c0B363D3D1Db4fca53Bd6",
+        "exists": true,
+        "fee": 100,
+        "outcomeIsToken0": true,
+        "liquidity": "112319334433915725928",
+        "outcomeBalance": "488846716607318371859",
+        "collateralBalance": "5061992546782073403",
+        "price": 0.03477608292112249
+      },
+      {
+        "index": 3,
+        "outcome": "Invalid result",
+        "token": "0x12E1F677b221Cf2FF6c71Ed996cCf3fa5f8d4DD9",
+        "symbol": "SER-INVALID",
+        "pool": "0x0000000000000000000000000000000000000000",
+        "exists": false,
+        "fee": 0,
+        "outcomeIsToken0": false,
+        "liquidity": "0",
+        "outcomeBalance": "0",
+        "collateralBalance": "0"
+      }
+    ],
+    "spot": [
+      0.6999949444431314,
+      0.19673132225917486,
+      0.03477608292112249,
+      null
+    ],
+    "implied": [
+      0.7514687909548623,
+      0.2111978808627868,
+      0.03733332818235096,
+      0
+    ],
+    "spotSum": 0.9315023496234287,
+    "payoutReported": false,
+    "tradeable": true
+  },
+  "own": [
+    0.85,
+    0.09,
+    0.02,
+    0.04
+  ],
+  "weight": 0.25,
+  "q": [
+    0.7616062934647163,
+    0.16769510110141195,
+    0.03138864809567287,
+    0.03930995733819894
+  ],
+  "limits": {
+    "bankroll": 180.28,
+    "kellyFraction": 0.25,
+    "maxPerMarket": 0.2,
+    "maxSlippage": 0.15,
+    "minEdge": 0.05
+  },
+  "longs": [
+    {
+      "size": 1,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "1000000000000000000",
+        "tokensOut": "1427627008206798097",
+        "avgPrice": 0.7004630721129825,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.0006687586439979576,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.427627008206798,
+        "ev": 0.08728971417050158,
+        "evPct": 0.08728971417050158,
+        "kelly": 0.20412582109006722,
+        "stakeFraction": 0.051031455272516804,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "768795205708698440",
+        "tokensOut": "1000000000000000000",
+        "avgPrice": 0.7687952057086984,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.09828679737151513,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.3007365193935752,
+        "ev": 0.03212104509421687,
+        "evPct": 0.04178101639513573,
+        "kelly": 0.13892897503564164,
+        "stakeFraction": 0.03473224375891041,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "1000000000000000000",
+        "tokensOut": "1427627008206798097",
+        "avgPrice": 0.7004630721129825,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.0006687586439979576,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.427627008206798,
+        "ev": 0.08728971417050158,
+        "evPct": 0.08728971417050158,
+        "kelly": 0.20412582109006722,
+        "stakeFraction": 0.051031455272516804,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 5,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "5000000000000000000",
+        "tokensOut": "7121943486502220279",
+        "avgPrice": 0.7020555568120121,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.0029437532159892754,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.424388697300444,
+        "ev": 0.42411698102013506,
+        "evPct": 0.08482339620402701,
+        "kelly": 0.1998719493322808,
+        "stakeFraction": 0.0499679873330702,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "3849530839747616101",
+        "tokensOut": "5000000000000000000",
+        "avgPrice": 0.7699061679495232,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.09987389774937361,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.2988595774771898,
+        "ev": 0.15505041426696042,
+        "evPct": 0.04027774311248949,
+        "kelly": 0.13477146508903032,
+        "stakeFraction": 0.03369286627225758,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "5000000000000000000",
+        "tokensOut": "7121943486502220279",
+        "avgPrice": 0.7020555568120121,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.0029437532159892754,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.424388697300444,
+        "ev": 0.42411698102013506,
+        "evPct": 0.08482339620402701,
+        "kelly": 0.1998719493322808,
+        "stakeFraction": 0.0499679873330702,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 10,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "10000000000000000000",
+        "tokensOut": "14203614095206404207",
+        "avgPrice": 0.7040461626857992,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.005787496430978756,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.4203614095206405,
+        "ev": 0.8175618848533492,
+        "evPct": 0.08175618848533492,
+        "kelly": 0.19449023300822452,
+        "stakeFraction": 0.04862255825205613,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "7712795892879051571",
+        "tokensOut": "10000000000000000000",
+        "avgPrice": 0.7712795892879052,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.10183594240310279,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.296546691872482,
+        "ev": 0.29636661515010143,
+        "evPct": 0.0384253154454309,
+        "kelly": 0.1295759369386393,
+        "stakeFraction": 0.03239398423465983,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "10000000000000000000",
+        "tokensOut": "14203614095206404207",
+        "avgPrice": 0.7040461626857992,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.005787496430978756,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.4203614095206405,
+        "ev": 0.8175618848533492,
+        "evPct": 0.08175618848533492,
+        "kelly": 0.19449023300822452,
+        "stakeFraction": 0.04862255825205613,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 20,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "20000000000000000000",
+        "tokensOut": "28247495396637427921",
+        "avgPrice": 0.7080273744333734,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.011474982860957716,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.4123747698318714,
+        "ev": 1.5134702686946682,
+        "evPct": 0.07567351343473341,
+        "kelly": 0.18350665213001807,
+        "stakeFraction": 0.04587666303250452,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "15479533920080556372",
+        "tokensOut": "20000000000000000000",
+        "avgPrice": 0.7739766960040277,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.10568897982506331,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.2920285651530727,
+        "ev": 0.53879109597775,
+        "evPct": 0.034806674332669194,
+        "kelly": 0.11918927970085572,
+        "stakeFraction": 0.02979731992521393,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "20000000000000000000",
+        "tokensOut": "28247495396637427921",
+        "avgPrice": 0.7080273744333734,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.011474982860957716,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.4123747698318714,
+        "ev": 1.5134702686946682,
+        "evPct": 0.07567351343473341,
+        "kelly": 0.18350665213001807,
+        "stakeFraction": 0.04587666303250452,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 25,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "25000000000000000000",
+        "tokensOut": "35210375924824839382",
+        "avgPrice": 0.7100179803071605,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.014318726075947197,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.4084150369929935,
+        "ev": 1.816443899605126,
+        "evPct": 0.07265775598420504,
+        "kelly": 0.17790176512392142,
+        "stakeFraction": 0.044475441280980355,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "19382524869797786217",
+        "tokensOut": "25000000000000000000",
+        "avgPrice": 0.7753009947919115,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.10758084889982822,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.2898216392310924,
+        "ev": 0.6403814002750927,
+        "evPct": 0.0330391114974369,
+        "kelly": 0.11399808373553774,
+        "stakeFraction": 0.028499520933884435,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "25000000000000000000",
+        "tokensOut": "35210375924824839382",
+        "avgPrice": 0.7100179803071605,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.014318726075947197,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.4084150369929935,
+        "ev": 1.816443899605126,
+        "evPct": 0.07265775598420504,
+        "kelly": 0.17790176512392142,
+        "stakeFraction": 0.044475441280980355,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 40,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "40000000000000000000",
+        "tokensOut": "55866717815989412768",
+        "avgPrice": 0.7159897979285217,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.022849955720915638,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3966679453997353,
+        "ev": 2.548443883874924,
+        "evPct": 0.0637110970968731,
+        "kelly": 0.16061569339228887,
+        "stakeFraction": 0.04015392334807222,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "31167215701526397429",
+        "tokensOut": "40000000000000000000",
+        "avgPrice": 0.77918039253816,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.11312288570601492,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.283399851403506,
+        "ev": 0.869434330590213,
+        "evPct": 0.027895797267114653,
+        "kelly": 0.09843264606161209,
+        "stakeFraction": 0.024608161515403022,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "40000000000000000000",
+        "tokensOut": "55866717815989412768",
+        "avgPrice": 0.7159897979285217,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.022849955720915638,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3966679453997353,
+        "ev": 2.548443883874924,
+        "evPct": 0.0637110970968731,
+        "kelly": 0.16061569339228887,
+        "stakeFraction": 0.04015392334807222,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 50,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "50000000000000000000",
+        "tokensOut": "69447240691669314755",
+        "avgPrice": 0.7199710096760957,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.028537442150894377,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3889448138333864,
+        "ev": 2.891455574534291,
+        "evPct": 0.05782911149068582,
+        "kelly": 0.148682048028177,
+        "stakeFraction": 0.03717051200704425,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "39084576543583866272",
+        "tokensOut": "50000000000000000000",
+        "avgPrice": 0.7816915308716773,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.1167102520912322,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.2792770044276716,
+        "ev": 0.9612359965618964,
+        "evPct": 0.024593742124595006,
+        "kelly": 0.08806218104134884,
+        "stakeFraction": 0.02201554526033721,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "50000000000000000000",
+        "tokensOut": "69447240691669314755",
+        "avgPrice": 0.7199710096760957,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.028537442150894377,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3889448138333864,
+        "ev": 2.891455574534291,
+        "evPct": 0.05782911149068582,
+        "kelly": 0.148682048028177,
+        "stakeFraction": 0.03717051200704425,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 75,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "75000000000000000000",
+        "tokensOut": "102750417835427720812",
+        "avgPrice": 0.729924039045031,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.042756158225841556,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3700055711390364,
+        "ev": 3.255364879590985,
+        "evPct": 0.04340486506121313,
+        "kelly": 0.11730867977904891,
+        "stakeFraction": 0.029327169944762227,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "59079122605603282377",
+        "tokensOut": "75000000000000000000",
+        "avgPrice": 0.7877216347413771,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.12532474840662622,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.269483985073379,
+        "ev": 0.989596204615367,
+        "evPct": 0.01675035377931476,
+        "kelly": 0.062157139967904756,
+        "stakeFraction": 0.015539284991976189,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "75000000000000000000",
+        "tokensOut": "102750417835427720812",
+        "avgPrice": 0.729924039045031,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.042756158225841556,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3700055711390364,
+        "ev": 3.255364879590985,
+        "evPct": 0.04340486506121313,
+        "kelly": 0.11730867977904891,
+        "stakeFraction": 0.029327169944762227,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 100,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "100000000000000000000",
+        "tokensOut": "135157588022513633413",
+        "avgPrice": 0.7398770684139664,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.056974874300788736,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3515758802251363,
+        "ev": 2.9368696474577405,
+        "evPct": 0.029368696474577405,
+        "kelly": 0.08353444626454684,
+        "stakeFraction": 0.02088361156613671,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "79342162842425261653",
+        "tokensOut": "100000000000000000000",
+        "avgPrice": 0.7934216284242527,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.13346765533491856,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.2603639277971475,
+        "ev": 0.7494622378662541,
+        "evPct": 0.009445951698527522,
+        "kelly": 0.036279801808363085,
+        "stakeFraction": 0.009069950452090771,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "100000000000000000000",
+        "tokensOut": "135157588022513633413",
+        "avgPrice": 0.7398770684139664,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.056974874300788736,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3515758802251363,
+        "ev": 2.9368696474577405,
+        "evPct": 0.029368696474577405,
+        "kelly": 0.08353444626454684,
+        "stakeFraction": 0.02088361156613671,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 150,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "150000000000000000000",
+        "tokensOut": "197424757986266291562",
+        "avgPrice": 0.7597831271518369,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.0854123064506831,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3161650532417752,
+        "ev": 0.35993816808891665,
+        "evPct": 0.002399587787259444,
+        "kelly": 0.007589667999848028,
+        "stakeFraction": 0.001897416999962007,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "120590415306653566135",
+        "tokensOut": "150000000000000000000",
+        "avgPrice": 0.8039361020443572,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.1484884404185438,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.243879951972632,
+        "ev": -0.452977686216272,
+        "evPct": -0.0037563324171691363,
+        "kelly": -0.015402382962543593,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "150000000000000000000",
+        "tokensOut": "197424757986266291562",
+        "avgPrice": 0.7597831271518369,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.0854123064506831,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.3161650532417752,
+        "ev": 0.35993816808891665,
+        "evPct": 0.002399587787259444,
+        "kelly": 0.007589667999848028,
+        "stakeFraction": 0.001897416999962007,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 200,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "200000000000000000000",
+        "tokensOut": "256512471404587865688",
+        "avgPrice": 0.7796891858897075,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.11384973860057723,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.2825623570229394,
+        "ev": -4.638487426077802,
+        "evPct": -0.02319243713038901,
+        "kelly": -0.08207900505482456,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "162842559702080521231",
+        "tokensOut": "200000000000000000000",
+        "avgPrice": 0.8142127985104025,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.16316954140023854,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.2281801536766481,
+        "ev": -2.659309541497464,
+        "evPct": -0.016330556006750662,
+        "kelly": -0.07156869580293376,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "200000000000000000000",
+        "tokensOut": "256512471404587865688",
+        "avgPrice": 0.7796891858897075,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.11384973860057723,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.2825623570229394,
+        "ev": -4.638487426077802,
+        "evPct": -0.02319243713038901,
+        "kelly": -0.08207900505482456,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 300,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "300000000000000000000",
+        "tokensOut": "366076293921667971080",
+        "avgPrice": 0.8195013033654487,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.17072460290036595,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.2202543130722265,
+        "ev": -21.193990661018404,
+        "evPct": -0.07064663553672801,
+        "kelly": -0.32075029338272854,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "250854903648588390931",
+        "tokensOut": "300000000000000000000",
+        "avgPrice": 0.8361830121619613,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.19455578758096892,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.195910447181279,
+        "ev": -10.580028407713797,
+        "evPct": -0.042175888347532144,
+        "kelly": -0.21528146637584,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "300000000000000000000",
+        "tokensOut": "366076293921667971080",
+        "avgPrice": 0.8195013033654487,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.17072460290036595,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 1.2202543130722265,
+        "ev": -21.193990661018404,
+        "evPct": -0.07064663553672801,
+        "kelly": -0.32075029338272854,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 500,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "500000000000000000000",
+        "tokensOut": "388846716607318371855",
+        "avgPrice": 1.2858537275626043,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.8369471633620762,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 0.7776934332146368,
+        "ev": -203.85189343877528,
+        "evPct": -0.40770378687755054,
+        "kelly": 0,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "432069904621202965002",
+        "tokensOut": "500000000000000000000",
+        "avgPrice": 0.864139809242406,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.23449435756976378,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.1572201503790263,
+        "ev": -31.6117792197453,
+        "evPct": -0.07316357580484446,
+        "kelly": -0.46535749793179654,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "432069904621202965002",
+        "tokensOut": "500000000000000000000",
+        "avgPrice": 0.864139809242406,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.23449435756976378,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.1572201503790263,
+        "ev": -31.6117792197453,
+        "evPct": -0.07316357580484446,
+        "kelly": -0.46535749793179654,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 901,
+      "direct": {
+        "kind": "direct",
+        "targetIndex": 0,
+        "retained": [
+          0
+        ],
+        "collateralIn": "901000000000000000000",
+        "tokensOut": "388846716607318371855",
+        "avgPrice": 2.317108417067813,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 2.3101787883784612,
+        "failed": [],
+        "winProb": 0.7616062934647163,
+        "payoffRatio": 0.4315723824720515,
+        "ev": -604.8518934387753,
+        "evPct": -0.671311757423724,
+        "kelly": 0,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "split": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "808074643380556357365",
+        "tokensOut": "901000000000000000000",
+        "avgPrice": 0.8968641990905176,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.28124382355932886,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.1149960060999973,
+        "ev": -86.44910140712966,
+        "evPct": -0.10698157913416563,
+        "kelly": -0.9303069103211947,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "split",
+        "targetIndex": 0,
+        "retained": [
+          0,
+          3
+        ],
+        "collateralIn": "808074643380556357365",
+        "tokensOut": "901000000000000000000",
+        "avgPrice": 0.8968641990905176,
+        "spotPrice": 0.6999949444431314,
+        "slippage": 0.28124382355932886,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8009162508029153,
+        "payoffRatio": 1.1149960060999973,
+        "ev": -86.44910140712966,
+        "evPct": -0.10698157913416563,
+        "kelly": -0.9303069103211947,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    }
+  ],
+  "longPlan": {
+    "trade": {
+      "kind": "direct",
+      "targetIndex": 0,
+      "retained": [
+        0
+      ],
+      "collateralIn": "5000000000000000000",
+      "tokensOut": "7121943486502220279",
+      "avgPrice": 0.7020555568120121,
+      "spotPrice": 0.6999949444431314,
+      "slippage": 0.0029437532159892754,
+      "failed": [],
+      "winProb": 0.7616062934647163,
+      "payoffRatio": 1.424388697300444,
+      "ev": 0.42411698102013506,
+      "evPct": 0.08482339620402701,
+      "kelly": 0.1998719493322808,
+      "stakeFraction": 0.0499679873330702,
+      "limitedBy": "top of the ladder"
+    },
+    "rejected": [
+      "10: stake 10.00 over the Kelly/exposure cap of 8.77",
+      "20: stake 20.00 over the Kelly/exposure cap of 8.27",
+      "25: stake 25.00 over the Kelly/exposure cap of 8.02",
+      "40: edge 0.046 below the 0.05 floor (fill 0.716)",
+      "50: edge 0.042 below the 0.05 floor (fill 0.720)",
+      "75: edge 0.032 below the 0.05 floor (fill 0.730)",
+      "100: edge 0.022 below the 0.05 floor (fill 0.740)",
+      "150: edge 0.002 below the 0.05 floor (fill 0.760)",
+      "200: edge -0.018 below the 0.05 floor (fill 0.780)",
+      "300: edge -0.058 below the 0.05 floor (fill 0.820)",
+      "500: edge -0.063 below the 0.05 floor (fill 0.864)",
+      "901: edge -0.096 below the 0.05 floor (fill 0.897)"
+    ]
+  },
+  "shorts": [
+    {
+      "size": 1,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "803510179614647763",
+        "tokensOut": "1000000000000000000",
+        "avgPrice": 0.8035101796146478,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09355180007161246,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.244539304380171,
+        "ev": 0.028794719283940395,
+        "evPct": 0.03583615990745748,
+        "kelly": 0.14654560336748607,
+        "stakeFraction": 0.036636400841871516,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "803510179614647763",
+        "tokensOut": "1000000000000000000",
+        "avgPrice": 0.8035101796146478,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09355180007161246,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.244539304380171,
+        "ev": 0.028794719283940395,
+        "evPct": 0.03583615990745748,
+        "kelly": 0.14654560336748607,
+        "stakeFraction": 0.036636400841871516,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 5,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "4021962569945370874",
+        "tokensOut": "5000000000000000000",
+        "avgPrice": 0.8043925139890742,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09475262909394266,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2431741750565106,
+        "ev": 0.13956192454756966,
+        "evPct": 0.03469995608374478,
+        "kelly": 0.1426958930802625,
+        "stakeFraction": 0.03567397327006563,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "4021962569945370874",
+        "tokensOut": "5000000000000000000",
+        "avgPrice": 0.8043925139890742,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09475262909394266,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2431741750565106,
+        "ev": 0.13956192454756966,
+        "evPct": 0.03469995608374478,
+        "kelly": 0.1426958930802625,
+        "stakeFraction": 0.03567397327006563,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 10,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "8054843507276155366",
+        "tokensOut": "10000000000000000000",
+        "avgPrice": 0.8054843507276155,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09623858417093856,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2414890482933323,
+        "ev": 0.26820548170972636,
+        "evPct": 0.03329741682348629,
+        "kelly": 0.13788375522123283,
+        "stakeFraction": 0.03447093880530821,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "8054843507276155366",
+        "tokensOut": "10000000000000000000",
+        "avgPrice": 0.8054843507276155,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09623858417093856,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2414890482933323,
+        "ev": 0.26820548170972636,
+        "evPct": 0.03329741682348629,
+        "kelly": 0.13788375522123283,
+        "stakeFraction": 0.03447093880530821,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 20,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "16152637231871743867",
+        "tokensOut": "20000000000000000000",
+        "avgPrice": 0.8076318615935871,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09916127816130316,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.238187901634836,
+        "ev": 0.4934607461000198,
+        "evPct": 0.030549856287637202,
+        "kelly": 0.12825947950317357,
+        "stakeFraction": 0.03206486987579339,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "16152637231871743867",
+        "tokensOut": "20000000000000000000",
+        "avgPrice": 0.8076318615935871,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.09916127816130316,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.238187901634836,
+        "ev": 0.4934607461000198,
+        "evPct": 0.030549856287637202,
+        "kelly": 0.12825947950317357,
+        "stakeFraction": 0.03206486987579339,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 25,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "20217198319381164391",
+        "tokensOut": "25000000000000000000",
+        "avgPrice": 0.8086879327752466,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.10059855745285051,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2365709434641998,
+        "ev": 0.5904241530835392,
+        "evPct": 0.029204054080902528,
+        "kelly": 0.12344734164414443,
+        "stakeFraction": 0.03086183541103611,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "20217198319381164391",
+        "tokensOut": "25000000000000000000",
+        "avgPrice": 0.8086879327752466,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.10059855745285051,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2365709434641998,
+        "ev": 0.5904241530835392,
+        "evPct": 0.029204054080902528,
+        "kelly": 0.12344734164414443,
+        "stakeFraction": 0.03086183541103611,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 40,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "32471508062939184158",
+        "tokensOut": "40000000000000000000",
+        "avgPrice": 0.8117877015734797,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.10481724420394944,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.231849162116783,
+        "ev": 0.8206878930043402,
+        "evPct": 0.025274092333919612,
+        "kelly": 0.10901092806705512,
+        "stakeFraction": 0.02725273201676378,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "32471508062939184158",
+        "tokensOut": "40000000000000000000",
+        "avgPrice": 0.8117877015734797,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.10481724420394944,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.231849162116783,
+        "ev": 0.8206878930043402,
+        "evPct": 0.025274092333919612,
+        "kelly": 0.10901092806705512,
+        "stakeFraction": 0.02725273201676378,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 50,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "40689950268958524064",
+        "tokensOut": "50000000000000000000",
+        "avgPrice": 0.8137990053791705,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.10755456471712455,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2288046475727425,
+        "ev": 0.925294675970882,
+        "evPct": 0.022740127964146692,
+        "kelly": 0.09938665234899645,
+        "stakeFraction": 0.024846663087249112,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "40689950268958524064",
+        "tokensOut": "50000000000000000000",
+        "avgPrice": 0.8137990053791705,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.10755456471712455,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2288046475727425,
+        "ev": 0.925294675970882,
+        "evPct": 0.022740127964146692,
+        "kelly": 0.09938665234899645,
+        "stakeFraction": 0.024846663087249112,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 75,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "61398306776144170320",
+        "tokensOut": "75000000000000000000",
+        "avgPrice": 0.8186440903485889,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.1141485712701571,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2215320574465853,
+        "ev": 1.0245606412499484,
+        "evPct": 0.01668711557446456,
+        "kelly": 0.07532596305384864,
+        "stakeFraction": 0.01883149076346216,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "61398306776144170320",
+        "tokensOut": "75000000000000000000",
+        "avgPrice": 0.8186440903485889,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.1141485712701571,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2215320574465853,
+        "ev": 1.0245606412499484,
+        "evPct": 0.01668711557446456,
+        "kelly": 0.07532596305384864,
+        "stakeFraction": 0.01883149076346216,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 100,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "82324342467595042990",
+        "tokensOut": "100000000000000000000",
+        "avgPrice": 0.8232434246759505,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.12040811901506498,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2147075458193006,
+        "ev": 0.9061474222637713,
+        "evPct": 0.011007041114485111,
+        "kelly": 0.05126527375870032,
+        "stakeFraction": 0.01281631843967508,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "82324342467595042990",
+        "tokensOut": "100000000000000000000",
+        "avgPrice": 0.8232434246759505,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.12040811901506498,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.2147075458193006,
+        "ev": 0.9061474222637713,
+        "evPct": 0.011007041114485111,
+        "kelly": 0.05126527375870032,
+        "stakeFraction": 0.01281631843967508,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 150,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "124766403051259613269",
+        "tokensOut": "150000000000000000000",
+        "avgPrice": 0.8317760203417308,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.1320207103503388,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.202246729340857,
+        "ev": 0.07933178352861603,
+        "evPct": 0.00063584251520037,
+        "kelly": 0.0031438951684039096,
+        "stakeFraction": 0.0007859737921009774,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "124766403051259613269",
+        "tokensOut": "150000000000000000000",
+        "avgPrice": 0.8317760203417308,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.1320207103503388,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.202246729340857,
+        "ev": 0.07933178352861603,
+        "evPct": 0.00063584251520037,
+        "kelly": 0.0031438951684039096,
+        "stakeFraction": 0.0007859737921009774,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 200,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "167904552248862594614",
+        "tokensOut": "200000000000000000000",
+        "avgPrice": 0.8395227612443129,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.1425637783457807,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1911529337427766,
+        "ev": -1.4435724691449536,
+        "evPct": -0.008597577908461577,
+        "kelly": -0.044977483421891215,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "167904552248862594614",
+        "tokensOut": "200000000000000000000",
+        "avgPrice": 0.8395227612443129,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.1425637783457807,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1911529337427766,
+        "ev": -1.4435724691449536,
+        "evPct": -0.008597577908461577,
+        "kelly": -0.044977483421891215,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 300,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "255916896195370464314",
+        "tokensOut": "300000000000000000000",
+        "avgPrice": 0.8530563206512349,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.16098252228492216,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1722555425608783,
+        "ev": -6.225426525794006,
+        "evPct": -0.024325969165558455,
+        "kelly": -0.14122024060248384,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "255916896195370464314",
+        "tokensOut": "300000000000000000000",
+        "avgPrice": 0.8530563206512349,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.16098252228492216,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1722555425608783,
+        "ev": -6.225426525794006,
+        "evPct": -0.024325969165558455,
+        "kelly": -0.14122024060248384,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 500,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "437131897167985038385",
+        "tokensOut": "500000000000000000000",
+        "avgPrice": 0.87426379433597,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.18984521949933164,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1438195273310277,
+        "ev": -20.97944771869095,
+        "evPct": -0.04799340394651817,
+        "kelly": -0.3337057549636653,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "437131897167985038385",
+        "tokensOut": "500000000000000000000",
+        "avgPrice": 0.87426379433597,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.18984521949933164,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1438195273310277,
+        "ev": -20.97944771869095,
+        "evPct": -0.04799340394651817,
+        "kelly": -0.3337057549636653,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    },
+    {
+      "size": 901,
+      "direct": null,
+      "split": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "813136635927338430748",
+        "tokensOut": "901000000000000000000",
+        "avgPrice": 0.9024823928161358,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.2282498345824695,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1080548584217438,
+        "ev": -63.22992201971044,
+        "evPct": -0.07776051308720107,
+        "kelly": -0.7196392112578386,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      },
+      "best": {
+        "kind": "fade",
+        "targetIndex": 1,
+        "retained": [
+          0,
+          2,
+          3
+        ],
+        "collateralIn": "813136635927338430748",
+        "tokensOut": "901000000000000000000",
+        "avgPrice": 0.9024823928161358,
+        "spotPrice": 0.7347710273642538,
+        "slippage": 0.2282498345824695,
+        "failed": [
+          "Invalid result: no pool, kept (pays only if the market resolves to it)"
+        ],
+        "winProb": 0.8323048988985882,
+        "payoffRatio": 1.1080548584217438,
+        "ev": -63.22992201971044,
+        "evPct": -0.07776051308720107,
+        "kelly": -0.7196392112578386,
+        "stakeFraction": 0,
+        "limitedBy": ""
+      }
+    }
+  ],
+  "shortPlan": {
+    "trade": null,
+    "rejected": [
+      "1: edge 0.029 below the 0.05 floor (fill 0.804)",
+      "5: edge 0.028 below the 0.05 floor (fill 0.804)",
+      "10: edge 0.027 below the 0.05 floor (fill 0.805)",
+      "20: edge 0.025 below the 0.05 floor (fill 0.808)",
+      "25: edge 0.024 below the 0.05 floor (fill 0.809)",
+      "40: edge 0.021 below the 0.05 floor (fill 0.812)",
+      "50: edge 0.019 below the 0.05 floor (fill 0.814)",
+      "75: edge 0.014 below the 0.05 floor (fill 0.819)",
+      "100: edge 0.009 below the 0.05 floor (fill 0.823)",
+      "150: edge 0.001 below the 0.05 floor (fill 0.832)",
+      "200: edge -0.007 below the 0.05 floor (fill 0.840)",
+      "300: edge -0.021 below the 0.05 floor (fill 0.853)",
+      "500: edge -0.042 below the 0.05 floor (fill 0.874)",
+      "901: edge -0.070 below the 0.05 floor (fill 0.902)"
+    ]
+  },
+  "arb": {
+    "buyAll": null,
+    "sellAll": -0.7412986745154484,
+    "note": "no pool for: Invalid result"
+  }
+}

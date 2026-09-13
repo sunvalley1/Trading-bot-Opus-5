@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-09-13T06:46:04Z",
+  "market": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+  "reasoningBeforeNumbers": "The live official Q2 ballot-piece counts favor February 2031 by more than three to one over ASAP. Counts cannot identify ZEC weight and 16 pieces per vote are not independent people. The February 2026 coinholder results favored fee removal but rejected issuance smoothing, directionally consistent with delayed reissuance. Zooko explicitly supports ASAP, so informed large holders could still reverse the count leader. The exact question has no explicit Abstain or quorum handling, adding resolution ambiguity. Decompose as 95% a valid named outcome, with conditional probabilities 20/95, 5/95 and 70/95. These are rounded judgement probabilities, not a statistical conversion of ballot counts.",
+  "outcomes": ["As soon as possible", "February 2027 regardless of the outcome of Q1", "February 2031 regardless of the outcome of Q1", "Invalid"],
+  "own": [0.20, 0.05, 0.70, 0.05],
+  "weight": 0.25,
+  "weightReason": "Default 0.25: hard live ballot counts favor 2031, but weighted votes are encrypted, coinholder traders may know their own balances, and the pool has moved well away from a round creator prior. Cached open interest is substantial relative to advertised liquidity. No independent verified creator announcement was found in this pass; do not assert this live price is an untraded LLM seed.",
+  "disagreementCheck": "Own February 2031 probability is more than 25 percentage points above raw spot. Reread oracle and official Q2: this resolves to the poll's selected date, not actual implementation in 2031; February 2027 and ASAP remain distinct even if Q1 smooths. No category mismatch found. Public ballot pieces are not ZEC weight, so retain default market weight rather than treating discrepancy as decisive edge.",
+  "wouldChangeMind": "If final audited ZEC weights favor ASAP, move ASAP to 95% and 2031 below 3%. A validator failure or unresolved abstain/quorum interpretation raises Invalid to at least 20%. If visible 2031 count lead falls under 1.5x ASAP before close, lower 2031 by 15 points.",
+  "sources": [
+    "https://prod.vote-chain-primary.valargroup.org/shielded-vote/v1/vote-summary/16eef7ebc77e0e04fb1c7329abfcc390f4a0c002964671ebb360914a3e5a3f11",
+    "https://forum.zcashcommunity.com/t/nu7-coinholder-vote/56912",
+    "https://forum.zcashcommunity.com/t/nu7-coinholder-vote/56912/30",
+    "https://forum.zcashcommunity.com/t/nu7-polling-results-what-we-heard-and-where-we-go-from-here/54775/1"
+  ]
+}

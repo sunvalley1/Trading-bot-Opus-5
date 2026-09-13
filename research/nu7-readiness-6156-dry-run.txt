@@ -1,0 +1,25 @@
+
+> trading-bot-opus-5@1.0.0 trade
+> tsx src/trade-run.ts 0xc03bf1725b72ab5765b639c582853ede9afb26a6 --chain 10 --rpc https://optimism-rpc.publicnode.com --outcome 0 --route direct --size 40 --slippage 0.001 --signer metamask --account 0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe --expect-account 0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe --dry-run
+
+LOG      C:\Users\12\Desktop\Trading-bot-skill\.trade-logs\2026-09-13T09-18-48-671Z-11852.log
+MARKET   How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?
+         https://app.seer.pm/markets/10/how-will-features-not-ready-by-the-september-30th-deadline-be-handled-per-the-zc-3
+ROUTE    direct   target outcome [0] Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline
+SIZE     40 sUSDS spent
+
+QUOTE    40 sUSDS -> 55.8667 ZNU7V3Q5SHIP
+         average fill 0.7160 vs spot 0.7000  (2.3% slippage)
+         reverts below 55.8109 tokens (--slippage 0.001)
+
+LEGS     1 transaction(s) plus approvals
+SIGNER   metamask  0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe
+         wallet matches --expect-account
+
+BALANCE  700.0000 sUSDS   needed 40.0000
+
+DRY RUN - simulating every leg, sending nothing.
+  approve  sUSDS -> Uniswap v3 router              needed (40.0000)
+  simulate buy Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadlinenot simulatable standalone: The contract function "exactInputSingle" reverted with the following reason:
+
+Dry run complete. Re-run with --yes to send, after a human has approved this plan.

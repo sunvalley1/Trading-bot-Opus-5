@@ -1,0 +1,232 @@
+{
+  "at": "2026-09-13T08:26:08.485Z",
+  "block": "156844595",
+  "rate": 1.1093851896133187,
+  "bankroll": 901.4001713404473,
+  "limits": {
+    "bankroll": 0,
+    "kellyFraction": 0.25,
+    "maxPerMarket": 0.2,
+    "maxSlippage": 0.15,
+    "minEdge": 0.05
+  },
+  "note": "Caps are generous new-position upper bounds before slippage, not an exact optimization of existing mixed positions. Conservative portfolio decision: do not add when already holding more preferred-outcome tokens than the full-budget standalone limit.",
+  "rows": [
+    {
+      "name": "ZIP-218",
+      "id": "0xc38fa340cfdc9c758826dd4a8dc15b58728d0418",
+      "own": [
+        0.92,
+        0.05,
+        0.03
+      ],
+      "weight": 0.5,
+      "target": 0,
+      "sizes": [
+        1
+      ],
+      "spot": 0.899949742678613,
+      "blended": [
+        0.89970046479406,
+        0.07060774968581107,
+        0.029691785520129056
+      ],
+      "existingTargetTokens": 0,
+      "optimisticStandaloneSpendCap": 0,
+      "optimisticStandaloneTokenCap": 0,
+      "quotes": [
+        {
+          "size": 1,
+          "tokens": 1.1105616949689112,
+          "fill": 0.9004452472386001,
+          "edge": -0.0007447824445401263,
+          "EV": -0.0008271268539915555
+        }
+      ]
+    },
+    {
+      "name": "Smoothing",
+      "id": "0x29bcd2cee8d413a2235f7970fcdde432dcaf10fc",
+      "own": [
+        0.1,
+        0.75,
+        0.12,
+        0.03
+      ],
+      "weight": 0.5,
+      "target": 1,
+      "sizes": [
+        1
+      ],
+      "spot": 0.7498213495374484,
+      "blended": [
+        0.12118341258607658,
+        0.7409426684152517,
+        0.10822909568212415,
+        0.02964482331654752
+      ],
+      "existingTargetTokens": 0,
+      "optimisticStandaloneSpendCap": 0,
+      "optimisticStandaloneTokenCap": 0,
+      "quotes": [
+        {
+          "size": 1,
+          "tokens": 1.3328222910984457,
+          "fill": 0.7502875714780024,
+          "edge": -0.009344903062750709,
+          "EV": -0.012455095110188275
+        }
+      ]
+    },
+    {
+      "name": "v4 immediate",
+      "id": "0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6",
+      "own": [
+        0.65,
+        0.1,
+        0.2,
+        0.05
+      ],
+      "weight": 0.25,
+      "target": 0,
+      "sizes": [
+        1,
+        15,
+        180
+      ],
+      "spot": 0.2999799022669992,
+      "blended": [
+        0.3895096109204014,
+        0.17997684451603582,
+        0.3798506493239466,
+        0.05066289523961609
+      ],
+      "existingTargetTokens": 100,
+      "optimisticStandaloneSpendCap": 28.821349194683457,
+      "optimisticStandaloneTokenCap": 96.07760045548255,
+      "quotes": [
+        {
+          "size": 1,
+          "tokens": 3.3254304134426875,
+          "fill": 0.3007129531135608,
+          "edge": 0.0887966578068406,
+          "EV": 0.2952871064829308
+        },
+        {
+          "size": 15,
+          "tokens": 48.300521812524764,
+          "fill": 0.3105556511008617,
+          "edge": 0.07895395981953968,
+          "EV": 3.8135174584488816
+        },
+        {
+          "size": 180,
+          "tokens": 421.98160569460174,
+          "fill": 0.42655887737976506,
+          "edge": -0.03704926645936368,
+          "EV": -15.634108950329448
+        }
+      ]
+    },
+    {
+      "name": "Readiness ship",
+      "id": "0xc03bf1725b72ab5765b639c582853ede9afb26a6",
+      "own": [
+        0.85,
+        0.09,
+        0.02,
+        0.04
+      ],
+      "weight": 0.25,
+      "target": 0,
+      "sizes": [
+        1,
+        25,
+        180
+      ],
+      "spot": 0.6999949444431314,
+      "blended": [
+        0.7616062934647163,
+        0.16769510110141195,
+        0.03138864809567287,
+        0.03930995733819894
+      ],
+      "existingTargetTokens": 100,
+      "optimisticStandaloneSpendCap": 46.27962057296509,
+      "optimisticStandaloneTokenCap": 66.11422116738575,
+      "quotes": [
+        {
+          "size": 1,
+          "tokens": 1.427627008206798,
+          "fill": 0.7004630721129825,
+          "edge": 0.06114322135173378,
+          "EV": 0.08728971417050158
+        },
+        {
+          "size": 25,
+          "tokens": 35.21037592482484,
+          "fill": 0.7100179803071605,
+          "edge": 0.051588313157555854,
+          "EV": 1.816443899605126
+        },
+        {
+          "size": 180,
+          "tokens": 233.24317461984262,
+          "fill": 0.7717267623945594,
+          "edge": -0.010120468929843085,
+          "EV": -2.3605303018380823
+        }
+      ]
+    },
+    {
+      "name": "Reissuance 2031",
+      "id": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+      "own": [
+        0.2,
+        0.05,
+        0.7,
+        0.05
+      ],
+      "weight": 0.25,
+      "target": 2,
+      "sizes": [
+        1,
+        25,
+        180
+      ],
+      "spot": 0.39014053643163354,
+      "blended": [
+        0.3312111139913473,
+        0.1247008001001978,
+        0.4940561951360795,
+        0.05003189077237536
+      ],
+      "existingTargetTokens": 160.75431524589555,
+      "optimisticStandaloneSpendCap": 38.39802370740881,
+      "optimisticStandaloneTokenCap": 98.42100505272029,
+      "quotes": [
+        {
+          "size": 1,
+          "tokens": 2.5571977676609423,
+          "fill": 0.3910530552803883,
+          "edge": 0.1030031398556912,
+          "EV": 0.2633993993010415
+        },
+        {
+          "size": 25,
+          "tokens": 60.677096684978814,
+          "fill": 0.4120170767199708,
+          "edge": 0.08203911841610873,
+          "EV": 4.977895520084655
+        },
+        {
+          "size": 180,
+          "tokens": 328.82134716866744,
+          "fill": 0.5474097151839409,
+          "edge": -0.05335352004786137,
+          "EV": -17.543776338328286
+        }
+      ]
+    }
+  ]
+}

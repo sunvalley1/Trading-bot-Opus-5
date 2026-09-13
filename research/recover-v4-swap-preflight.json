@@ -1,0 +1,25 @@
+{
+  "at": "2026-09-13T08:49:41.325Z",
+  "account": "0x017859431458cEdac674344f6031d41c9A68a858",
+  "market": "0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6",
+  "approvalHash": "0x99eae0d92d58d46e05a6d4f6712d73be092f1e00785b06d5c1883b91cb245561",
+  "approvalBlock": "156845166",
+  "before": {
+    "cash": "600000000000000000000",
+    "held": "0",
+    "allowance": "23000000000000000000",
+    "latestNonce": 1,
+    "pendingNonce": 1
+  },
+  "nonce": 1,
+  "spend": "23",
+  "quote": "72.743362535311010914",
+  "minimum": "72.379645722634455859",
+  "fill": 0.31618004995074794,
+  "blendedProbability": 0.3895096109204014,
+  "edge": 0.07332956096965343,
+  "maxStake": 24.16541309206636,
+  "liquidity": "779040356389753567664",
+  "gas": "382573",
+  "simulation": "passed"
+}

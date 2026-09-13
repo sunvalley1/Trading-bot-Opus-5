@@ -1,0 +1,68 @@
+{
+  "commonFactor": {
+    "label": "No usable official coinholder tally is ever published",
+    "probability": 0.02,
+    "resolvesTo": "invalid"
+  },
+  "markets": [
+    {
+      "ref": "0xc38fa340cfdc9c758826dd4a8dc15b58728d0418",
+      "own": [
+        0.9183673469387755,
+        0.05102040816326531,
+        0.030612244897959186
+      ],
+      "weight": 0.5,
+      "note": "ZIP-218 independent report",
+      "chain": 10
+    },
+    {
+      "ref": "0x29bcd2cee8d413a2235f7970fcdde432dcaf10fc",
+      "own": [
+        0.10204081632653061,
+        0.7346938775510204,
+        0.14285714285714288,
+        0.020408163265306124
+      ],
+      "weight": 0.5,
+      "note": "Smoothing independent report",
+      "chain": 10
+    },
+    {
+      "ref": "0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6",
+      "own": [
+        0.6122448979591837,
+        0.15306122448979592,
+        0.20408163265306123,
+        0.030612244897959186
+      ],
+      "weight": 0.25,
+      "note": "V4 research; market has moved and prior weighted result opposes",
+      "chain": 10
+    },
+    {
+      "ref": "0xc03bf1725b72ab5765b639c582853ede9afb26a6",
+      "own": [
+        0.8673469387755102,
+        0.10204081632653061,
+        0.020408163265306124,
+        0.01020408163265306
+      ],
+      "weight": 0.5,
+      "note": "Readiness independent report",
+      "chain": 10
+    },
+    {
+      "ref": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+      "own": [
+        0.25510204081632654,
+        0.10204081632653061,
+        0.6122448979591837,
+        0.030612244897959186
+      ],
+      "weight": 0.25,
+      "note": "Reissuance researched report; meaningful trading and hidden voter weights",
+      "chain": 10
+    }
+  ]
+}

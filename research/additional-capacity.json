@@ -1,0 +1,4434 @@
+{
+  "start": "2026-09-13T09:06:15.871Z",
+  "at": "2026-09-13T09:06:46.347Z",
+  "account": "0x017859431458cEdac674344f6031d41c9A68a858",
+  "cash": "548",
+  "cashUSD": 607.9448184067819,
+  "alreadySpent": 52,
+  "totalBudgetUSD": 1000,
+  "minEdge": 0.07,
+  "sizes": [
+    0.1,
+    1,
+    10,
+    50,
+    100
+  ],
+  "rows": [
+    {
+      "label": "ZIP-218",
+      "market": "0xc38fa340cfdc9c758826dd4a8dc15b58728d0418",
+      "own": [
+        0.92,
+        0.05,
+        0.03
+      ],
+      "weight": 0.5,
+      "question": [
+        "Will the Zcash NU7 coinholder poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)?␟\"Yes\",\"No\"␟misc␟en_US"
+      ],
+      "q": [
+        0.89970046479406,
+        0.07060774968581107,
+        0.029691785520129056
+      ],
+      "forecastFrozen": false,
+      "holdings": [
+        {
+          "outcome": "Yes",
+          "tokens": "0"
+        },
+        {
+          "outcome": "No",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "tokens": "0"
+        }
+      ],
+      "pools": [
+        {
+          "outcome": "Yes",
+          "liquidity": "2339470876458005371950",
+          "spot": 0.899949742678613
+        },
+        {
+          "outcome": "No",
+          "liquidity": "48497797083434237462",
+          "spot": 0.1019870268691207
+        },
+        {
+          "outcome": "Invalid result",
+          "liquidity": "0"
+        }
+      ],
+      "best": {
+        "size": 0.1,
+        "route": "split",
+        "target": 0,
+        "outcome": "Yes",
+        "retained": [
+          "Yes",
+          "Invalid result"
+        ],
+        "cost": 0.08980902718559518,
+        "tokens": 0.1,
+        "fill": 0.8980902718559517,
+        "winProbability": 0.929392250314189,
+        "edge": 0.031301978458237345,
+        "slippage": -0.002066194071156491,
+        "EV": 0.0031301978458237317
+      },
+      "eligibleOnEdge": [],
+      "arb": {
+        "buyAll": null,
+        "sellAll": 0.0008048165840019994,
+        "note": "no pool for: Invalid result"
+      },
+      "quotes": [
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes"
+          ],
+          "cost": 0.1,
+          "tokens": 0.11110119882117384,
+          "fill": 0.9000802967118106,
+          "winProbability": 0.89970046479406,
+          "edge": -0.0003798319177505949,
+          "slippage": 0.0001450681377039853,
+          "EV": -0.000042199781412635695
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 0.08980902718559518,
+          "tokens": 0.1,
+          "fill": 0.8980902718559517,
+          "winProbability": 0.929392250314189,
+          "edge": 0.031301978458237345,
+          "slippage": -0.002066194071156491,
+          "EV": 0.0031301978458237317
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 0.010017673653286844,
+          "tokens": 0.1,
+          "fill": 0.10017673653286843,
+          "winProbability": 0.10029953520594012,
+          "edge": 0.000122798673071689,
+          "slippage": -0.017750202077911337,
+          "EV": 0.000012279867307169248
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No"
+          ],
+          "cost": 0.1,
+          "tokens": 0.9741298531136598,
+          "fill": 0.10265571851675115,
+          "winProbability": 0.07060774968581107,
+          "edge": -0.03204796883094008,
+          "slippage": 0.006556634389279559,
+          "EV": -0.031218883169874798
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 0.010017673653286844,
+          "tokens": 0.1,
+          "fill": 0.10017673653286843,
+          "winProbability": 0.10029953520594012,
+          "edge": 0.000122798673071689,
+          "slippage": -0.017750202077911337,
+          "EV": 0.000012279867307169248
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 0.08980902718559518,
+          "tokens": 0.1,
+          "fill": 0.8980902718559517,
+          "winProbability": 0.929392250314189,
+          "edge": 0.031301978458237345,
+          "slippage": -0.002066194071156491,
+          "EV": 0.0031301978458237317
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 2,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0,
+          "tokens": 0.1,
+          "fill": 0,
+          "winProbability": 0.029691785520129056,
+          "edge": 0.029691785520129056,
+          "slippage": -1,
+          "EV": 0.0029691785520129057
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes"
+          ],
+          "cost": 1,
+          "tokens": 1.1105616949689112,
+          "fill": 0.9004452472386001,
+          "winProbability": 0.89970046479406,
+          "edge": -0.0007447824445401263,
+          "slippage": 0.0005505913680381447,
+          "EV": -0.0008271268539915555
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 0.8986902218303489,
+          "tokens": 1,
+          "fill": 0.8986902218303489,
+          "winProbability": 0.929392250314189,
+          "edge": 0.030702028483840182,
+          "slippage": -0.0013995457618726226,
+          "EV": 0.030702028483840182
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 0.1005049615856493,
+          "tokens": 1,
+          "fill": 0.1005049615856493,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.00020542637970917543,
+          "slippage": -0.014531900075617776,
+          "EV": -0.00020542637970917543
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No"
+          ],
+          "cost": 1,
+          "tokens": 9.209617218836266,
+          "fill": 0.1085821458414925,
+          "winProbability": 0.07060774968581107,
+          "edge": -0.037974396155681434,
+          "slippage": 0.06466625388379321,
+          "EV": -0.34972965271027334
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 0.1005049615856493,
+          "tokens": 1,
+          "fill": 0.1005049615856493,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.00020542637970917543,
+          "slippage": -0.014531900075617776,
+          "EV": -0.00020542637970917543
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 0.8986902218303489,
+          "tokens": 1,
+          "fill": 0.8986902218303489,
+          "winProbability": 0.929392250314189,
+          "edge": 0.030702028483840182,
+          "slippage": -0.0013995457618726226,
+          "EV": 0.030702028483840182
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 2,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0,
+          "tokens": 1,
+          "fill": 0,
+          "winProbability": 0.029691785520129056,
+          "edge": 0.029691785520129056,
+          "slippage": -1,
+          "EV": 0.029691785520129056
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes"
+          ],
+          "cost": 10,
+          "tokens": 11.060787569307527,
+          "fill": 0.9040947525064945,
+          "winProbability": 0.89970046479406,
+          "edge": -0.0043942877124345525,
+          "slippage": 0.0046058236713799605,
+          "EV": -0.048604282905657215
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 9.04322807662779,
+          "tokens": 10,
+          "fill": 0.904322807662779,
+          "winProbability": 0.929392250314189,
+          "edge": 0.02506944265141009,
+          "slippage": 0.0048592324401914855,
+          "EV": 0.25069442651410156
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 1.0377409018562516,
+          "tokens": 10,
+          "fill": 0.10377409018562515,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.0034745549796850322,
+          "slippage": 0.01752245723172008,
+          "EV": -0.034745549796850295
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No"
+          ],
+          "cost": 10,
+          "tokens": 59.57827431935336,
+          "fill": 0.16784641908890616,
+          "winProbability": 0.07060774968581107,
+          "edge": -0.09723866940309508,
+          "slippage": 0.645762448828932,
+          "EV": -5.793312120146512
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 1.0377409018562516,
+          "tokens": 10,
+          "fill": 0.10377409018562515,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.0034745549796850322,
+          "slippage": 0.01752245723172008,
+          "EV": -0.034745549796850295
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 9.04322807662779,
+          "tokens": 10,
+          "fill": 0.904322807662779,
+          "winProbability": 0.929392250314189,
+          "edge": 0.02506944265141009,
+          "slippage": 0.0048592324401914855,
+          "EV": 0.25069442651410156
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 2,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.08096897848404036,
+          "tokens": 10,
+          "fill": 0.008096897848404037,
+          "winProbability": 0.029691785520129056,
+          "edge": 0.02159488767172502,
+          "slippage": null,
+          "EV": 0.2159488767172502
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes"
+          ],
+          "cost": 50,
+          "tokens": 54.32923746122831,
+          "fill": 0.9203147759193594,
+          "winProbability": 0.89970046479406,
+          "edge": -0.020614311125299434,
+          "slippage": 0.022629078352899734,
+          "EV": -1.1199598042260348
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 46.164014899810205,
+          "tokens": 50,
+          "fill": 0.9232802979962041,
+          "winProbability": 0.929392250314189,
+          "edge": 0.006111952317984892,
+          "slippage": 0.025924286892010207,
+          "EV": 0.30559761589924506
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 5.9010310892634,
+          "tokens": 50,
+          "fill": 0.118020621785268,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.017721086579327874,
+          "slippage": 0.15721210244439332,
+          "EV": -0.8860543289663942
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No"
+          ],
+          "cost": 50,
+          "tokens": 102.8696192663544,
+          "fill": 0.48605215375141875,
+          "winProbability": 0.07060774968581107,
+          "edge": -0.4154444040656077,
+          "slippage": 3.7658233470730194,
+          "EV": -42.736607672566564
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 5.9010310892634,
+          "tokens": 50,
+          "fill": 0.118020621785268,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.017721086579327874,
+          "slippage": 0.15721210244439332,
+          "EV": -0.8860543289663942
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 46.164014899810205,
+          "tokens": 50,
+          "fill": 0.9232802979962041,
+          "winProbability": 0.929392250314189,
+          "edge": 0.006111952317984892,
+          "slippage": 0.025924286892010207,
+          "EV": 0.30559761589924506
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 2,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 2.065045989073602,
+          "tokens": 50,
+          "fill": 0.041300919781472045,
+          "winProbability": 0.029691785520129056,
+          "edge": -0.011609134261342989,
+          "slippage": null,
+          "EV": -0.5804567130671494
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes"
+          ],
+          "cost": 100,
+          "tokens": 102.8696192663544,
+          "fill": 0.9721043075028375,
+          "winProbability": 0.89970046479406,
+          "edge": -0.07240384270877753,
+          "slippage": 0.08017621585119117,
+          "EV": -7.448155732872962
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 93.85098741175139,
+          "tokens": 100,
+          "fill": 0.9385098741175139,
+          "winProbability": 0.929392250314189,
+          "edge": -0.009117623803324815,
+          "slippage": 0.04284698312611357,
+          "EV": -0.9117623803324904
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Yes",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 13.520426328599772,
+          "tokens": 100,
+          "fill": 0.13520426328599772,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.034904728080057595,
+          "slippage": 0.32570060562216874,
+          "EV": -3.4904728080057605
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No"
+          ],
+          "cost": 100,
+          "tokens": 102.8696192663544,
+          "fill": 0.9721043075028375,
+          "winProbability": 0.07060774968581107,
+          "edge": -0.9014965578170264,
+          "slippage": 8.531646694146039,
+          "EV": -92.73660767256656
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "No",
+            "Invalid result"
+          ],
+          "cost": 13.520426328599772,
+          "tokens": 100,
+          "fill": 0.13520426328599772,
+          "winProbability": 0.10029953520594012,
+          "edge": -0.034904728080057595,
+          "slippage": 0.32570060562216874,
+          "EV": -3.4904728080057605
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 1,
+          "outcome": "No",
+          "retained": [
+            "Yes",
+            "Invalid result"
+          ],
+          "cost": 93.85098741175139,
+          "tokens": 100,
+          "fill": 0.9385098741175139,
+          "winProbability": 0.929392250314189,
+          "edge": -0.009117623803324815,
+          "slippage": 0.04284698312611357,
+          "EV": -0.9117623803324904
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 2,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 7.37141374035116,
+          "tokens": 100,
+          "fill": 0.0737141374035116,
+          "winProbability": 0.029691785520129056,
+          "edge": -0.04402235188338254,
+          "slippage": null,
+          "EV": -4.4022351883382544
+        }
+      ]
+    },
+    {
+      "label": "Issuance smoothing",
+      "market": "0x29bcd2cee8d413a2235f7970fcdde432dcaf10fc",
+      "own": [
+        0.1,
+        0.75,
+        0.12,
+        0.03
+      ],
+      "weight": 0.5,
+      "question": [
+        "Which NSM issuance smoothing approach will be selected in the Zcash NU7 coinholder poll?␟\"Smooth issuance curve\",\"Preserve halvings\",\"Do not include issuance smoothing in NU7\"␟misc␟en_US"
+      ],
+      "q": [
+        0.12118341258607658,
+        0.7409426684152517,
+        0.10822909568212415,
+        0.02964482331654752
+      ],
+      "forecastFrozen": false,
+      "holdings": [
+        {
+          "outcome": "Smooth issuance curve",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Preserve halvings",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Do not include issuance smoothing in NU7",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "tokens": "0"
+        }
+      ],
+      "pools": [
+        {
+          "outcome": "Smooth issuance curve",
+          "liquidity": "204144873507075339385",
+          "spot": 0.15043060829833643
+        },
+        {
+          "outcome": "Preserve halvings",
+          "liquidity": "2213319910087983489408",
+          "spot": 0.7498213495374484
+        },
+        {
+          "outcome": "Do not include issuance smoothing in NU7",
+          "liquidity": "148742063522493620859",
+          "spot": 0.09999002302959495
+        },
+        {
+          "outcome": "Invalid result",
+          "liquidity": "0"
+        }
+      ],
+      "best": {
+        "size": 0.1,
+        "route": "split",
+        "target": 2,
+        "outcome": "Do not include issuance smoothing in NU7",
+        "retained": [
+          "Do not include issuance smoothing in NU7",
+          "Invalid result"
+        ],
+        "cost": 0.009989596487433973,
+        "tokens": 0.1,
+        "fill": 0.09989596487433973,
+        "winProbability": 0.13787391899867166,
+        "edge": 0.03797795412433193,
+        "slippage": -0.0009406754034587683,
+        "EV": 0.003797795412433193
+      },
+      "eligibleOnEdge": [],
+      "arb": {
+        "buyAll": null,
+        "sellAll": -0.0006485040298256362,
+        "note": "no pool for: Invalid result"
+      },
+      "quotes": [
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve"
+          ],
+          "cost": 0.1,
+          "tokens": 0.6638535105163029,
+          "fill": 0.15063564237571989,
+          "winProbability": 0.12118341258607658,
+          "edge": -0.029452229789643306,
+          "slippage": 0.0013629811093818223,
+          "EV": -0.01955196613838754
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve",
+            "Invalid result"
+          ],
+          "cost": 0.015032418518403305,
+          "tokens": 0.1,
+          "fill": 0.15032418518403304,
+          "winProbability": 0.1508282359026241,
+          "edge": 0.0005040507185910537,
+          "slippage": -0.0007074565177077607,
+          "EV": 0.000050405071859105366
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Preserve halvings",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 0.0849613003857321,
+          "tokens": 0.1,
+          "fill": 0.849613003857321,
+          "winProbability": 0.8788165874139233,
+          "edge": 0.029203583556602353,
+          "slippage": -0.0002334267534254142,
+          "EV": 0.0029203583556602353
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings"
+          ],
+          "cost": 0.1,
+          "tokens": 0.133344807671452,
+          "fill": 0.7499354624020292,
+          "winProbability": 0.7409426684152517,
+          "edge": -0.008992793986777547,
+          "slippage": 0.00015218673708239372,
+          "EV": -0.0011991423845958415
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 0.07496542280243354,
+          "tokens": 0.1,
+          "fill": 0.7496542280243353,
+          "winProbability": 0.7705874917317992,
+          "edge": 0.020933263707463845,
+          "slippage": -0.00022288177472695736,
+          "EV": 0.0020933263707463845
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Smooth issuance curve",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 0.025028296101701868,
+          "tokens": 0.1,
+          "fill": 0.25028296101701863,
+          "winProbability": 0.25905733158474825,
+          "edge": 0.008774370567729617,
+          "slippage": -0.0005497562648200116,
+          "EV": 0.0008774370567729596
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7"
+          ],
+          "cost": 0.1,
+          "tokens": 0.9978783722339676,
+          "fill": 0.10021261386408073,
+          "winProbability": 0.10822909568212415,
+          "edge": 0.008016481818043417,
+          "slippage": 0.002226130445233565,
+          "EV": 0.007999473827632372
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 0.009989596487433973,
+          "tokens": 0.1,
+          "fill": 0.09989596487433973,
+          "winProbability": 0.13787391899867166,
+          "edge": 0.03797795412433193,
+          "slippage": -0.0009406754034587683,
+          "EV": 0.003797795412433193
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Smooth issuance curve",
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 0.09000412241670144,
+          "tokens": 0.1,
+          "fill": 0.9000412241670144,
+          "winProbability": 0.8917709043178758,
+          "edge": -0.008270319849138619,
+          "slippage": -0.00023408298858584864,
+          "EV": -0.0008270319849138646
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0,
+          "tokens": 0.1,
+          "fill": 0,
+          "winProbability": 0.02964482331654752,
+          "edge": 0.02964482331654752,
+          "slippage": -1,
+          "EV": 0.0029644823316547523
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve"
+          ],
+          "cost": 1,
+          "tokens": 6.56402509445914,
+          "fill": 0.15234554798459338,
+          "winProbability": 0.12118341258607658,
+          "edge": -0.031162135398516796,
+          "slippage": 0.012729721084815404,
+          "EV": -0.20454903875279773
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve",
+            "Invalid result"
+          ],
+          "cost": 0.15077886584859734,
+          "tokens": 1,
+          "fill": 0.15077886584859734,
+          "winProbability": 0.1508282359026241,
+          "edge": 0.00004937005402674832,
+          "slippage": 0.0023150710762946947,
+          "EV": 0.00004937005402674832
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Preserve halvings",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 0.8498696381812282,
+          "tokens": 1,
+          "fill": 0.8498696381812282,
+          "winProbability": 0.8788165874139233,
+          "edge": 0.02894694923269514,
+          "slippage": 0.00006856299652580056,
+          "EV": 0.02894694923269514
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings"
+          ],
+          "cost": 1,
+          "tokens": 1.3328222910984457,
+          "fill": 0.7502875714780024,
+          "winProbability": 0.7409426684152517,
+          "edge": -0.009344903062750709,
+          "slippage": 0.000621777361823117,
+          "EV": -0.012455095110188275
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 0.7501016904545089,
+          "tokens": 1,
+          "fill": 0.7501016904545089,
+          "winProbability": 0.7705874917317992,
+          "edge": 0.020485801277290272,
+          "slippage": 0.0003738769471335335,
+          "EV": 0.020485801277290272
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Smooth issuance curve",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 0.2505468135753166,
+          "tokens": 1,
+          "fill": 0.2505468135753166,
+          "winProbability": 0.25905733158474825,
+          "edge": 0.008510518009431645,
+          "slippage": 0.0005038811966735501,
+          "EV": 0.008510518009431645
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7"
+          ],
+          "cost": 1,
+          "tokens": 9.791832365634864,
+          "fill": 0.1021259313537241,
+          "winProbability": 0.10822909568212415,
+          "edge": 0.006103164328400051,
+          "slippage": 0.02136121444333461,
+          "EV": 0.05976116200361581
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 0.10041645175654486,
+          "tokens": 1,
+          "fill": 0.10041645175654486,
+          "winProbability": 0.13787391899867166,
+          "edge": 0.0374574672421268,
+          "slippage": 0.00426471275862883,
+          "EV": 0.0374574672421268
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Smooth issuance curve",
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 0.9002320522732807,
+          "tokens": 1,
+          "fill": 0.9002320522732807,
+          "winProbability": 0.8917709043178758,
+          "edge": -0.00846114795540498,
+          "slippage": -0.00002211110159866525,
+          "EV": -0.00846114795540498
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.000648504029825585,
+          "tokens": 1,
+          "fill": 0.000648504029825585,
+          "winProbability": 0.02964482331654752,
+          "edge": 0.028996319286721937,
+          "slippage": null,
+          "EV": 0.028996319286721937
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve"
+          ],
+          "cost": 10,
+          "tokens": 59.016337844977436,
+          "fill": 0.1694446040733286,
+          "winProbability": 0.12118341258607658,
+          "edge": -0.04826119148725201,
+          "slippage": 0.12639712083915322,
+          "EV": -2.8481987816128136
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve",
+            "Invalid result"
+          ],
+          "cost": 1.55276171072602,
+          "tokens": 10,
+          "fill": 0.155276171072602,
+          "winProbability": 0.1508282359026241,
+          "edge": -0.004447935169977907,
+          "slippage": 0.03221128219235658,
+          "EV": -0.044479351699779235
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Preserve halvings",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 8.523886158027063,
+          "tokens": 10,
+          "fill": 0.8523886158027063,
+          "winProbability": 0.8788165874139233,
+          "edge": 0.026427971611217016,
+          "slippage": 0.0030327238712726245,
+          "EV": 0.2642797161121706
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings"
+          ],
+          "cost": 10,
+          "tokens": 13.265965888895872,
+          "fill": 0.7538086622377334,
+          "winProbability": 0.7409426684152517,
+          "edge": -0.012865993822481658,
+          "slippage": 0.005317683609228574,
+          "EV": -0.1706798351757861
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 7.544896264135458,
+          "tokens": 10,
+          "fill": 0.7544896264135458,
+          "winProbability": 0.7705874917317992,
+          "edge": 0.016097865318253413,
+          "slippage": 0.006225852169956525,
+          "EV": 0.1609786531825339
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Smooth issuance curve",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 2.531751604617625,
+          "tokens": 10,
+          "fill": 0.2531751604617625,
+          "winProbability": 0.25905733158474825,
+          "edge": 0.005882171122985724,
+          "slippage": 0.010999609414066525,
+          "EV": 0.05882171122985724
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7"
+          ],
+          "cost": 10,
+          "tokens": 82.46803319966722,
+          "fill": 0.12125910625015794,
+          "winProbability": 0.10822909568212415,
+          "edge": -0.013030010568033795,
+          "slippage": 0.21271205442434793,
+          "EV": -1.0745593441166257
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 1.055637762644688,
+          "tokens": 10,
+          "fill": 0.1055637762644688,
+          "winProbability": 0.13787391899867166,
+          "edge": 0.03231014273420285,
+          "slippage": 0.055743093820711964,
+          "EV": 0.3231014273420285
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Smooth issuance curve",
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 9.021010106108395,
+          "tokens": 10,
+          "fill": 0.9021010106108396,
+          "winProbability": 0.8917709043178758,
+          "edge": -0.010330106292963825,
+          "slippage": 0.002053928079756684,
+          "EV": -0.10330106292963848
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.07664786875308291,
+          "tokens": 10,
+          "fill": 0.007664786875308291,
+          "winProbability": 0.02964482331654752,
+          "edge": 0.02198003644123923,
+          "slippage": null,
+          "EV": 0.21980036441239229
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve"
+          ],
+          "cost": 50,
+          "tokens": 203.71543635219436,
+          "fill": 0.24544040891215171,
+          "winProbability": 0.12118341258607658,
+          "edge": -0.12425699632607513,
+          "slippage": 0.6315855641917654,
+          "EV": -25.313068226379407
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve",
+            "Invalid result"
+          ],
+          "cost": 8.71312498438397,
+          "tokens": 50,
+          "fill": 0.1742624996876794,
+          "winProbability": 0.1508282359026241,
+          "edge": -0.02343426378505531,
+          "slippage": 0.15842448328121606,
+          "EV": -1.171713189252766
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Preserve halvings",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 43.13161687179807,
+          "tokens": 50,
+          "fill": 0.8626323374359615,
+          "winProbability": 0.8788165874139233,
+          "edge": 0.016184249977961862,
+          "slippage": 0.01508683607067951,
+          "EV": 0.8092124988980913
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings"
+          ],
+          "cost": 50,
+          "tokens": 64.98080851250953,
+          "fill": 0.7694579545032045,
+          "winProbability": 0.7409426684152517,
+          "edge": -0.02851528608795284,
+          "slippage": 0.026188378042142357,
+          "EV": -1.8529463449606922
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 38.61288782287423,
+          "tokens": 50,
+          "fill": 0.7722577564574845,
+          "winProbability": 0.7705874917317992,
+          "edge": -0.001670264725685322,
+          "slippage": 0.02992233674578193,
+          "EV": -0.08351323628426854
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Smooth issuance curve",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 13.231854033307814,
+          "tokens": 50,
+          "fill": 0.26463708066615627,
+          "winProbability": 0.25905733158474825,
+          "edge": -0.005579749081408014,
+          "slippage": 0.056770279919980515,
+          "EV": -0.2789874540704016
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7"
+          ],
+          "cost": 50,
+          "tokens": 242.37084548505496,
+          "fill": 0.20629543912319726,
+          "winProbability": 0.10822909568212415,
+          "edge": -0.09806634344107311,
+          "slippage": 1.0631602321177396,
+          "EV": -23.76842257344066
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 6.363470905105887,
+          "tokens": 50,
+          "fill": 0.12726941810211773,
+          "winProbability": 0.13787391899867166,
+          "edge": 0.010604500896553931,
+          "slippage": 0.27282117001261863,
+          "EV": 0.530225044827696
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Smooth issuance curve",
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 45.481270951076155,
+          "tokens": 50,
+          "fill": 0.909625419021523,
+          "winProbability": 0.8917709043178758,
+          "edge": -0.017854514703647295,
+          "slippage": 0.010412041989080523,
+          "EV": -0.892725735182367
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 1.8447418561820426,
+          "tokens": 50,
+          "fill": 0.036894837123640854,
+          "winProbability": 0.02964482331654752,
+          "edge": -0.007250013807093333,
+          "slippage": null,
+          "EV": -0.3625006903546666
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve"
+          ],
+          "cost": 100,
+          "tokens": 293.7416879703063,
+          "fill": 0.3404351649606806,
+          "winProbability": 0.12118341258607658,
+          "edge": -0.21925175237460404,
+          "slippage": 1.2630711183825305,
+          "EV": -64.4033798329638
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Smooth issuance curve",
+            "Invalid result"
+          ],
+          "cost": 19.60260200630144,
+          "tokens": 100,
+          "fill": 0.1960260200630144,
+          "winProbability": 0.1508282359026241,
+          "edge": -0.0451977841603903,
+          "slippage": 0.3030992979450857,
+          "EV": -4.5197784160390295
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Smooth issuance curve",
+          "retained": [
+            "Preserve halvings",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 87.35972332290297,
+          "tokens": 100,
+          "fill": 0.8735972332290296,
+          "winProbability": 0.8788165874139233,
+          "edge": 0.005219354184893721,
+          "slippage": 0.027989576781181302,
+          "EV": 0.5219354184893632
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings"
+          ],
+          "cost": 100,
+          "tokens": 126.73956872946324,
+          "fill": 0.7890195698350434,
+          "winProbability": 0.7409426684152517,
+          "edge": -0.04807690141979171,
+          "slippage": 0.0522767460832847,
+          "EV": -6.093245751793319
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 79.11442125980247,
+          "tokens": 100,
+          "fill": 0.7911442125980247,
+          "winProbability": 0.7705874917317992,
+          "edge": -0.02055672086622551,
+          "slippage": 0.05511027804965507,
+          "EV": -2.0556720866225504
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Preserve halvings",
+          "retained": [
+            "Smooth issuance curve",
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 27.847904069401928,
+          "tokens": 100,
+          "fill": 0.2784790406940193,
+          "winProbability": 0.25905733158474825,
+          "edge": -0.019421709109271046,
+          "slippage": 0.11204511871605671,
+          "EV": -1.9421709109271035
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7"
+          ],
+          "cost": 100,
+          "tokens": 319.90699130139654,
+          "fill": 0.31259085521449637,
+          "winProbability": 0.10822909568212415,
+          "edge": -0.20436175953237223,
+          "slippage": 2.1262204542344794,
+          "EV": -65.3767556290607
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Do not include issuance smoothing in NU7",
+            "Invalid result"
+          ],
+          "cost": 15.207627392304888,
+          "tokens": 100,
+          "fill": 0.15207627392304887,
+          "winProbability": 0.13787391899867166,
+          "edge": -0.014202354924377214,
+          "slippage": 0.5209144804180861,
+          "EV": -1.4202354924377225
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not include issuance smoothing in NU7",
+          "retained": [
+            "Smooth issuance curve",
+            "Preserve halvings",
+            "Invalid result"
+          ],
+          "cost": 91.7546979368995,
+          "tokens": 100,
+          "fill": 0.917546979368995,
+          "winProbability": 0.8917709043178758,
+          "edge": -0.02577607505111923,
+          "slippage": 0.01921131232503792,
+          "EV": -2.577607505111928
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 6.962325329204399,
+          "tokens": 100,
+          "fill": 0.06962325329204398,
+          "winProbability": 0.02964482331654752,
+          "edge": -0.03997842997549646,
+          "slippage": null,
+          "EV": -3.997842997549647
+        }
+      ]
+    },
+    {
+      "label": "v4 Immediate",
+      "market": "0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6",
+      "own": [
+        0.65,
+        0.1,
+        0.2,
+        0.05
+      ],
+      "weight": 0.25,
+      "heldTarget": 0,
+      "cost": 23,
+      "question": [
+        "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?␟\"Immediately at NU7 activation\",\"One year after this poll concludes\",\"Do not set a date to disable v4 transactions\"␟misc␟en_US"
+      ],
+      "q": [
+        0.3895096109204014,
+        0.17997684451603582,
+        0.3798506493239466,
+        0.05066289523961609
+      ],
+      "forecastFrozen": true,
+      "holdings": [
+        {
+          "outcome": "Immediately at NU7 activation",
+          "tokens": "72.743362535311010914"
+        },
+        {
+          "outcome": "One year after this poll concludes",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Do not set a date to disable v4 transactions",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "tokens": "0"
+        }
+      ],
+      "pools": [
+        {
+          "outcome": "Immediately at NU7 activation",
+          "liquidity": "779040356389753567664",
+          "spot": 0.33318842451251024
+        },
+        {
+          "outcome": "One year after this poll concludes",
+          "liquidity": "518277725571957896187",
+          "spot": 0.19998367807988282
+        },
+        {
+          "outcome": "Do not set a date to disable v4 transactions",
+          "liquidity": "1572641264680533167420",
+          "spot": 0.4297140361330241
+        },
+        {
+          "outcome": "Invalid result",
+          "liquidity": "0"
+        }
+      ],
+      "best": {
+        "size": 0.1,
+        "route": "split",
+        "target": 0,
+        "outcome": "Immediately at NU7 activation",
+        "retained": [
+          "Immediately at NU7 activation",
+          "Invalid result"
+        ],
+        "cost": 0.037040041367660426,
+        "tokens": 0.1,
+        "fill": 0.37040041367660426,
+        "winProbability": 0.44017250616001746,
+        "edge": 0.0697720924834132,
+        "slippage": 0.1116845197084475,
+        "EV": 0.006977209248341325
+      },
+      "eligibleOnEdge": [],
+      "arb": {
+        "buyAll": null,
+        "sellAll": -0.03780817173257489,
+        "note": "no pool for: Invalid result"
+      },
+      "quotes": [
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation"
+          ],
+          "cost": 0.1,
+          "tokens": 0.30003374687701123,
+          "fill": 0.3332958410208157,
+          "winProbability": 0.3895096109204014,
+          "edge": 0.05621376989958565,
+          "slippage": 0.0003223896762398759,
+          "EV": 0.01686602800905483
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Invalid result"
+          ],
+          "cost": 0.037040041367660426,
+          "tokens": 0.1,
+          "fill": 0.37040041367660426,
+          "winProbability": 0.44017250616001746,
+          "edge": 0.0697720924834132,
+          "slippage": 0.1116845197084475,
+          "EV": 0.006977209248341325
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "One year after this poll concludes",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 0.06668695749384923,
+          "tokens": 0.1,
+          "fill": 0.6668695749384923,
+          "winProbability": 0.6104903890795985,
+          "edge": -0.05637918585889379,
+          "slippage": 0.05903127784424056,
+          "EV": -0.005637918585889377
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes"
+          ],
+          "cost": 0.1,
+          "tokens": 0.49977519278675187,
+          "fill": 0.20008996333411214,
+          "winProbability": 0.17997684451603582,
+          "edge": -0.020113118818076314,
+          "slippage": 0.0005314696441720557,
+          "EV": -0.010052037834846941
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 0.023721641769749047,
+          "tokens": 0.1,
+          "fill": 0.23721641769749047,
+          "winProbability": 0.2306397397556519,
+          "edge": -0.006576677941838555,
+          "slippage": 0.18617889207305782,
+          "EV": -0.0006576677941838548
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 0.08000535709176061,
+          "tokens": 0.1,
+          "fill": 0.8000535709176061,
+          "winProbability": 0.820023155483964,
+          "edge": 0.01996958456635789,
+          "slippage": 0.048697064419789715,
+          "EV": 0.0019969584566357917
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions"
+          ],
+          "cost": 0.1,
+          "tokens": 0.23266706292172423,
+          "fill": 0.42979869494309486,
+          "winProbability": 0.3798506493239466,
+          "edge": -0.049948045619148285,
+          "slippage": 0.00019701197296839723,
+          "EV": -0.011621265072887521
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 0.04669231458560984,
+          "tokens": 0.1,
+          "fill": 0.46692314585609834,
+          "winProbability": 0.43051354456356267,
+          "edge": -0.036409601292535676,
+          "slippage": 0.08659039871705665,
+          "EV": -0.003640960129253565
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Immediately at NU7 activation",
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 0.05703468427589982,
+          "tokens": 0.1,
+          "fill": 0.5703468427589982,
+          "winProbability": 0.6201493506760533,
+          "edge": 0.049802507917055094,
+          "slippage": 0.06972371582431625,
+          "EV": 0.004980250791705512
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.003726998861509655,
+          "tokens": 0.1,
+          "fill": 0.03726998861509655,
+          "winProbability": 0.05066289523961609,
+          "edge": 0.013392906624519543,
+          "slippage": null,
+          "EV": 0.0013392906624519543
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation"
+          ],
+          "cost": 1,
+          "tokens": 2.994346464060091,
+          "fill": 0.3339626900235456,
+          "winProbability": 0.3895096109204014,
+          "edge": 0.055546920896855756,
+          "slippage": 0.0023238067533954965,
+          "EV": 0.16632672617692568
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Invalid result"
+          ],
+          "cost": 0.37071663576122266,
+          "tokens": 1,
+          "fill": 0.37071663576122266,
+          "winProbability": 0.44017250616001746,
+          "edge": 0.0694558703987948,
+          "slippage": 0.11263359855199084,
+          "EV": 0.0694558703987948
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "One year after this poll concludes",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 0.6670915359713522,
+          "tokens": 1,
+          "fill": 0.6670915359713522,
+          "winProbability": 0.6104903890795985,
+          "edge": -0.05660114689175366,
+          "slippage": 0.05938376607446605,
+          "EV": -0.05660114689175366
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes"
+          ],
+          "cost": 1,
+          "tokens": 4.978430271007052,
+          "fill": 0.20086652731157306,
+          "winProbability": 0.17997684451603582,
+          "edge": -0.02088968279553724,
+          "slippage": 0.004414606432718848,
+          "EV": -0.10399782918103773
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 0.23759947898115427,
+          "tokens": 1,
+          "fill": 0.23759947898115427,
+          "winProbability": 0.2306397397556519,
+          "edge": -0.006959739225502359,
+          "slippage": 0.18809435481152592,
+          "EV": -0.006959739225502359
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 0.8002086927514206,
+          "tokens": 1,
+          "fill": 0.8002086927514206,
+          "winProbability": 0.820023155483964,
+          "edge": 0.019814462732543392,
+          "slippage": 0.04890039556868042,
+          "EV": 0.019814462732543392
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions"
+          ],
+          "cost": 1,
+          "tokens": 2.3246415756125187,
+          "fill": 0.43017384292307964,
+          "winProbability": 0.3798506493239466,
+          "edge": -0.050323193599133065,
+          "slippage": 0.0010700297206795994,
+          "EV": -0.11698338805814257
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 0.46730022872277277,
+          "tokens": 1,
+          "fill": 0.46730022872277277,
+          "winProbability": 0.43051354456356267,
+          "edge": -0.036786684159210103,
+          "slippage": 0.08746791919571684,
+          "EV": -0.036786684159210103
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Immediately at NU7 activation",
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 0.5705079430098021,
+          "tokens": 1,
+          "fill": 0.5705079430098021,
+          "winProbability": 0.6201493506760533,
+          "edge": 0.049641407666251136,
+          "slippage": 0.07002587013813089,
+          "EV": 0.049641407666251136
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.03780817173257483,
+          "tokens": 1,
+          "fill": 0.03780817173257483,
+          "winProbability": 0.05066289523961609,
+          "edge": 0.012854723507041262,
+          "slippage": null,
+          "EV": 0.012854723507041262
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation"
+          ],
+          "cost": 10,
+          "tokens": 29.35726552838568,
+          "fill": 0.34063118005084475,
+          "winProbability": 0.3895096109204014,
+          "edge": 0.04887843086955662,
+          "slippage": 0.022337977524951702,
+          "EV": 1.4349370736484168
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Invalid result"
+          ],
+          "cost": 3.738591006908135,
+          "tokens": 10,
+          "fill": 0.3738591006908135,
+          "winProbability": 0.44017250616001746,
+          "edge": 0.06631340546920395,
+          "slippage": 0.1220650934611811,
+          "EV": 0.6631340546920397
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "One year after this poll concludes",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 6.692949860600825,
+          "tokens": 10,
+          "fill": 0.6692949860600825,
+          "winProbability": 0.6104903890795985,
+          "edge": -0.058804596980484014,
+          "slippage": 0.06288298488850375,
+          "EV": -0.5880459698048401
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes"
+          ],
+          "cost": 10,
+          "tokens": 47.93124732232291,
+          "fill": 0.20863216708618226,
+          "winProbability": 0.17997684451603582,
+          "edge": -0.02865532257014644,
+          "slippage": 0.04324597431818833,
+          "EV": -1.373485353210631
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 2.4140731182544806,
+          "tokens": 10,
+          "fill": 0.24140731182544806,
+          "winProbability": 0.2306397397556519,
+          "edge": -0.010767572069796144,
+          "slippage": 0.20713507293839606,
+          "EV": -0.10767572069796127
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 8.017467749254479,
+          "tokens": 10,
+          "fill": 0.8017467749254479,
+          "winProbability": 0.820023155483964,
+          "edge": 0.018276380558516103,
+          "slippage": 0.050916488389675996,
+          "EV": 0.1827638055851608
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions"
+          ],
+          "cost": 10,
+          "tokens": 23.045440024677333,
+          "fill": 0.4339253227229283,
+          "winProbability": 0.3798506493239466,
+          "edge": -0.0540746733989817,
+          "slippage": 0.009800207197794508,
+          "EV": -1.2461746426702476
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 4.7104176098553046,
+          "tokens": 10,
+          "fill": 0.47104176098553047,
+          "winProbability": 0.43051354456356267,
+          "edge": -0.0405282164219678,
+          "slippage": 0.09617494747067745,
+          "EV": -0.40528216421967755
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Immediately at NU7 activation",
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 5.721123257653655,
+          "tokens": 10,
+          "fill": 0.5721123257653655,
+          "winProbability": 0.6201493506760533,
+          "edge": 0.04803702491068773,
+          "slippage": 0.07303499748699727,
+          "EV": 0.4803702491068771
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.43154086750896,
+          "tokens": 10,
+          "fill": 0.043154086750896,
+          "winProbability": 0.05066289523961609,
+          "edge": 0.007508808488720091,
+          "slippage": null,
+          "EV": 0.07508808488720092
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation"
+          ],
+          "cost": 50,
+          "tokens": 135.03699116036182,
+          "fill": 0.37026891350550756,
+          "winProbability": 0.3895096109204014,
+          "edge": 0.019240697414893815,
+          "slippage": 0.11128984762075689,
+          "EV": 2.5982058867342133
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Invalid result"
+          ],
+          "cost": 19.370295923563486,
+          "tokens": 50,
+          "fill": 0.3874059184712697,
+          "winProbability": 0.44017250616001746,
+          "edge": 0.05276658768874776,
+          "slippage": 0.16272322196692568,
+          "EV": 2.6383293844373874
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "One year after this poll concludes",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 33.937264066305616,
+          "tokens": 50,
+          "fill": 0.6787452813261123,
+          "winProbability": 0.6104903890795985,
+          "edge": -0.06825489224651382,
+          "slippage": 0.07789065452542188,
+          "EV": -3.412744612325689
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes"
+          ],
+          "cost": 50,
+          "tokens": 205.63766208876385,
+          "fill": 0.24314612164000102,
+          "winProbability": 0.17997684451603582,
+          "edge": -0.0631692771239652,
+          "slippage": 0.21582983158694136,
+          "EV": -12.989982463609437
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 12.892277208179681,
+          "tokens": 50,
+          "fill": 0.2578455441635936,
+          "winProbability": 0.2306397397556519,
+          "edge": -0.02720580440794171,
+          "slippage": 0.2893329427644493,
+          "EV": -1.3602902203970864
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 40.41528278168942,
+          "tokens": 50,
+          "fill": 0.8083056556337884,
+          "winProbability": 0.820023155483964,
+          "edge": 0.011717499850175561,
+          "slippage": 0.05951376136581854,
+          "EV": 0.5858749925087778
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions"
+          ],
+          "cost": 50,
+          "tokens": 110.9635132952756,
+          "fill": 0.4505985662778109,
+          "winProbability": 0.3798506493239466,
+          "edge": -0.07074791695386434,
+          "slippage": 0.04860099598497114,
+          "EV": -7.850437423523182
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 24.352546847995033,
+          "tokens": 50,
+          "fill": 0.48705093695990065,
+          "winProbability": 0.43051354456356267,
+          "edge": -0.05653739239633798,
+          "slippage": 0.13343036532585373,
+          "EV": -2.8268696198169003
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Immediately at NU7 activation",
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 28.95501314187407,
+          "tokens": 50,
+          "fill": 0.5791002628374814,
+          "winProbability": 0.6201493506760533,
+          "edge": 0.04104908783857186,
+          "slippage": 0.0861413416451764,
+          "EV": 2.0524543919285954
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 3.3075599898690995,
+          "tokens": 50,
+          "fill": 0.06615119979738199,
+          "winProbability": 0.05066289523961609,
+          "edge": -0.015488304557765897,
+          "slippage": null,
+          "EV": -0.7744152278882948
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation"
+          ],
+          "cost": 100,
+          "tokens": 245.50958047248008,
+          "fill": 0.4073160803238361,
+          "winProbability": 0.3895096109204014,
+          "edge": -0.01780646940343472,
+          "slippage": 0.22247968524051354,
+          "EV": -4.371658832933306
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Invalid result"
+          ],
+          "cost": 40.34388464976498,
+          "tokens": 100,
+          "fill": 0.40343884649764983,
+          "winProbability": 0.44017250616001746,
+          "edge": 0.036733659662367635,
+          "slippage": 0.2108429249543209,
+          "EV": 3.6733659662367657
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Immediately at NU7 activation",
+          "retained": [
+            "One year after this poll concludes",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 68.98248194230857,
+          "tokens": 100,
+          "fill": 0.6898248194230857,
+          "winProbability": 0.6104903890795985,
+          "edge": -0.0793344303434872,
+          "slippage": 0.09548566534870595,
+          "EV": -7.933443034348713
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes"
+          ],
+          "cost": 100,
+          "tokens": 349.29791924656917,
+          "fill": 0.2862885648322745,
+          "winProbability": 0.17997684451603582,
+          "edge": -0.10631172031623867,
+          "slippage": 0.4315596531728827,
+          "EV": -37.134462697985384
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 27.734545750789554,
+          "tokens": 100,
+          "fill": 0.2773454575078955,
+          "winProbability": 0.2306397397556519,
+          "edge": -0.04670571775224361,
+          "slippage": 0.3868404670360688,
+          "EV": -4.670571775224364
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 1,
+          "outcome": "One year after this poll concludes",
+          "retained": [
+            "Immediately at NU7 activation",
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 81.59182084128399,
+          "tokens": 100,
+          "fill": 0.8159182084128399,
+          "winProbability": 0.820023155483964,
+          "edge": 0.0041049470711240765,
+          "slippage": 0.06949217036532551,
+          "EV": 0.4104947071124059
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions"
+          ],
+          "cost": 100,
+          "tokens": 212.11601559701043,
+          "fill": 0.47144012072141434,
+          "winProbability": 0.3798506493239466,
+          "edge": -0.09158947139746776,
+          "slippage": 0.09710198196894204,
+          "EV": -19.427593743467213
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Do not set a date to disable v4 transactions",
+            "Invalid result"
+          ],
+          "cost": 50.57430278359255,
+          "tokens": 100,
+          "fill": 0.5057430278359255,
+          "winProbability": 0.43051354456356267,
+          "edge": -0.07522948327236284,
+          "slippage": 0.1769292722832203,
+          "EV": -7.522948327236286
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 2,
+          "outcome": "Do not set a date to disable v4 transactions",
+          "retained": [
+            "Immediately at NU7 activation",
+            "One year after this poll concludes",
+            "Invalid result"
+          ],
+          "cost": 58.75206380848099,
+          "tokens": 100,
+          "fill": 0.5875206380848099,
+          "winProbability": 0.6201493506760533,
+          "edge": 0.032628712591243336,
+          "slippage": 0.10193431957179144,
+          "EV": 3.2628712591243385
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 9.32636659207354,
+          "tokens": 100,
+          "fill": 0.0932636659207354,
+          "winProbability": 0.05066289523961609,
+          "edge": -0.04260077068111931,
+          "slippage": null,
+          "EV": -4.260077068111931
+        }
+      ]
+    },
+    {
+      "label": "Readiness",
+      "market": "0xc03bf1725b72ab5765b639c582853ede9afb26a6",
+      "own": [
+        0.85,
+        0.09,
+        0.02,
+        0.04
+      ],
+      "weight": 0.25,
+      "question": [
+        "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?␟\"Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline\",\"Delay NU7 until every applicable approved feature is deemed complete\",\"I do not support this NU7 plan\"␟misc␟en_US"
+      ],
+      "q": [
+        0.7616062934647163,
+        0.16769510110141195,
+        0.03138864809567287,
+        0.03930995733819894
+      ],
+      "forecastFrozen": false,
+      "holdings": [
+        {
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "tokens": "0"
+        },
+        {
+          "outcome": "I do not support this NU7 plan",
+          "tokens": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "tokens": "0"
+        }
+      ],
+      "pools": [
+        {
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "liquidity": "2101513454453458630543",
+          "spot": 0.6999949444431314
+        },
+        {
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "liquidity": "392839874811935165305",
+          "spot": 0.19673132225917486
+        },
+        {
+          "outcome": "I do not support this NU7 plan",
+          "liquidity": "112319334433915725928",
+          "spot": 0.03477608292112249
+        },
+        {
+          "outcome": "Invalid result",
+          "liquidity": "0"
+        }
+      ],
+      "best": {
+        "size": 0.1,
+        "route": "direct",
+        "target": 0,
+        "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+        "retained": [
+          "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"
+        ],
+        "cost": 0.1,
+        "tokens": 0.14283576584101015,
+        "fill": 0.700104763055701,
+        "winProbability": 0.7616062934647163,
+        "edge": 0.06150153040901529,
+        "slippage": 0.0001568848652999666,
+        "EV": 0.008784618196365876
+      },
+      "eligibleOnEdge": [],
+      "arb": {
+        "buyAll": null,
+        "sellAll": -0.06914877696373234,
+        "note": "no pool for: Invalid result"
+      },
+      "quotes": [
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"
+          ],
+          "cost": 0.1,
+          "tokens": 0.14283576584101015,
+          "fill": 0.700104763055701,
+          "winProbability": 0.7616062934647163,
+          "edge": 0.06150153040901529,
+          "slippage": 0.0001568848652999666,
+          "EV": 0.008784618196365876
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Invalid result"
+          ],
+          "cost": 0.07685437227210855,
+          "tokens": 0.1,
+          "fill": 0.7685437227210854,
+          "winProbability": 0.8009162508029153,
+          "edge": 0.03237252808182989,
+          "slippage": 0.09792753336595417,
+          "EV": 0.0032372528081829888
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 0.030010291664977776,
+          "tokens": 0.1,
+          "fill": 0.30010291664977773,
+          "winProbability": 0.23839370653528377,
+          "edge": -0.061709210114493956,
+          "slippage": 0.2962994268630774,
+          "EV": -0.006170921011449396
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete"
+          ],
+          "cost": 0.1,
+          "tokens": 0.5079651360311424,
+          "fill": 0.19686390444297971,
+          "winProbability": 0.16769510110141195,
+          "edge": -0.029168803341567767,
+          "slippage": 0.0006739251395371237,
+          "EV": -0.014816735157265115
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 0.026533608308701825,
+          "tokens": 0.1,
+          "fill": 0.2653360830870182,
+          "winProbability": 0.2070050584396109,
+          "edge": -0.05833102464740733,
+          "slippage": 0.34872312166673236,
+          "EV": -0.005833102464740735
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 0.0803310556283845,
+          "tokens": 0.1,
+          "fill": 0.803310556283845,
+          "winProbability": 0.8323048988985882,
+          "edge": 0.028994342614743207,
+          "slippage": 0.09328011906709754,
+          "EV": 0.0028994342614743207
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan"
+          ],
+          "cost": 0.1,
+          "tokens": 2.8615913572744707,
+          "fill": 0.034945590587485295,
+          "winProbability": 0.03138864809567287,
+          "edge": -0.0035569424918124246,
+          "slippage": 0.004874259897161837,
+          "EV": -0.010178515892892745
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 0.010341347293362274,
+          "tokens": 0.1,
+          "fill": 0.10341347293362274,
+          "winProbability": 0.07069860543387181,
+          "edge": -0.03271486749975093,
+          "slippage": 1.9736952597042174,
+          "EV": -0.003271486749975093
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 0.09652331664372404,
+          "tokens": 0.1,
+          "fill": 0.9652331664372404,
+          "winProbability": 0.9686113519043272,
+          "edge": 0.0033781854670867917,
+          "slippage": 0.07639666894878294,
+          "EV": 0.00033781854670868194
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.006864663937086325,
+          "tokens": 0.1,
+          "fill": 0.06864663937086325,
+          "winProbability": 0.03930995733819894,
+          "edge": -0.02933668203266431,
+          "slippage": null,
+          "EV": -0.002933668203266431
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"
+          ],
+          "cost": 1,
+          "tokens": 1.427627008206798,
+          "fill": 0.7004630721129825,
+          "winProbability": 0.7616062934647163,
+          "edge": 0.06114322135173378,
+          "slippage": 0.0006687586439979576,
+          "EV": 0.08728971417050158
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Invalid result"
+          ],
+          "cost": 0.7687952057086984,
+          "tokens": 1,
+          "fill": 0.7687952057086984,
+          "winProbability": 0.8009162508029153,
+          "edge": 0.03212104509421687,
+          "slippage": 0.09828679737151513,
+          "EV": 0.03212104509421687
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 0.3003535712550339,
+          "tokens": 1,
+          "fill": 0.3003535712550339,
+          "winProbability": 0.23839370653528377,
+          "edge": -0.06195986471975015,
+          "slippage": 0.29738213350505727,
+          "EV": -0.06195986471975015
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete"
+          ],
+          "cost": 1,
+          "tokens": 5.053566077161987,
+          "fill": 0.1978800681996002,
+          "winProbability": 0.16769510110141195,
+          "edge": -0.030184967098188242,
+          "slippage": 0.005839161386370195,
+          "EV": -0.1525417257676548
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 0.2656385973490846,
+          "tokens": 1,
+          "fill": 0.2656385973490846,
+          "winProbability": 0.2070050584396109,
+          "edge": -0.05863353890947373,
+          "slippage": 0.35026082424806226,
+          "EV": -0.05863353890947373
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 0.8035101796146478,
+          "tokens": 1,
+          "fill": 0.8035101796146478,
+          "winProbability": 0.8323048988985882,
+          "edge": 0.028794719283940395,
+          "slippage": 0.09355180007161246,
+          "EV": 0.028794719283940395
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan"
+          ],
+          "cost": 1,
+          "tokens": 27.442477974253375,
+          "fill": 0.03643985797996097,
+          "winProbability": 0.03138864809567287,
+          "edge": -0.005051209884288102,
+          "slippage": 0.04784250896261599,
+          "EV": -0.13861771599290706
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 0.10386375086968168,
+          "tokens": 1,
+          "fill": 0.10386375086968168,
+          "winProbability": 0.07069860543387181,
+          "edge": -0.03316514543580987,
+          "slippage": 1.9866431796030812,
+          "EV": -0.03316514543580987
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 0.9652850260940506,
+          "tokens": 1,
+          "fill": 0.9652850260940506,
+          "winProbability": 0.9686113519043272,
+          "edge": 0.003326325810276587,
+          "slippage": 0.0764545011532538,
+          "EV": 0.003326325810276587
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.06914877696373237,
+          "tokens": 1,
+          "fill": 0.06914877696373237,
+          "winProbability": 0.03930995733819894,
+          "edge": -0.029838819625533426,
+          "slippage": null,
+          "EV": -0.029838819625533426
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"
+          ],
+          "cost": 10,
+          "tokens": 14.203614095206404,
+          "fill": 0.7040461626857992,
+          "winProbability": 0.7616062934647163,
+          "edge": 0.057560130778917085,
+          "slippage": 0.005787496430978756,
+          "EV": 0.8175618848533492
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Invalid result"
+          ],
+          "cost": 7.712795892879051,
+          "tokens": 10,
+          "fill": 0.7712795892879052,
+          "winProbability": 0.8009162508029153,
+          "edge": 0.0296366615150101,
+          "slippage": 0.10183594240310279,
+          "EV": 0.29636661515010143
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 3.0285027816363965,
+          "tokens": 10,
+          "fill": 0.30285027816363963,
+          "winProbability": 0.23839370653528377,
+          "edge": -0.06445657162835586,
+          "slippage": 0.3081666995825927,
+          "EV": -0.6445657162835587
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete"
+          ],
+          "cost": 10,
+          "tokens": 48.06728517818023,
+          "fill": 0.20804170576580477,
+          "winProbability": 0.16769510110141195,
+          "edge": -0.04034660466439283,
+          "slippage": 0.057491523854699356,
+          "EV": -1.939351752374666
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 2.6864551672392927,
+          "tokens": 10,
+          "fill": 0.2686455167239293,
+          "winProbability": 0.2070050584396109,
+          "edge": -0.061640458284318383,
+          "slippage": 0.3655452199422229,
+          "EV": -0.6164045828431837
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 8.054843507276155,
+          "tokens": 10,
+          "fill": 0.8054843507276155,
+          "winProbability": 0.8323048988985882,
+          "edge": 0.02682054817097268,
+          "slippage": 0.09623858417093856,
+          "EV": 0.26820548170972636
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan"
+          ],
+          "cost": 10,
+          "tokens": 194.61866960047243,
+          "fill": 0.05138253190471777,
+          "winProbability": 0.03138864809567287,
+          "edge": -0.019993883809044898,
+          "slippage": 0.4775249996171582,
+          "EV": -3.8911830670627436
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 1.083346288912552,
+          "tokens": 10,
+          "fill": 0.1083346288912552,
+          "winProbability": 0.07069860543387181,
+          "edge": -0.037636023457383386,
+          "slippage": 2.1152050429881597,
+          "EV": -0.37636023457383394
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 9.657952385602897,
+          "tokens": 10,
+          "fill": 0.9657952385602897,
+          "winProbability": 0.9686113519043272,
+          "edge": 0.0028161133440375297,
+          "slippage": 0.07702347351994421,
+          "EV": 0.028161133440375963
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.7412986745154483,
+          "tokens": 10,
+          "fill": 0.07412986745154483,
+          "winProbability": 0.03930995733819894,
+          "edge": -0.03481991011334589,
+          "slippage": null,
+          "EV": -0.34819910113345887
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"
+          ],
+          "cost": 50,
+          "tokens": 69.44724069166932,
+          "fill": 0.7199710096760957,
+          "winProbability": 0.7616062934647163,
+          "edge": 0.04163528378862058,
+          "slippage": 0.028537442150894377,
+          "EV": 2.891455574534291
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Invalid result"
+          ],
+          "cost": 39.084576543583864,
+          "tokens": 50,
+          "fill": 0.7816915308716773,
+          "winProbability": 0.8009162508029153,
+          "edge": 0.019224719931237977,
+          "slippage": 0.1167102520912322,
+          "EV": 0.9612359965618964
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 15.686726486411946,
+          "tokens": 50,
+          "fill": 0.3137345297282389,
+          "winProbability": 0.23839370653528377,
+          "edge": -0.07534082319295513,
+          "slippage": 0.35518140114742014,
+          "EV": -3.767041159647757
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete"
+          ],
+          "cost": 50,
+          "tokens": 197.46881363102094,
+          "fill": 0.2532045393933807,
+          "winProbability": 0.16769510110141195,
+          "edge": -0.08550943829196878,
+          "slippage": 0.28705757926949604,
+          "EV": -16.885447333770074
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 14.081352761037289,
+          "tokens": 50,
+          "fill": 0.28162705522074577,
+          "winProbability": 0.2070050584396109,
+          "edge": -0.07462199678113487,
+          "slippage": 0.43153134938893367,
+          "EV": -3.7310998390567445
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 40.689950268958526,
+          "tokens": 50,
+          "fill": 0.8137990053791705,
+          "winProbability": 0.8323048988985882,
+          "edge": 0.01850589351941767,
+          "slippage": 0.10755456471712455,
+          "EV": 0.925294675970882
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan"
+          ],
+          "cost": 50,
+          "tokens": 424.46833807249357,
+          "fill": 0.117794416014748,
+          "winProbability": 0.03138864809567287,
+          "edge": -0.08640576791907512,
+          "slippage": 2.38722495808179,
+          "EV": -36.676512708487394
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 6.37667675537047,
+          "tokens": 50,
+          "fill": 0.1275335351074094,
+          "winProbability": 0.07069860543387181,
+          "edge": -0.05683492967353758,
+          "slippage": 2.667277174277364,
+          "EV": -2.8417464836768795
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 48.394626274625345,
+          "tokens": 50,
+          "fill": 0.9678925254925069,
+          "winProbability": 0.9686113519043272,
+          "edge": 0.0007188264118203058,
+          "slippage": 0.07936229977060139,
+          "EV": 0.0359413205910144
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 4.771303029995813,
+          "tokens": 50,
+          "fill": 0.09542606059991625,
+          "winProbability": 0.03930995733819894,
+          "edge": -0.05611610326171731,
+          "slippage": null,
+          "EV": -2.8058051630858656
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"
+          ],
+          "cost": 100,
+          "tokens": 135.15758802251364,
+          "fill": 0.7398770684139664,
+          "winProbability": 0.7616062934647163,
+          "edge": 0.021729225050749923,
+          "slippage": 0.056974874300788736,
+          "EV": 2.9368696474577405
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Invalid result"
+          ],
+          "cost": 79.34216284242527,
+          "tokens": 100,
+          "fill": 0.7934216284242527,
+          "winProbability": 0.8009162508029153,
+          "edge": 0.007494622378662608,
+          "slippage": 0.13346765533491856,
+          "EV": 0.7494622378662541
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 0,
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 32.68710634795559,
+          "tokens": 100,
+          "fill": 0.3268710634795559,
+          "winProbability": 0.23839370653528377,
+          "edge": -0.08847735694427214,
+          "slippage": 0.41192487223028396,
+          "EV": -8.847735694427215
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete"
+          ],
+          "cost": 100,
+          "tokens": 322.9368325828747,
+          "fill": 0.30965808142785073,
+          "winProbability": 0.16769510110141195,
+          "edge": -0.14196298032643878,
+          "slippage": 0.5740151485379923,
+          "EV": -45.845075210645085
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 29.70492672278581,
+          "tokens": 100,
+          "fill": 0.2970492672278581,
+          "winProbability": 0.2070050584396109,
+          "edge": -0.09004420878824723,
+          "slippage": 0.5099236045215203,
+          "EV": -9.004420878824721
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 1,
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 82.32434246759505,
+          "tokens": 100,
+          "fill": 0.8232434246759505,
+          "winProbability": 0.8323048988985882,
+          "edge": 0.0090614742226377,
+          "slippage": 0.12040811901506498,
+          "EV": 0.9061474222637713
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan"
+          ],
+          "cost": 100,
+          "tokens": 488.83671660731835,
+          "fill": 0.2045672851540933,
+          "winProbability": 0.03138864809567287,
+          "edge": -0.17317863705842043,
+          "slippage": 4.882413083097466,
+          "EV": -84.65607632616872
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "I do not support this NU7 plan",
+            "Invalid result"
+          ],
+          "cost": 15.011448815550633,
+          "tokens": 100,
+          "fill": 0.15011448815550632,
+          "winProbability": 0.07069860543387181,
+          "edge": -0.07941588272163451,
+          "slippage": 3.3166013980352265,
+          "EV": -7.941588272163452
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 2,
+          "outcome": "I do not support this NU7 plan",
+          "retained": [
+            "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+            "Delay NU7 until every applicable approved feature is deemed complete",
+            "Invalid result"
+          ],
+          "cost": 97.01782037483022,
+          "tokens": 100,
+          "fill": 0.9701782037483022,
+          "winProbability": 0.9686113519043272,
+          "edge": -0.0015668518439749812,
+          "slippage": 0.08191121390490097,
+          "EV": -0.156685184397503
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 12.029269190380852,
+          "tokens": 100,
+          "fill": 0.12029269190380852,
+          "winProbability": 0.03930995733819894,
+          "edge": -0.08098273456560959,
+          "slippage": null,
+          "EV": -8.098273456560957
+        }
+      ]
+    },
+    {
+      "label": "NSM February 2031",
+      "market": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+      "own": [
+        0.2,
+        0.05,
+        0.7,
+        0.05
+      ],
+      "weight": 0.25,
+      "heldTarget": 2,
+      "cost": 29,
+      "question": [
+        "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?␟\"As soon as possible\",\"February 2027 regardless of the outcome of Q1\",\"February 2031 regardless of the outcome of Q1\"␟misc␟en_US"
+      ],
+      "q": [
+        0.3312111139913473,
+        0.1247008001001978,
+        0.4940561951360795,
+        0.05003189077237536
+      ],
+      "forecastFrozen": true,
+      "holdings": [
+        {
+          "outcome": "As soon as possible",
+          "tokens": "0"
+        },
+        {
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "tokens": "0"
+        },
+        {
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "tokens": "69.793565985133580946"
+        },
+        {
+          "outcome": "Invalid result",
+          "tokens": "0"
+        }
+      ],
+      "pools": [
+        {
+          "outcome": "As soon as possible",
+          "liquidity": "1724434457973763264175",
+          "spot": 0.34754829382249897
+        },
+        {
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "liquidity": "371023241541392273447",
+          "spot": 0.1499872270781593
+        },
+        {
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "liquidity": "715067739118934916785",
+          "spot": 0.4424429495590861
+        },
+        {
+          "outcome": "Invalid result",
+          "liquidity": "0"
+        }
+      ],
+      "best": {
+        "size": 0.1,
+        "route": "direct",
+        "target": 2,
+        "outcome": "February 2031 regardless of the outcome of Q1",
+        "retained": [
+          "February 2031 regardless of the outcome of Q1"
+        ],
+        "cost": 0.1,
+        "tokens": 0.22594773923950617,
+        "fill": 0.4425802193754163,
+        "winProbability": 0.4940561951360795,
+        "edge": 0.051475975760663206,
+        "slippage": 0.00031025427451614185,
+        "EV": 0.011630880348269465
+      },
+      "eligibleOnEdge": [],
+      "arb": {
+        "buyAll": null,
+        "sellAll": -0.06080174524368154,
+        "note": "no pool for: Invalid result"
+      },
+      "quotes": [
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible"
+          ],
+          "cost": 0.1,
+          "tokens": 0.2876727295035435,
+          "fill": 0.347617239119526,
+          "winProbability": 0.3312111139913473,
+          "edge": -0.01640612512817874,
+          "slippage": 0.0001983761631190184,
+          "EV": -0.00471959479619985
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible",
+            "Invalid result"
+          ],
+          "cost": 0.04076858620678001,
+          "tokens": 0.1,
+          "fill": 0.4076858620678001,
+          "winProbability": 0.38124300476372264,
+          "edge": -0.02644285730407747,
+          "slippage": 0.17303370298233944,
+          "EV": -0.0026442857304077444
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.06524983398552904,
+          "tokens": 0.1,
+          "fill": 0.6524983398552904,
+          "winProbability": 0.6687888860086526,
+          "edge": 0.01629054615336223,
+          "slippage": 0.10139281486132945,
+          "EV": 0.0016290546153362173
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1"
+          ],
+          "cost": 0.1,
+          "tokens": 0.666193183633235,
+          "fill": 0.15010660939913467,
+          "winProbability": 0.1247008001001978,
+          "edge": -0.025405809298936877,
+          "slippage": 0.0007959499172096596,
+          "EV": -0.016925176979637607
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.02101407790616529,
+          "tokens": 0.1,
+          "fill": 0.2101407790616529,
+          "winProbability": 0.17473269087257315,
+          "edge": -0.035408088189079756,
+          "slippage": 0.4010578310921582,
+          "EV": -0.0035408088189079756
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.08500434228614377,
+          "tokens": 0.1,
+          "fill": 0.8500434228614376,
+          "winProbability": 0.8752991998998021,
+          "edge": 0.025255777038364458,
+          "slippage": 0.07601625965219205,
+          "EV": 0.0025255777038364485
+        },
+        {
+          "size": 0.1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1"
+          ],
+          "cost": 0.1,
+          "tokens": 0.22594773923950617,
+          "fill": 0.4425802193754163,
+          "winProbability": 0.4940561951360795,
+          "edge": 0.051475975760663206,
+          "slippage": 0.00031025427451614185,
+          "EV": 0.011630880348269465
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.050254176271672814,
+          "tokens": 0.1,
+          "fill": 0.5025417627167281,
+          "winProbability": 0.5440880859084549,
+          "edge": 0.0415463231917268,
+          "slippage": 0.1358340396598774,
+          "EV": 0.00415463231917268
+        },
+        {
+          "size": 0.1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.055764243920636246,
+          "tokens": 0.1,
+          "fill": 0.5576424392063625,
+          "winProbability": 0.5059438048639204,
+          "edge": -0.05169863434244204,
+          "slippage": 0.12080930060409822,
+          "EV": -0.0051698634342442
+        },
+        {
+          "size": 0.1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.006018420192309059,
+          "tokens": 0.1,
+          "fill": 0.06018420192309059,
+          "winProbability": 0.05003189077237536,
+          "edge": -0.01015231115071523,
+          "slippage": null,
+          "EV": -0.0010152311150715227
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible"
+          ],
+          "cost": 1,
+          "tokens": 2.874183298281247,
+          "fill": 0.3479249220458545,
+          "winProbability": 0.3312111139913473,
+          "edge": -0.01671380805450723,
+          "slippage": 0.0010836716221886977,
+          "EV": -0.04803854796094331
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible",
+            "Invalid result"
+          ],
+          "cost": 0.4081965322857718,
+          "tokens": 1,
+          "fill": 0.4081965322857718,
+          "winProbability": 0.38124300476372264,
+          "edge": -0.02695352752204916,
+          "slippage": 0.1745030533634191,
+          "EV": -0.02695352752204916
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.6526052129579099,
+          "tokens": 1,
+          "fill": 0.6526052129579099,
+          "winProbability": 0.6687888860086526,
+          "edge": 0.016183673050742753,
+          "slippage": 0.10157321266487518,
+          "EV": 0.016183673050742753
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1"
+          ],
+          "cost": 1,
+          "tokens": 6.620497599011228,
+          "fill": 0.15104604828334206,
+          "winProbability": 0.1247008001001978,
+          "edge": -0.026345248183144265,
+          "slippage": 0.007059409163094887,
+          "EV": -0.1744186523418615
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.21061760829586915,
+          "tokens": 1,
+          "fill": 0.21061760829586915,
+          "winProbability": 0.17473269087257315,
+          "edge": -0.035884917423296,
+          "slippage": 0.4042369633656535,
+          "EV": -0.035884917423296
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.8501841369478125,
+          "tokens": 1,
+          "fill": 0.8501841369478125,
+          "winProbability": 0.8752991998998021,
+          "edge": 0.02511506295198962,
+          "slippage": 0.07619438072322127,
+          "EV": 0.02511506295198962
+        },
+        {
+          "size": 1,
+          "route": "direct",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1"
+          ],
+          "cost": 1,
+          "tokens": 2.255211408377224,
+          "fill": 0.4434174092439374,
+          "winProbability": 0.4940561951360795,
+          "edge": 0.0506387858921421,
+          "slippage": 0.0022024527361603763,
+          "EV": 0.1142011676503305
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.5027893499057223,
+          "tokens": 1,
+          "fill": 0.5027893499057223,
+          "winProbability": 0.5440880859084549,
+          "edge": 0.041298736002732594,
+          "slippage": 0.13639363087777556,
+          "EV": 0.041298736002732594
+        },
+        {
+          "size": 1,
+          "route": "fade",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 0.5580123953379593,
+          "tokens": 1,
+          "fill": 0.5580123953379593,
+          "winProbability": 0.5059438048639204,
+          "edge": -0.05206859047403889,
+          "slippage": 0.12155287792884306,
+          "EV": -0.05206859047403889
+        },
+        {
+          "size": 1,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.060801745243681635,
+          "tokens": 1,
+          "fill": 0.060801745243681635,
+          "winProbability": 0.05003189077237536,
+          "edge": -0.010769854471306274,
+          "slippage": null,
+          "EV": -0.010769854471306274
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible"
+          ],
+          "cost": 10,
+          "tokens": 28.48988634017568,
+          "fill": 0.3510017513091397,
+          "winProbability": 0.3312111139913473,
+          "edge": -0.019790637317792403,
+          "slippage": 0.009936626212886823,
+          "EV": -0.5638330077835452
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible",
+            "Invalid result"
+          ],
+          "cost": 4.132550927089289,
+          "tokens": 10,
+          "fill": 0.4132550927089289,
+          "winProbability": 0.38124300476372264,
+          "edge": -0.03201208794520627,
+          "slippage": 0.18905803899583495,
+          "EV": -0.32012087945206247
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 6.536703395339302,
+          "tokens": 10,
+          "fill": 0.6536703395339302,
+          "winProbability": 0.6687888860086526,
+          "edge": 0.015118546474722439,
+          "slippage": 0.10337110652312886,
+          "EV": 0.15118546474722372
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1"
+          ],
+          "cost": 10,
+          "tokens": 62.32842654363395,
+          "fill": 0.1604404371254158,
+          "winProbability": 0.1247008001001978,
+          "edge": -0.03573963702521801,
+          "slippage": 0.0696940016219465,
+          "EV": -2.2275953410224405
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 2.1534854394273646,
+          "tokens": 10,
+          "fill": 0.21534854394273645,
+          "winProbability": 0.17473269087257315,
+          "edge": -0.0406158530701633,
+          "slippage": 0.4357792202566484,
+          "EV": -0.4061585307016331
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 8.515768883001227,
+          "tokens": 10,
+          "fill": 0.8515768883001227,
+          "winProbability": 0.8752991998998021,
+          "edge": 0.023722311599679413,
+          "slippage": 0.07795737666017444,
+          "EV": 0.2372231159967928
+        },
+        {
+          "size": 10,
+          "route": "direct",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1"
+          ],
+          "cost": 10,
+          "tokens": 22.134211289409812,
+          "fill": 0.4517893079291483,
+          "winProbability": 0.4940561951360795,
+          "edge": 0.042266887206931225,
+          "slippage": 0.02112443735260383,
+          "EV": 0.9355442119838688
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 5.052472278340528,
+          "tokens": 10,
+          "fill": 0.5052472278340528,
+          "winProbability": 0.5440880859084549,
+          "edge": 0.038840858074402074,
+          "slippage": 0.14194887349330343,
+          "EV": 0.38840858074402096
+        },
+        {
+          "size": 10,
+          "route": "fade",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 5.616782044088063,
+          "tokens": 10,
+          "fill": 0.5616782044088062,
+          "winProbability": 0.5059438048639204,
+          "edge": -0.05573439954488579,
+          "slippage": 0.12892081231111763,
+          "EV": -0.5573439954488579
+        },
+        {
+          "size": 10,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 0.6692543224285911,
+          "tokens": 10,
+          "fill": 0.0669254322428591,
+          "winProbability": 0.05003189077237536,
+          "edge": -0.01689354147048374,
+          "slippage": null,
+          "EV": -0.16893541470483742
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible"
+          ],
+          "cost": 50,
+          "tokens": 137.1078021590288,
+          "fill": 0.3646765480348516,
+          "winProbability": 0.3312111139913473,
+          "edge": -0.03346543404350433,
+          "slippage": 0.049283091060433826,
+          "EV": -4.588372110002815
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible",
+            "Invalid result"
+          ],
+          "cost": 21.73635849525553,
+          "tokens": 50,
+          "fill": 0.4347271699051106,
+          "winProbability": 0.38124300476372264,
+          "edge": -0.053484165141387985,
+          "slippage": 0.2508396031060245,
+          "EV": -2.674208257069399
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 32.91631376902021,
+          "tokens": 50,
+          "fill": 0.6583262753804042,
+          "winProbability": 0.6687888860086526,
+          "edge": 0.010462610628248381,
+          "slippage": 0.11123015224713662,
+          "EV": 0.5231305314124199
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1"
+          ],
+          "cost": 50,
+          "tokens": 247.28814372278234,
+          "fill": 0.20219327642352133,
+          "winProbability": 0.1247008001001978,
+          "edge": -0.07749247632332354,
+          "slippage": 0.34806996810573154,
+          "EV": -19.162970622476337
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 11.779370993573677,
+          "tokens": 50,
+          "fill": 0.23558741987147352,
+          "winProbability": 0.17473269087257315,
+          "edge": -0.060854728998900376,
+          "slippage": 0.5707165500746767,
+          "EV": -3.0427364499450196
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 42.873301270702065,
+          "tokens": 50,
+          "fill": 0.8574660254140413,
+          "winProbability": 0.8752991998998021,
+          "edge": 0.017833174485760828,
+          "slippage": 0.08541206323202788,
+          "EV": 0.8916587242880425
+        },
+        {
+          "size": 50,
+          "route": "direct",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1"
+          ],
+          "cost": 50,
+          "tokens": 102.24995995339165,
+          "fill": 0.4889977465300855,
+          "winProbability": 0.4940561951360795,
+          "edge": 0.005058448605994026,
+          "slippage": 0.10522214675901909,
+          "EV": 0.5172261673891825
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 25.78961503972228,
+          "tokens": 50,
+          "fill": 0.5157923007944456,
+          "winProbability": 0.5440880859084549,
+          "edge": 0.02829578511400932,
+          "slippage": 0.1657826196766281,
+          "EV": 1.4147892557004695
+        },
+        {
+          "size": 50,
+          "route": "fade",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 28.863057224553465,
+          "tokens": 50,
+          "fill": 0.5772611444910694,
+          "winProbability": 0.5059438048639204,
+          "edge": -0.07131733962714892,
+          "slippage": 0.16024106871020716,
+          "EV": -3.565866981357445
+        },
+        {
+          "size": 50,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 4.6526722642757425,
+          "tokens": 50,
+          "fill": 0.09305344528551485,
+          "winProbability": 0.05003189077237536,
+          "edge": -0.043021554513139486,
+          "slippage": null,
+          "EV": -2.1510777256569744
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible"
+          ],
+          "cost": 100,
+          "tokens": 261.93778581326984,
+          "fill": 0.38177004394199154,
+          "winProbability": 0.3312111139913473,
+          "edge": -0.05055892995064426,
+          "slippage": 0.09846617211986786,
+          "EV": -13.24329416435998
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "As soon as possible",
+            "Invalid result"
+          ],
+          "cost": 45.944931084896375,
+          "tokens": 100,
+          "fill": 0.45944931084896373,
+          "winProbability": 0.38124300476372264,
+          "edge": -0.0782063060852411,
+          "slippage": 0.321972569037025,
+          "EV": -7.820630608524112
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 0,
+          "outcome": "As soon as possible",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 66.39730623970755,
+          "tokens": 100,
+          "fill": 0.6639730623970754,
+          "winProbability": 0.6687888860086526,
+          "edge": 0.004815823611577175,
+          "slippage": 0.12076171771992117,
+          "EV": 0.48158236115772013
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1"
+          ],
+          "cost": 100,
+          "tokens": 393.10598160992777,
+          "fill": 0.25438432554615326,
+          "winProbability": 0.1247008001001978,
+          "edge": -0.12968352544595546,
+          "slippage": 0.6960399262104628,
+          "EV": -50.97936956906837
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 25.922106655064546,
+          "tokens": 100,
+          "fill": 0.2592210665506455,
+          "winProbability": 0.17473269087257315,
+          "edge": -0.08448837567807232,
+          "slippage": 0.728287612221564,
+          "EV": -8.448837567807232
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 1,
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 86.42013066953938,
+          "tokens": 100,
+          "fill": 0.8642013066953937,
+          "winProbability": 0.8752991998998021,
+          "edge": 0.011097893204408349,
+          "slippage": 0.09393783024245939,
+          "EV": 1.1097893204408393
+        },
+        {
+          "size": 100,
+          "route": "direct",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1"
+          ],
+          "cost": 100,
+          "tokens": 186.73847067270498,
+          "fill": 0.5355082947812569,
+          "winProbability": 0.4940561951360795,
+          "edge": -0.04145209964517743,
+          "slippage": 0.2103442835170377,
+          "EV": -7.74070169391301
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "February 2031 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 52.81743690924692,
+          "tokens": 100,
+          "fill": 0.5281743690924692,
+          "winProbability": 0.5440880859084549,
+          "edge": 0.015913716815985746,
+          "slippage": 0.1937683030519941,
+          "EV": 1.5913716815985737
+        },
+        {
+          "size": 100,
+          "route": "fade",
+          "target": 2,
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "retained": [
+            "As soon as possible",
+            "February 2027 regardless of the outcome of Q1",
+            "Invalid result"
+          ],
+          "cost": 59.524800415357,
+          "tokens": 100,
+          "fill": 0.59524800415357,
+          "winProbability": 0.5059438048639204,
+          "edge": -0.08930419928964961,
+          "slippage": 0.1963929792912651,
+          "EV": -8.930419928964959
+        },
+        {
+          "size": 100,
+          "route": "split",
+          "target": 3,
+          "outcome": "Invalid result",
+          "retained": [
+            "Invalid result"
+          ],
+          "cost": 12.342237324603921,
+          "tokens": 100,
+          "fill": 0.12342237324603922,
+          "winProbability": 0.05003189077237536,
+          "edge": -0.07339048247366387,
+          "slippage": null,
+          "EV": -7.339048247366385
+        }
+      ]
+    }
+  ],
+  "zip218ArbitrageCurve": [
+    {
+      "size": 0.1,
+      "buyAll": null,
+      "sellAll": 0.00017329916111796795,
+      "note": "no pool for: Invalid result"
+    },
+    {
+      "size": 0.5,
+      "buyAll": null,
+      "sellAll": 0.000659782430633693,
+      "note": "no pool for: Invalid result"
+    },
+    {
+      "size": 1,
+      "buyAll": null,
+      "sellAll": 0.0008048165840019994,
+      "note": "no pool for: Invalid result"
+    },
+    {
+      "size": 2,
+      "buyAll": null,
+      "sellAll": -0.0004359545995191727,
+      "note": "no pool for: Invalid result"
+    },
+    {
+      "size": 5,
+      "buyAll": null,
+      "sellAll": -0.016171140414583007,
+      "note": "no pool for: Invalid result"
+    },
+    {
+      "size": 10,
+      "buyAll": null,
+      "sellAll": -0.08096897848404083,
+      "note": "no pool for: Invalid result"
+    }
+  ],
+  "arbitrageNote": "A tiny positive gross split-and-sell quote exists on ZIP-218. The sampled peak is under 0.001 sUSDS before gas and execution risk; it is immaterial to the $1,000 deployment request and has not been submitted."
+}

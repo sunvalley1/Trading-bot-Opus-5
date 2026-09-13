@@ -1,0 +1,1895 @@
+{
+  "checkedAt": "2026-09-12T22:08:16.695Z",
+  "block": "156826059",
+  "account": "0xf1b285F65A3174c9D6E062F089c5CD1Ea8cF30D9",
+  "ethBalance": "0.000199382895504575",
+  "collateral": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+  "conversion": {
+    "asset": {
+      "error": "The contract function \"asset\" reverted."
+    },
+    "convertToAssets": {
+      "error": "The contract function \"convertToAssets\" reverted."
+    }
+  },
+  "balances": {
+    "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0": "340.179840370270643453",
+    "0xc63fc0cd70785d46f7bf8279939a448376c9f989": "0",
+    "0x39136b6d2aa4fda393dc205a1bfe210ec9d4ca6a": "0",
+    "0x055b70cbb8decebb9e6e2a8021c103917844f914": "0",
+    "0xb7ecbf3f2ee1d2549ecc223763388250c47b31f7": "0",
+    "0x6f595fd3f50c0ef21df6159cf1d19fb635d00358": "0",
+    "0x10c314adac6b17c606ba58103769ec86bd3a716f": "0",
+    "0x5c49022b0bf9d031b3dc407038c2010771ad7007": "0",
+    "0xff08165a419d755cc0b62b4eca52590011713558": "0",
+    "0x53dcb9c90c7fbfa0ce87c897dbbc4b4ae2f4cdc3": "0",
+    "0x0760b934b21ba959c1e98731fbce639215aba572": "160.754315245895564642",
+    "0x3cb6167126cc1307571d0abf01d5a8ae6c8bf304": "0",
+    "0x7d4bc377fac1f1ba5fcc25f3599a70a821592667": "100",
+    "0x5923f0810d5f4188f3d8164c0f4df7ccffab1db0": "0",
+    "0x669e0c9c605aaedfff1f375fcb6ebb2d5bbfb719": "0",
+    "0x12e1f677b221cf2ff6c71ed996ccf3fa5f8d4dd9": "100",
+    "0xab30cc3e515bf24fbfa47d0d0a54ac3342e71d45": "100",
+    "0x757d6a2a80c28ab8d2241c7d1611f74489568881": "100",
+    "0x425b9e68c68abef4cb90a449a46c41640a0ee2f3": "0",
+    "0x827bab4860c9b6db3b524e52dbcc17ab988cf454": "100",
+    "0xafc05a8b5b7bfba077833eb97c7f9844b5f070bd": "0",
+    "0x5c18575ff3e93d08fe0bae5d07dca9cbd81a95f4": "0",
+    "0x142ea2f65c30d802f8a6e67abec41929e0ce816d": "0",
+    "0x79034abe5b6f357fb10a9c47b580e975dc4c65d5": "0",
+    "0xd986a8d69cede6090689435be65298c31637d880": "0",
+    "0xb6619a098c7b1d57132ce513dc7dde2f0190e2fc": "0",
+    "0xb49fbb80128d6cf72186494294c142324589c5a1": "0",
+    "0xb65686e2f08a2ab445bfd11dc81bee15d9526704": "0",
+    "0x51bb5fc537f346186ae900a449a9a597a3fef971": "0",
+    "0x7f9ca80395c21b94677fc524d4561d23316c3a1f": "0",
+    "0x0f97790931f207c2dd88dda85318cafd17615df5": "0",
+    "0xfafb7ad4c3b8f93b82e6fdba188341c01f197be3": "0",
+    "0xf09ed1d693268c8874f24d352a910c8b550e3eb5": "0",
+    "0x5a168a22b4fa82fa8393a23f1c092c3f852985b1": "0",
+    "0x141e7b9dbbf81d9286d3646918735ee32481ae72": "0",
+    "0x09edcdadff7bf8ae95a6ed2aa97f277f1b236cf4": "0",
+    "0xd1e0263aead53403d2c5aa9d852dd38089e4440f": "0",
+    "0xc4df4503e1e9016469b1137ec2958ce546146334": "0",
+    "0x9f528a0276b13710d2e9bc02a6d486600f023435": "0",
+    "0x0629e8b94d14bc237523254c2591eafaaa049713": "0",
+    "0x95951cad84fca2b89e8463053264e7e585ff9eb9": "0",
+    "0x60e4dedabc96ba1eaf1d098641353026a79ae441": "0",
+    "0x7e30ae3e95778fa364297f4888b28cdab32d8931": "0",
+    "0x484abc86ce8ccfd7593c456bf797b4e03a631657": "0",
+    "0xaa3fb2cc334082eba4b453098e2e8d1f0a1e58d5": "0",
+    "0x3799c83ff0ab4faadd1e22d71f3b2346a22b243b": "0",
+    "0xfc508d0a2bd0485bc3cd892eb192b2eab415cf21": "0",
+    "0x6959c735e5d4ca44df903b6d1819e3d5d464c8a8": "0",
+    "0x9dc4b144f9d35a3d65c0a361333fdf0e41fb13de": "0",
+    "0xe34a3109ad358a9f1e02af60797192b047a3c6b0": "0",
+    "0x812444c2c94493fb79adc475fc14778d02ddefa2": "0",
+    "0x07e2aba748484487e00342761104c4659eeda610": "0",
+    "0x6af644c1920c04314f0782f8f464d85cd857a6b7": "0",
+    "0xb755df13c7aacf4c8d255b311b7c5b7e91560703": "0",
+    "0x069688728d32e5618cecc4f7b3ea60ecf07fa71e": "0",
+    "0x3a25874f1ce102e1b6a3943325fa3710a65ef00e": "0",
+    "0xc7c30779b3553d94a74ba050d629da5e3f90c2ad": "0",
+    "0x8b55a3bca8eed26089d470ae8c9e3615aee4778d": "0",
+    "0x68980bf3cd716c0a1df17cf609bc3615cb286000": "0",
+    "0x3ccbb44ab758ef59a698f024391d328dfd125750": "0",
+    "0xec6bcae09e8a26a705dcb839d594cc2e5c4f4cdb": "0",
+    "0xd3ece6ef1b9704a6cc00cfe2da993d9da5c5efa6": "0",
+    "0x66aee32975e6c8d7cdd6a238bf1dc09eacc21d95": "0"
+  },
+  "markets": [
+    {
+      "id": "0xc38fa340cfdc9c758826dd4a8dc15b58728d0418",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Yes",
+        "No",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0x4803dd44bbb7bbed9a4a190cb74dabe6671d41d6f40787ff481731631ab3b8c1",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x4803dd44bbb7bbed9a4a190cb74dabe6671d41d6f40787ff481731631ab3b8c1"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "Will the Zcash NU7 coinholder poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)?",
+      "questionId": "0x5c2c648322b3698cabf65823db0e4eeb28fd6becf5e57a05bbb6c9c7ac5fd88c",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x4e0661c38b773e3a112a8550c52ced0cca5a8e1fef263dbe57ecfdbcc530a0c1",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xc63fc0cd70785d46f7bf8279939a448376c9f989",
+        "0x39136b6d2aa4fda393dc205a1bfe210ec9d4ca6a",
+        "0x055b70cbb8decebb9e6e2a8021c103917844f914"
+      ],
+      "blockTimestamp": 1788922467,
+      "outcomesSupply": "104504860601980798659",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x0dd590698836291aadb6191535b7d5984c7a15aeeceb48a0efdd4e029f983e2b",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "Will the Zcash NU7 coinholder poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)?␟\"Yes\",\"No\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 2218.898974015072,
+      "maxLiquidity": 2218.898974015072,
+      "incentive": 0,
+      "hasLiquidity": true,
+      "odds": [
+        90,
+        10.2,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 1888.5008
+          },
+          "token1": {
+            "symbol": "ZNU7V3Q4YES",
+            "balance": 102.8696
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q4NO",
+            "balance": 102.8696
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 8.6296
+          }
+        },
+        null
+      ],
+      "url": "will-the-zcash-nu7-coinholder-poll-approve-zip-218-block-spacing-75s-to-25s-per-",
+      "openInterestUSD": 115.93131521375561
+    },
+    {
+      "id": "0x29bcd2cee8d413a2235f7970fcdde432dcaf10fc",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Smooth issuance curve",
+        "Preserve halvings",
+        "Do not include issuance smoothing in NU7",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0xf4d4599266fa9d6755a9809181f5d568c193663af9452af83ac28df34225a547",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0xf4d4599266fa9d6755a9809181f5d568c193663af9452af83ac28df34225a547"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "Which NSM issuance smoothing approach will be selected in the Zcash NU7 coinholder poll?",
+      "questionId": "0x3914b4d7dbbfbbaf05793fbabf2e11e1406fd792600a1197ea766a8db000621d",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0xc9d7c1783fc93f8ee1d63bfa563c1724454fab3547f2915526fc83ffe5426367",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xb7ecbf3f2ee1d2549ecc223763388250c47b31f7",
+        "0x6f595fd3f50c0ef21df6159cf1d19fb635d00358",
+        "0x10c314adac6b17c606ba58103769ec86bd3a716f",
+        "0x5c49022b0bf9d031b3dc407038c2010771ad7007"
+      ],
+      "blockTimestamp": 1788922443,
+      "outcomesSupply": "321176487164290645717",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x96f1c7bbfb48f61f4c4cb4b4823ecf87816a28db97cd82ba62c07e373af707d4",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "Which NSM issuance smoothing approach will be selected in the Zcash NU7 coinholder poll?␟\"Smooth issuance curve\",\"Preserve halvings\",\"Do not include issuance smoothing in NU7\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 2183.254519334121,
+      "maxLiquidity": 2183.254519334121,
+      "incentive": 0,
+      "hasLiquidity": true,
+      "odds": [
+        15,
+        75,
+        10,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 50.3077
+          },
+          "token1": {
+            "symbol": "ZNU7V3Q1SMOOTH",
+            "balance": 320.1278
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q1HALVINGS",
+            "balance": 320.1278
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 1603.565
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q1NONE",
+            "balance": 320.1278
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 25.9996
+          }
+        },
+        null
+      ],
+      "url": "which-nsm-issuance-smoothing-approach-will-be-selected-in-the-zcash-nu7-coinhold-2",
+      "openInterestUSD": 356.2935958979153
+    },
+    {
+      "id": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "As soon as possible",
+        "February 2027 regardless of the outcome of Q1",
+        "February 2031 regardless of the outcome of Q1",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0xdb2d1e109293164cbd9c5c8d94ed561f3ca65252b5944a1f8f3ecb4a0a44e5a5",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0xdb2d1e109293164cbd9c5c8d94ed561f3ca65252b5944a1f8f3ecb4a0a44e5a5"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?",
+      "questionId": "0x4148babf0d97b3dee61671bc8a0c7428e3e59ab4b9fb7584ee145a6338f08834",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x1fdb17712f9db92842b11dde5b1d9f7c9acc07434437d214bf45cb2a711f245d",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xff08165a419d755cc0b62b4eca52590011713558",
+        "0x53dcb9c90c7fbfa0ce87c897dbbc4b4ae2f4cdc3",
+        "0x0760b934b21ba959c1e98731fbce639215aba572",
+        "0x3cb6167126cc1307571d0abf01d5a8ae6c8bf304"
+      ],
+      "blockTimestamp": 1788922453,
+      "outcomesSupply": "1183210566286833494471",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0xbfd01770327bade2a38afab10138371a437820eabfb646fda974ed837e6cf2cc",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?␟\"As soon as possible\",\"February 2027 regardless of the outcome of Q1\",\"February 2031 regardless of the outcome of Q1\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 1980.748875681798,
+      "maxLiquidity": 1980.748875681798,
+      "incentive": 0,
+      "hasLiquidity": true,
+      "odds": [
+        34.8,
+        15,
+        39,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 772.7356
+          },
+          "token1": {
+            "symbol": "ZNU7V3Q2ASAP",
+            "balance": 1183.2106
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q2FEB2027",
+            "balance": 583.2106
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 91.2221
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q2FEB2031",
+            "balance": 422.4563
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 345.5239
+          }
+        },
+        null
+      ],
+      "url": "when-will-nsm-reissuance-of-funds-removed-from-circulation-begin-per-the-zcash-n-2",
+      "openInterestUSD": 1312.581599882496
+    },
+    {
+      "id": "0xc03bf1725b72ab5765b639c582853ede9afb26a6",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+        "Delay NU7 until every applicable approved feature is deemed complete",
+        "I do not support this NU7 plan",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0x8f52209cc84918c9aa7e5c94ecf0b9c9b5d49efb3f47ae480a3a7e5bafe79de0",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x8f52209cc84918c9aa7e5c94ecf0b9c9b5d49efb3f47ae480a3a7e5bafe79de0"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?",
+      "questionId": "0x3848093b8186b1212d1928115db066c6f1812d639ec646843998d36f0318f7d4",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x451817a362e71d5589bdaa87c03a9856a06ef4d27bdba0923a334579c76a8939",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0x7d4bc377fac1f1ba5fcc25f3599a70a821592667",
+        "0x5923f0810d5f4188f3d8164c0f4df7ccffab1db0",
+        "0x669e0c9c605aaedfff1f375fcb6ebb2d5bbfb719",
+        "0x12e1f677b221cf2ff6c71ed996ccf3fa5f8d4dd9"
+      ],
+      "blockTimestamp": 1788922477,
+      "outcomesSupply": "488846716607318371861",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x962a71c7c19a8f18a72fe8bf29e8ff28a964a47c7a38f772ca7d01803d54072d",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?␟\"Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline\",\"Delay NU7 until every applicable approved feature is deemed complete\",\"I do not support this NU7 plan\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 1883.6364300220423,
+      "maxLiquidity": 1883.6364300220423,
+      "incentive": 0,
+      "hasLiquidity": true,
+      "odds": [
+        70,
+        19.7,
+        3.5,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q5SHIP",
+            "balance": 388.8467
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 1461.0592
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q5DELAY",
+            "balance": 488.8467
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 118.6881
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q5NOSUPPORT",
+            "balance": 488.8467
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 5.062
+          }
+        },
+        null
+      ],
+      "url": "how-will-features-not-ready-by-the-september-30th-deadline-be-handled-per-the-zc-3",
+      "openInterestUSD": 542.2967168011161
+    },
+    {
+      "id": "0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Immediately at NU7 activation",
+        "One year after this poll concludes",
+        "Do not set a date to disable v4 transactions",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0xa2f954bdd65c9bdf8f05ab49ac06044523ac46d0bc6d686368ec0544e4e90ca1",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0xa2f954bdd65c9bdf8f05ab49ac06044523ac46d0bc6d686368ec0544e4e90ca1"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?",
+      "questionId": "0x540d9ac56a04540e52b3b110a7057739724f3402c0f4ff8bed346aa59261fdbb",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x5ecf67893295d905bf483e871929da9483a32e952a5b4bbf192ebafda2635cd4",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xab30cc3e515bf24fbfa47d0d0a54ac3342e71d45",
+        "0x757d6a2a80c28ab8d2241c7d1611f74489568881",
+        "0x425b9e68c68abef4cb90a449a46c41640a0ee2f3",
+        "0x827bab4860c9b6db3b524e52dbcc17ab988cf454"
+      ],
+      "blockTimestamp": 1788922459,
+      "outcomesSupply": "810386750869479642703",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0xfe758bf9f86a4cee1e72efe3ad3413b5fc5d0b7d83c4e6f46542a4dc9bf3d0dd",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?␟\"Immediately at NU7 activation\",\"One year after this poll concludes\",\"Do not set a date to disable v4 transactions\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 1810.1522093896276,
+      "maxLiquidity": 1842.308362641325,
+      "incentive": 0,
+      "hasLiquidity": true,
+      "odds": [
+        30,
+        20,
+        43,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q3IMMEDIATE",
+            "balance": 635.3868
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 316.5152
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q3ONEYEAR",
+            "balance": 635.3868
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 158.4788
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V3Q3NODATE",
+            "balance": 810.3868
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 808.5109
+          }
+        },
+        null
+      ],
+      "url": "when-will-v4-transactions-be-disabled-per-the-zcash-nu7-coinholder-poll-2",
+      "openInterestUSD": 898.9936096648903
+    },
+    {
+      "id": "0x1e3f03cd6231027bccf02791483156bb4a96d6c9",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Ship NU7 as soon as possible, removing any feature not implemented by the deadline",
+        "Delay NU7 until every applicable approved feature is complete",
+        "I do not support this NU7 plan",
+        "Abstain",
+        "Invalid"
+      ],
+      "openingTs": 1788393600,
+      "questions": [
+        {
+          "id": "0x0ed07914de1550ce1454267a0a154a7ff1fab338259df857ec989fa99d7469c6",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788393600,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x0ed07914de1550ce1454267a0a154a7ff1fab338259df857ec989fa99d7469c6"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?",
+      "questionId": "0xb7dcdbb429f0995e4ec4951953028b48b0af880d3557e135e9e06c84380dd5af",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0xda5b2983323096b8fc5760509a4bb388b3d09f72eb1de767805d38c568396827",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xafc05a8b5b7bfba077833eb97c7f9844b5f070bd",
+        "0x5c18575ff3e93d08fe0bae5d07dca9cbd81a95f4",
+        "0x142ea2f65c30d802f8a6e67abec41929e0ce816d",
+        "0x79034abe5b6f357fb10a9c47b580e975dc4c65d5",
+        "0xd986a8d69cede6090689435be65298c31637d880"
+      ],
+      "blockTimestamp": 1788436085,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x97b5e36439c98e26d08ae39807707c3901980a01b7b6ca2a88a6037f5d9e5d46",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?␟\"Ship NU7 as soon as possible, removing any feature not implemented by the deadline\",\"Delay NU7 until every applicable approved feature is complete\",\"I do not support this NU7 plan\",\"Abstain\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 2070.047892273012,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7Q5SHIP",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q5DELAY",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q5NOSUPPORT",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q5ABSTAIN",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "how-will-features-not-ready-by-the-september-30th-deadline-be-handled-per-the-zc",
+      "openInterestUSD": 1.1093367307389725e-18
+    },
+    {
+      "id": "0x9c003f4627d0563359664e8f0b208f354f7acdff",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Immediately at NU7 activation",
+        "One year after this poll concludes",
+        "Do not set a date to disable v4 transactions",
+        "Abstain",
+        "Invalid"
+      ],
+      "openingTs": 1788393600,
+      "questions": [
+        {
+          "id": "0xe863437633d5092e84eda6e8579dd9a800ad9231f6ff8ede3fa2d53fe6c7d50e",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788393600,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0xe863437633d5092e84eda6e8579dd9a800ad9231f6ff8ede3fa2d53fe6c7d50e"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?",
+      "questionId": "0xf902f6c97246d9d5681a6f8312da7e3c074b21953d12a0bbc42c97594bb8e1aa",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x8c1253d96feed7bf36fb0f916434e20722004e788c27aa5d83444a75592b1e97",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xb6619a098c7b1d57132ce513dc7dde2f0190e2fc",
+        "0xb49fbb80128d6cf72186494294c142324589c5a1",
+        "0xb65686e2f08a2ab445bfd11dc81bee15d9526704",
+        "0x51bb5fc537f346186ae900a449a9a597a3fef971",
+        "0x7f9ca80395c21b94677fc524d4561d23316c3a1f"
+      ],
+      "blockTimestamp": 1788436073,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x02293760914783c6bc08ebc246aa5505338de97960aeb251eda2deb4e51635d9",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?␟\"Immediately at NU7 activation\",\"One year after this poll concludes\",\"Do not set a date to disable v4 transactions\",\"Abstain\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 1604.0914999145098,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7Q3IMMEDIATE",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q3ONEYEAR",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7Q3NODATE",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q3ABSTAIN",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "when-will-v4-transactions-be-disabled-per-the-zcash-nu7-coinholder-poll",
+      "openInterestUSD": 1.1093389775935288e-18
+    },
+    {
+      "id": "0x1cddeaed87aea58bcee8053efe413a12537f881a",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "As soon as possible",
+        "February 2027",
+        "February 2031",
+        "Abstain",
+        "Invalid"
+      ],
+      "openingTs": 1788393600,
+      "questions": [
+        {
+          "id": "0x648e6d10c3998d1967fa0d67774c0e806cdc9ac0be1ec0455a1cc7306f8f1cd5",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788393600,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x648e6d10c3998d1967fa0d67774c0e806cdc9ac0be1ec0455a1cc7306f8f1cd5"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "Which NSM reissuance start date will be selected in the Zcash NU7 coinholder poll?",
+      "questionId": "0x28d9e2eb6887ec88705203c5602bdb728a95bf1cb2f3dac0b8feb4939bff53b1",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x06f95923fb7fded922029374e142a537b0d5c061f1814f1bf80f09ba37091a18",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0x0f97790931f207c2dd88dda85318cafd17615df5",
+        "0xfafb7ad4c3b8f93b82e6fdba188341c01f197be3",
+        "0xf09ed1d693268c8874f24d352a910c8b550e3eb5",
+        "0x5a168a22b4fa82fa8393a23f1c092c3f852985b1",
+        "0x141e7b9dbbf81d9286d3646918735ee32481ae72"
+      ],
+      "blockTimestamp": 1788436067,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0xa8fe50671b9f34392eaa8304eb9355936e1146549286ce4cee9e9359f4e06d94",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "Which NSM reissuance start date will be selected in the Zcash NU7 coinholder poll?␟\"As soon as possible\",\"February 2027\",\"February 2031\",\"Abstain\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 1876.879694775197,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7Q2ASAP",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7Q2FEB2027",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7Q2FEB2031",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q2ABSTAIN",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "which-nsm-reissuance-start-date-will-be-selected-in-the-zcash-nu7-coinholder-pol",
+      "openInterestUSD": 1.1093344988181882e-18
+    },
+    {
+      "id": "0x685d5c8f56e3722f3030bc0102954df541541aeb",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Yes",
+        "No",
+        "Abstain",
+        "Invalid"
+      ],
+      "openingTs": 1788393600,
+      "questions": [
+        {
+          "id": "0x9deb0085992ba46916f86f4d2fc28af105c49263a36cdb371223ffe729a1385d",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788393600,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x9deb0085992ba46916f86f4d2fc28af105c49263a36cdb371223ffe729a1385d"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "Will the Zcash NU7 coinholder poll approve reducing block target spacing from 75s to 25s with per-pool action limits per ZIP-218?",
+      "questionId": "0xe1cf80788e2e67ae869e4775cb596eb0b515578504e959d41c0b8d6f81c8e552",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0xa4e25d756f1503d2d7a0960bc16df74ea190903d52e2dd0c37fd4621fa99a1db",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0x09edcdadff7bf8ae95a6ed2aa97f277f1b236cf4",
+        "0xd1e0263aead53403d2c5aa9d852dd38089e4440f",
+        "0xc4df4503e1e9016469b1137ec2958ce546146334",
+        "0x9f528a0276b13710d2e9bc02a6d486600f023435"
+      ],
+      "blockTimestamp": 1788436079,
+      "outcomesSupply": "2446000867235489882",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x9f6a042a01dfd26a138580dbbfc835b0293eefc0774b4f1a1da3a9c2ebf8c4b6",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "Will the Zcash NU7 coinholder poll approve reducing block target spacing from 75s to 25s with per-pool action limits per ZIP-218?␟\"Yes\",\"No\",\"Abstain\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 2216.6557490858713,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7Q4YES",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7Q4NO",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7Q4ABSTAIN",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "will-the-zcash-nu7-coinholder-poll-approve-reducing-block-target-spacing-from-75",
+      "openInterestUSD": 2.7134404495508657
+    },
+    {
+      "id": "0xf3f00a5ecc66bd6ebf32b6fd46bfb8f25289a4aa",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Smooth issuance curve",
+        "Preserve halvings",
+        "Do not include issuance smoothing in NU7",
+        "Abstain",
+        "Invalid"
+      ],
+      "openingTs": 1788393600,
+      "questions": [
+        {
+          "id": "0x1d01a6d143a2580caf5d9ad16a655ebebe1980e9f03902d586470a5817695d8b",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788393600,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x1d01a6d143a2580caf5d9ad16a655ebebe1980e9f03902d586470a5817695d8b"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "Which NSM issuance smoothing approach will be selected in the Zcash NU7 coinholder poll?",
+      "questionId": "0xe21c4702fa398e01ab4dec4f5f38b7749115303ad33b0e7f2233efc296f3ccda",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x7a5833456d4580b1f8440ec187c9d882574dda17d9adf22ed937330ce81fdfd9",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0x0629e8b94d14bc237523254c2591eafaaa049713",
+        "0x95951cad84fca2b89e8463053264e7e585ff9eb9",
+        "0x60e4dedabc96ba1eaf1d098641353026a79ae441",
+        "0x7e30ae3e95778fa364297f4888b28cdab32d8931",
+        "0x484abc86ce8ccfd7593c456bf797b4e03a631657"
+      ],
+      "blockTimestamp": 1788436061,
+      "outcomesSupply": "329563354919973563",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0xe30f1a55c352175d1571c205831de5e3d567f1e52a01f5a3abe74f025df4677b",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "Which NSM issuance smoothing approach will be selected in the Zcash NU7 coinholder poll?␟\"Smooth issuance curve\",\"Preserve halvings\",\"Do not include issuance smoothing in NU7\",\"Abstain\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 2193.808170664568,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7Q1SMOOTH",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q1HALVINGS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q1NONE",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7Q1ABSTAIN",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "which-nsm-issuance-smoothing-approach-will-be-selected-in-the-zcash-nu7-coinhold",
+      "openInterestUSD": 0.36559636734846607
+    },
+    {
+      "id": "0xe00a21ce58f37524a690df0a06d94883c590525f",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "As soon as possible",
+        "February 2027 regardless of the outcome of Q1",
+        "February 2031 regardless of the outcome of Q1",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0x6a7d93e031b1a14cc71081c3072e755052c9a7a49d0c350822e7ebb518407277",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x6a7d93e031b1a14cc71081c3072e755052c9a7a49d0c350822e7ebb518407277"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.",
+      "questionId": "0x2cbc4d553cce313fd3edaf2de85692a8347ac37841ef5bb8d8e9ee33f196b73d",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0xbeb1ca06831c2e3b736e874baf4630573014b07ef37c30a6a0fe46d0292e9d96",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xaa3fb2cc334082eba4b453098e2e8d1f0a1e58d5",
+        "0x3799c83ff0ab4faadd1e22d71f3b2346a22b243b",
+        "0xfc508d0a2bd0485bc3cd892eb192b2eab415cf21",
+        "0x6959c735e5d4ca44df903b6d1819e3d5d464c8a8"
+      ],
+      "blockTimestamp": 1788920213,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x3cf8a68a272e436d0beeb7fecf040a30eb217713e6f343af3c4e6c9ad62476cc",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.␟\"As soon as possible\",\"February 2027 regardless of the outcome of Q1\",\"February 2031 regardless of the outcome of Q1\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 1571.0940780297683,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q2ASAP",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q2FEB2027",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7V2Q2FEB2031",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "when-will-nsm-reissuance-of-funds-removed-from-circulation-begin-per-the-zcash-n",
+      "openInterestUSD": 1.109336377413421e-18
+    },
+    {
+      "id": "0xab5ff387679ed31d445c29e2a97aa2b7a6bd0716",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Smooth issuance curve",
+        "Preserve halvings",
+        "Do not include issuance smoothing in NU7",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0xff2b760bc405f12a87b0d77edb135e1081265dbb3299333ef14fb46452964259",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0xff2b760bc405f12a87b0d77edb135e1081265dbb3299333ef14fb46452964259"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "Which NSM issuance smoothing approach will win the Zcash NU7 coinholder poll, as revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.",
+      "questionId": "0x6657d950f9e2de85318ea6869d2219d6d87faa57a11100b60631da78d8ecb895",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0xd7fe8005bfa6d6ee78aafe305c3f0c2271d05cd274811582c5f9c739f7695b91",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0x9dc4b144f9d35a3d65c0a361333fdf0e41fb13de",
+        "0xe34a3109ad358a9f1e02af60797192b047a3c6b0",
+        "0x812444c2c94493fb79adc475fc14778d02ddefa2",
+        "0x07e2aba748484487e00342761104c4659eeda610"
+      ],
+      "blockTimestamp": 1788920207,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x245f98b1ef79174d2aac2171bfa966fa498d201da45f523f399afe4a5ba1349f",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "Which NSM issuance smoothing approach will win the Zcash NU7 coinholder poll, as revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.␟\"Smooth issuance curve\",\"Preserve halvings\",\"Do not include issuance smoothing in NU7\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 1863.151578596749,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q1SMOOTH",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7V2Q1HALVINGS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q1NONE",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "which-nsm-issuance-smoothing-approach-will-win-the-zcash-nu7-coinholder-poll-as-",
+      "openInterestUSD": 1.109336377413421e-18
+    },
+    {
+      "id": "0x0226e074f4e79c898e9f8f4bcd3f79a0c3544acd",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Immediately at NU7 activation",
+        "One year after this poll concludes",
+        "Do not set a date to disable v4 transactions",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0x74faf2afd6a06bd83e8cfb101d434639c92ff7bd5c5ff1c4ae931ce3c58e84ed",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x74faf2afd6a06bd83e8cfb101d434639c92ff7bd5c5ff1c4ae931ce3c58e84ed"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.",
+      "questionId": "0xb544a3775e452c7ac43148059b8f22cb271dc4e505ba402ebf4dcee962fc37d1",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0x14f93f34aa7a9cf4f0cc9b5e94b04ad9b4c52b7bd956c085a0e635cdc301d42e",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0x6af644c1920c04314f0782f8f464d85cd857a6b7",
+        "0xb755df13c7aacf4c8d255b311b7c5b7e91560703",
+        "0x069688728d32e5618cecc4f7b3ea60ecf07fa71e",
+        "0x3a25874f1ce102e1b6a3943325fa3710a65ef00e"
+      ],
+      "blockTimestamp": 1788920221,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0xd5423ea48a122ee666cfa2c479eac477b5fd5503aadf1c9c2b0ce655bd790e1b",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.␟\"Immediately at NU7 activation\",\"One year after this poll concludes\",\"Do not set a date to disable v4 transactions\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 1513.2640113066116,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q3IMMEDIATE",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7V2Q3ONEYEAR",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q3NODATE",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "when-will-v4-transactions-be-disabled-per-the-zcash-nu7-coinholder-poll-revealed",
+      "openInterestUSD": 1.10933710894673e-18
+    },
+    {
+      "id": "0xa08c1ba820faec9122c3844c25a877bd35efece3",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+        "Delay NU7 until every applicable approved feature is deemed complete",
+        "I do not support this NU7 plan",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0x07c936853453232e2cd73aa2dce4dbd8a5608cfdd8e1482be936c13594b6a8ca",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x07c936853453232e2cd73aa2dce4dbd8a5608cfdd8e1482be936c13594b6a8ca"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.",
+      "questionId": "0x77f31027741afb72df6ff83ba220a1984f8633bad1921d02030ddfaa2345d20e",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0xc0e144080524e2d67eeceea24854deefc21c01692cc5490277a31c73681313b1",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xc7c30779b3553d94a74ba050d629da5e3f90c2ad",
+        "0x8b55a3bca8eed26089d470ae8c9e3615aee4778d",
+        "0x68980bf3cd716c0a1df17cf609bc3615cb286000",
+        "0x3ccbb44ab758ef59a698f024391d328dfd125750"
+      ],
+      "blockTimestamp": 1788920237,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x70f11cca4f7077ae2ac3213a0b60d5af13e34540f72982fedb87b696d08b7cae",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.␟\"Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline\",\"Delay NU7 until every applicable approved feature is deemed complete\",\"I do not support this NU7 plan\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 1786.6853031022197,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7V2Q5SHIP",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q5DELAY",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "ZNU7V2Q5NOSUPPORT",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "sUSDS",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "how-will-features-not-ready-by-the-september-30th-deadline-be-handled-per-the-zc-2",
+      "openInterestUSD": 1.109336377413421e-18
+    },
+    {
+      "id": "0xcfb9e0203de77b326b9b02b0169e4ff4375462a8",
+      "type": "Generic",
+      "creator": "0x00dc3e0acadb8dba21bb08ff30540222ff8836e0",
+      "factory": "0x886ef0a78fabbae942f1da1791a8ed02a5af8bc6",
+      "outcomes": [
+        "Yes",
+        "No",
+        "Invalid"
+      ],
+      "openingTs": 1788912000,
+      "questions": [
+        {
+          "id": "0x41084d749d344dd6ee4efbee014a0a4f05126d47caee0dc287eb8d93b6a586bf",
+          "bond": "0",
+          "index": 0,
+          "timeout": 302400,
+          "min_bond": "5000000000000000",
+          "arbitrator": "0x5afa42b30955f137e10f89dfb5ef1542a186f90e",
+          "opening_ts": 1788912000,
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "base_question": "0x41084d749d344dd6ee4efbee014a0a4f05126d47caee0dc287eb8d93b6a586bf"
+        }
+      ],
+      "finalizeTs": 33260976000,
+      "hasAnswers": false,
+      "lowerBound": "0",
+      "marketName": "Will the Zcash NU7 coinholder poll approve reducing the block target spacing from 75s to 25s and introducing per-pool action limits per ZIP-218, as revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.",
+      "questionId": "0x16a1a48f265f0de707554172fda7d5d13fc11bf94e87a3c1a0562289c14d7e52",
+      "templateId": "2",
+      "upperBound": "0",
+      "conditionId": "0xb25d3dc52bdf500473e600c64cd24faadd2ae4e0b9f086e45bcd95ba96f3d5b9",
+      "parentMarket": {
+        "id": "0x0000000000000000000000000000000000000000",
+        "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "payoutReported": false,
+        "payoutNumerators": []
+      },
+      "parentOutcome": "0",
+      "wrappedTokens": [
+        "0xec6bcae09e8a26a705dcb839d594cc2e5c4f4cdb",
+        "0xd3ece6ef1b9704a6cc00cfe2da993d9da5c5efa6",
+        "0x66aee32975e6c8d7cdd6a238bf1dc09eacc21d95"
+      ],
+      "blockTimestamp": 1788920231,
+      "outcomesSupply": "1",
+      "payoutReported": false,
+      "collateralToken": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+      "transactionHash": "0x0d3d45433a93991d0b585edf9688c053d87fcad443e884c411c5c2a5a09df192",
+      "collateralToken1": "0x0000000000000000000000000000000000000000",
+      "collateralToken2": "0x0000000000000000000000000000000000000000",
+      "encodedQuestions": [
+        "Will the Zcash NU7 coinholder poll approve reducing the block target spacing from 75s to 25s and introducing per-pool action limits per ZIP-218, as revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.␟\"Yes\",\"No\"␟misc␟en_US"
+      ],
+      "payoutNumerators": [
+        "0",
+        "0",
+        "0"
+      ],
+      "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "questionsInArbitration": "0",
+      "chainId": 10,
+      "verification": {
+        "status": "not_verified"
+      },
+      "liquidityUSD": 0,
+      "maxLiquidity": 2103.931116472899,
+      "incentive": 0,
+      "hasLiquidity": false,
+      "odds": [
+        null,
+        null,
+        null
+      ],
+      "categories": [
+        "misc"
+      ],
+      "poolBalance": [
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7V2Q4YES",
+            "balance": 0
+          }
+        },
+        {
+          "token0": {
+            "symbol": "sUSDS",
+            "balance": 0
+          },
+          "token1": {
+            "symbol": "ZNU7V2Q4NO",
+            "balance": 0
+          }
+        },
+        null
+      ],
+      "url": "will-the-zcash-nu7-coinholder-poll-approve-reducing-the-block-target-spacing-fro",
+      "openInterestUSD": 1.109336377413421e-18
+    }
+  ]
+}

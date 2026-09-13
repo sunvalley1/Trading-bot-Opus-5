@@ -1,0 +1,78 @@
+
+> trading-bot-opus-5@1.0.0 plan
+> tsx src/trade-plan.ts 0xc03bf1725b72ab5765b639c582853ede9afb26a6 --chain 10 --rpc https://optimism-rpc.publicnode.com --own 0.85,0.10,0.02,0.03 --weight 0.5 --bankroll 700 --min-edge 0.08 --sizes 1,10,20,25,30,40,45,50,75,100,150,200,250,500
+
+MARKET   0xc03bf1725b72ab5765b639c582853ede9afb26a6  (chain 10, Uniswap v3)
+How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?
+
+collateral sUSDS 0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0
+
+#  outcome                                                spot   implied  pool depth (outcome / collateral)   pool
+0  Ship NU7 as soon as possible, removing any featur...  0.7000   75.1%      388.85 /    1461.06   0x5619D7A10569Cd88569FAfDF175F3FDAB9971662
+1  Delay NU7 until every applicable approved feature...  0.1967   21.1%      488.85 /     118.69   0xF379528546C11F69118118A34685ad45394380C0
+2  I do not support this NU7 plan                        0.0348    3.7%      488.85 /       5.06   0x4362Dec96d3ad27d924c0B363D3D1Db4fca53Bd6
+3  Invalid result                                           -        -    no pool
+
+spot prices sum to 0.9315  <- a complete set is mispriced against its 1.0000 mint/redeem value
+
+app.seer.pm  https://app.seer.pm/markets/10/how-will-features-not-ready-by-the-september-30th-deadline-be-handled-per-the-zc-3
+
+RECONCILIATION   own view kept at weight 0.5 against the market's 0.50
+#  outcome                                                 own   market  blended    edge vs spot
+0  Ship NU7 as soon as possible, removing any featur...   85.0%   75.1%   79.8%   +  9.8 pts
+1  Delay NU7 until every applicable approved feature...   10.0%   21.1%   14.5%    -5.2 pts
+2  I do not support this NU7 plan                          2.0%    3.7%    2.7%    -0.8 pts
+3  Invalid result                                          3.0%    0.0%    3.0%   +  3.0 pts   (no pool)
+
+LIMITS  bankroll 700 sUSDS | 0.25 Kelly | max 20% of bankroll here | max 15% slippage | min edge 8 pts
+
+DEPTH  buying "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"   blended 79.8%  vs spot 70.0%
+size   route   net cost   tokens      avg fill  slippage   p(win)   edge     EV      EV%
+   1   direct      1.00       1.43   0.7005     0.1%   79.8%    9.7 pts    0.14    13.9%
+  10   direct     10.00      14.20   0.7040     0.6%   79.8%    9.4 pts    1.33    13.3%
+  20   direct     20.00      28.25   0.7080     1.1%   79.8%    9.0 pts    2.53    12.7%
+  25   direct     25.00      35.21   0.7100     1.4%   79.8%    8.8 pts    3.09    12.4%
+  30   direct     30.00      42.13   0.7120     1.7%   79.8%    8.6 pts    3.61    12.0%
+  40   direct     40.00      55.87   0.7160     2.3%   79.8%    8.2 pts    4.57    11.4%
+  45   direct     45.00      62.68   0.7180     2.6%   79.8%    8.0 pts    5.00    11.1%
+  50   direct     50.00      69.45   0.7200     2.9%   79.8%    7.8 pts    5.40    10.8%
+  75   direct     75.00     102.75   0.7299     4.3%   79.8%    6.8 pts    6.97     9.3%
+ 100   direct    100.00     135.16   0.7399     5.7%   79.8%    5.8 pts    7.82     7.8%
+ 150   direct    150.00     197.42   0.7598     8.5%   79.8%    3.8 pts    7.49     5.0%
+ 200   direct    200.00     256.51   0.7797    11.4%   79.8%    1.8 pts    4.63     2.3%
+ 250   direct    250.00     312.66   0.7996    14.2%   79.8%   -0.2 pts   -0.58    -0.2%
+ 500   split     432.07     500.00   0.8641    23.4%   82.8%   -3.6 pts  -18.23    -4.2%
+  -> take 40.00 sUSDS via direct, limited by top of the ladder
+
+SHORT  selling "Delay NU7 until every applicable approved feature is deemed complete"   blended 14.5%  vs spot 19.7%   (keeps every other outcome)
+size   net cost   tokens      avg fill   p(win)   edge     EV      EV%
+   1       0.80       1.00   0.8035    85.5%    5.1 pts    0.05     6.4%
+  10       8.05      10.00   0.8055    85.5%    4.9 pts    0.49     6.1%
+  20      16.15      20.00   0.8076    85.5%    4.7 pts    0.95     5.9%
+  25      20.22      25.00   0.8087    85.5%    4.6 pts    1.16     5.7%
+  30      24.29      30.00   0.8097    85.5%    4.5 pts    1.36     5.6%
+  40      32.47      40.00   0.8118    85.5%    4.3 pts    1.73     5.3%
+  45      36.58      45.00   0.8128    85.5%    4.2 pts    1.90     5.2%
+  50      40.69      50.00   0.8138    85.5%    4.1 pts    2.06     5.1%
+  75      61.40      75.00   0.8186    85.5%    3.6 pts    2.72     4.4%
+ 100      82.32     100.00   0.8232    85.5%    3.2 pts    3.17     3.9%
+ 150     124.77     150.00   0.8318    85.5%    2.3 pts    3.48     2.8%
+ 200     167.90     200.00   0.8395    85.5%    1.5 pts    3.08     1.8%
+ 250     211.65     250.00   0.8466    85.5%    0.8 pts    2.09     1.0%
+ 500     437.13     500.00   0.8743    85.5%   -1.9 pts   -9.66    -2.2%
+  -> no size clears the limits. 250: edge 0.008 below the 0.08 floor (fill 0.847); 500: edge -0.019 below the 0.08 floor (fill 0.874)
+
+====================================================================================================
+PLAN for How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?
+
+  buy "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"
+    route      direct (swap collateral straight into the pool)
+    stake      40.00 sUSDS  ->  55.87 tokens at 0.7160 each
+    pays out   55.87 sUSDS if: Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline
+    p(win)     79.8%   edge 8.2 pts   EV +4.57 (11.4%)
+    full Kelly 28.8% of bankroll; at 0.25 Kelly and the caps -> 40.00
+    run        npm run trade -- 0xc03bf1725b72ab5765b639c582853ede9afb26a6 --chain 10 --outcome 0 --route direct --size 40.0000 --dry-run
+
+  total at risk on this market: 40.00 sUSDS (5.7% of bankroll)
+
+Quotes are live and these pools are thin: re-run this immediately before trading, and never skip --dry-run.

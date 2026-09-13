@@ -1,0 +1,558 @@
+{
+  "checkedAt": "2026-09-13T09:21:44.834Z",
+  "block": "156846255",
+  "account": "0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe",
+  "chain": 10,
+  "balanceSUSDS": "700",
+  "ETH": "0.0008",
+  "allowance": "0",
+  "nonce": {
+    "latest": 0,
+    "pending": 0
+  },
+  "own": [
+    0.85,
+    0.1,
+    0.02,
+    0.03
+  ],
+  "weight": 0.5,
+  "blended": [
+    0.7977263816561196,
+    0.14505536485136317,
+    0.027274221896298398,
+    0.02994403159621874
+  ],
+  "limits": {
+    "bankroll": 700,
+    "kellyFraction": 0.25,
+    "maxPerMarket": 0.2,
+    "maxSlippage": 0.15,
+    "minEdge": 0.08
+  },
+  "trade": {
+    "kind": "direct",
+    "targetIndex": 0,
+    "retained": [
+      0
+    ],
+    "collateralIn": "40000000000000000000",
+    "tokensOut": "55866717815989412768",
+    "avgPrice": 0.7159897979285217,
+    "spotPrice": 0.6999949444431314,
+    "slippage": 0.022849955720915638,
+    "failed": [],
+    "winProb": 0.7977263816561196,
+    "payoffRatio": 1.3966679453997353,
+    "ev": 4.566354658352708,
+    "evPct": 0.1141588664588177,
+    "kelly": 0.28779453389856385,
+    "stakeFraction": 0.07194863347464096,
+    "limitedBy": ""
+  },
+  "minimumTokens": "55.810851098173423355",
+  "maximumFill": 0.7167065044329546,
+  "edgeAtMinimumTokens": 0.08101987722316506,
+  "questions": [
+    {
+      "market": "0xC38Fa340cFdC9C758826DD4a8Dc15B58728d0418",
+      "encodedQuestions": [
+        "Will the Zcash NU7 coinholder poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)?␟\"Yes\",\"No\"␟misc␟en_US"
+      ],
+      "payoutReported": false,
+      "questions": [
+        {
+          "content_hash": "0xa5cf384d613936b07ee538a9b321fa17c335657fce771629309a86c1552b8624",
+          "arbitrator": "0x5AFa42b30955f137e10f89dfb5EF1542a186F90e",
+          "opening_ts": 1788912000,
+          "timeout": 302400,
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "bounty": "0",
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "history_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "bond": "0",
+          "min_bond": "5000000000000000"
+        }
+      ]
+    },
+    {
+      "market": "0x29BCd2CEe8d413A2235f7970fCdDE432DCaf10fC",
+      "encodedQuestions": [
+        "Which NSM issuance smoothing approach will be selected in the Zcash NU7 coinholder poll?␟\"Smooth issuance curve\",\"Preserve halvings\",\"Do not include issuance smoothing in NU7\"␟misc␟en_US"
+      ],
+      "payoutReported": false,
+      "questions": [
+        {
+          "content_hash": "0xd311ea93d5635b7d518dcd4dd1b2a1e1765a060de0113f10a95f330a850afa93",
+          "arbitrator": "0x5AFa42b30955f137e10f89dfb5EF1542a186F90e",
+          "opening_ts": 1788912000,
+          "timeout": 302400,
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "bounty": "0",
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "history_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "bond": "0",
+          "min_bond": "5000000000000000"
+        }
+      ]
+    },
+    {
+      "market": "0xd21eaDCf5C30475244aEa8a9Cf7cB6759F0BdAe6",
+      "encodedQuestions": [
+        "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?␟\"Immediately at NU7 activation\",\"One year after this poll concludes\",\"Do not set a date to disable v4 transactions\"␟misc␟en_US"
+      ],
+      "payoutReported": false,
+      "questions": [
+        {
+          "content_hash": "0x0b98643dc641cdda13639f4e9a7acd8a1a9ad7d2fe299de8f5fea967572af2c5",
+          "arbitrator": "0x5AFa42b30955f137e10f89dfb5EF1542a186F90e",
+          "opening_ts": 1788912000,
+          "timeout": 302400,
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "bounty": "0",
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "history_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "bond": "0",
+          "min_bond": "5000000000000000"
+        }
+      ]
+    },
+    {
+      "market": "0xC03Bf1725b72Ab5765b639c582853EDE9AfB26a6",
+      "encodedQuestions": [
+        "How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?␟\"Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline\",\"Delay NU7 until every applicable approved feature is deemed complete\",\"I do not support this NU7 plan\"␟misc␟en_US"
+      ],
+      "payoutReported": false,
+      "questions": [
+        {
+          "content_hash": "0x3f784aa828fb3d5060ea812862ed69665b973eb2517fe612945b64001e82e968",
+          "arbitrator": "0x5AFa42b30955f137e10f89dfb5EF1542a186F90e",
+          "opening_ts": 1788912000,
+          "timeout": 302400,
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "bounty": "0",
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "history_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "bond": "0",
+          "min_bond": "5000000000000000"
+        }
+      ]
+    },
+    {
+      "market": "0xbfdF8eF15ab1ec4Bd44BeC7Ee904270e6AD7ec9C",
+      "encodedQuestions": [
+        "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?␟\"As soon as possible\",\"February 2027 regardless of the outcome of Q1\",\"February 2031 regardless of the outcome of Q1\"␟misc␟en_US"
+      ],
+      "payoutReported": false,
+      "questions": [
+        {
+          "content_hash": "0x8f712917f293be7fe4b410368c6ca820b972d7e478cca5f7f9d246b7e2e80c01",
+          "arbitrator": "0x5AFa42b30955f137e10f89dfb5EF1542a186F90e",
+          "opening_ts": 1788912000,
+          "timeout": 302400,
+          "finalize_ts": 0,
+          "is_pending_arbitration": false,
+          "bounty": "0",
+          "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "history_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "bond": "0",
+          "min_bond": "5000000000000000"
+        }
+      ]
+    }
+  ],
+  "holdings": [
+    {
+      "market": "0xC38Fa340cFdC9C758826DD4a8Dc15B58728d0418",
+      "balances": [
+        {
+          "outcome": "Yes",
+          "balance": "0"
+        },
+        {
+          "outcome": "No",
+          "balance": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "balance": "0"
+        }
+      ]
+    },
+    {
+      "market": "0x29BCd2CEe8d413A2235f7970fCdDE432DCaf10fC",
+      "balances": [
+        {
+          "outcome": "Smooth issuance curve",
+          "balance": "0"
+        },
+        {
+          "outcome": "Preserve halvings",
+          "balance": "0"
+        },
+        {
+          "outcome": "Do not include issuance smoothing in NU7",
+          "balance": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "balance": "0"
+        }
+      ]
+    },
+    {
+      "market": "0xd21eaDCf5C30475244aEa8a9Cf7cB6759F0BdAe6",
+      "balances": [
+        {
+          "outcome": "Immediately at NU7 activation",
+          "balance": "0"
+        },
+        {
+          "outcome": "One year after this poll concludes",
+          "balance": "0"
+        },
+        {
+          "outcome": "Do not set a date to disable v4 transactions",
+          "balance": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "balance": "0"
+        }
+      ]
+    },
+    {
+      "market": "0xC03Bf1725b72Ab5765b639c582853EDE9AfB26a6",
+      "balances": [
+        {
+          "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+          "balance": "0"
+        },
+        {
+          "outcome": "Delay NU7 until every applicable approved feature is deemed complete",
+          "balance": "0"
+        },
+        {
+          "outcome": "I do not support this NU7 plan",
+          "balance": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "balance": "0"
+        }
+      ]
+    },
+    {
+      "market": "0xbfdF8eF15ab1ec4Bd44BeC7Ee904270e6AD7ec9C",
+      "balances": [
+        {
+          "outcome": "As soon as possible",
+          "balance": "0"
+        },
+        {
+          "outcome": "February 2027 regardless of the outcome of Q1",
+          "balance": "0"
+        },
+        {
+          "outcome": "February 2031 regardless of the outcome of Q1",
+          "balance": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "balance": "0"
+        }
+      ]
+    }
+  ],
+  "v4Siblings": [
+    {
+      "market": "0x9c003f4627d0563359664e8f0b208f354f7acdff",
+      "encodedQuestions": [
+        "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?␟\"Immediately at NU7 activation\",\"One year after this poll concludes\",\"Do not set a date to disable v4 transactions\",\"Abstain\"␟misc␟en_US"
+      ],
+      "tradeable": false,
+      "pools": [
+        {
+          "outcome": "Immediately at NU7 activation",
+          "liquidity": "0"
+        },
+        {
+          "outcome": "One year after this poll concludes",
+          "liquidity": "0"
+        },
+        {
+          "outcome": "Do not set a date to disable v4 transactions",
+          "liquidity": "0"
+        },
+        {
+          "outcome": "Abstain",
+          "liquidity": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "liquidity": "0"
+        }
+      ]
+    },
+    {
+      "market": "0x0226e074f4e79c898e9f8f4bcd3f79a0c3544acd",
+      "encodedQuestions": [
+        "When will v4 transactions be disabled, per the Zcash NU7 coinholder poll revealed on 2026-09-15? Abstain is not an outcome here: if Abstain is the highest-voted option in the official poll, the second highest-voted option counts as the winner. Resolves Invalid if the question does not reach official quorum.␟\"Immediately at NU7 activation\",\"One year after this poll concludes\",\"Do not set a date to disable v4 transactions\"␟misc␟en_US"
+      ],
+      "tradeable": false,
+      "pools": [
+        {
+          "outcome": "Immediately at NU7 activation",
+          "liquidity": "0"
+        },
+        {
+          "outcome": "One year after this poll concludes",
+          "liquidity": "0"
+        },
+        {
+          "outcome": "Do not set a date to disable v4 transactions",
+          "liquidity": "0"
+        },
+        {
+          "outcome": "Invalid result",
+          "liquidity": "0"
+        }
+      ]
+    }
+  ],
+  "simulation": {
+    "block": {
+      "hash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+      "parentHash": "0x41a7342b3dc0b7c5f536e4b837bd0398dfb60d841b10bda68a9839c7b761c3d5",
+      "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+      "miner": "0x4200000000000000000000000000000000000011",
+      "stateRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "transactionsRoot": "0x65027557a88d37bd47034530df58578c92e70994b8481881b79bbf44d3a8d18d",
+      "receiptsRoot": "0x54d8c3fa7ac4ff5b8dcfd0e6afa05c56c8af219c1320c0491dcc72ff82bcbce3",
+      "logsBloom": "0x20000000000000000000000000000000000020000000000000000040000000020000000000000000000000000000000000000000000020000000000000200000000000000000000800000008000000000000000000000000000000000010400000000000000001000000000000000000000000000000000000000010001800040000000000000000000800000000000000000000000000000000000000000000030000000002000000000000000000000000000000000000000800000000000000000002000000000400000000000000000200000000000000000100000000000010000000000000000000000000080000000000001000000000000000000000",
+      "difficulty": "0",
+      "number": "156846264",
+      "gasLimit": "40000000",
+      "gasUsed": "284598",
+      "timestamp": "1789291305",
+      "extraData": "0x01000000fa000000020000000000000000",
+      "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "nonce": "0x0000000000000000",
+      "baseFeePerGas": "464",
+      "withdrawalsRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "blobGasUsed": "160000",
+      "excessBlobGas": "0",
+      "parentBeaconBlockRoot": "0x58534f6f317040647f87057deab48da08267cc3ababbd65ecee09b2597d2215e",
+      "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": "1199",
+      "uncles": [],
+      "transactions": [
+        "0xbcf1231307f4b24962c9901435179528ac8f27dc13a7683dd04f531c71aba46c",
+        "0x2cde51d8a7023fcaeb5e055e8a6f992df57174cc7c766ca3efce53b35a8d1bc4",
+        "0x41bce0d0ec4ee93029027620f3e9594335bbae5f953d319d965842b6a8d9bdee",
+        "0x638377299d30b7a8cc76b1ffd4031485ccabd5c1c6ee81c3428e23e0f3480037"
+      ],
+      "withdrawals": [],
+      "calls": [
+        {
+          "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "gasUsed": "51077",
+          "logs": [
+            {
+              "address": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+              "topics": [
+                "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
+                "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe",
+                "0x00000000000000000000000068b3465833fb72a70ecdf485e0e4c7bd8665fc45"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000022b1c8c1227a00000",
+              "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+              "blockNumber": "156846264",
+              "blockTimestamp": "1789291305",
+              "transactionHash": "0xbcf1231307f4b24962c9901435179528ac8f27dc13a7683dd04f531c71aba46c",
+              "transactionIndex": 0,
+              "logIndex": 0,
+              "removed": false
+            }
+          ],
+          "status": "success",
+          "result": true
+        },
+        {
+          "data": "0x000000000000000000000000000000000000000000000003074e73dbed0923a0",
+          "gasUsed": "178022",
+          "logs": [
+            {
+              "address": "0x7d4bc377fac1f1ba5fcc25f3599a70a821592667",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x0000000000000000000000005619d7a10569cd88569fafdf175f3fdab9971662",
+                "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe"
+              ],
+              "data": "0x000000000000000000000000000000000000000000000003074e73dbed0923a0",
+              "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+              "blockNumber": "156846264",
+              "blockTimestamp": "1789291305",
+              "transactionHash": "0x2cde51d8a7023fcaeb5e055e8a6f992df57174cc7c766ca3efce53b35a8d1bc4",
+              "transactionIndex": 1,
+              "logIndex": 1,
+              "removed": false
+            },
+            {
+              "address": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+              "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe",
+                "0x0000000000000000000000005619d7a10569cd88569fafdf175f3fdab9971662"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000022b1c8c1227a00000",
+              "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+              "blockNumber": "156846264",
+              "blockTimestamp": "1789291305",
+              "transactionHash": "0x2cde51d8a7023fcaeb5e055e8a6f992df57174cc7c766ca3efce53b35a8d1bc4",
+              "transactionIndex": 1,
+              "logIndex": 2,
+              "removed": false
+            },
+            {
+              "address": "0x5619d7a10569cd88569fafdf175f3fdab9971662",
+              "topics": [
+                "0xc42079f94a6350d7e6235f29174924f928cc2ac818eb64fed8004e115fbcca67",
+                "0x00000000000000000000000068b3465833fb72a70ecdf485e0e4c7bd8665fc45",
+                "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe"
+              ],
+              "data": "0xfffffffffffffffffffffffffffffffffffffffffffffffcf8b18c2412f6dc600000000000000000000000000000000000000000000000022b1c8c1227a000000000000000000000000000000000000000000000db0e6f3ccfa14e247ba2ddf4000000000000000000000000000000000000000000000071ec5b9887aa72778ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff3d2",
+              "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+              "blockNumber": "156846264",
+              "blockTimestamp": "1789291305",
+              "transactionHash": "0x2cde51d8a7023fcaeb5e055e8a6f992df57174cc7c766ca3efce53b35a8d1bc4",
+              "transactionIndex": 1,
+              "logIndex": 3,
+              "removed": false
+            }
+          ],
+          "status": "success",
+          "result": "55866717815989412768"
+        },
+        {
+          "data": "0x000000000000000000000000000000000000000000000023c757072b8dd00000",
+          "gasUsed": "28858",
+          "logs": [],
+          "status": "success",
+          "result": "660000000000000000000"
+        },
+        {
+          "data": "0x000000000000000000000000000000000000000000000003074e73dbed0923a0",
+          "gasUsed": "26641",
+          "logs": [],
+          "status": "success",
+          "result": "55866717815989412768"
+        }
+      ],
+      "totalDifficulty": null
+    },
+    "results": [
+      {
+        "data": "0x0000000000000000000000000000000000000000000000000000000000000001",
+        "gasUsed": "51077",
+        "logs": [
+          {
+            "address": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+            "topics": [
+              "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
+              "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe",
+              "0x00000000000000000000000068b3465833fb72a70ecdf485e0e4c7bd8665fc45"
+            ],
+            "data": "0x0000000000000000000000000000000000000000000000022b1c8c1227a00000",
+            "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+            "blockNumber": "156846264",
+            "blockTimestamp": "1789291305",
+            "transactionHash": "0xbcf1231307f4b24962c9901435179528ac8f27dc13a7683dd04f531c71aba46c",
+            "transactionIndex": 0,
+            "logIndex": 0,
+            "removed": false
+          }
+        ],
+        "status": "success",
+        "result": true
+      },
+      {
+        "data": "0x000000000000000000000000000000000000000000000003074e73dbed0923a0",
+        "gasUsed": "178022",
+        "logs": [
+          {
+            "address": "0x7d4bc377fac1f1ba5fcc25f3599a70a821592667",
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x0000000000000000000000005619d7a10569cd88569fafdf175f3fdab9971662",
+              "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe"
+            ],
+            "data": "0x000000000000000000000000000000000000000000000003074e73dbed0923a0",
+            "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+            "blockNumber": "156846264",
+            "blockTimestamp": "1789291305",
+            "transactionHash": "0x2cde51d8a7023fcaeb5e055e8a6f992df57174cc7c766ca3efce53b35a8d1bc4",
+            "transactionIndex": 1,
+            "logIndex": 1,
+            "removed": false
+          },
+          {
+            "address": "0xb5b2dc7fd34c249f4be7fb1fcea07950784229e0",
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe",
+              "0x0000000000000000000000005619d7a10569cd88569fafdf175f3fdab9971662"
+            ],
+            "data": "0x0000000000000000000000000000000000000000000000022b1c8c1227a00000",
+            "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+            "blockNumber": "156846264",
+            "blockTimestamp": "1789291305",
+            "transactionHash": "0x2cde51d8a7023fcaeb5e055e8a6f992df57174cc7c766ca3efce53b35a8d1bc4",
+            "transactionIndex": 1,
+            "logIndex": 2,
+            "removed": false
+          },
+          {
+            "address": "0x5619d7a10569cd88569fafdf175f3fdab9971662",
+            "topics": [
+              "0xc42079f94a6350d7e6235f29174924f928cc2ac818eb64fed8004e115fbcca67",
+              "0x00000000000000000000000068b3465833fb72a70ecdf485e0e4c7bd8665fc45",
+              "0x0000000000000000000000006156d8dee1cf1b8bc22261d5d98e5bbec1eea6fe"
+            ],
+            "data": "0xfffffffffffffffffffffffffffffffffffffffffffffffcf8b18c2412f6dc600000000000000000000000000000000000000000000000022b1c8c1227a000000000000000000000000000000000000000000000db0e6f3ccfa14e247ba2ddf4000000000000000000000000000000000000000000000071ec5b9887aa72778ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff3d2",
+            "blockHash": "0x85962bc030315f5d5e497cccb2ea011b8df10197305f44247eb2d938a94eb03f",
+            "blockNumber": "156846264",
+            "blockTimestamp": "1789291305",
+            "transactionHash": "0x2cde51d8a7023fcaeb5e055e8a6f992df57174cc7c766ca3efce53b35a8d1bc4",
+            "transactionIndex": 1,
+            "logIndex": 3,
+            "removed": false
+          }
+        ],
+        "status": "success",
+        "result": "55866717815989412768"
+      },
+      {
+        "data": "0x000000000000000000000000000000000000000000000023c757072b8dd00000",
+        "gasUsed": "28858",
+        "logs": [],
+        "status": "success",
+        "result": "660000000000000000000"
+      },
+      {
+        "data": "0x000000000000000000000000000000000000000000000003074e73dbed0923a0",
+        "gasUsed": "26641",
+        "logs": [],
+        "status": "success",
+        "result": "55866717815989412768"
+      }
+    ]
+  },
+  "dryRunCommand": "npm run trade -- 0xc03bf1725b72ab5765b639c582853ede9afb26a6 --chain 10 --rpc https://optimism-rpc.publicnode.com --outcome 0 --route direct --size 40 --slippage 0.001 --signer metamask --expect-account 0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe --account 0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe --dry-run",
+  "humanExecutionCommand": "npm run trade -- 0xc03bf1725b72ab5765b639c582853ede9afb26a6 --chain 10 --rpc https://optimism-rpc.publicnode.com --outcome 0 --route direct --size 40 --slippage 0.001 --signer metamask --expect-account 0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe --yes",
+  "executionStatus": "Nothing submitted. Human approval and wallet confirmation required. Requote before human execution."
+}

@@ -1,8 +1,10 @@
 /** Simulate -> send -> wait, with the chain's fee floor. Throws on revert. */
 import type { Abi, Address, Hex, PublicClient, TransactionReceipt, WalletClient } from "viem";
-import type { ChainId } from "./config.js";
+import { DEFAULT_RPC, type ChainId } from "./config.js";
+import { getPublicClient } from "./clients.js";
 import { setPendingLabel } from "./metamask-bridge.js";
 import { estimateFees } from "./market-view.js";
+import { waitForReceipt } from "./receipt.js";
 
 export interface ContractCall {
   address: Address;
@@ -53,9 +55,10 @@ export async function sendAndWait(
   const gas = estimate + (estimate * 30n) / 100n + 100_000n;
   setPendingLabel(label); // shown on the MetaMask bridge page when the user signs
   const hash = await walletClient.writeContract({ ...request, gas, account, chain: walletClient.chain });
+  // Save the hash in the trade log before any RPC read can fail. A missing receipt is not a failed send.
+  log(`  submitted ${label.padEnd(37)} ${hash}`);
   // a browser wallet broadcasts through its own RPC; give the public RPC time to see the transaction
-  const receipt = await publicClient.waitForTransactionReceipt({ hash, retryCount: 12, retryDelay: 2_000 });
-  if (receipt.status !== "success") throw new Error(`${label}: transaction ${hash} reverted`);
+  const receipt = await waitForReceipt(publicClient, getPublicClient(chainId, DEFAULT_RPC[chainId]), chainId, hash, log);
   log(`  tx ${label.padEnd(44)} ${hash}  gas ${receipt.gasUsed}`);
   return { hash, receipt };
 }

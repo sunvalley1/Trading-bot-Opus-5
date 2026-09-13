@@ -1,0 +1,34 @@
+MARKET     When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?
+           https://app.seer.pm/markets/10/when-will-nsm-reissuance-of-funds-removed-from-circulation-begin-per-the-zcash-n-2/   0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c   chain 10
+RESOLVES   Winning substantive answer to Q2 of the NU7 coinholder poll, closing September 14, 2026 at 19:00 UTC, with results to follow. This is the poll's preference, not when the protocol eventually implements reissuance. The exact target oracle text names no URL, quorum rule, abstention mapping, or tie-break. Oracle opens September 9; timeout is 84 hours after an answer. No answers or payout were reported at inspection. Source: https://forum.zcashcommunity.com/t/nu7-coinholder-vote/56912
+
+RESEARCH
+  1. The official production configuration authenticates round 16eef7ebc77e0e04fb1c7329abfcc390f4a0c002964671ebb360914a3e5a3f11. Fresh Node fetch of its summary showed status 1, end_time 1789412400, Q2 counts ASAP 3457; February 2027 955; February 2031 11222; Abstain 1143. Late reissuance leads 71.8% of non-abstaining splits. No weighted totals are published while active. Sources: https://voting.valargroup.org/prod/dynamic-voting-config.json ; https://prod.vote-chain-primary.valargroup.org/shielded-vote/v1/vote-summary/16eef7ebc77e0e04fb1c7329abfcc390f4a0c002964671ebb360914a3e5a3f11
+  2. Ballots are split into 16 unlinkable pieces and weights are encrypted. Counts are not ZEC weight or independent voters. The whole poll's legitimacy threshold is 1 million participating ZEC in any one question, including abstentions. Source: https://forum.zcashcommunity.com/t/nu7-coinholder-vote/56912
+  3. The prior completed February NU7 poll surpassed 1 million Orchard ZEC and opposed issuance smoothing by 83.5%. That supports a conservative monetary-policy prior but did not ask this exact reissuance-date question. The May follow-up was paused for Ironwood. There is no defensible historical frequency for this specific three-way question. Sources: https://forum.zcashcommunity.com/t/nu7-sentiment-polling-results/54756 ; https://forum.zcashcommunity.com/t/nu7-sentiment-polling-questions-for-community-review-coinholder-voting-via-zodl/55713
+  4. Zooko advocates ASAP for long-term trust, acknowledging near-term issuance, resemblance to Bitcoin, and saving funds for future use as competing considerations. Source: https://forum.zcashcommunity.com/t/nu7-coinholder-vote/56912/30
+  5. February 2027 and February 2031 were chosen as intersections of smoothed and stepped issuance curves; core engineering discussion clarified that explicit dates remain meaningful even if halvings are preserved. This prevents incorrectly mapping the Q1 result into the winner of Q2. Source: https://forum.zcashcommunity.com/t/nu7-coinholder-vote/56912?page=2
+  6. Onchain scan identified three reissuance markets, of which the requested address is the only live one. Twin 0x1cddeaed87aea58bcee8053efe413a12537f881a explicitly includes Abstain as an outcome; twin 0xe00a21ce58f37524a690df0a06d94883c590525f excludes Abstain, assigns second place if Abstain leads, and explicitly resolves failed official quorum to Invalid. Both twins have no live liquidity, so they are not substitutes for this target. Read command: npm run scan -- reissuance --all; exact questions confirmed through https://app.seer.pm/.netlify/functions/markets-search . No forecast-free arbitrage survives the live complete-set check: splitting 10 and selling the pooled outcomes loses 0.669 sUSDS, while buying a full set is impossible because Invalid has no pool.
+  Already known: counts favor February 2031 and the poll is underway. Still open: encrypted ZEC weights, final turnout, final preference, and any oracle dispute.
+
+ESTIMATE   As soon as possible: 0.25   February 2027 regardless of the outcome of Q1: 0.10   February 2031 regardless of the outcome of Q1: 0.60   Invalid: 0.05
+  reasoning: Strong split-count lead plus conservative earlier voting favor the late date, discounted for concentrated hidden weights and informed ASAP advocacy. Decomposition is 95% usable substantive result times conditional winner chances 25/95, 10/95, 60/95. Exact target wording leaves additional resolution ambiguity.
+  would change my mind: A strong official weighted lead would move 20-30 points toward that leader; verified failed whole-poll turnout would increase Invalid materially. A final reported result ends eligibility for trading.
+
+MARKET PRICE  As soon as possible: 0.3475   February 2027: 0.1500   February 2031: 0.4424   Invalid: no pool
+              Normalized pooled odds: 37.0%, 16.0%, 47.1%. Open interest $1312.64 vs indexed liquidity $1980.83. Onchain pool collateral balances: 772.74, 91.22, 374.52 sUSDS; live pool liquidity was confirmed, independently of indexed dollar liquidity.
+CONFIDENCE    w = 0.25 because there is substantial open interest now and traders may be voting holders with knowledge of their encrypted weights. Counts support an edge but are not close to decisive. Model agreement with any creator prior would not independently corroborate it.
+BLENDED       As soon as possible: 0.326   February 2027: 0.138   February 2031: 0.487   Invalid: 0.049   (rounded, sum 1.000)
+
+TRADE      no trade
+  route none   stake 0 sUSDS   fill none   edge below the unchanged 5-point floor
+  pays out none
+  worst case: 0 additional loss, because no new position is proposed
+  limited by: minimum edge against actual fill, then depth at larger sizes
+  Depth evidence: at 1 sUSDS, direct February 2031 fills 0.4434, leaving 4.3 points, EV +0.10 sUSDS; at 25 sUSDS fill 0.4657 leaves 2.1 points, EV +1.13; at 50 sUSDS fill 0.4890 has EV -0.22. A 500-set split costs net 302.33 sUSDS, fill 0.6047, p(win) 53.5% including Invalid, edge -6.9 points, EV -34.60. These larger sizes do not justify forcing capital into this pool. Planner bankroll was 200 collateral units; no size meets the edge floor even at minimal stake, so dollar conversion of the user's $200 slice cannot change the verdict.
+
+RISKS      Hidden ZEC weights can overturn split counts; target quorum/abstention ambiguity and a 0.005 ETH minimum bond can create disputed resolution; funds would remain locked through tally plus oracle timeout, with challenges potentially extending lockup.
+
+Verification: npm run verify-dex -- --chain 10 passed using https://optimism-rpc.publicnode.com. No code changes and no transaction submissions. Any future candidate requires a fresh quote, --expect-account 0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe, simulation, and separate human approval.
+
+Independence limitation: A broad repository search inadvertently exposed historical report snippets. Fresh primary sources support this estimate, but it should not count as a wholly uncontaminated independent model cross-check.

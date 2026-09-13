@@ -1,0 +1,42 @@
+{
+  "at": "2026-09-13T08:51:35.631Z",
+  "market": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+  "outcome": "February 2031 regardless of the outcome of Q1",
+  "status": "proposal-only",
+  "quote": {
+    "kind": "direct",
+    "targetIndex": 2,
+    "retained": [
+      2
+    ],
+    "collateralIn": "29000000000000000000",
+    "tokensOut": "69793565985133580946",
+    "avgPrice": 0.41551108029323447,
+    "spotPrice": 0.39014053643163354,
+    "slippage": 0.06502924329178694,
+    "failed": []
+  },
+  "result": {
+    "trade": {
+      "kind": "direct",
+      "targetIndex": 2,
+      "retained": [
+        2
+      ],
+      "collateralIn": "29000000000000000000",
+      "tokensOut": "69793565985133580946",
+      "avgPrice": 0.41551108029323447,
+      "spotPrice": 0.39014053643163354,
+      "slippage": 0.06502924329178694,
+      "failed": [],
+      "winProb": 0.4940561951360795,
+      "payoffRatio": 2.4066746891425375,
+      "ev": 5.4819436555940015,
+      "evPct": 0.18903253984806903,
+      "kelly": 0.1343825557587142,
+      "stakeFraction": 0.03359563893967855,
+      "limitedBy": "Kelly/exposure cap"
+    },
+    "rejected": []
+  }
+}

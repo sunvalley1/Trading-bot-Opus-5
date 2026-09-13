@@ -1,0 +1,3 @@
+
+> trading-bot-opus-5@1.0.0 plan
+> tsx src/trade-plan.ts https://app.seer.pm/markets/10/when-will-v4-transactions-be-disabled-per-the-zcash-nu7-coinholder-poll-2/ --own 0.65,0.10,0.20,0.05 --weight 0.25 --bankroll 180 --rpc https://optimism-rpc.publicnode.com --sizes 1,5,6,7,8,10,15,25,50,75,100,150,200

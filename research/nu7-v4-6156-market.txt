@@ -1,0 +1,47 @@
+
+> trading-bot-opus-5@1.0.0 market
+> tsx src/market-report.ts 0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6 --chain 10 --rpc https://optimism-rpc.publicnode.com --sizes 1
+
+MARKET   0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6  (chain 10, Uniswap v3)
+When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?
+
+collateral sUSDS 0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0
+
+#  outcome                                        spot   implied  pool depth (outcome / collateral)   pool
+0  Immediately at NU7 activation                 0.3332   34.6%      562.64 /     339.52   0xBc906179042Ea00eD3e4a7Dc955a412c5eC71087
+1  One year after this poll concludes            0.2000   20.8%      635.39 /     158.48   0x2002Bcda29203b95ee7e8059011BF4308306e87f
+2  Do not set a date to disable v4 transactions  0.4297   44.6%      810.39 /     808.51   0x8619E06F6C606B9Cf0f1331C081ab9914fbcE95A
+3  Invalid result                                   -        -    no pool
+
+spot prices sum to 0.9629  <- a complete set is mispriced against its 1.0000 mint/redeem value
+
+app.seer.pm      https://app.seer.pm/markets/10/when-will-v4-transactions-be-disabled-per-the-zcash-nu7-coinholder-poll-2
+indexed odds     30.0% | 20.0% | 43.0% | -
+liquidity        $1810.23   open interest $899.03
+outcome supply   810.39 complete sets minted
+category         misc    verification: ?
+opening time     2026-09-09T00:00:00Z  (open: the oracle can be answered now)
+answers so far   none     payout reported: no
+  reality q      0xa2f954bdd65c9bdf8f05ab49ac06044523ac46d0bc6d686368ec0544e4e90ca1  min bond 0.005  current bond 0  timeout 84.0h
+
+question as the oracle sees it:
+  When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?␟"Immediately at NU7 activation","One year after this poll concludes","Do not set a date to disable v4 transactions"␟misc␟en_US
+
+DEPTH  buying "Immediately at NU7 activation"  (spot 0.3332)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   direct      1.00       2.99   0.3340       0.2%          -
+
+DEPTH  buying "One year after this poll concludes"  (spot 0.2000)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   direct      1.00       4.98   0.2009       0.4%          -
+
+DEPTH  buying "Do not set a date to disable v4 transactions"  (spot 0.4297)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   direct      1.00       2.32   0.4302       0.1%          -
+
+COMPLETE-SET CHECK (10 sUSDS notional)
+  split 10 and sell every leg : -0.432 sUSDS
+  buy every leg and merge     : n/a (an outcome has no pool, the set cannot be bought)
+  no pool for: Invalid result
+
+Next: form your own estimate, then `npm run plan -- 0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6 --own <p1,p2,...> --weight <0..1> --bankroll <X>`

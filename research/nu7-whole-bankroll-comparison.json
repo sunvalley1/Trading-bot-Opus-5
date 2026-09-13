@@ -1,0 +1,72 @@
+[
+  {
+    "name": "readiness",
+    "existingPreferredTokens": 100,
+    "bankroll": 901.405905220003,
+    "trade": {
+      "kind": "direct",
+      "stake": 25,
+      "tokens": 35.21037592482484,
+      "fill": 0.7100179803071605,
+      "p": 0.7616062934647163,
+      "edge": 0.051588313157555854,
+      "EV": 1.816443899605126
+    },
+    "rejected": [
+      "40: edge 0.046 below the 0.05 floor (fill 0.716)",
+      "50: edge 0.042 below the 0.05 floor (fill 0.720)",
+      "75: edge 0.032 below the 0.05 floor (fill 0.730)",
+      "100: edge 0.022 below the 0.05 floor (fill 0.740)",
+      "150: edge 0.002 below the 0.05 floor (fill 0.760)",
+      "200: edge -0.018 below the 0.05 floor (fill 0.780)",
+      "300: edge -0.058 below the 0.05 floor (fill 0.820)",
+      "500: edge -0.063 below the 0.05 floor (fill 0.864)",
+      "901: edge -0.096 below the 0.05 floor (fill 0.897)"
+    ]
+  },
+  {
+    "name": "v4",
+    "existingPreferredTokens": 100,
+    "bankroll": 901.405905220003,
+    "trade": {
+      "kind": "direct",
+      "stake": 15,
+      "tokens": 48.300521812524764,
+      "fill": 0.3105556511008617,
+      "p": 0.3895096109204014,
+      "edge": 0.07895395981953968,
+      "EV": 3.8135174584488816
+    },
+    "rejected": [
+      "25: stake 25.00 over the Kelly/exposure cap of 23.75",
+      "50: stake 50.00 over the Kelly/exposure cap of 18.42",
+      "75: edge 0.037 below the 0.05 floor (fill 0.353)",
+      "100: edge 0.019 below the 0.05 floor (fill 0.370)",
+      "150: edge -0.016 below the 0.05 floor (fill 0.405)",
+      "200: edge 0.007 below the 0.05 floor (fill 0.433)"
+    ]
+  },
+  {
+    "name": "reissuance",
+    "existingPreferredTokens": 160.75431524589555,
+    "bankroll": 901.405905220003,
+    "trade": {
+      "kind": "direct",
+      "stake": 25,
+      "tokens": 60.677096684978814,
+      "fill": 0.4120170767199708,
+      "p": 0.4940561951360795,
+      "edge": 0.08203911841610873,
+      "EV": 4.977895520084655
+    },
+    "rejected": [
+      "30: stake 30.00 over the Kelly/exposure cap of 29.99",
+      "40: stake 40.00 over the Kelly/exposure cap of 27.02",
+      "50: stake 50.00 over the Kelly/exposure cap of 23.96",
+      "75: edge 0.038 below the 0.05 floor (fill 0.456)",
+      "100: edge 0.017 below the 0.05 floor (fill 0.478)",
+      "150: edge -0.027 below the 0.05 floor (fill 0.521)",
+      "180: edge -0.002 below the 0.05 floor (fill 0.546)"
+    ]
+  }
+]

@@ -1,0 +1,160 @@
+{
+  "checkedAt": "2026-09-13T06:48:17.909Z",
+  "block": "156841657",
+  "snap": {
+    "chainId": 10,
+    "market": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+    "name": "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?",
+    "outcomes": [
+      "As soon as possible",
+      "February 2027 regardless of the outcome of Q1",
+      "February 2031 regardless of the outcome of Q1",
+      "Invalid result"
+    ],
+    "invalidIndex": 3,
+    "collateral": "0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0",
+    "collateralSymbol": "sUSDS",
+    "collateralDecimals": 18,
+    "pools": [
+      {
+        "index": 0,
+        "outcome": "As soon as possible",
+        "token": "0xFF08165A419d755cC0B62B4EcA52590011713558",
+        "symbol": "ZNU7V3Q2ASAP",
+        "pool": "0xd687CE332eD59306a1Be5cCa84EB3F9d892eb01b",
+        "exists": true,
+        "fee": 100,
+        "outcomeIsToken0": false,
+        "liquidity": "1724434457973763264175",
+        "outcomeBalance": "1183210566286833494471",
+        "collateralBalance": "772735627186052039962",
+        "price": 0.34754829382249897
+      },
+      {
+        "index": 1,
+        "outcome": "February 2027 regardless of the outcome of Q1",
+        "token": "0x53dcb9C90c7FbFa0cE87C897dbbc4B4aE2f4cDc3",
+        "symbol": "ZNU7V3Q2FEB2027",
+        "pool": "0xC49fF843c4700Aa9F879418bdeB7Fb7EebbB7B19",
+        "exists": true,
+        "fee": 100,
+        "outcomeIsToken0": true,
+        "liquidity": "371023241541392273447",
+        "outcomeBalance": "583210566286833494471",
+        "collateralBalance": "91222090638163688226",
+        "price": 0.1499872270781593
+      },
+      {
+        "index": 2,
+        "outcome": "February 2031 regardless of the outcome of Q1",
+        "token": "0x0760B934b21bA959c1e98731FBce639215aBA572",
+        "symbol": "ZNU7V3Q2FEB2031",
+        "pool": "0xABA6d5eA27605383e3d52e77266d8562d47FBb54",
+        "exists": true,
+        "fee": 100,
+        "outcomeIsToken0": true,
+        "liquidity": "715067739118934916785",
+        "outcomeBalance": "422456251040937929829",
+        "collateralBalance": "345523877449286773562",
+        "price": 0.39014053643163354
+      },
+      {
+        "index": 3,
+        "outcome": "Invalid result",
+        "token": "0x3CB6167126cC1307571D0AbF01d5a8AE6C8bf304",
+        "symbol": "SER-INVALID",
+        "pool": "0x0000000000000000000000000000000000000000",
+        "exists": false,
+        "fee": 0,
+        "outcomeIsToken0": false,
+        "liquidity": "0",
+        "outcomeBalance": "0",
+        "collateralBalance": "0"
+      }
+    ],
+    "spot": [
+      0.34754829382249897,
+      0.1499872270781593,
+      0.39014053643163354,
+      null
+    ],
+    "implied": [
+      0.3915260425824441,
+      0.16896617390910795,
+      0.43950778350844794,
+      0
+    ],
+    "spotSum": 0.8876760573322918,
+    "payoutReported": false,
+    "tradeable": true
+  },
+  "info": {
+    "id": "0xbfdF8eF15ab1ec4Bd44BeC7Ee904270e6AD7ec9C",
+    "marketName": "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?",
+    "outcomes": [
+      "As soon as possible",
+      "February 2027 regardless of the outcome of Q1",
+      "February 2031 regardless of the outcome of Q1",
+      "Invalid result"
+    ],
+    "parentMarket": {
+      "id": "0x0000000000000000000000000000000000000000",
+      "marketName": "",
+      "outcomes": [],
+      "wrappedTokens": [],
+      "conditionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "payoutReported": false,
+      "payoutNumerators": []
+    },
+    "parentOutcome": "0",
+    "collateralToken": "0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0",
+    "wrappedTokens": [
+      "0xFF08165A419d755cC0B62B4EcA52590011713558",
+      "0x53dcb9C90c7FbFa0cE87C897dbbc4B4aE2f4cDc3",
+      "0x0760B934b21bA959c1e98731FBce639215aBA572",
+      "0x3CB6167126cC1307571D0AbF01d5a8AE6C8bf304"
+    ],
+    "outcomesSupply": "1183210566286833494471",
+    "lowerBound": "0",
+    "upperBound": "0",
+    "parentCollectionId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "collateralToken1": "0x0000000000000000000000000000000000000000",
+    "collateralToken2": "0x0000000000000000000000000000000000000000",
+    "conditionId": "0x1fdb17712f9db92842b11dde5b1d9f7c9acc07434437d214bf45cb2a711f245d",
+    "questionId": "0x4148babf0d97b3dee61671bc8a0c7428e3e59ab4b9fb7584ee145a6338f08834",
+    "templateId": "2",
+    "questions": [
+      {
+        "content_hash": "0x8f712917f293be7fe4b410368c6ca820b972d7e478cca5f7f9d246b7e2e80c01",
+        "arbitrator": "0x5AFa42b30955f137e10f89dfb5EF1542a186F90e",
+        "opening_ts": 1788912000,
+        "timeout": 302400,
+        "finalize_ts": 0,
+        "is_pending_arbitration": false,
+        "bounty": "0",
+        "best_answer": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "history_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "bond": "0",
+        "min_bond": "5000000000000000"
+      }
+    ],
+    "questionsIds": [
+      "0xdb2d1e109293164cbd9c5c8d94ed561f3ca65252b5944a1f8f3ecb4a0a44e5a5"
+    ],
+    "encodedQuestions": [
+      "When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?␟\"As soon as possible\",\"February 2027 regardless of the outcome of Q1\",\"February 2031 regardless of the outcome of Q1\"␟misc␟en_US"
+    ],
+    "payoutReported": false,
+    "payoutNumerators": [
+      "0",
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "arb": {
+    "buyAll": null,
+    "sellAll": -1.1852340371083834,
+    "note": "no pool for: Invalid result"
+  }
+}

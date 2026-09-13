@@ -1,0 +1,48 @@
+
+> trading-bot-opus-5@1.0.0 fleet
+> tsx src/fleet.ts research/nu7-fleet-6156.json --bankroll 700 --min-edge 0.08 --rpc https://optimism-rpc.publicnode.com
+
+FLEET  5 market(s), bankroll 700, 0.25 Kelly
+COMMON FACTOR  "No usable official coinholder tally is ever published"  p = 2.0%  - applied once across the fleet, not once per market
+
+========================================================================================================
+
+Will the Zcash NU7 coinholder poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits
+  https://app.seer.pm/markets/10/will-the-zcash-nu7-coinholder-poll-approve-zip-218-block-spacing-75s-to-25s-per-
+  NO TRADE - no outcome looked underpriced
+
+Which NSM issuance smoothing approach will be selected in the Zcash NU7 coinholder poll?
+  https://app.seer.pm/markets/10/which-nsm-issuance-smoothing-approach-will-be-selected-in-the-zcash-nu7-coinhold-2
+  NO TRADE - no outcome looked underpriced
+
+When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?
+  https://app.seer.pm/markets/10/when-will-v4-transactions-be-disabled-per-the-zcash-nu7-coinholder-poll-2
+  NO TRADE - no outcome looked underpriced
+
+How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder
+  https://app.seer.pm/markets/10/how-will-features-not-ready-by-the-september-30th-deadline-be-handled-per-the-zc-3
+  buy       Ship NU7 as soon as possible, removing any feature not implemented by the Septem
+  route     direct  (swap into the pool)
+  stake     25.00  ->  35.21 tokens at 0.7100
+  pays out  35.21 if: Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline
+  p(win)    79.8%   edge 8.8 pts   EV +3.09
+  hedged    NO - if the common factor hits, this stake is lost in full
+  run       npm run trade -- 0xc03bf1725b72ab5765b639c582853ede9afb26a6 --chain 10 --outcome 0 --route direct --size 25.0000 --dry-run
+
+When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?
+  https://app.seer.pm/markets/10/when-will-nsm-reissuance-of-funds-removed-from-circulation-begin-per-the-zcash-n-2
+  NO TRADE - no outcome looked underpriced
+
+========================================================================================================
+FLEET TOTALS
+  positions            1 of 5 markets
+  total at risk        25.00  (3.6% of bankroll)
+  total EV             +3.09
+
+  COMMON-FACTOR SCENARIO  "No usable official coinholder tally is ever published" (p = 2.0%): every market resolves the same way at once
+    positions that stay hedged   0  staked 0.00  ->  pays 0.00
+    positions left exposed      1  staked 25.00  ->  pays 0
+    net in that scenario        -25.00
+    -> the 1 unhedged position(s) are the real correlated risk; consider expressing them on the side the common factor resolves to
+
+Quotes are live and these pools are thin. Re-run immediately before executing, and dry-run every leg.
