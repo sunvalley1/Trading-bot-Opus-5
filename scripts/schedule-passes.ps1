@@ -39,7 +39,7 @@ foreach ($bot in $Bots) {
   if (-not (Test-Path (Join-Path $folder ".env"))) { throw "$folder has no .env; set it up first (MODELS.md)" }
   $envText = Get-Content (Join-Path $folder ".env") -Raw
   if ($envText -notmatch "(?m)^PASS_COMMAND=.+") { throw "$folder/.env has no PASS_COMMAND: which CLI runs this model?" }
-  if ($envText -notmatch "(?m)^LIQUIDITY_SIGNER=key") { Write-Warning "$bot: LIQUIDITY_SIGNER is not 'key'; the pass will run but the executor will refuse to send (browser wallet needs a human)." }
+  if ($envText -notmatch "(?m)^LIQUIDITY_SIGNER=key") { Write-Warning "${bot}: LIQUIDITY_SIGNER is not 'key'; the pass will run but the executor will refuse to send (browser wallet needs a human)." }
   $log = Join-Path $folder ".passes\scheduler.log"
   $action = "cmd /c cd /d `"$folder`" && npm run pass -- --execute >> `"$log`" 2>&1"
   schtasks /Create /F /SC HOURLY /MO $EveryHours /ST $botStart /TN $task /TR $action | Out-Null
