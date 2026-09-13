@@ -17,13 +17,20 @@ param(
   [string[]] $Bots = @("fable-5.1", "opus-5", "astra-gpt-6", "gpt-5.6-sol"),
   [int] $EveryHours = 2,
   [string] $StartAt = "00:05",
+  # each bot starts this many minutes after the previous one, so they take turns reading each other's trades
+  # instead of all hitting the pools at the same minute: 20 -> Fable :05, Opus :25, Astra :45, Sol 1:05, ...
+  [int] $StaggerMinutes = 20,
   [switch] $Unregister
 )
 
 $ErrorActionPreference = "Stop"
+$base = [datetime]::ParseExact($StartAt, "HH:mm", $null)
+$i = 0
 foreach ($bot in $Bots) {
   $folder = Join-Path $BotsRoot $bot
   $task = "SeerBot-$bot"
+  $botStart = $base.AddMinutes($i * $StaggerMinutes).ToString("HH:mm")
+  $i++
   if ($Unregister) {
     schtasks /Delete /TN $task /F | Out-Null
     Write-Host "removed $task"
@@ -35,11 +42,11 @@ foreach ($bot in $Bots) {
   if ($envText -notmatch "(?m)^LIQUIDITY_SIGNER=key") { Write-Warning "$bot: LIQUIDITY_SIGNER is not 'key'; the pass will run but the executor will refuse to send (browser wallet needs a human)." }
   $log = Join-Path $folder ".passes\scheduler.log"
   $action = "cmd /c cd /d `"$folder`" && npm run pass -- --execute >> `"$log`" 2>&1"
-  schtasks /Create /F /SC HOURLY /MO $EveryHours /ST $StartAt /TN $task /TR $action | Out-Null
-  Write-Host "registered $task : every $EveryHours h from $StartAt in $folder"
+  schtasks /Create /F /SC HOURLY /MO $EveryHours /ST $botStart /TN $task /TR $action | Out-Null
+  Write-Host "registered $task : every $EveryHours h from $botStart in $folder"
 }
 if (-not $Unregister) {
   Write-Host ""
-  Write-Host "All bots fire at the same minute. Check with: schtasks /Query /TN SeerBot-fable-5.1 /V /FO LIST"
+  Write-Host "Bots fire $StaggerMinutes min apart, each every $EveryHours h. Check with: schtasks /Query /TN SeerBot-fable-5.1 /V /FO LIST"
   Write-Host "Run one by hand now with:     schtasks /Run /TN SeerBot-fable-5.1"
 }
