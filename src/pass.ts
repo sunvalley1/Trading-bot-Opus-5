@@ -22,6 +22,7 @@ import { parseArgs } from "./args.js";
 import { getPublicClient } from "./clients.js";
 import { CHAINS, parseChainId, SEER_ADDRESSES } from "./config.js";
 import { erc20FullAbi } from "./dex.js";
+import { marketFactoryAbi } from "./abis.js";
 import "dotenv/config";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -53,10 +54,11 @@ const outputPath = path.join(dir, "output.log");
 
 // cash on hand, read from the chain: the bankroll the pass is allowed to reason about
 const client = getPublicClient(chainId, process.env.RPC_URL || undefined);
-const collateral = SEER_ADDRESSES[chainId].collateralToken as Address;
 let cash = 0;
 let collateralSymbol = "collateral";
 try {
+  // the chain's collateral is whatever the Seer MarketFactory mints sets against (sUSDS on Optimism, sDAI on Gnosis)
+  const collateral = (await client.readContract({ address: SEER_ADDRESSES[chainId].MarketFactory, abi: marketFactoryAbi, functionName: "collateralToken" })) as Address;
   const [bal, sym, dec] = await Promise.all([
     client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "balanceOf", args: [getAddress(wallet)] }),
     client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "symbol" }),
