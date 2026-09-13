@@ -493,15 +493,16 @@ export async function marketActivity(client: PublicClient, snap: MarketSnapshot,
       perPool.push(undefined);
       continue;
     }
-    // Of the public Optimism endpoints only the default one (mainnet.optimism.io) serves these log queries; the
-    // others reject them outright. A scan that fails on the configured RPC is therefore retried on the default
-    // endpoint with patient backoff, since under load that endpoint's only failure mode is rate limiting.
+    // Log queries are the one read the configured RPC often cannot serve: free tiers cap the block range (Alchemy:
+    // 10 blocks), and the other public endpoints reject them outright. The chain's default endpoint does serve
+    // them, so the scan goes there first with patient backoff (its only failure mode is rate limiting) and falls
+    // back to the configured client only if the default endpoint is down.
+    const logsFirst = createPublicClient({ chain: CHAINS[snap.chainId], transport: http(DEFAULT_RPC[snap.chainId], { retryCount: 5, retryDelay: 1500 }) });
     let a: PoolActivity;
     try {
-      a = await poolActivity(client, p.pool, p.outcomeIsToken0, fromBlock, toBlock);
+      a = await poolActivity(logsFirst, p.pool, p.outcomeIsToken0, fromBlock, toBlock);
     } catch (e) {
-      const alt = createPublicClient({ chain: CHAINS[snap.chainId], transport: http(DEFAULT_RPC[snap.chainId], { retryCount: 5, retryDelay: 1500 }) });
-      a = await poolActivity(alt, p.pool, p.outcomeIsToken0, fromBlock, toBlock).catch(() => {
+      a = await poolActivity(client, p.pool, p.outcomeIsToken0, fromBlock, toBlock).catch(() => {
         throw e;
       });
     }

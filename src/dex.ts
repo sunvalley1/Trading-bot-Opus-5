@@ -452,6 +452,9 @@ export async function poolActivity(
     try {
       logs = await withRetry(() => client.getLogs({ address: pool, events: [initializeEvent, swapEvent], fromBlock: from, toBlock: to }), "getLogs(" + pool + " " + from + "-" + to + ")", 3);
     } catch (e) {
+      // a provider that caps the range at a handful of blocks (Alchemy's free tier: 10) will never serve this scan;
+      // say so at once instead of halving toward a size that would take thousands of calls
+      if (/up to a \d+ block range|free tier/i.test((e as Error).message ?? "")) throw e;
       if (step > 1_000n) {
         step = step / 2n;
         continue;
