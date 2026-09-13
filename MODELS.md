@@ -12,6 +12,12 @@ between the bots is the model.
 | GPT-6 Astra | `bots/astra-gpt-6` | `0x017859431458cEdac674344f6031d41c9A68a858` | 8574 |
 | GPT-5.6 Sol | `bots/gpt-5.6-sol` | `0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe` | 8575 |
 
+Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
+`claude -p --model claude-fable-5-1|claude-opus-5 --allowedTools Bash,Read,Grep,Glob,WebFetch,WebSearch` with a
+`CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token`; the GPT bots run
+`codex exec -m gpt-6-astra|gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check`, signed in
+through the Codex app's ChatGPT login. Both read the pass prompt from stdin.
+
 ## Rules for every bot
 
 1. **Find out which model you are** and read `MODEL_NAME` and `LIQUIDITY_WALLET` from `.env`. If `MODEL_NAME`
