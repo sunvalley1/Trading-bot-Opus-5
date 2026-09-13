@@ -37,10 +37,21 @@ export function getAccount() {
   return privateKeyToAccount(pk as Hex);
 }
 
+/**
+ * Key-mode wallet client. Sends are sequential and each waits for its receipt, so a fallback list is safe here
+ * too; what matters is patience: the public endpoint answers "requests per second exceeded" when several bots
+ * run at once, and viem's retry backoff doubles each time (1s, 2s, 4s, 8s, 16s), which outlasts a rate-limit
+ * window. A broadcast that fails is never a double send: the error comes back before anything leaves.
+ */
 export function getWalletClient(chainId: ChainId, rpcUrl?: string) {
+  const primary = getRpcUrl(chainId, rpcUrl);
+  const others = (FALLBACK_RPC[chainId] ?? []).filter((u) => u !== primary);
+  const transport = others.length
+    ? fallback([http(primary, { retryCount: 5, retryDelay: 1000 }), ...others.map((u) => http(u, { retryCount: 2, retryDelay: 1000 }))], { rank: false, retryCount: 1 })
+    : http(primary, { retryCount: 5, retryDelay: 1000 });
   return createWalletClient({
     chain: CHAINS[chainId],
-    transport: http(getRpcUrl(chainId, rpcUrl)),
+    transport,
     account: getAccount(),
   });
 }
