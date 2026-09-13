@@ -47,7 +47,7 @@ interface Item {
 }
 interface Executed extends Item {
   executedAt: string;
-  status: "done" | "failed" | "stale" | "dry-run";
+  status: "done" | "failed" | "stale" | "dry-run" | "unverified";
   exitCode?: number;
   log?: string;
   reason?: string;
@@ -197,8 +197,13 @@ if (cmd === "execute") {
       const out = (r.stdout ?? "") + (r.stderr ?? "");
       const logMatch = out.match(/^LOG\s+(.+)$/m);
       process.stdout.write(out.split("\n").map((l) => "    | " + l).join("\n") + "\n");
-      result = { ...item, executedAt: new Date().toISOString(), status: dryRun ? "dry-run" : r.status === 0 ? "done" : "failed", exitCode: r.status ?? undefined, log: logMatch?.[1]?.trim() };
-      if (r.status !== 0) result.reason = "trade exited " + r.status + (r.error ? ": " + r.error.message : "");
+      // A trade that sent a transaction but could not read its receipt is NOT a failure: the transaction may well
+      // have executed (one did, while the public RPC was refusing reads). Record it as unverified with the hash,
+      // so nobody reads "failed" and trades again; the next pass sees the real position through `portfolio`.
+      const unverified = out.match(/Transaction (0x[0-9a-fA-F]{64}) was submitted, but its receipt could not be verified/);
+      result = { ...item, executedAt: new Date().toISOString(), status: dryRun ? "dry-run" : r.status === 0 ? "done" : unverified ? "unverified" : "failed", exitCode: r.status ?? undefined, log: logMatch?.[1]?.trim() };
+      if (unverified) result.reason = "transaction " + unverified[1] + " was SENT but its receipt could not be read (RPC refused); it may have executed. Verify the hash and the wallet's position before assuming anything.";
+      else if (r.status !== 0) result.reason = "trade exited " + r.status + (r.error ? ": " + r.error.message : "");
       ran++;
     }
     if (!dryRun || result.status === "stale") {

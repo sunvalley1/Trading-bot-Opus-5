@@ -9,7 +9,7 @@ type ReceiptReader = Pick<PublicClient, "getChainId" | "waitForTransactionReceip
  * and giving up early turns a confirmed transaction into an aborted trade (which is what happened to the first
  * scheduled Astra trade, whose approval had confirmed while the public RPC was refusing receipt reads).
  */
-const RETRYABLE = /429|rate ?limit|capacity|too many requests|request failed|timeout|timed out|ECONN|fetch failed|network|LimitExceeded|-32005|-32029/i;
+const RETRYABLE = /429|5\d\d|rate ?limit|capacity|exceeded|too many requests|request failed|requested resource not found|could not be found|not found|timeout|timed out|ECONN|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket|fetch failed|network|LimitExceeded|-32005|-32016|-32029|-32000/i;
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -46,6 +46,8 @@ export async function waitForReceipt(
       if ((await fallback.getChainId()) !== chainId) throw new Error("Receipt fallback is on the wrong chain");
       receipt = await patiently(fallback, query, log, "default", 180_000);
     } catch (cause) {
+      const why = ((cause as Error)?.message ?? String(cause)).split("\n")[0].slice(0, 160);
+      log(`  receipt lookups exhausted: ${why}`);
       throw new Error(
         `Transaction ${hash} was submitted, but its receipt could not be verified. ` +
           "Do not rerun the trade: check this hash and the wallet balances before continuing.",
