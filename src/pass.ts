@@ -120,7 +120,14 @@ const result = { model, wallet: getAddress(wallet), cash, markets, startedAt: ne
 writeFileSync(path.join(dir, "result.json"), JSON.stringify(result, null, 2));
 console.log("");
 console.log("pass finished with exit code " + code + " after " + ((Date.now() - started) / 60_000).toFixed(1) + " min; output in " + outputPath);
+if (/authenticate|OAuth|not logged in|login/i.test(output) && code !== 0) {
+  console.error("The model CLI could not sign in. For Claude Code run `claude login` once in a terminal on this machine; for another CLI, its own login command. Then run the pass again.");
+}
 
+if (args.execute && code !== 0) {
+  console.log("The model step failed, so the queue is NOT executed this round; whatever it queued waits for the next pass and expires after --max-age-min.");
+  process.exit(code ?? 1);
+}
 if (args.execute) {
   console.log("");
   console.log("EXECUTE  running the queue (key mode) ...");
