@@ -99,6 +99,9 @@ if (args["prompt-only"]) {
 const cmdline = passCommand!.replace("{prompt_file}", '"' + promptPath + '"');
 console.log("         running " + cmdline);
 const started = Date.now();
+// written now and overwritten at the end, so a launcher killed mid-run (scheduler stopped, machine rebooted)
+// still leaves a record of what was started and when
+writeFileSync(path.join(dir, "result.json"), JSON.stringify({ model, wallet: getAddress(wallet), cash, markets, startedAt: new Date(started).toISOString(), status: "running", command: cmdline, report: reportPath, output: outputPath }, null, 2));
 const child = spawn(cmdline, { cwd: ROOT, shell: true, env: process.env, stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
 let output = "";
 const onData = (d: Buffer) => {
@@ -116,7 +119,7 @@ const timer = setTimeout(() => {
 const code: number | null = await new Promise((resolve) => child.on("close", (c) => resolve(c)));
 clearTimeout(timer);
 writeFileSync(outputPath, output);
-const result = { model, wallet: getAddress(wallet), cash, markets, startedAt: new Date(started).toISOString(), finishedAt: new Date().toISOString(), exitCode: code, report: reportPath, output: outputPath };
+const result = { model, wallet: getAddress(wallet), cash, markets, startedAt: new Date(started).toISOString(), finishedAt: new Date().toISOString(), status: code === 0 ? "finished" : "failed", exitCode: code, command: cmdline, report: reportPath, output: outputPath };
 writeFileSync(path.join(dir, "result.json"), JSON.stringify(result, null, 2));
 console.log("");
 console.log("pass finished with exit code " + code + " after " + ((Date.now() - started) / 60_000).toFixed(1) + " min; output in " + outputPath);
