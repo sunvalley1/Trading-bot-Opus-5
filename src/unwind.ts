@@ -302,6 +302,17 @@ try {
     }
   }
 
+  // The buy-back is paid before the merge pays out, so the wallet needs that cash up front.
+  if (route === "merge" && buys.length) {
+    const needed = buys.reduce((s, b) => s + up(b.quote), 0n);
+    if (before < needed) {
+      console.log("");
+      console.log("NOT ENOUGH CASH for the buy-back: the wallet holds " + fmt(before) + " " + snap.collateralSymbol + " and the buy-back needs up to " + fmt(needed) + " before the merge returns " + fmt(n) + ".");
+      console.log("Either send " + fmt(needed - before) + " " + snap.collateralSymbol + " to " + account + " first, or unwind in rounds with --sets <n> sized to the cash on hand.");
+      if (!dryRun) process.exit(1);
+    }
+  }
+
   const isMarker = (leg: Leg) => leg.functionName === "allowance";
   const withRecipient = (leg: Leg) => leg.args.map((a) => (typeof a === "object" && a !== null && "recipient" in (a as object) ? { ...(a as Record<string, unknown>), recipient: account } : a));
 

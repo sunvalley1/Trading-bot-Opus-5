@@ -26,6 +26,14 @@ listed there for you. If either does not match, stop and say so. Always pass tha
 Never trade another model's wallet, and never read another bot's folder. All four bots run a pass every 2 hours
 at the same time; a pass that finds nothing is "no trade" and is recorded as such.
 
+## Unattended passes
+
+When you are started by `npm run pass`, the prompt you receive is `PASS.md` plus the facts of the moment. Your
+pass ends at the queue: `npm run queue -- add ...` for every trade that survives the limits, a report at the path
+given, then stop. You do not run `npm run trade --yes` and you do not run `npm run queue -- execute`; a script
+the human installed does that, with the key the human placed in this folder's `.env`. `--dry-run` is yours to
+use freely.
+
 ## Money rules
 
 - **Never trade without a bankroll the human gave you**, and never loosen a limit (`--kelly`, `--max-slippage`,

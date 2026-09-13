@@ -32,6 +32,18 @@ between the bots is the model.
    when the plan sized the addition against the position you already have. Re-running last pass's command is
    not a pass; it is the double-fill the guard exists to refuse.
 
+## Unattended passes
+
+A **pass** is one full run of the skill by this folder's model, started by `npm run pass` (see `PASS.md` for what
+the model is told). The model ends its pass by recording each trade it wants with `npm run queue -- add ...`.
+It never runs `npm run trade --yes` and never runs the executor. `npm run queue -- execute --yes` is a plain
+script with no model in it: it runs the queued trades one at a time through `npm run trade`, with this folder's
+wallet as `--expect-account`, discards items older than 150 minutes as stale, and files every result under
+`.queue/`. Unattended execution needs `LIQUIDITY_SIGNER=key` and this wallet's `PRIVATE_KEY` in `.env`; with a
+browser wallet the executor prints the commands for the human instead. `scripts/schedule-passes.ps1`, run once
+by the human, registers a Windows task per folder that runs `npm run pass -- --execute` every 2 hours at the
+same minute. Registering it is the human's decision; no model is ever the one pressing `--yes`.
+
 ## What the human keeps outside git
 
 `.env` is ignored by git in every folder. It holds the model name, the wallet, the signer port and, if the

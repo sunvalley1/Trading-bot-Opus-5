@@ -16,3 +16,7 @@ dist/
 # local run logs: may contain wallet addresses and transaction hashes
 *.log
 *.jsonl
+
+# per-folder pass records and trade queue: wallet-specific, never shared
+.passes/
+.queue/
