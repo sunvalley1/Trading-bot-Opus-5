@@ -32,7 +32,8 @@ const wallet = process.env.LIQUIDITY_WALLET;
 const passCommand = process.env.PASS_COMMAND;
 const chainId = parseChainId(process.env.CHAIN_ID);
 const markets = String(args.markets ?? process.env.PASS_MARKETS ?? "NU7|Zcash");
-const timeoutMin = Number(args["timeout-min"] ?? 45);
+// a full research pass with a high-reasoning model takes 30-60 minutes; the cadence is 2 hours, so 90 is safe
+const timeoutMin = Number(args["timeout-min"] ?? 90);
 
 if (!model || !wallet || !isAddress(wallet, { strict: false })) {
   console.error("MODEL_NAME and a valid LIQUIDITY_WALLET must be set in .env (see MODELS.md). Refusing to run a pass for an anonymous folder.");

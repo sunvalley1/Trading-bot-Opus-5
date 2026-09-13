@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { createPublicClient, createWalletClient, custom, http, isAddress, type Address, type Hex, type WalletClient } from "viem";
+import { createPublicClient, createWalletClient, custom, fallback, http, isAddress, type Address, type Hex, type WalletClient } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { CHAINS, DEFAULT_RPC, type ChainId } from "./config.js";
 import { attachToSigner, startMetaMaskBridge } from "./metamask-bridge.js";
@@ -8,8 +8,24 @@ export function getRpcUrl(chainId: ChainId, override?: string): string {
   return override || process.env.RPC_URL || DEFAULT_RPC[chainId];
 }
 
+/**
+ * Public endpoints that answer when the default one rate-limits. Four bots reading the same pools every two
+ * hours, plus a pass that fans out market reports in parallel, is more than mainnet.optimism.io tolerates;
+ * viem's fallback transport moves to the next endpoint on an error, so a read that fails on one still lands.
+ * Sending (the wallet client) stays on a single endpoint, so nonces are never split across providers.
+ */
+const FALLBACK_RPC: Partial<Record<ChainId, string[]>> = {
+  10: ["https://optimism.drpc.org", "https://optimism-rpc.publicnode.com", "https://1rpc.io/op"],
+  100: ["https://gnosis.drpc.org", "https://gnosis-rpc.publicnode.com", "https://1rpc.io/gnosis"],
+};
+
 export function getPublicClient(chainId: ChainId, rpcUrl?: string) {
-  return createPublicClient({ chain: CHAINS[chainId], transport: http(getRpcUrl(chainId, rpcUrl)) });
+  const primary = getRpcUrl(chainId, rpcUrl);
+  const others = (FALLBACK_RPC[chainId] ?? []).filter((u) => u !== primary);
+  const transport = others.length
+    ? fallback([http(primary, { retryCount: 2, retryDelay: 400 }), ...others.map((u) => http(u, { retryCount: 1, retryDelay: 400 }))], { rank: false, retryCount: 1 })
+    : http(primary, { retryCount: 3, retryDelay: 400 });
+  return createPublicClient({ chain: CHAINS[chainId], transport });
 }
 
 /** Loads PRIVATE_KEY from the environment (.env). Never logs it. */

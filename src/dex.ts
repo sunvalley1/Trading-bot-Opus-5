@@ -442,12 +442,23 @@ export async function poolActivity(
   chunk = 10_000n,
 ): Promise<PoolActivity> {
   const out: PoolActivity = { swaps: 0, buys: 0, sells: 0, volume: 0n, traders: new Set() };
-  for (let from = fromBlock; from <= toBlock; from += chunk) {
-    const to = from + chunk - 1n > toBlock ? toBlock : from + chunk - 1n;
-    const logs = await withRetry(
-      () => client.getLogs({ address: pool, events: [initializeEvent, swapEvent], fromBlock: from, toBlock: to }),
-      "getLogs(" + pool + " " + from + "-" + to + ")",
-    );
+  // Providers cap the block range of a log query at different sizes (10k on mainnet.optimism.io, less on some
+  // fallbacks). Start at `chunk` and halve on failure down to 1k, so any endpoint that answers at all is usable.
+  let step = chunk;
+  let from = fromBlock;
+  while (from <= toBlock) {
+    const to = from + step - 1n > toBlock ? toBlock : from + step - 1n;
+    let logs;
+    try {
+      logs = await withRetry(() => client.getLogs({ address: pool, events: [initializeEvent, swapEvent], fromBlock: from, toBlock: to }), "getLogs(" + pool + " " + from + "-" + to + ")", 3);
+    } catch (e) {
+      if (step > 1_000n) {
+        step = step / 2n;
+        continue;
+      }
+      throw e;
+    }
+    from = to + 1n;
     for (const l of logs) {
       const a = l.args as unknown as { sqrtPriceX96?: bigint; amount0?: bigint; amount1?: bigint; recipient?: Address };
       if (l.eventName === "Initialize") {

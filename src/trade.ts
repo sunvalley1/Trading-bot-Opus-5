@@ -22,8 +22,8 @@
  *    but its siblings are deep, the second route is far cheaper. `quoteRoutes` prices both and the planner
  *    takes whichever actually fills better.
  */
-import { formatUnits, isAddressEqual, parseUnits, zeroAddress, type Address, type PublicClient } from "viem";
-import { SEER_ADDRESSES, type ChainId } from "./config.js";
+import { createPublicClient, formatUnits, http, isAddressEqual, parseUnits, zeroAddress, type Address, type PublicClient } from "viem";
+import { CHAINS, DEFAULT_RPC, SEER_ADDRESSES, type ChainId } from "./config.js";
 import { erc20FullAbi, getDex, poolActivity, quoteExactIn, readOutcomePool, type OutcomePool, type PoolActivity } from "./dex.js";
 import { readMarket } from "./market-view.js";
 
@@ -493,7 +493,18 @@ export async function marketActivity(client: PublicClient, snap: MarketSnapshot,
       perPool.push(undefined);
       continue;
     }
-    const a = await poolActivity(client, p.pool, p.outcomeIsToken0, fromBlock, toBlock);
+    // Of the public Optimism endpoints only the default one (mainnet.optimism.io) serves these log queries; the
+    // others reject them outright. A scan that fails on the configured RPC is therefore retried on the default
+    // endpoint with patient backoff, since under load that endpoint's only failure mode is rate limiting.
+    let a: PoolActivity;
+    try {
+      a = await poolActivity(client, p.pool, p.outcomeIsToken0, fromBlock, toBlock);
+    } catch (e) {
+      const alt = createPublicClient({ chain: CHAINS[snap.chainId], transport: http(DEFAULT_RPC[snap.chainId], { retryCount: 5, retryDelay: 1500 }) });
+      a = await poolActivity(alt, p.pool, p.outcomeIsToken0, fromBlock, toBlock).catch(() => {
+        throw e;
+      });
+    }
     perPool.push(a);
     swaps += a.swaps;
     volume += a.volume;
