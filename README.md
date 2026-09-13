@@ -14,6 +14,12 @@ to be run by one agent per market and by different models on the same market, so
 **This repository holds no private key and cannot move funds on its own.** It researches, quotes, sizes and
 simulates; every transaction is confirmed by a person in their own browser wallet.
 
+## Several models, one wallet each
+
+The comparison experiment runs four models from four copies of this repository, one wallet per model. The map
+and the rules are in [`MODELS.md`](MODELS.md); each copy's `.env` names its model and wallet, and the tooling
+refuses a trade from any other account.
+
 ## Setup
 
 ```bash

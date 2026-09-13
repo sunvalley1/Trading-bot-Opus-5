@@ -211,7 +211,10 @@ Then, and only then:
    stake, the route, and the worst case. Never present a command and ask them to trust it.
 2. `npm run trade -- <market> --outcome <i> --route <direct|split|fade> --size <x> --expect-account <0x..> --dry-run`
    quotes every leg live and sends nothing. Always pass `--expect-account`: browser wallets connect whichever
-   account is selected, and a human with two wallets will eventually have the wrong one selected.
+   account is selected, and a human with two wallets will eventually have the wrong one selected. **Which
+   account is yours is fixed by `MODELS.md`**: several models run this code from separate folders, one wallet
+   each, and `MODEL_NAME` plus `LIQUIDITY_WALLET` in this folder's `.env` must match the row for your model.
+   If they do not, stop and say so rather than trading.
 3. Start the signer **on the market's chain**: `npm run signer -- --chain <id> --wallet <rabby|metamask>`. The
    signer page asks the wallet to switch to the chain *it* serves on every load, so a signer started without
    `--chain` silently drags the wallet back to the repository default (Gnosis) every time the human refreshes.
@@ -259,6 +262,12 @@ Re-quote immediately before executing. These pools are thin enough that an hour-
   numbers.
 
 ## Running a fleet
+
+Two different things are called a fleet here. One agent per market, below, is the orchestrator's tool for one
+model. Several models on the same markets is the comparison experiment: each model runs from its own folder
+with its own wallet (`MODELS.md`), every 2 hours at the same time, and never looks at another bot's folder or
+book. The other bots' trades reach you only as prices and volume, which is the point: read them through step 0
+like any other trader's.
 
 One agent per market, all running this same skill. That keeps each agent's context on one question and makes
 the outputs comparable. The orchestrator's job:

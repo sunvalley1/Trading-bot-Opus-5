@@ -1,0 +1,39 @@
+# Which wallet is yours
+
+Four models run this same code side by side, so their results can be compared. **One model, one checkout, one
+wallet.** Each bot runs from its own folder, with its own `.env`, and trades only from the wallet listed for it
+here. The code is identical in every folder (same git remote, same commit), so the only thing that differs
+between the bots is the model.
+
+| Model | Folder | Wallet (Optimism) | Signer port |
+|---|---|---|---|
+| Fable 5.1 (Claude) | `bots/fable-5.1` | `0xf1b285F65A3174c9D6E062F089c5CD1Ea8cF30D9` | 8572 |
+| Opus 5 (Claude) | `bots/opus-5` | `0x6e8211F9059648ee6b88fDCB3dB0415d9015cc9e` | 8573 |
+| GPT-6 Astra | `bots/astra-gpt-6` | _to be filled in by the human_ | 8574 |
+| GPT-5.6 Sol | `bots/gpt-5.6-sol` | _to be filled in by the human_ | 8575 |
+
+## Rules for every bot
+
+1. **Find out which model you are** and read `MODEL_NAME` and `LIQUIDITY_WALLET` from `.env`. If `MODEL_NAME`
+   is not your model, or `LIQUIDITY_WALLET` is not the address in this table for your model, **stop and say
+   so**. You are in the wrong folder. Do not "fix" the `.env`; the human keeps the folders straight.
+2. **Always pass your wallet as `--expect-account`** on every `npm run trade`. The command refuses any other
+   connected account.
+3. **Never trade another model's wallet**, and never read another bot's folder to see what it decided. The
+   comparison is only worth anything if each bot reaches its own conclusion from the same public information.
+4. **Positions are per wallet.** `npm run portfolio -- --account <your wallet>` is your book and nobody else's.
+   Another bot holding the other side of a market is not a reason to trade or not to trade; only your own
+   estimate and the price are.
+5. **Cadence.** All four bots run a pass at the same times, every 2 hours. Each pass is the whole skill from
+   step 0: look at the pools again (the other bots have moved them), re-check the research, re-estimate, and
+   plan. A pass that finds nothing to do ends with "no trade"; that is a complete result and gets recorded like
+   any other.
+6. **A pass that would add to a position you already hold must say so explicitly** and pass `--allow-add` only
+   when the plan sized the addition against the position you already have. Re-running last pass's command is
+   not a pass; it is the double-fill the guard exists to refuse.
+
+## What the human keeps outside git
+
+`.env` is ignored by git in every folder. It holds the model name, the wallet, the signer port and, if the
+experiment runs in key mode, that wallet's `PRIVATE_KEY`. Nothing in this table is secret: wallet addresses
+are public onchain. Keys never are, and never go into any file that git tracks.

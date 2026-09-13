@@ -232,6 +232,19 @@ try {
   // always the one the plan was sized for. --expect-account makes the intended address explicit and aborts
   // on a mismatch, before any approval or swap is built.
   const expected = args["expect-account"] as string | undefined;
+  // Folder/wallet consistency. Several models run this code from separate folders, one wallet each, and each
+  // folder's .env names its wallet (MODELS.md). A command expecting a different account is being run from
+  // the wrong folder, or with another bot's address; either way it must not trade.
+  const own = process.env.LIQUIDITY_WALLET;
+  if (own && isAddress(own, { strict: false }) && expected && isAddress(expected, { strict: false }) && !isAddressEqual(own as Address, expected as Address)) {
+    console.error("");
+    console.error("WRONG FOLDER OR WALLET. Refusing to trade.");
+    console.error("  this folder's .env (LIQUIDITY_WALLET" + (process.env.MODEL_NAME ? ", model " + process.env.MODEL_NAME : "") + "): " + getAddress(own));
+    console.error("  --expect-account                       : " + getAddress(expected));
+    console.error("See MODELS.md: one model, one folder, one wallet. Run this from that wallet's folder, or fix the address.");
+    process.exit(1);
+  }
+  if (process.env.MODEL_NAME) console.log("MODEL    " + process.env.MODEL_NAME + "   wallet " + (own ?? "(LIQUIDITY_WALLET unset)"));
   if (expected) {
     if (!isAddress(expected, { strict: false })) {
       console.error("--expect-account is not a valid address: " + expected);
