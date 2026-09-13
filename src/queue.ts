@@ -70,6 +70,17 @@ const chain = Number(process.env.CHAIN_ID ?? 10);
 const wallet = process.env.LIQUIDITY_WALLET;
 const model = process.env.MODEL_NAME;
 
+// The experiment trades a fixed list of markets (MODELS.md). When PASS_MARKET_LIST is set, a trade on anything
+// else is refused here, at the queue, so no pass can widen the scope by accident.
+const allowed = (process.env.PASS_MARKET_LIST ?? "").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
+function requireInScope(market: string) {
+  if (!allowed.length) return;
+  const m = market.toLowerCase();
+  if (allowed.some((a) => m.includes(a))) return;
+  console.error("OUT OF SCOPE: " + market + " is not one of the markets this experiment trades (PASS_MARKET_LIST in .env, listed in MODELS.md). Refusing to queue it.");
+  process.exit(1);
+}
+
 if (cmd === "add") {
   const market = args._[1];
   const outcome = Number(args.outcome);
@@ -79,6 +90,7 @@ if (cmd === "add") {
     console.error('usage: npm run queue -- add <market address|slug|url> --outcome <i> --route <direct|split|fade> --size <x> [--allow-add] [--note "..."]');
     process.exit(2);
   }
+  requireInScope(market);
   const item: Item = {
     id: new Date().toISOString().replace(/[:.]/g, "-") + "-" + Math.random().toString(16).slice(2, 8),
     createdAt: new Date().toISOString(),
@@ -104,6 +116,7 @@ if (cmd === "add-unwind") {
     console.error('usage: npm run queue -- add-unwind <market address|slug|url> [--sets <n>] [--note "..."]');
     process.exit(2);
   }
+  requireInScope(market);
   const item: Item = {
     id: new Date().toISOString().replace(/[:.]/g, "-") + "-" + Math.random().toString(16).slice(2, 8),
     createdAt: new Date().toISOString(),

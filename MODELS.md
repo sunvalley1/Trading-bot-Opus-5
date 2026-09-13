@@ -18,6 +18,23 @@ Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
 `codex exec -m gpt-6-astra|gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check`, signed in
 through the Codex app's ChatGPT login. Both read the pass prompt from stdin.
 
+## Markets in scope
+
+The experiment trades **exactly these five markets** on Optimism (chain 10), and nothing else. Every folder's `.env`
+names them in `PASS_MARKET_LIST`, the pass prompt repeats them, and `npm run queue` refuses any other market.
+
+| Question (NU7 coinholder poll) | Address |
+|---|---|
+| Will the poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)? | `0xc38fa340cfdc9c758826dd4a8dc15b58728d0418` |
+| Which NSM issuance smoothing approach will be selected? | `0x29bcd2cee8d413a2235f7970fcdde432dcaf10fc` |
+| How will features not ready by the September 30th deadline be handled? | `0xc03bf1725b72ab5765b639c582853ede9afb26a6` |
+| When will v4 transactions be disabled? | `0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6` |
+| When will NSM reissuance of funds removed from circulation begin? | `0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c` |
+
+Each resolves on the NU7 coinholder poll, which closes 2026-09-14 19:00 UTC; once the oracle finalizes, the
+only action left on them is `npm run redeem`. Widening the experiment to other markets is the human's decision,
+made by changing `PASS_MARKET_LIST` in every folder and this table.
+
 ## Rules for every bot
 
 1. **Find out which model you are** and read `MODEL_NAME` and `LIQUIDITY_WALLET` from `.env`. If `MODEL_NAME`

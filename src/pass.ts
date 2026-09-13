@@ -81,7 +81,12 @@ const facts = [
   "- Wallet: `" + getAddress(wallet) + "` on chain " + chainId + " (" + CHAINS[chainId].name + ")",
   "- Folder: `" + ROOT + "`",
   "- Cash on hand right now: **" + cash.toFixed(2) + " " + collateralSymbol + "**. This is the bankroll for `--bankroll`.",
-  "- Markets to consider: those matching `" + markets + "` in `npm run scan -- \"" + markets + "\"`.",
+  ...(process.env.PASS_MARKET_LIST
+    ? [
+        "- Markets in scope: **exactly these, and nothing else** (the queue refuses any other market):",
+        ...process.env.PASS_MARKET_LIST.split(",").map((s) => s.trim()).filter(Boolean).map((a) => "    - `" + a + "`  https://app.seer.pm/markets/" + chainId + "/" + a),
+      ]
+    : ["- Markets to consider: those matching `" + markets + "` in `npm run scan -- \"" + markets + "\"`."]),
   "- Time: " + new Date().toISOString(),
   "- Write the report to: `" + reportPath + "`",
   "- Queue trades with `npm run queue -- add ...`; do not execute anything.",

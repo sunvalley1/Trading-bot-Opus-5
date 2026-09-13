@@ -9,9 +9,11 @@ ending in decisions recorded in the queue. The facts that vary from pass to pass
 1. **Identity first.** Read `.env`: `MODEL_NAME` is you, `LIQUIDITY_WALLET` is your wallet. Check both against the
    table in `MODELS.md`. If either does not match, write a report saying so and stop. Never look at another
    bot's folder, queue, or positions.
-2. **Follow the skill in order**, using this repository's commands from this folder: `npm run scan -- "<pattern>"`
-   to see what is tradeable, `npm run market -- <ref>` for every market you consider (read the `TRADED` line:
-   volume and price-versus-seed, never open interest), research the question at its source, write your own
+2. **Only the markets listed in the facts below are in scope.** Look at nothing else and queue nothing else; the
+   queue refuses other markets anyway. Then **follow the skill in order**, using this repository's commands from this
+   folder: `npm run market -- <ref>` on each market in scope (`npm run scan` only to confirm they still have
+   liquidity; read the `TRADED` line: volume and price-versus-seed, never open interest), research the question
+   at its source, write your own
    estimate for every outcome including Invalid, then `npm run plan -- <ref> --own ... --weight ... --bankroll <cash>`
    and, for several markets on one event, `npm run fleet`. The bankroll is the cash figure given below, not
    what you wish it were, and it is a budget, not a target.

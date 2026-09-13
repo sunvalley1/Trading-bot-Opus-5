@@ -268,7 +268,8 @@ Two different things are called a fleet here. One agent per market, below, is th
 model. Several models on the same markets is the comparison experiment: each model runs from its own folder
 with its own wallet (`MODELS.md`), every 2 hours and 20 minutes apart from the others, and never looks at another bot's folder or
 book. The other bots' trades reach you only as prices and volume, which is the point: read them through step 0
-like any other trader's.
+like any other trader's. The markets in scope are fixed in `MODELS.md` and `PASS_MARKET_LIST`; a pass does not
+widen them.
 
 One agent per market, all running this same skill. That keeps each agent's context on one question and makes
 the outputs comparable. The orchestrator's job:
