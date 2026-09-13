@@ -33,6 +33,10 @@ export interface SeerMarket {
   encodedQuestions: string[];
   questions: Array<{ id: string; opening_ts: number; finalize_ts: number; best_answer: string; bond: string; min_bond: string; arbitrator: Address; timeout: number; is_pending_arbitration: boolean }>;
   verification?: { status: string };
+  /** the transaction that created the market: its block is where every outcome pool's history starts */
+  transactionHash?: string;
+  /** unix seconds of the market's creation */
+  blockTimestamp?: number;
 }
 
 /** Accepts an address, a slug, or a full app.seer.pm URL. */

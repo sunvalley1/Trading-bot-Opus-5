@@ -12,7 +12,7 @@ import { parseArgs } from "./args.js";
 import { getPublicClient } from "./clients.js";
 import { parseChainId } from "./config.js";
 import { fetchSeerMarket, marketUrl, parseMarketRef } from "./seer-api.js";
-import { completeSetArb, DEFAULT_LIMITS, describeSnapshot, ladder, snapshot } from "./trade.js";
+import { completeSetArb, DEFAULT_LIMITS, describeActivity, describeSnapshot, ladder, marketActivity, snapshot } from "./trade.js";
 import { iso } from "./market-view.js";
 
 const args = parseArgs(process.argv.slice(2));
@@ -38,8 +38,35 @@ console.log(describeSnapshot(snap));
 console.log("");
 console.log("app.seer.pm      " + marketUrl(api));
 console.log("indexed odds     " + api.odds.map((o) => (o === null ? "-" : o.toFixed(1) + "%")).join(" | "));
-console.log("liquidity        $" + api.liquidityUSD.toFixed(2) + "   open interest $" + api.openInterestUSD.toFixed(2));
-console.log("outcome supply   " + Number(formatUnits(BigInt(api.outcomesSupply || "0"), 18)).toFixed(2) + " complete sets minted");
+console.log("liquidity        $" + api.liquidityUSD.toFixed(2) + " (indexed; can lag the pools by hours)");
+console.log("sets minted      " + Number(formatUnits(BigInt(api.outcomesSupply || "0"), 18)).toFixed(2) + "  (what app.seer.pm calls open interest, $" + api.openInterestUSD.toFixed(2) + ": counts the creator's seed and every split, but no direct swap - not a measure of trading)");
+
+// ---- what has actually traded: the pools' own Swap events since the market was created. This, not open
+// interest, says whether the price is anybody's opinion but the creator's.
+{
+  let fromBlock: bigint | undefined;
+  if (api.transactionHash) {
+    const rcpt = await client.getTransactionReceipt({ hash: api.transactionHash as `0x${string}` }).catch(() => undefined);
+    fromBlock = rcpt?.blockNumber;
+  }
+  if (fromBlock === undefined && api.blockTimestamp) {
+    // no receipt: estimate the creation block from the timestamp, generously (a wider window only costs time)
+    const head = await client.getBlock();
+    const secondsPerBlock = chainId === 10 ? 2 : 5;
+    const back = BigInt(Math.ceil((Number(head.timestamp) - api.blockTimestamp) / secondsPerBlock)) + 5_000n;
+    fromBlock = head.number > back ? head.number - back : 0n;
+  }
+  if (fromBlock === undefined) {
+    console.log("TRADED           unknown (the API gave no creation block to scan from)");
+  } else {
+    try {
+      const act = await marketActivity(client, snap, fromBlock);
+      console.log(describeActivity(snap, act));
+    } catch (e) {
+      console.log("TRADED           could not read the pools' Swap events: " + ((e as Error).message ?? String(e)).split("\n")[0]);
+    }
+  }
+}
 console.log("category         " + (api.categories ?? []).join(", ") + "    verification: " + (api.verification?.status ?? "?"));
 console.log("opening time     " + iso(api.openingTs) + (api.openingTs * 1000 < Date.now() ? "  (open: the oracle can be answered now)" : "  (not open yet)"));
 console.log("answers so far   " + (api.hasAnswers ? "yes" : "none") + "     payout reported: " + (api.payoutReported ? "YES - market is resolved" : "no"));

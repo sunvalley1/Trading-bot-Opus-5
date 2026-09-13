@@ -334,6 +334,99 @@ export async function readOutcomePool(
   };
 }
 
+// ---------------------------------------------------------------- activity: what has actually traded
+
+/**
+ * What a pool's own event log says has happened in it. This is the honest measure of participation.
+ *
+ * Seer's "open interest" is complete sets minted times the collateral price: it counts the creator's seed
+ * sets, it moves only on a split or a merge, and a trader who swaps collateral straight into a pool leaves it
+ * unchanged. A market can carry thousands of dollars of it with nobody but the creator having acted. The
+ * Swap events cannot be faked that way: every fill is one, with its size and the address it was filled for.
+ */
+export interface PoolActivity {
+  /** the price the pool was initialized at, collateral per outcome token: what the creator seeded */
+  seedPrice?: number;
+  swaps: number;
+  /** swaps that moved collateral INTO the pool (someone bought the outcome) / out of it (someone sold) */
+  buys: number;
+  sells: number;
+  /** collateral moved through the pool by swaps, both directions, in collateral units (18 decimals) */
+  volume: bigint;
+  /** the addresses swaps were filled for (the router passes the trader as recipient) */
+  traders: Set<string>;
+  firstSwapBlock?: bigint;
+  lastSwapBlock?: bigint;
+}
+
+// Uniswap v3 and Algebra emit the same two events with the same parameter types, so one pair of definitions
+// serves both chains (Algebra calls the sqrt price "price"; the topic hash only depends on the types).
+const initializeEvent = {
+  type: "event",
+  name: "Initialize",
+  inputs: [
+    { name: "sqrtPriceX96", type: "uint160", indexed: false },
+    { name: "tick", type: "int24", indexed: false },
+  ],
+} as const;
+const swapEvent = {
+  type: "event",
+  name: "Swap",
+  inputs: [
+    { name: "sender", type: "address", indexed: true },
+    { name: "recipient", type: "address", indexed: true },
+    { name: "amount0", type: "int256", indexed: false },
+    { name: "amount1", type: "int256", indexed: false },
+    { name: "sqrtPriceX96", type: "uint160", indexed: false },
+    { name: "liquidity", type: "uint128", indexed: false },
+    { name: "tick", type: "int24", indexed: false },
+  ],
+} as const;
+
+/**
+ * Reads Initialize and Swap events for one pool between two blocks. Public RPCs refuse wide log queries
+ * (Optimism's answers "RPC Request failed" past about 10k blocks), so the range is walked in chunks; each
+ * chunk is a fast call, and a market a few days old costs a few seconds per pool.
+ */
+export async function poolActivity(
+  client: PublicClient,
+  pool: Address,
+  outcomeIsToken0: boolean,
+  fromBlock: bigint,
+  toBlock: bigint,
+  chunk = 10_000n,
+): Promise<PoolActivity> {
+  const out: PoolActivity = { swaps: 0, buys: 0, sells: 0, volume: 0n, traders: new Set() };
+  for (let from = fromBlock; from <= toBlock; from += chunk) {
+    const to = from + chunk - 1n > toBlock ? toBlock : from + chunk - 1n;
+    const logs = await withRetry(
+      () => client.getLogs({ address: pool, events: [initializeEvent, swapEvent], fromBlock: from, toBlock: to }),
+      "getLogs(" + pool + " " + from + "-" + to + ")",
+    );
+    for (const l of logs) {
+      const a = l.args as unknown as { sqrtPriceX96?: bigint; amount0?: bigint; amount1?: bigint; recipient?: Address };
+      if (l.eventName === "Initialize") {
+        if (a.sqrtPriceX96 && a.sqrtPriceX96 > 0n) {
+          const p0 = priceFromSqrtX96(a.sqrtPriceX96);
+          out.seedPrice = outcomeIsToken0 ? p0 : 1 / p0;
+        }
+        continue;
+      }
+      const collateralAmount = (outcomeIsToken0 ? a.amount1 : a.amount0) ?? 0n;
+      out.swaps++;
+      if (collateralAmount > 0n) out.buys++;
+      else out.sells++;
+      out.volume += collateralAmount < 0n ? -collateralAmount : collateralAmount;
+      if (a.recipient) out.traders.add(a.recipient.toLowerCase());
+      if (l.blockNumber !== null) {
+        out.firstSwapBlock ??= l.blockNumber;
+        out.lastSwapBlock = l.blockNumber;
+      }
+    }
+  }
+  return out;
+}
+
 // ---------------------------------------------------------------- quoting
 
 /**

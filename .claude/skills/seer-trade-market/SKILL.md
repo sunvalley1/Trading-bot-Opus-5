@@ -43,18 +43,24 @@ are, the resolution timetable, and whether there is a complete-set arbitrage. Re
 - **The oracle's question text, not the title.** Seer titles get truncated in the UI. The encoded question is
   what Reality.eth answers, and its exact wording (tie-breaks, "Abstain is not an outcome here", quorum
   clauses) frequently decides the trade.
-- **Open interest vs liquidity.** `liquidity $2218 / open interest $114` means almost nobody has traded: the
-  price is very close to whatever the creator seeded, and carries correspondingly little information. This
-  is the single biggest input to your confidence weight in step 3.
+- **Trading volume, not open interest.** Seer's "open interest" is the number of complete sets minted times
+  the collateral price. It counts the creator's own seed sets, it moves only on a split or a merge, and a buyer
+  who swaps collateral straight into a pool (the common path) leaves it unchanged, so it says nothing about how
+  many people have traded. `npm run market` reads the pools' own Swap events instead and prints a `TRADED`
+  line: swaps, volume in collateral, distinct traders, time since the last trade, and each outcome's seed
+  price against its price now. A price still sitting on the seed after a handful of swaps is the creator's
+  opinion, not a market. On the NU7 reissuance question, $1,313 of "open interest" turned out to be two swaps
+  by one wallet. This is the single biggest input to your confidence weight in step 3.
 - **Where the price came from.** Search for the market creator's own announcement before treating a price as
   anyone's opinion. Seer's Zcash grant markets were seeded, in the creator's own words, by "asking GPT to become
-  a superforecaster", and with $23–$176 of open interest nobody had moved them since. A price that is an LLM's
+  a superforecaster", and their prices still sat exactly where the seed had left them. A price that is an LLM's
   untraded prior is not a market, and that matters doubly if you are an LLM yourself: see step 3.
 - **Whether a pool exists at all.** Invalid usually has none. An outcome with no pool cannot be bought
   directly and cannot be sold — only held to resolution.
 - **Whether there is any live liquidity.** This is the one check that can waste your entire session if you
-  skip it. A drained pool keeps its last sqrt price forever, so a dead market still shows a perfectly normal
-  price; and `liquidityUSD` from app.seer.pm comes from an indexer that can stay stale for hours after the
+  skip it. A drained pool keeps its last sqrt price forever (the pool contract stores its price as `sqrtPriceX96` in
+  `slot0`, and withdrawing liquidity does not touch that slot), so a dead market still shows a perfectly
+  normal price; and `liquidityUSD` from app.seer.pm comes from an indexer that can stay stale for hours after the
   money has left. **Neither the price nor the advertised liquidity tells you a market is tradeable.** Only the
   pool's own `liquidity`, read onchain, does — `npm run market` prints `DRAINED` per pool and a
   `NOT TRADEABLE` banner, and `npm run scan -- "<pattern>"` sorts a whole topic into tradeable and dead
@@ -130,13 +136,13 @@ The market price is another forecaster's opinion. Combine, do not overwrite, and
 | `w` | when |
 |---|---|
 | 0.8 | you found something close to decisive that is demonstrably not in the price yet (official result already published, deadline already missed) |
-| 0.5 | solid research, and the market is thin with almost no open interest — the price is mostly the creator's seed |
+| 0.5 | solid research, and the market is thin with almost no trading volume — the price is mostly the creator's seed |
 | 0.25 | **default.** A real market with real participants who may know things you do not |
 | 0.1 | you are largely guessing, or the other side is plainly better informed than you (insiders, the people who will cast the votes) |
 
 Adjust from the default with reasons, not vibes:
 
-- **Raise `w`** when open interest is tiny relative to liquidity; when the price is a round number that smells
+- **Raise `w`** when the Swap logs show a handful of trades and the price still sits on the seed; when the price is a round number that smells
   seeded; when prices across sibling markets on the same event are mutually inconsistent; when you have a
   primary source the market plainly has not read.
 - **Lower `w`** when the traders on this question are likely to be the people who decide it (coinholder votes,
@@ -302,7 +308,7 @@ ESTIMATE   <outcome>: <p>   ... (sums to 1, Invalid included)
   reasoning: <why, in a few lines>
   would change my mind: <what, and by how much>
 
-MARKET PRICE  <outcome>: <spot>  ...   open interest $<x> vs liquidity $<y>
+MARKET PRICE  <outcome>: <spot>  ...   traded <n> swaps / <v> volume / <k> traders   liquidity $<y>
 CONFIDENCE    w = <0..1> because <reason tied to the table above>
 BLENDED       <outcome>: <q>  ...
 

@@ -24,7 +24,7 @@
  */
 import { formatUnits, isAddressEqual, parseUnits, zeroAddress, type Address, type PublicClient } from "viem";
 import { SEER_ADDRESSES, type ChainId } from "./config.js";
-import { erc20FullAbi, getDex, quoteExactIn, readOutcomePool, type OutcomePool } from "./dex.js";
+import { erc20FullAbi, getDex, poolActivity, quoteExactIn, readOutcomePool, type OutcomePool, type PoolActivity } from "./dex.js";
 import { readMarket } from "./market-view.js";
 
 // ---------------------------------------------------------------- snapshot
@@ -456,6 +456,83 @@ export function describeSnapshot(snap: MarketSnapshot): string {
     lines.push("    so it still looks like a normal quote. app.seer.pm's own liquidity figure is indexed and can stay");
     lines.push("    stale for hours after the money has gone; only the pool's own liquidity, read here, can be trusted.");
     lines.push("    Nothing can be bought or sold on this market until somebody provides liquidity again.");
+  }
+  return lines.join("\n");
+}
+
+// ---------------------------------------------------------------- activity: has anyone actually traded?
+
+export interface MarketActivity {
+  fromBlock: bigint;
+  toBlock: bigint;
+  /** one entry per outcome, undefined where there is no pool */
+  perPool: (PoolActivity | undefined)[];
+  swaps: number;
+  volume: bigint;
+  traders: number;
+  lastSwapBlock?: bigint;
+  /** unix seconds of the last swap's block, when there was one */
+  lastSwapAt?: number;
+}
+
+/**
+ * Swap history of every outcome pool since `fromBlock` (normally the block the market was created in). The
+ * question it answers is the one open interest cannot: how many fills, for how much, for how many addresses,
+ * and how far each price has moved from where the creator seeded it. Read-only and somewhat slow (one log
+ * query per 10k blocks per pool), so `snapshot()` does not include it; `npm run market` calls it separately.
+ */
+export async function marketActivity(client: PublicClient, snap: MarketSnapshot, fromBlock: bigint): Promise<MarketActivity> {
+  const toBlock = await client.getBlockNumber();
+  const perPool: (PoolActivity | undefined)[] = [];
+  const traders = new Set<string>();
+  let swaps = 0;
+  let volume = 0n;
+  let lastSwapBlock: bigint | undefined;
+  for (const p of snap.pools) {
+    if (!p.exists) {
+      perPool.push(undefined);
+      continue;
+    }
+    const a = await poolActivity(client, p.pool, p.outcomeIsToken0, fromBlock, toBlock);
+    perPool.push(a);
+    swaps += a.swaps;
+    volume += a.volume;
+    for (const t of a.traders) traders.add(t);
+    if (a.lastSwapBlock !== undefined && (lastSwapBlock === undefined || a.lastSwapBlock > lastSwapBlock)) lastSwapBlock = a.lastSwapBlock;
+  }
+  let lastSwapAt: number | undefined;
+  if (lastSwapBlock !== undefined) {
+    const b = await client.getBlock({ blockNumber: lastSwapBlock }).catch(() => undefined);
+    if (b) lastSwapAt = Number(b.timestamp);
+  }
+  return { fromBlock, toBlock, perPool, swaps, volume, traders: traders.size, lastSwapBlock, lastSwapAt };
+}
+
+export function describeActivity(snap: MarketSnapshot, act: MarketActivity): string {
+  const lines: string[] = [];
+  const vol = Number(formatUnits(act.volume, snap.collateralDecimals));
+  const age = act.lastSwapAt !== undefined ? ((Date.now() / 1000 - act.lastSwapAt) / 3600).toFixed(1) + " h ago" : "never";
+  lines.push(
+    "TRADED           " + act.swaps + " swap" + (act.swaps === 1 ? "" : "s") + "   " + vol.toFixed(2) + " " + snap.collateralSymbol + " volume   " +
+      act.traders + " trader" + (act.traders === 1 ? "" : "s") + "   last trade " + age +
+      "   (Swap events on the outcome pools since the market was created, block " + act.fromBlock + ")",
+  );
+  if (act.swaps === 0) {
+    lines.push("                 nobody has traded: every price is exactly what the creator seeded, and carries no more information than that");
+  }
+  const w = Math.max(10, ...snap.outcomes.map((o) => Math.min(o.length, 40)));
+  lines.push("  " + "outcome".padEnd(w) + "   seed -> now         swaps  buys/sells   volume");
+  for (const p of snap.pools) {
+    const a = act.perPool[p.index];
+    if (!p.exists || !a) continue;
+    const label = (p.outcome.length > 40 ? p.outcome.slice(0, 37) + "..." : p.outcome).padEnd(w);
+    const seed = a.seedPrice !== undefined ? a.seedPrice.toFixed(4) : "   ?  ";
+    const now = p.price !== undefined ? p.price.toFixed(4) : "   -  ";
+    const moved = a.seedPrice !== undefined && p.price !== undefined ? ((p.price - a.seedPrice) * 100).toFixed(1).padStart(6) + " pts" : "";
+    lines.push(
+      "  " + label + "   " + seed + " -> " + now + " " + moved.padEnd(11) + String(a.swaps).padStart(5) + "  " + (a.buys + "/" + a.sells).padStart(9) + "   " +
+        Number(formatUnits(a.volume, snap.collateralDecimals)).toFixed(2).padStart(9),
+    );
   }
   return lines.join("\n");
 }
