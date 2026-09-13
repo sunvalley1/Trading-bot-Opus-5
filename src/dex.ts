@@ -144,6 +144,30 @@ export const quoterV2Abi = [
       { name: "gasEstimate", type: "uint256" },
     ],
   },
+  {
+    type: "function",
+    name: "quoteExactOutputSingle",
+    stateMutability: "nonpayable",
+    inputs: [
+      {
+        name: "params",
+        type: "tuple",
+        components: [
+          { name: "tokenIn", type: "address" },
+          { name: "tokenOut", type: "address" },
+          { name: "amount", type: "uint256" },
+          { name: "fee", type: "uint24" },
+          { name: "sqrtPriceLimitX96", type: "uint160" },
+        ],
+      },
+    ],
+    outputs: [
+      { name: "amountIn", type: "uint256" },
+      { name: "sqrtPriceX96After", type: "uint160" },
+      { name: "initializedTicksCrossed", type: "uint32" },
+      { name: "gasEstimate", type: "uint256" },
+    ],
+  },
 ] as const satisfies Abi;
 
 /** SwapRouter02 (Uniswap v3, Optimism): the params tuple has NO deadline field. Verified against the bytecode. */
@@ -168,6 +192,27 @@ export const univ3RouterAbi = [
       },
     ],
     outputs: [{ name: "amountOut", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "exactOutputSingle",
+    stateMutability: "payable",
+    inputs: [
+      {
+        name: "params",
+        type: "tuple",
+        components: [
+          { name: "tokenIn", type: "address" },
+          { name: "tokenOut", type: "address" },
+          { name: "fee", type: "uint24" },
+          { name: "recipient", type: "address" },
+          { name: "amountOut", type: "uint256" },
+          { name: "amountInMaximum", type: "uint256" },
+          { name: "sqrtPriceLimitX96", type: "uint160" },
+        ],
+      },
+    ],
+    outputs: [{ name: "amountIn", type: "uint256" }],
   },
 ] as const satisfies Abi;
 
@@ -460,5 +505,37 @@ export async function quoteExactIn(
     },
     0n,
     "quote",
+  );
+}
+
+/**
+ * Exact-OUTPUT quote: how much `tokenIn` it costs to receive exactly `amountOut` of `tokenOut`. This is what an
+ * unwind needs, because a merge wants a precise number of tokens (enough to complete the sets), not a precise
+ * spend. Returns 0n when the pool cannot deliver that amount at all.
+ */
+export async function quoteExactOut(
+  client: PublicClient,
+  chainId: ChainId,
+  tokenIn: Address,
+  tokenOut: Address,
+  amountOut: bigint,
+  fee: number,
+): Promise<bigint> {
+  const dex = getDex(chainId);
+  if (amountOut <= 0n) return 0n;
+  const quoter = dex.quoter;
+  if (!quoter) throw new Error("No verified quoter for " + dex.name + " on chain " + chainId + "; exact-output quotes are not available there.");
+  return readOr(
+    async () => {
+      const { result } = await client.simulateContract({
+        address: quoter,
+        abi: quoterV2Abi,
+        functionName: "quoteExactOutputSingle",
+        args: [{ tokenIn, tokenOut, amount: amountOut, fee, sqrtPriceLimitX96: 0n }],
+      });
+      return result[0];
+    },
+    0n,
+    "quoteExactOut",
   );
 }

@@ -200,7 +200,8 @@ What it enforces, and why you must not paper over it:
 - **Unwind through the merge, not the pools.** To exit a split or fade position, buy back the legs you sold and
   merge the complete sets into collateral. On a $338 position this recovered all but $0.06, because your own
   sale had left those legs cheap. Selling the retained legs into their thin pools instead would have realised
-  about half. `npm run portfolio` marks positions the pessimistic way; the merge is the real exit.
+  about half. `npm run portfolio` marks positions the pessimistic way; the merge is the real exit. `npm run unwind` quotes both routes live and takes the better one, and `--sets`
+  unwinds a large fade in rounds when the buy-back money has to come out of the previous round's merge.
 - **Check the complete-set arbitrage first.** If a set costs less than 1 collateral to assemble, or sells for
   more than 1, that trade needs no forecast at all and should be taken before any opinion-based one.
 
@@ -341,6 +342,7 @@ RISKS      <the 2-3 things most likely to make this wrong>
 | `npm run plan -- <ref> --own <p,..> --weight <w> --bankroll <X>` | steps 3–4: reconcile, quote both routes at every size, apply limits, print the surviving trade |
 | `npm run fleet -- <fleet.json> --bankroll <X>` | several markets on one event sized as one position: common failure factor applied once, total exposure capped, correlated worst case reported |
 | `npm run trade -- <ref> --outcome <i> --route <direct\|split\|fade> --size <x> --expect-account 0x.. --dry-run\|--yes` | the only command that spends; human signs every transaction. Refuses a wrong wallet, a wrong network, or adding to an open position without `--allow-add`; writes its full output to `.trade-logs/` |
+| `npm run unwind -- <ref> --expect-account 0x.. [--sets <n>] --dry-run|--yes` | the exit before the oracle resolves: sells into the pools or buys back the sold leg and merges complete sets, whichever returns more; `--sets` unwinds a big position in rounds |
 | `npm run watch -- <market...> [--interval 60] [--for 7200]` | poll drained markets and exit the moment any pool has live liquidity again |
 | `npm run portfolio -- --account 0x.. [--filter zcash]` | open positions, marked at what they could really exit at |
 | `npm run redeem -- <ref> --yes` | cash in after the oracle finalizes |

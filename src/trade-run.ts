@@ -22,47 +22,10 @@ import { erc20FullAbi, getDex, quoteExactIn, seerRouterAbi, univ3RouterAbi } fro
 import { fetchSeerMarket, marketUrl, parseMarketRef } from "./seer-api.js";
 import { seerRouter, snapshot } from "./trade.js";
 import { sendAndWait } from "./tx.js";
-import { appendFileSync, mkdirSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { startRunLog } from "./runlog.js";
 
-// Every run is also appended to .trade-logs/ (ignored by git through *.log), so what the human saw in their
-// terminal can be read afterwards by whoever checks the run, instead of asking them to paste it. A crash that
-// Node would print straight to stderr is captured too, then the process exits exactly as it would have.
-const logDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", ".trade-logs");
-const logFile = path.join(logDir, new Date().toISOString().replace(/[:.]/g, "-") + "-" + process.pid + ".log");
-const logLine = (s: string) => {
-  try {
-    appendFileSync(logFile, s + "\n");
-  } catch {
-    /* logging must never break a trade */
-  }
-};
-try {
-  mkdirSync(logDir, { recursive: true });
-  logLine("# " + new Date().toISOString() + "  npm run trade -- " + process.argv.slice(2).join(" "));
-  for (const k of ["log", "error", "warn"] as const) {
-    const orig = console[k].bind(console);
-    console[k] = (...a: unknown[]) => {
-      orig(...a);
-      logLine(a.map((x) => (typeof x === "string" ? x : x instanceof Error ? x.stack ?? x.message : String(x))).join(" "));
-    };
-  }
-  process.on("uncaughtException", (e) => {
-    logLine("UNCAUGHT " + (e?.stack ?? String(e)));
-    process.stderr.write((e?.stack ?? String(e)) + "\n");
-    process.exit(1);
-  });
-  process.on("unhandledRejection", (e) => {
-    const err = e as Error | undefined;
-    logLine("UNHANDLED " + (err?.stack ?? String(e)));
-    process.stderr.write((err?.stack ?? String(e)) + "\n");
-    process.exit(1);
-  });
-  console.log("LOG      " + logFile);
-} catch {
-  /* no log directory: carry on without a file */
-}
+// Every run is mirrored into .trade-logs/ so what the human saw can be read afterwards (see runlog.ts).
+startRunLog("trade");
 
 const args = parseArgs(process.argv.slice(2));
 const ref = args._[0];

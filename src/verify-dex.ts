@@ -58,6 +58,14 @@ if (dex.kind === "univ3") {
   const withDeadline = toFunctionSelector("function exactInputSingle((address,address,uint24,address,uint256,uint256,uint256,uint160))").slice(2);
   ok("exactInputSingle without deadline (what dex.ts encodes)", code.includes(noDeadline));
   ok("exactInputSingle with deadline is NOT this router", !code.includes(withDeadline));
+  // unwind.ts buys back an exact number of tokens: the same no-deadline tuple shape, exact-output variant
+  const exactOut = toFunctionSelector("function exactOutputSingle((address,address,uint24,address,uint256,uint256,uint160))").slice(2);
+  ok("exactOutputSingle without deadline (what unwind.ts encodes)", code.includes(exactOut));
+  if (dex.quoter) {
+    const qcode = (await client.getCode({ address: dex.quoter })) ?? "0x";
+    ok("quoter answers quoteExactInputSingle", qcode.includes(toFunctionSelector("function quoteExactInputSingle((address,address,uint256,uint24,uint160))").slice(2)));
+    ok("quoter answers quoteExactOutputSingle (unwind.ts)", qcode.includes(toFunctionSelector("function quoteExactOutputSingle((address,address,uint256,uint24,uint160))").slice(2)));
+  }
 }
 
 console.log("");

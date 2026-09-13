@@ -11,6 +11,7 @@
     "plan": "tsx src/trade-plan.ts",
     "fleet": "tsx src/fleet.ts",
     "trade": "tsx src/trade-run.ts",
+    "unwind": "tsx src/unwind.ts",
     "watch": "tsx src/watch-liquidity.ts",
     "portfolio": "tsx src/portfolio.ts",
     "redeem": "tsx src/redeem.ts",
