@@ -49,12 +49,24 @@ $conhost = Join-Path $env:WINDIR "System32\conhost.exe"
 $user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 
 function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, [datetime[]] $Starts) {
-  # Written with plain schtasks.exe, one task per slot. Two other routes are refused on machines with
-  # behaviour-blocking security software (Bitdefender here answers "Access is denied" to both): the WMI one,
-  # Register-ScheduledTask, and schtasks /xml. The plain command line is left alone. schtasks takes a single
-  # /st, hence a task per slot, named SeerBot-<bot>-<HHmm>; run-pass.cmd cd's to its own folder, so the task
-  # needs no working directory. Settings then come from Windows defaults: overlapping starts are ignored, and
-  # a slot missed while the machine was off or on battery is skipped rather than caught up.
+  # Preferred route: one task with every slot as a trigger, and the settings that matter for a laptop that
+  # may be unplugged or asleep (start on battery, keep running unplugged, catch up a missed slot, ignore a
+  # second start, give up after 3 h).
+  #
+  # Fallback: plain schtasks.exe, one task per slot named SeerBot-<bot>-<HHmm>, on Windows defaults. It is
+  # there because behaviour-blocking security software (Bitdefender here) can answer "Access is denied" to
+  # the WMI route and to schtasks /xml while leaving the plain command line alone, and can delete tasks that
+  # were made through WMI. run-pass.cmd cd's to its own folder, so the fallback needs no working directory.
+  $triggers = @(foreach ($s in $Starts) { if ($TodayOnly) { New-ScheduledTaskTrigger -Once -At $s } else { New-ScheduledTaskTrigger -Daily -At $s } })
+  $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 3)
+  $principal = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
+  $action = New-ScheduledTaskAction -Execute $conhost -Argument $Argument -WorkingDirectory $Folder
+  try {
+    Register-ScheduledTask -TaskName $Name -Action $action -Trigger $triggers -Settings $settings -Principal $principal -Force -ErrorAction Stop | Out-Null
+    return
+  } catch {
+    Write-Warning ("$Name : Register-ScheduledTask was refused (" + $_.Exception.Message.Trim() + "); falling back to schtasks.exe with default settings.")
+  }
   $target = Join-Path $Folder "scriptsun-pass.cmd"
   $tr = $conhost + " " + ($Argument -replace [regex]::Escape("scriptsun-pass.cmd"), ('"' + $target + '"'))
   foreach ($s in $Starts) {
@@ -115,7 +127,9 @@ if ($SelfTest) {
   exit 0
 }
 
-# -File passes "-DailyAt now,21:00" as one string, so split on commas before resolving
+# -File passes a list as one string ("-Bots a,b" / "-DailyAt now,21:00"), so split on commas before use
+$Bots = @($Bots | ForEach-Object { $_ -split "," } | Where-Object { $_.Trim() } | ForEach-Object { $_.Trim() })
+# same for the times
 $slots = @($DailyAt | ForEach-Object { $_ -split "," } | Where-Object { $_.Trim() } | ForEach-Object { Resolve-DailyTime $_ })
 $i = 0
 foreach ($bot in $Bots) {
