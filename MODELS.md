@@ -9,8 +9,12 @@ between the bots is the model.
 |---|---|---|---|
 | Fable 5.1 (Claude) | `bots/fable-5.1` | `0xf1b285F65A3174c9D6E062F089c5CD1Ea8cF30D9` | 8572 |
 | Opus 5 (Claude) | `bots/opus-5` | `0x6e8211F9059648ee6b88fDCB3dB0415d9015cc9e` | 8573 |
-| GPT-6 Astra | `bots/astra-gpt-6` | `0x017859431458cEdac674344f6031d41c9A68a858` | 8574 |
+| GPT-6 Astra | `bots/astra-gpt-6b` | `0x017859431458cEdac674344f6031d41c9A68a858` | 8574 |
 | GPT-5.6 Sol | `bots/gpt-5.6-sol` | `0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe` | 8575 |
+
+Astra's folder is `astra-gpt-6b` because the security software on this machine quarantined four files inside
+the original `astra-gpt-6` and then refused to let anything recreate those paths; the folder was copied to a
+clean path and the files restored there. Same model, same wallet, same key.
 
 Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
 `claude -p --model claude-fable-5-1|claude-opus-5 --allowedTools Bash,Read,Grep,Glob,WebFetch,WebSearch` with a

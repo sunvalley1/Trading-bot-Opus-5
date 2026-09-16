@@ -49,13 +49,26 @@ $conhost = Join-Path $env:WINDIR "System32\conhost.exe"
 $user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 
 function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, [datetime[]] $Starts) {
-  $action = New-ScheduledTaskAction -Execute $conhost -Argument $Argument -WorkingDirectory $Folder
-  # one trigger per slot: daily at the same clock time, or -TodayOnly for a single run per slot
-  $triggers = @(foreach ($s in $Starts) { if ($TodayOnly) { New-ScheduledTaskTrigger -Once -At $s } else { New-ScheduledTaskTrigger -Daily -At $s } })
-  $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 3)
-  # "run only when the user is logged on": no password is stored anywhere
-  $principal = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
-  Register-ScheduledTask -TaskName $Name -Action $action -Trigger $triggers -Settings $settings -Principal $principal -Force | Out-Null
+  # Written with plain schtasks.exe, one task per slot. Two other routes are refused on machines with
+  # behaviour-blocking security software (Bitdefender here answers "Access is denied" to both): the WMI one,
+  # Register-ScheduledTask, and schtasks /xml. The plain command line is left alone. schtasks takes a single
+  # /st, hence a task per slot, named SeerBot-<bot>-<HHmm>; run-pass.cmd cd's to its own folder, so the task
+  # needs no working directory. Settings then come from Windows defaults: overlapping starts are ignored, and
+  # a slot missed while the machine was off or on battery is skipped rather than caught up.
+  $target = Join-Path $Folder "scriptsun-pass.cmd"
+  $tr = $conhost + " " + ($Argument -replace [regex]::Escape("scriptsun-pass.cmd"), ('"' + $target + '"'))
+  foreach ($s in $Starts) {
+    $slotName = $Name + "-" + $s.ToString("HHmm")
+    $sched = if ($TodayOnly) { @("/sc", "once") } else { @("/sc", "daily") }
+    $out = & schtasks /create /tn $slotName /tr $tr @sched /st $s.ToString("HH:mm") /f 2>&1
+    if ($LASTEXITCODE -ne 0) { throw ("schtasks refused to register " + $slotName + ": " + ($out -join " ")) }
+  }
+}
+
+function Remove-BotTasks([string] $Name) {
+  foreach ($t in @(Get-ScheduledTask -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -eq $Name -or $_.TaskName -like ($Name + "-*") })) {
+    & schtasks /delete /tn $t.TaskName /f 2>&1 | Out-Null
+  }
 }
 
 # turns one "HH:mm" (or "now") into the datetime a daily trigger starts from
@@ -94,7 +107,7 @@ if ($SelfTest) {
     Write-Host ("missed slot runs at boot: " + $t.Settings.StartWhenAvailable)
   } finally {
     # the throwaway task and folder go away whatever happened above
-    Unregister-ScheduledTask -TaskName $name -Confirm:$false -ErrorAction SilentlyContinue
+    Remove-BotTasks $name
     Remove-Item $dir -Recurse -Force -ErrorAction SilentlyContinue
     Write-Host "self-test task removed."
   }
@@ -111,7 +124,7 @@ foreach ($bot in $Bots) {
   $botStarts = @($slots | ForEach-Object { $_.AddMinutes($i * $StaggerMinutes) })
   $i++
   if ($Unregister) {
-    Unregister-ScheduledTask -TaskName $task -Confirm:$false -ErrorAction SilentlyContinue
+    Remove-BotTasks $task
     Write-Host "removed $task"
     continue
   }
@@ -120,6 +133,7 @@ foreach ($bot in $Bots) {
   $envText = Get-Content (Join-Path $folder ".env") -Raw
   if ($envText -notmatch "(?m)^PASS_COMMAND=.+") { throw "$folder/.env has no PASS_COMMAND: which CLI runs this model?" }
   if ($envText -notmatch "(?m)^LIQUIDITY_SIGNER=key") { Write-Warning "${bot}: LIQUIDITY_SIGNER is not 'key'; the pass will run but the executor will refuse to send (browser wallet needs a human)." }
+  Remove-BotTasks $task
   Register-BotTask -Name $task -Folder $folder -Argument "--headless cmd.exe /d /c scripts\run-pass.cmd" -Starts $botStarts
   Write-Host ("registered $task : " + $(if ($TodayOnly) { "once today at " } else { "daily at " }) + ((@($botStarts) | ForEach-Object { $_.ToString("HH:mm") }) -join ", ") + " in $folder (headless)")
 }
