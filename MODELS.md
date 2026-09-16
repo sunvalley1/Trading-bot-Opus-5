@@ -28,10 +28,20 @@ The experiment trades **exactly the 37 Zcash Q3 2026 Coinholder-Directed Retroac
 below, on Optimism (chain 10), and nothing else. Every folder's `.env` names them in `PASS_MARKET_LIST`, the
 pass prompt repeats them, and `npm run queue` refuses any other market.
 
-Each asks whether one grant is approved in the Q3 2026 CDRGP poll, which closes **2026-09-16 18:00 UTC**. The
-poll runs on the same Valar vote chain as NU7, but this round publishes only the abstain counts, so there is no
-live ballot split to read: an estimate has to come from the proposal itself, the amount asked, and the
-proposer's record. Reality.eth answers are open already (opening time 2026-08-19), with an 84 h timeout.
+Each asks whether one grant is approved in the Q3 2026 CDRGP poll. **Coinholder voting runs 17 to 29
+September 2026** (the programme's [call for proposals][cfp] gives the schedule: submissions closed 14 August,
+review 17 August to 16 September, voting 17 to 29 September). Approval needs a simple majority and at least
+about 420,000 ZEC of participation, roughly 2% of supply, on that proposal. Results follow the close, and the
+Seer markets carry an expected answer date of 30 September; Reality.eth answers are accepted from 19 August
+with an 84 h timeout.
+
+A round titled "[TEST] CDRGP Q3 2026 Grant Vote" ran on the Valar vote chain until 16 September 18:00 UTC with
+these same 37 proposals. It is a dry run, it does not decide anything, and its only public counts were
+abstentions. Do not read it as the poll. Until the real round opens, there is no live ballot split to lean on:
+an estimate has to come from the proposal, the amount asked, the proposer's record, and how comparable asks
+fared in earlier rounds.
+
+[cfp]: https://forum.zcashcommunity.com/t/call-for-proposals-coinholder-directed-retroactive-grants-program-q3/56885
 
 | Grant (asked in the Q3 2026 CDRGP poll) | Amount | Address |
 |---|---|---|
