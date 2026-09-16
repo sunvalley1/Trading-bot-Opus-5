@@ -1,7 +1,7 @@
 /**
  * `npm run queue -- add <market> --outcome <i> --route <direct|split|fade> --size <x> [--allow-add] [--note "..."]`
  * `npm run queue -- list`
- * `npm run queue -- execute [--dry-run | --yes] [--max-age-min 150] [--max 10]`
+ * `npm run queue -- execute [--dry-run | --yes] [--max-age-min 150] [--max 25]`
  *
  * The hand-off between a bot's pass and the money. A pass (an AI agent running the skill unattended) records
  * every trade it decided on with `add`; it never runs `npm run trade --yes` itself. `execute` is a plain script
@@ -159,7 +159,7 @@ if (cmd === "execute") {
     process.exit(2);
   }
   const maxAgeMin = Number(args["max-age-min"] ?? 150);
-  const max = Number(args.max ?? 10);
+  const max = Number(args.max ?? 25);
   if (!wallet || !isAddress(wallet, { strict: false })) {
     console.error("LIQUIDITY_WALLET is not set in .env: the executor refuses to guess which wallet it is trading.");
     process.exit(2);
