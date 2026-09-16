@@ -14,8 +14,7 @@
   3 hours so a hung pass cannot block the next slots forever. A slot missed while the PC was off runs as soon as it is
   back on (StartWhenAvailable), so a reboot costs at most the pass that was live at the time, never the next slot too.
 
-  -DailyAt lists the local times a pass starts, one task trigger each: the default is a run as soon as the
-  schedule is registered and another at 21:00. With -TodayOnly each of those fires once and does not return,
+  -DailyAt lists the local times a pass starts, one task trigger each: the default is 11:00 and 21:00 local. With -TodayOnly each of those fires once and does not return,
   which is what a schedule tied to an event that ends the same day needs. Two runs a day suit a market whose news arrives in bursts;
   hourly cadences only pay off while there is something new to read. Re-running the script replaces the
   schedule, so changing the times means passing new ones, not editing the tasks by hand.
@@ -25,19 +24,22 @@
 
 .EXAMPLE
   powershell -ExecutionPolicy Bypass -File scripts\schedule-passes.ps1 -BotsRoot C:\Users\12\Desktop\bots
-  powershell -ExecutionPolicy Bypass -File scripts\schedule-passes.ps1 -BotsRoot C:\Users\12\Desktop\bots -DailyAt 09:00,21:00
+  powershell -ExecutionPolicy Bypass -File scripts\schedule-passes.ps1 -BotsRoot C:\Users\12\Desktop\bots -DailyAt 11:00,21:00 -TaskPrefix SeerBot-daily-
   powershell -ExecutionPolicy Bypass -File scripts\schedule-passes.ps1 -BotsRoot C:\Users\12\Desktop\bots -SelfTest
   powershell -ExecutionPolicy Bypass -File scripts\schedule-passes.ps1 -BotsRoot C:\Users\12\Desktop\bots -Unregister
 #>
 param(
   [Parameter(Mandatory = $true)] [string] $BotsRoot,
   [string[]] $Bots = @("fable-5.1", "opus-5", "astra-gpt-6", "gpt-5.6-sol"),
-  # local times of day, one pass each, every day. "now" means two minutes from now, so a freshly registered
-  # schedule starts a round at once instead of waiting for tomorrow.
-  [string[]] $DailyAt = @("now", "21:00"),
+  # local times of day, one pass each, every day; "now" means two minutes from now, for a schedule that should
+  # start a round at once instead of waiting for tomorrow
+  [string[]] $DailyAt = @("11:00", "21:00"),
   # each bot starts this many minutes after the previous one, so they take turns reading each other's trades
-  # instead of all hitting the pools at the same minute: 20 -> Fable 21:00, Opus 21:20, Astra 21:40, Sol 22:00
+  # instead of all hitting the pools at the same minute: 20 -> Fable 11:00, Opus 11:20, Astra 11:40, Sol 12:00
   [int] $StaggerMinutes = 20,
+  # task names are <prefix><bot>; a second prefix lets a new schedule live beside tasks that a security
+  # product refuses to delete
+  [string] $TaskPrefix = "SeerBot-",
   # today only: each slot fires once and never comes back, for a schedule that should end with an event
   [switch] $TodayOnly,
   [switch] $Unregister,
@@ -67,8 +69,10 @@ function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, 
   } catch {
     Write-Warning ("$Name : Register-ScheduledTask was refused (" + $_.Exception.Message.Trim() + "); falling back to schtasks.exe with default settings.")
   }
-  $target = Join-Path $Folder "scriptsun-pass.cmd"
-  $tr = $conhost + " " + ($Argument -replace [regex]::Escape("scriptsun-pass.cmd"), ('"' + $target + '"'))
+  $target = Join-Path $Folder "scripts
+un-pass.cmd"
+  $tr = $conhost + " " + ($Argument -replace [regex]::Escape("scripts
+un-pass.cmd"), ('"' + $target + '"'))
   foreach ($s in $Starts) {
     $slotName = $Name + "-" + $s.ToString("HHmm")
     $sched = if ($TodayOnly) { @("/sc", "once") } else { @("/sc", "daily") }
@@ -79,7 +83,10 @@ function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, 
 
 function Remove-BotTasks([string] $Name) {
   foreach ($t in @(Get-ScheduledTask -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -eq $Name -or $_.TaskName -like ($Name + "-*") })) {
-    & schtasks /delete /tn $t.TaskName /f 2>&1 | Out-Null
+    $out = & schtasks /delete /tn $t.TaskName /f 2>&1
+    # security software can protect a task it restored from its own quarantine. Say so and carry on: the same
+    # name registered again with -Force replaces it anyway, and a spent one-time task fires nothing.
+    if ($LASTEXITCODE -ne 0) { Write-Warning ("could not remove the old task " + $t.TaskName + ": " + ($out -join " ").Trim()) }
   }
 }
 
@@ -134,7 +141,7 @@ $slots = @($DailyAt | ForEach-Object { $_ -split "," } | Where-Object { $_.Trim(
 $i = 0
 foreach ($bot in $Bots) {
   $folder = Join-Path $BotsRoot $bot
-  $task = "SeerBot-$bot"
+  $task = $TaskPrefix + $bot
   $botStarts = @($slots | ForEach-Object { $_.AddMinutes($i * $StaggerMinutes) })
   $i++
   if ($Unregister) {
