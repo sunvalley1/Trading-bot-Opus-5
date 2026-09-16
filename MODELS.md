@@ -86,9 +86,9 @@ folder and this table.
 4. **Positions are per wallet.** `npm run portfolio -- --account <your wallet>` is your book and nobody else's.
    Another bot holding the other side of a market is not a reason to trade or not to trade; only your own
    estimate and the price are.
-5. **Cadence.** Each bot runs a pass twice a day, at the times registered by `scripts/schedule-passes.ps1`
-   (a daytime slot and a 21:00 slot, the human's local time), staggered 20 minutes apart (Fable first, then
-   Opus, Astra and Sol), so each one reads the others' latest trades as prices and volume. Each pass is the whole skill from
+5. **Cadence.** Each bot runs a pass at the times registered by `scripts/schedule-passes.ps1` (`-DailyAt`,
+   the human's local time; while a poll is open that can be every two hours until it closes), staggered 20
+   minutes apart (Fable first, then Opus, Astra and Sol), so each one reads the others' latest trades as prices and volume. Each pass is the whole skill from
    step 0: look at the pools again (the other bots have moved them), re-check the research, re-estimate, and
    plan. A pass that finds nothing to do ends with "no trade"; that is a complete result and gets recorded like
    any other.

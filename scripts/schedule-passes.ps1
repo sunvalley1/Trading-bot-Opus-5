@@ -15,7 +15,8 @@
   back on (StartWhenAvailable), so a reboot costs at most the pass that was live at the time, never the next slot too.
 
   -DailyAt lists the local times a pass starts, one task trigger each: the default is a run as soon as the
-  schedule is registered and another at 21:00. Two runs a day suit a market whose news arrives in bursts;
+  schedule is registered and another at 21:00. With -TodayOnly each of those fires once and does not return,
+  which is what a schedule tied to an event that ends the same day needs. Two runs a day suit a market whose news arrives in bursts;
   hourly cadences only pay off while there is something new to read. Re-running the script replaces the
   schedule, so changing the times means passing new ones, not editing the tasks by hand.
 
@@ -37,6 +38,8 @@ param(
   # each bot starts this many minutes after the previous one, so they take turns reading each other's trades
   # instead of all hitting the pools at the same minute: 20 -> Fable 21:00, Opus 21:20, Astra 21:40, Sol 22:00
   [int] $StaggerMinutes = 20,
+  # today only: each slot fires once and never comes back, for a schedule that should end with an event
+  [switch] $TodayOnly,
   [switch] $Unregister,
   [switch] $SelfTest
 )
@@ -47,8 +50,8 @@ $user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 
 function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, [datetime[]] $Starts) {
   $action = New-ScheduledTaskAction -Execute $conhost -Argument $Argument -WorkingDirectory $Folder
-  # one daily trigger per slot: Windows fires each at the same clock time every day, so there is no drift
-  $triggers = @(foreach ($s in $Starts) { New-ScheduledTaskTrigger -Daily -At $s })
+  # one trigger per slot: daily at the same clock time, or -TodayOnly for a single run per slot
+  $triggers = @(foreach ($s in $Starts) { if ($TodayOnly) { New-ScheduledTaskTrigger -Once -At $s } else { New-ScheduledTaskTrigger -Daily -At $s } })
   $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 3)
   # "run only when the user is logged on": no password is stored anywhere
   $principal = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
@@ -118,7 +121,7 @@ foreach ($bot in $Bots) {
   if ($envText -notmatch "(?m)^PASS_COMMAND=.+") { throw "$folder/.env has no PASS_COMMAND: which CLI runs this model?" }
   if ($envText -notmatch "(?m)^LIQUIDITY_SIGNER=key") { Write-Warning "${bot}: LIQUIDITY_SIGNER is not 'key'; the pass will run but the executor will refuse to send (browser wallet needs a human)." }
   Register-BotTask -Name $task -Folder $folder -Argument "--headless cmd.exe /d /c scripts\run-pass.cmd" -Starts $botStarts
-  Write-Host ("registered $task : daily at " + ((@($botStarts) | ForEach-Object { $_.ToString("HH:mm") }) -join ", ") + " in $folder (headless)")
+  Write-Host ("registered $task : " + $(if ($TodayOnly) { "once today at " } else { "daily at " }) + ((@($botStarts) | ForEach-Object { $_.ToString("HH:mm") }) -join ", ") + " in $folder (headless)")
 }
 if (-not $Unregister) {
   Write-Host ""
