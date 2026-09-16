@@ -47,8 +47,9 @@ made by changing `PASS_MARKET_LIST` in every folder and this table.
 4. **Positions are per wallet.** `npm run portfolio -- --account <your wallet>` is your book and nobody else's.
    Another bot holding the other side of a market is not a reason to trade or not to trade; only your own
    estimate and the price are.
-5. **Cadence.** Each bot runs a pass every 2 hours, staggered 20 minutes apart (Fable :05, Opus :25, Astra
-   :45, Sol 1:05, then again two hours later), so each one reads the others' latest trades as prices and volume. Each pass is the whole skill from
+5. **Cadence.** Each bot runs a pass twice a day, at the times registered by `scripts/schedule-passes.ps1`
+   (a daytime slot and a 21:00 slot, the human's local time), staggered 20 minutes apart (Fable first, then
+   Opus, Astra and Sol), so each one reads the others' latest trades as prices and volume. Each pass is the whole skill from
    step 0: look at the pools again (the other bots have moved them), re-check the research, re-estimate, and
    plan. A pass that finds nothing to do ends with "no trade"; that is a complete result and gets recorded like
    any other.
@@ -65,8 +66,9 @@ script with no model in it: it runs the queued trades one at a time through `npm
 wallet as `--expect-account`, discards items older than 150 minutes as stale, and files every result under
 `.queue/`. Unattended execution needs `LIQUIDITY_SIGNER=key` and this wallet's `PRIVATE_KEY` in `.env`; with a
 browser wallet the executor prints the commands for the human instead. `scripts/schedule-passes.ps1`, run once
-by the human, registers a Windows task per folder that runs `npm run pass -- --execute` every 2 hours, the
-bots 20 minutes apart. Registering it is the human's decision; no model is ever the one pressing `--yes`.
+by the human, registers a Windows task per folder that runs `npm run pass -- --execute` at the times given in
+`-DailyAt` (two a day by default), the bots 20 minutes apart. Registering it is the human's decision; no model
+is ever the one pressing `--yes`.
 
 ## What the human keeps outside git
 

@@ -266,7 +266,7 @@ Re-quote immediately before executing. These pools are thin enough that an hour-
 
 Two different things are called a fleet here. One agent per market, below, is the orchestrator's tool for one
 model. Several models on the same markets is the comparison experiment: each model runs from its own folder
-with its own wallet (`MODELS.md`), every 2 hours and 20 minutes apart from the others, and never looks at another bot's folder or
+with its own wallet (`MODELS.md`), on the schedule set there and 20 minutes apart from the others, and never looks at another bot's folder or
 book. The other bots' trades reach you only as prices and volume, which is the point: read them through step 0
 like any other trader's. The markets in scope are fixed in `MODELS.md` and `PASS_MARKET_LIST`; a pass does not
 widen them.

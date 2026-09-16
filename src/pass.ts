@@ -11,7 +11,7 @@
  *   PASS_COMMAND=codex exec --full-auto
  * The prompt is written to stdin; a CLI that needs a file instead can use the placeholder {prompt_file}.
  *
- * This is the piece a scheduler calls every two hours. It never signs anything itself.
+ * This is the piece a scheduler calls on a fixed schedule (see scripts/schedule-passes.ps1). It never signs anything itself.
  */
 import { spawn, spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -32,7 +32,7 @@ const wallet = process.env.LIQUIDITY_WALLET;
 const passCommand = process.env.PASS_COMMAND;
 const chainId = parseChainId(process.env.CHAIN_ID);
 const markets = String(args.markets ?? process.env.PASS_MARKETS ?? "NU7|Zcash");
-// a full research pass with a high-reasoning model takes 30-60 minutes; the cadence is 2 hours, so 90 is safe
+// a full research pass with a high-reasoning model takes 30-60 minutes; the slots are hours apart, so 90 is safe
 const timeoutMin = Number(args["timeout-min"] ?? 90);
 
 if (!model || !wallet || !isAddress(wallet, { strict: false })) {
