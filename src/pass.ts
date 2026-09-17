@@ -33,7 +33,8 @@ const passCommand = process.env.PASS_COMMAND;
 const chainId = parseChainId(process.env.CHAIN_ID);
 const markets = String(args.markets ?? process.env.PASS_MARKETS ?? "NU7|Zcash");
 // a full research pass with a high-reasoning model takes 30-60 minutes; the slots are hours apart, so 90 is safe
-const timeoutMin = Number(args["timeout-min"] ?? 90);
+// a folder can set its own limit (PASS_TIMEOUT_MIN): a model working through a large scope in one context runs longer
+const timeoutMin = Number(args["timeout-min"] ?? process.env.PASS_TIMEOUT_MIN ?? 90);
 
 if (!model || !wallet || !isAddress(wallet, { strict: false })) {
   console.error("MODEL_NAME and a valid LIQUIDITY_WALLET must be set in .env (see MODELS.md). Refusing to run a pass for an anonymous folder.");

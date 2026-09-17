@@ -19,8 +19,10 @@ clean path and the files restored there. Same model, same wallet, same key.
 Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
 `claude -p --model claude-fable-5-1|claude-opus-5 --allowedTools Bash,Read,Grep,Glob,WebFetch,WebSearch` with a
 `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token`; the GPT bots run
-`codex exec -m gpt-6-astra|gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check`, signed in
-through the Codex app's ChatGPT login. Both read the pass prompt from stdin.
+`scripts\codex-app.cmd exec --disable multi_agent -m gpt-6-astra|gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox
+--skip-git-repo-check` (the Codex CLI shipped inside the Codex app), signed in through its ChatGPT login.
+Helper agents are off so a GPT pass, like a Claude pass, researches every market in one context; those folders
+also set `PASS_TIMEOUT_MIN=150`, because one context working through 37 markets runs longer than 90 minutes. Both read the pass prompt from stdin.
 
 ## Markets in scope
 
