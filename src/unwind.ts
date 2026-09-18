@@ -18,6 +18,10 @@
  * Tokens above the merged sets are sold as well; tokens of outcomes without a pool stay in the wallet. When
  * neither route returns anything, the command says so and sends nothing.
  *
+ * A conditional market unwinds into its collateral, which is the parent market's outcome token, not sDAI. The
+ * parent tokens minted alongside it are still in the wallet, so once every child position under that parent is
+ * closed they form complete sets again: `npm run unwind -- <parent> --merge-only` turns those back into sDAI.
+ *
  * Signing is the same as every other money command in this repository: nothing is sent without --yes, and
  * every transaction is confirmed by the human's wallet (or, in an experiment the human has chosen to run
  * unattended, by the key that human placed in this folder's .env). `--expect-account` is required for --yes.
@@ -26,9 +30,10 @@ import { formatUnits, getAddress, isAddress, isAddressEqual, type Abi, type Addr
 import { parseArgs } from "./args.js";
 import { getPublicClient, resolveSigner } from "./clients.js";
 import { CHAIN_NAMES, parseChainId } from "./config.js";
-import { erc20FullAbi, getDex, quoteExactIn, quoteExactOut, seerRouterAbi, univ3RouterAbi } from "./dex.js";
+import { erc20FullAbi, exactInCall, exactOutCall, getDex, quoteExactIn, quoteExactOut, seerRouterAbi } from "./dex.js";
 import { fetchSeerMarket, marketUrl, parseMarketRef } from "./seer-api.js";
 import { seerRouter, snapshot } from "./trade.js";
+import { simulateSequence, type PlannedCall } from "./simulate.js";
 import { sendAndWait } from "./tx.js";
 import { startRunLog } from "./runlog.js";
 
@@ -70,10 +75,6 @@ const marketAddress = (api?.id ?? getAddress(parsed.idOrSlug)) as Address;
 const client = getPublicClient(chainId, args.rpc as string | undefined);
 const snap = await snapshot(client, chainId, marketAddress);
 const dex = getDex(chainId);
-if (dex.kind !== "univ3") {
-  console.error("unwind is implemented for Uniswap v3 chains (Optimism). " + dex.name + " on chain " + chainId + " is not supported yet.");
-  process.exit(1);
-}
 if (snap.payoutReported) {
   console.error("This market is already resolved: use `npm run redeem -- " + marketAddress + " --chain " + chainId + "` instead.");
   process.exit(1);
@@ -81,6 +82,7 @@ if (snap.payoutReported) {
 
 console.log("MARKET   " + snap.name);
 console.log("         " + (api ? marketUrl(api) : "https://app.seer.pm/markets/" + chainId + "/" + marketAddress));
+if (snap.parent) console.log("PARENT   conditional on \"" + snap.parent.outcome + "\": this unwinds into " + snap.collateralSymbol + ", that outcome's token of " + snap.parent.market);
 console.log("");
 
 const signer = await resolveSigner(chainId, { signer: args.signer as string | undefined, rpc: args.rpc as string | undefined, account: args.account as string | undefined, dryRun, noBatch: !!args["no-batch"] });
@@ -256,12 +258,13 @@ try {
   if (route === "merge") {
     for (const b of buys) {
       const p = snap.pools[b.index];
+      const swap = exactOutCall(chainId, { tokenIn: snap.collateral, tokenOut: p.token, fee: p.fee, amountOut: b.amount, maxIn: up(b.quote) });
       legs.push({
         label: "buy back " + Number(formatUnits(b.amount, 18)).toFixed(2) + " " + snap.outcomes[b.index].slice(0, 30),
         address: dex.router,
-        abi: univ3RouterAbi,
-        functionName: "exactOutputSingle",
-        args: [{ tokenIn: snap.collateral, tokenOut: p.token, fee: p.fee, recipient: "" as Address, amountOut: b.amount, amountInMaximum: up(b.quote), sqrtPriceLimitX96: 0n }],
+        abi: swap.abi,
+        functionName: swap.functionName,
+        args: swap.args,
         approve: { token: snap.collateral, spender: dex.router, amount: up(b.quote), label: snap.collateralSymbol + " -> " + dex.name + " router" },
       });
     }
@@ -276,27 +279,30 @@ try {
         approve: { token: p.token, spender: router, amount: n, label: p.symbol + " -> Seer Router" },
       });
     }
-    legs.push({ label: "merge " + fmt(n) + " complete sets into " + snap.collateralSymbol, address: router, abi: seerRouterAbi, functionName: "mergePositions", args: [snap.collateral, snap.market, n] });
+    // the Router takes the ROOT collateral as its argument even when the merge pays out a parent outcome token
+    legs.push({ label: "merge " + fmt(n) + " complete sets into " + snap.collateralSymbol, address: router, abi: seerRouterAbi, functionName: "mergePositions", args: [snap.rootCollateral, snap.market, n] });
     for (const l of leftovers) {
       const p = snap.pools[l.index];
+      const swap = exactInCall(chainId, { tokenIn: p.token, tokenOut: snap.collateral, fee: p.fee, amountIn: l.amount, minOut: down(l.quote) });
       legs.push({
         label: "sell leftover " + Number(formatUnits(l.amount, 18)).toFixed(2) + " " + snap.outcomes[l.index].slice(0, 30),
         address: dex.router,
-        abi: univ3RouterAbi,
-        functionName: "exactInputSingle",
-        args: [{ tokenIn: p.token, tokenOut: snap.collateral, fee: p.fee, recipient: "" as Address, amountIn: l.amount, amountOutMinimum: down(l.quote), sqrtPriceLimitX96: 0n }],
+        abi: swap.abi,
+        functionName: swap.functionName,
+        args: swap.args,
         approve: { token: p.token, spender: dex.router, amount: l.amount, label: p.symbol + " -> " + dex.name + " router" },
       });
     }
   } else {
     for (const s of sells) {
       const p = snap.pools[s.index];
+      const swap = exactInCall(chainId, { tokenIn: p.token, tokenOut: snap.collateral, fee: p.fee, amountIn: s.amount, minOut: down(s.quote) });
       legs.push({
         label: "sell " + Number(formatUnits(s.amount, 18)).toFixed(2) + " " + snap.outcomes[s.index].slice(0, 30),
         address: dex.router,
-        abi: univ3RouterAbi,
-        functionName: "exactInputSingle",
-        args: [{ tokenIn: p.token, tokenOut: snap.collateral, fee: p.fee, recipient: "" as Address, amountIn: s.amount, amountOutMinimum: down(s.quote), sqrtPriceLimitX96: 0n }],
+        abi: swap.abi,
+        functionName: swap.functionName,
+        args: swap.args,
         approve: { token: p.token, spender: dex.router, amount: s.amount, label: p.symbol + " -> " + dex.name + " router" },
       });
     }
@@ -318,6 +324,34 @@ try {
 
   console.log("");
   console.log("LEGS     " + legs.filter((l) => !isMarker(l)).length + " transaction(s) plus approvals, reverting past --slippage " + slippageTol);
+
+  // The whole sequence in order, approvals included (see simulate.ts): a buy-back that fills and a merge that
+  // then reverts would leave the wallet with more tokens and less cash than it started with.
+  const sequence: PlannedCall[] = [];
+  for (const leg of legs) {
+    if (leg.approve) {
+      const allowance = await client.readContract({ address: leg.approve.token, abi: erc20FullAbi, functionName: "allowance", args: [account, leg.approve.spender] });
+      if (allowance < leg.approve.amount) sequence.push({ label: "approve " + leg.approve.label, address: leg.approve.token, abi: erc20FullAbi, functionName: "approve", args: [leg.approve.spender, leg.approve.amount] });
+    }
+    if (!isMarker(leg)) sequence.push({ label: leg.label, address: leg.address, abi: leg.abi, functionName: leg.functionName, args: withRecipient(leg) });
+  }
+  const sim = await simulateSequence(client, account, sequence);
+  if (sim.supported) {
+    console.log("");
+    console.log("SIMULATE the whole sequence in order, " + sequence.length + " call(s) with the approvals:");
+    for (const r of sim.results) console.log("  " + (r.ok ? "ok       " : "REVERTS  ") + r.label + (r.error ? "   <- " + r.error : ""));
+    if (sim.firstFailure >= 0) {
+      console.error("");
+      console.error("REFUSING: the sequence reverts at \"" + sim.results[sim.firstFailure].label + "\". Nothing was sent. Re-run for fresh quotes, or unwind in smaller --sets rounds.");
+      process.exit(1);
+    }
+    console.log("  every call succeeds");
+    if (dryRun) {
+      console.log("");
+      console.log("Dry run complete. Expected to return about +" + fmt(expectedNet) + " " + snap.collateralSymbol + ". Re-run with --yes to send, after a human has approved this plan.");
+      process.exit(0);
+    }
+  }
   if (dryRun) {
     console.log("");
     console.log("DRY RUN - simulating what can be simulated, sending nothing.");
@@ -364,6 +398,11 @@ try {
     }
   }
   if (!any) console.log("  none");
+  if (snap.parent) {
+    console.log("");
+    console.log("The proceeds are " + snap.collateralSymbol + " (parent outcome tokens). Once no other position under that parent needs them,");
+    console.log("turn complete parent sets back into " + snap.rootCollateralSymbol + ":  npm run unwind -- " + snap.parent.market + " --chain " + chainId + " --merge-only --dry-run");
+  }
 } finally {
   signer.close();
 }

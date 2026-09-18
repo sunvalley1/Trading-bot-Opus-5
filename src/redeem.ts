@@ -4,6 +4,9 @@
  * Cashes in outcome tokens after the oracle has finalized: winning tokens redeem 1:1 into collateral,
  * losing ones into nothing. Also the way out of an Invalid resolution, where every outcome pays pro rata.
  *
+ * A conditional market redeems into its collateral, the parent market's outcome token; redeem the parent
+ * afterwards (once it has resolved too) to turn that into sDAI. The command prints the follow-up.
+ *
  * Signed the same way as every other money command (MetaMask by default, human confirms).
  */
 import { formatUnits } from "viem";
@@ -66,7 +69,8 @@ try {
     process.exit(0);
   }
 
-  const call = { address: seerRouter(chainId), abi: seerRouterAbi, functionName: "redeemPositions", args: [snap.collateral, snap.market, indexes, amounts] } as const;
+  // the Router takes the ROOT collateral as its argument; for a conditional market it pays out the parent token
+  const call = { address: seerRouter(chainId), abi: seerRouterAbi, functionName: "redeemPositions", args: [snap.rootCollateral, snap.market, indexes, amounts] } as const;
   const before = await client.readContract({ address: snap.collateral, abi: erc20FullAbi, functionName: "balanceOf", args: [account] });
   if (dryRun) {
     await client.simulateContract({ ...call, account });
@@ -87,6 +91,7 @@ try {
   const after = await client.readContract({ address: snap.collateral, abi: erc20FullAbi, functionName: "balanceOf", args: [account] });
   console.log("");
   console.log("redeemed " + Number(formatUnits(after - before, snap.collateralDecimals)).toFixed(4) + " " + snap.collateralSymbol);
+  if (snap.parent) console.log("That is the parent's \"" + snap.parent.outcome + "\" token. Once the parent resolves:  npm run redeem -- " + snap.parent.market + " --chain " + chainId);
 } finally {
   signer.close();
 }

@@ -27,6 +27,10 @@ import { CHAINS, DEFAULT_RPC, SEER_ADDRESSES, type ChainId } from "./config.js";
 import { erc20FullAbi, getDex, poolActivity, quoteExactIn, readOutcomePool, type OutcomePool, type PoolActivity } from "./dex.js";
 import { readMarket } from "./market-view.js";
 
+const marketFactoryCollateralAbi = [
+  { type: "function", name: "collateralToken", stateMutability: "view", inputs: [], outputs: [{ type: "address" }] },
+] as const;
+
 // ---------------------------------------------------------------- snapshot
 
 export interface MarketSnapshot {
@@ -36,9 +40,25 @@ export interface MarketSnapshot {
   /** every outcome, Invalid included (Seer appends it) */
   outcomes: string[];
   invalidIndex: number;
+  /**
+   * What this market's outcome tokens trade against and what a complete set is minted from: the chain's
+   * collateral (sUSDS, sDAI) for an ordinary market, or ONE OUTCOME TOKEN OF THE PARENT MARKET for a conditional
+   * one. A conditional market's prices, sizes and costs are all in that parent token.
+   */
   collateral: Address;
   collateralSymbol: string;
   collateralDecimals: number;
+  /**
+   * The chain's root collateral, which the Seer Router always takes as its `collateralToken` argument: the
+   * conditional-tokens positions are keyed by it even when the tokens actually moved are parent outcome tokens.
+   * Equal to `collateral` for an ordinary market.
+   */
+  rootCollateral: Address;
+  rootCollateralSymbol: string;
+  /** Set for a conditional market: the parent market, the outcome this market is conditional on, and its token. */
+  parent?: { market: Address; outcomeIndex: number; outcome: string; token: Address; name: string; isRoot: boolean };
+  /** Set for a scalar market (DOWN/UP): the range the answer is mapped onto. UP pays (answer - lower) / (upper - lower). */
+  scalar?: { lower: bigint; upper: bigint };
   pools: OutcomePool[];
   /** raw pool prices, collateral per outcome token; undefined where there is no pool */
   spot: (number | undefined)[];
@@ -66,6 +86,27 @@ export async function snapshot(client: PublicClient, chainId: ChainId, market: A
     client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "symbol" }).catch(() => "?"),
     client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "decimals" }).catch(() => 18),
   ]);
+  const parentId = info.parentMarket.id as Address;
+  let parent: MarketSnapshot["parent"];
+  let rootCollateral = collateral;
+  let rootCollateralSymbol = collateralSymbol;
+  if (!isAddressEqual(parentId, zeroAddress)) {
+    // a conditional market: its collateral is the parent's outcome token; the Router still wants the root collateral
+    rootCollateral = (await client.readContract({ address: SEER_ADDRESSES[chainId].MarketFactory, abi: marketFactoryCollateralAbi, functionName: "collateralToken" })) as Address;
+    rootCollateralSymbol = await client.readContract({ address: rootCollateral, abi: erc20FullAbi, functionName: "symbol" }).catch(() => "?");
+    const parentInfo = await readMarket(client, chainId, parentId);
+    const outcomeIndex = Number(info.parentOutcome);
+    parent = {
+      market: parentId,
+      outcomeIndex,
+      outcome: parentInfo.outcomes[outcomeIndex] ?? "?",
+      token: collateral,
+      name: parentInfo.marketName,
+      isRoot: isAddressEqual(parentInfo.parentMarket.id as Address, zeroAddress),
+    };
+  }
+  // Seer's scalar markets are the two-outcome DOWN/UP ones with a range; Reality template 1 is "uint"
+  const scalar = Number(info.templateId) === 1 && info.upperBound > info.lowerBound ? { lower: info.lowerBound, upper: info.upperBound } : undefined;
   const pools: OutcomePool[] = [];
   for (const [i, token] of info.wrappedTokens.entries()) {
     pools.push(await readOutcomePool(client, chainId, i, outcomes[i] ?? "?", token, collateral));
@@ -82,6 +123,10 @@ export async function snapshot(client: PublicClient, chainId: ChainId, market: A
     collateral,
     collateralSymbol,
     collateralDecimals: Number(collateralDecimals),
+    rootCollateral,
+    rootCollateralSymbol,
+    parent,
+    scalar,
     pools,
     spot,
     implied,
@@ -434,6 +479,21 @@ export function describeSnapshot(snap: MarketSnapshot): string {
   lines.push(snap.name);
   lines.push("");
   lines.push("collateral " + snap.collateralSymbol + " " + snap.collateral + (snap.payoutReported ? "   [PAYOUT ALREADY REPORTED]" : ""));
+  if (snap.parent) {
+    lines.push("CONDITIONAL on \"" + snap.parent.outcome + "\" (outcome " + snap.parent.outcomeIndex + ") of the parent market " + snap.parent.market);
+    lines.push("           \"" + snap.parent.name + "\"");
+    lines.push("           The collateral is that outcome's token, minted 1:1 from " + snap.rootCollateralSymbol + " by splitting the parent. Every price and size");
+    lines.push("           here is in it, and a position here only pays or costs anything if \"" + snap.parent.outcome + "\" wins the parent.");
+  }
+  if (snap.scalar) {
+    const lo = Number(formatUnits(snap.scalar.lower, 18));
+    const hi = Number(formatUnits(snap.scalar.upper, 18));
+    const down = snap.outcomes.findIndex((o) => /^down$/i.test(o));
+    const up = snap.outcomes.findIndex((o) => /^up$/i.test(o));
+    const pUp = down >= 0 && up >= 0 && (snap.spot[down] ?? 0) + (snap.spot[up] ?? 0) > 0 ? (snap.spot[up] ?? 0) / ((snap.spot[down] ?? 0) + (snap.spot[up] ?? 0)) : undefined;
+    lines.push("SCALAR     range " + lo + " .. " + hi + ": each UP token pays (answer - " + lo + ") / " + (hi - lo) + ", clamped to 0..1; each DOWN token pays the rest.");
+    lines.push("           Not a yes/no bet: a price is the market's expected payout, not a probability." + (pUp !== undefined ? " UP at " + pUp.toFixed(4) + " of the pair means an expected answer of about " + (lo + pUp * (hi - lo)).toFixed(2) + "." : ""));
+  }
   lines.push("");
   lines.push("#  " + "outcome".padEnd(w) + "   spot   implied  pool depth (outcome / collateral)   pool");
   for (const p of snap.pools) {

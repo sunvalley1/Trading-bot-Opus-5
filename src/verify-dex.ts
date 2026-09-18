@@ -8,7 +8,8 @@
  * Checks:
  *   1. every configured address has code
  *   2. the routers expose exactly the function selectors we encode (SwapRouter02 has no deadline field;
- *      SwapRouter v1 does - getting this backwards silently mis-encodes every swap)
+ *      SwapRouter v1 does - getting this backwards silently mis-encodes every swap; Algebra's router on Gnosis
+ *      has a deadline and no fee on exact-input), and the quoter belongs to the same factory
  *   3. the Seer Router exposes splitPosition / mergePositions / redeemPositions
  *   4. the Seer Router's conditionalTokens matches what the market factory was configured with
  *   5. the quoter actually answers for a real Seer pool
@@ -17,7 +18,7 @@ import { toFunctionSelector, type Address } from "viem";
 import { parseArgs } from "./args.js";
 import { getPublicClient } from "./clients.js";
 import { CHAIN_NAMES, parseChainId, SEER_ADDRESSES } from "./config.js";
-import { erc20FullAbi, getDex, quoteExactIn, univ3FactoryAbi, univ3PoolAbi } from "./dex.js";
+import { erc20FullAbi, getDex, quoteExactIn, readOutcomePool } from "./dex.js";
 import { searchSeerMarkets } from "./seer-api.js";
 
 const args = parseArgs(process.argv.slice(2));
@@ -66,6 +67,22 @@ if (dex.kind === "univ3") {
     ok("quoter answers quoteExactInputSingle", qcode.includes(toFunctionSelector("function quoteExactInputSingle((address,address,uint256,uint24,uint160))").slice(2)));
     ok("quoter answers quoteExactOutputSingle (unwind.ts)", qcode.includes(toFunctionSelector("function quoteExactOutputSingle((address,address,uint256,uint24,uint160))").slice(2)));
   }
+} else {
+  // Algebra (Swapr v3 on Gnosis): what dex.ts's algebraRouterAbi / algebraQuoterAbi encode
+  const code = (await client.getCode({ address: dex.router })) ?? "0x";
+  ok("exactInputSingle with deadline, no fee (what dex.ts encodes)", code.includes(toFunctionSelector("function exactInputSingle((address,address,address,uint256,uint256,uint256,uint160))").slice(2)));
+  ok("exactOutputSingle with fee and deadline (what unwind.ts encodes)", code.includes(toFunctionSelector("function exactOutputSingle((address,address,uint24,address,uint256,uint256,uint256,uint160))").slice(2)));
+  ok("the Uniswap-shaped exactInputSingle is NOT this router", !code.includes(toFunctionSelector("function exactInputSingle((address,address,uint24,address,uint256,uint256,uint160))").slice(2)));
+  if (dex.quoter) {
+    const qcode = (await client.getCode({ address: dex.quoter })) ?? "0x";
+    ok("quoter answers quoteExactInputSingle (flat arguments)", qcode.includes(toFunctionSelector("function quoteExactInputSingle(address,address,uint256,uint160)").slice(2)));
+    ok("quoter answers quoteExactOutputSingle (flat arguments)", qcode.includes(toFunctionSelector("function quoteExactOutputSingle(address,address,uint256,uint160)").slice(2)));
+    const factoryAbi = [{ type: "function", name: "factory", stateMutability: "view", inputs: [], outputs: [{ type: "address" }] }] as const;
+    const qf = await client.readContract({ address: dex.quoter, abi: factoryAbi, functionName: "factory" }).catch(() => undefined);
+    ok("quoter.factory() is the AMM factory above", !!qf && qf.toLowerCase() === dex.factory.toLowerCase(), qf ?? "no answer");
+  } else {
+    ok("a quoter is configured", false, "none in dex.ts: quotes, plans and unwinds cannot run on this chain");
+  }
 }
 
 console.log("");
@@ -100,20 +117,16 @@ for (const m of sample) {
   if (sampled) break;
   if (!m.wrappedTokens?.length) continue;
   const collateral = m.collateralToken;
-  for (const token of m.wrappedTokens) {
+  for (const [i, token] of m.wrappedTokens.entries()) {
     if (sampled) break;
-    for (const tier of dex.feeTiers) {
-      const pool = await client.readContract({ address: dex.factory, abi: univ3FactoryAbi, functionName: "getPool", args: [token, collateral, tier] });
-      if (pool === "0x0000000000000000000000000000000000000000") continue;
-      const liq = await client.readContract({ address: pool, abi: univ3PoolAbi, functionName: "liquidity" }).catch(() => 0n);
-      if (liq === 0n) continue;
-      const bal = await client.readContract({ address: token, abi: erc20FullAbi, functionName: "balanceOf", args: [pool] });
-      ok("factory resolves a funded pool (" + m.marketName.slice(0, 34) + ")", true, "fee " + tier + ", holds " + (Number(bal) / 1e18).toFixed(2) + " outcome tokens");
-      const q = await quoteExactIn(client, chainId, collateral, token, 10n ** 18n, tier);
-      ok("quoter answers for that pool", q > 0n, q > 0n ? "1 collateral -> " + (Number(q) / 1e18).toFixed(4) + " tokens" : "returned 0");
-      sampled = true;
-      break;
-    }
+    // readOutcomePool finds the pool the way trading does: getPool per fee tier on Uniswap, poolByPair on Algebra
+    const pool = await readOutcomePool(client, chainId, i, m.outcomes[i] ?? "?", token, collateral).catch(() => undefined);
+    if (!pool?.exists || pool.liquidity === 0n) continue;
+    const bal = await client.readContract({ address: token, abi: erc20FullAbi, functionName: "balanceOf", args: [pool.pool] });
+    ok("factory resolves a funded pool (" + m.marketName.slice(0, 34) + ")", true, (dex.kind === "univ3" ? "fee " + pool.fee + ", " : "") + "holds " + (Number(bal) / 1e18).toFixed(2) + " outcome tokens");
+    const q = await quoteExactIn(client, chainId, collateral, token, 10n ** 18n, pool.fee);
+    ok("quoter answers for that pool", q > 0n, q > 0n ? "1 collateral -> " + (Number(q) / 1e18).toFixed(4) + " tokens" : "returned 0");
+    sampled = true;
   }
 }
 if (!sampled) {

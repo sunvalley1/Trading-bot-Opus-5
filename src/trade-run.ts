@@ -10,17 +10,26 @@
  * human confirms every single transaction in their own wallet - this tool builds, simulates and submits, it
  * never holds the keys to a trading wallet. Start `npm run signer` once per session first.
  *
- * Safety: every leg is simulated before it is sent, `amountOutMinimum` is derived from a live quote and the
- * `--slippage` tolerance (so a sandwiched or moved pool reverts instead of filling badly), and nothing is
- * sent at all without `--yes`.
+ * Conditional markets: the outcome tokens trade against one outcome token of the parent market, so every size
+ * and price here is in that parent token. When the wallet holds fewer parent tokens than the trade spends, the
+ * shortfall is minted first by splitting the root collateral (sDAI) into the parent's complete sets: that gives
+ * one of EVERY parent outcome per sDAI, so the other parent tokens stay in the wallet. Together they pay the sDAI
+ * back in every world except the one this market is conditional on, which is exactly the conditional bet.
+ *
+ * Safety: the whole sequence of legs, approvals included, is simulated in order before anything is sent (where
+ * the RPC serves eth_simulateV1; see simulate.ts), so a trade that would fail part-way is refused before its
+ * first leg is mined; every leg is simulated again just before it is sent; `amountOutMinimum` is derived from a
+ * live quote and the `--slippage` tolerance (so a sandwiched or moved pool reverts instead of filling badly);
+ * and nothing is sent at all without `--yes`.
  */
 import { formatUnits, getAddress, isAddress, isAddressEqual, parseUnits, type Abi, type Address } from "viem";
 import { parseArgs } from "./args.js";
 import { getPublicClient, resolveSigner } from "./clients.js";
 import { CHAIN_NAMES, parseChainId, type ChainId } from "./config.js";
-import { erc20FullAbi, getDex, quoteExactIn, seerRouterAbi, univ3RouterAbi } from "./dex.js";
+import { erc20FullAbi, exactInCall, getDex, quoteExactIn, seerRouterAbi } from "./dex.js";
 import { fetchSeerMarket, marketUrl, parseMarketRef } from "./seer-api.js";
 import { seerRouter, snapshot } from "./trade.js";
+import { simulateSequence, type PlannedCall } from "./simulate.js";
 import { sendAndWait } from "./tx.js";
 import { startRunLog } from "./runlog.js";
 
@@ -88,6 +97,19 @@ console.log("MARKET   " + snap.name);
 console.log("         " + (api ? marketUrl(api) : "https://app.seer.pm/markets/" + chainId + "/" + marketAddress));
 console.log("ROUTE    " + route + "   target outcome [" + target + "] " + snap.outcomes[target]);
 console.log("SIZE     " + formatUnits(size, snap.collateralDecimals) + (route === "direct" ? " " + snap.collateralSymbol + " spent" : " complete sets minted"));
+if (snap.parent) {
+  console.log("PARENT   conditional on \"" + snap.parent.outcome + "\" in " + snap.parent.name);
+  console.log("         " + snap.parent.market + "   collateral here is that outcome's token " + snap.collateralSymbol + ", minted 1:1 from " + snap.rootCollateralSymbol);
+  if (!snap.parent.isRoot) {
+    console.error("The parent market is itself conditional. Minting through two levels of parents is not supported here.");
+    process.exit(1);
+  }
+}
+if (snap.scalar) {
+  const lo = formatUnits(snap.scalar.lower, 18);
+  const hi = formatUnits(snap.scalar.upper, 18);
+  console.log("SCALAR   range " + lo + " .. " + hi + ": UP pays (answer - " + lo + ") / (" + hi + " - " + lo + ") per token, clamped to 0..1; DOWN pays the rest");
+}
 console.log("");
 
 // ---------------------------------------------------------------- build the legs
@@ -121,12 +143,13 @@ if (route === "direct") {
   console.log("QUOTE    " + formatUnits(size, snap.collateralDecimals) + " " + snap.collateralSymbol + " -> " + Number(formatUnits(quoted, 18)).toFixed(4) + " " + pool.symbol);
   console.log("         average fill " + avg.toFixed(4) + " vs spot " + (pool.price ?? 0).toFixed(4) + "  (" + (((avg / (pool.price ?? avg)) - 1) * 100).toFixed(1) + "% slippage)");
   console.log("         reverts below " + Number(formatUnits(minOut, 18)).toFixed(4) + " tokens (--slippage " + slippageTol + ")");
+  const swap = exactInCall(chainId, { tokenIn: snap.collateral, tokenOut: pool.token, fee: pool.fee, amountIn: size, minOut });
   legs.push({
     label: "buy " + snap.outcomes[target],
     address: dex.router,
-    abi: univ3RouterAbi,
-    functionName: "exactInputSingle",
-    args: [{ tokenIn: snap.collateral, tokenOut: pool.token, fee: pool.fee, recipient: "" as Address, amountIn: size, amountOutMinimum: minOut, sqrtPriceLimitX96: 0n }],
+    abi: swap.abi,
+    functionName: swap.functionName,
+    args: swap.args,
     approve: { token: snap.collateral, spender: dex.router, amount: size, label: snap.collateralSymbol + " -> " + dex.name + " router" },
   });
 } else {
@@ -135,7 +158,7 @@ if (route === "direct") {
     address: router,
     abi: seerRouterAbi,
     functionName: "splitPosition",
-    args: [snap.collateral, snap.market, size],
+    args: [snap.rootCollateral, snap.market, size],
     approve: { token: snap.collateral, spender: router, amount: size, label: snap.collateralSymbol + " -> Seer Router" },
   });
   let proceeds = 0n;
@@ -159,12 +182,13 @@ if (route === "direct") {
     proceeds += quoted;
     const minOut = (quoted * BigInt(Math.round((1 - slippageTol) * 10_000))) / 10_000n;
     console.log("  sell " + Number(formatUnits(size, 18)).toFixed(4) + " " + pool.symbol.padEnd(12) + " -> " + Number(formatUnits(quoted, snap.collateralDecimals)).toFixed(4) + " " + snap.collateralSymbol + "  (" + (Number(formatUnits(quoted, 18)) / Number(formatUnits(size, 18))).toFixed(4) + " each, spot " + (pool.price ?? 0).toFixed(4) + ")");
+    const swap = exactInCall(chainId, { tokenIn: pool.token, tokenOut: snap.collateral, fee: pool.fee, amountIn: size, minOut });
     legs.push({
       label: "sell " + snap.outcomes[pool.index],
       address: dex.router,
-      abi: univ3RouterAbi,
-      functionName: "exactInputSingle",
-      args: [{ tokenIn: pool.token, tokenOut: snap.collateral, fee: pool.fee, recipient: "" as Address, amountIn: size, amountOutMinimum: minOut, sqrtPriceLimitX96: 0n }],
+      abi: swap.abi,
+      functionName: swap.functionName,
+      args: swap.args,
       approve: { token: pool.token, spender: dex.router, amount: size, label: pool.symbol + " -> " + dex.name + " router" },
     });
   }
@@ -178,7 +202,7 @@ if (route === "direct") {
     .filter((pl) => (route === "fade" ? pl.index !== target : pl.index === target))
     .reduce((a, pl) => a + (snap.spot[pl.index] ?? 0), 0);
   console.log("         average fill " + avg.toFixed(4) + " vs " + bundleSpot.toFixed(4) + " for the same bundle at spot  (" + (bundleSpot > 0 ? ((avg / bundleSpot - 1) * 100).toFixed(1) + "% slippage" : "no spot reference") + ")");
-  console.log("         position pays out if: " + kept.join(" or "));
+  console.log("         position pays out if: " + kept.join(" or ") + (snap.scalar ? "   (scalar: DOWN and UP each pay their share of the range, not all-or-nothing)" : ""));
 }
 
 console.log("");
@@ -243,9 +267,29 @@ try {
 
   // balance check before anything else
   const balance = await client.readContract({ address: snap.collateral, abi: erc20FullAbi, functionName: "balanceOf", args: [account] });
-  const needed = route === "direct" ? size : size;
+  const needed = size;
   console.log("BALANCE  " + Number(formatUnits(balance, snap.collateralDecimals)).toFixed(4) + " " + snap.collateralSymbol + "   needed " + Number(formatUnits(needed, snap.collateralDecimals)).toFixed(4));
-  if (balance < needed) {
+  let rootBefore: bigint | undefined;
+  if (balance < needed && snap.parent) {
+    // mint the missing parent tokens: split root collateral into the parent's complete sets
+    const shortfall = needed - balance;
+    rootBefore = await client.readContract({ address: snap.rootCollateral, abi: erc20FullAbi, functionName: "balanceOf", args: [account] });
+    console.log("         " + snap.rootCollateralSymbol + " " + Number(formatUnits(rootBefore, snap.collateralDecimals)).toFixed(4) + " available to mint the missing " + Number(formatUnits(shortfall, snap.collateralDecimals)).toFixed(4) + " " + snap.collateralSymbol);
+    if (rootBefore < shortfall) {
+      console.error("Not enough " + snap.rootCollateralSymbol + " in " + account + " to mint the parent tokens this trade needs. Fund it or lower --size.");
+      process.exit(1);
+    }
+    legs.unshift({
+      label: "split " + formatUnits(shortfall, snap.collateralDecimals) + " " + snap.rootCollateralSymbol + " into the parent's complete sets",
+      address: router,
+      abi: seerRouterAbi,
+      functionName: "splitPosition",
+      args: [snap.rootCollateral, snap.parent.market, shortfall],
+      approve: { token: snap.rootCollateral, spender: router, amount: shortfall, label: snap.rootCollateralSymbol + " -> Seer Router" },
+    });
+    console.log("         a first leg mints them: one of every parent outcome per " + snap.rootCollateralSymbol + "; the other parent tokens stay in the wallet");
+    console.log("LEGS     now " + legs.length + " transaction(s) plus approvals");
+  } else if (balance < needed) {
     console.error("Not enough " + snap.collateralSymbol + " in " + account + ". Fund it or lower --size.");
     process.exit(1);
   }
@@ -275,24 +319,53 @@ try {
     console.log("    --allow-add given: adding to the position on purpose.");
   }
 
+  const withRecipient = (leg: Leg) => leg.args.map((a) => (typeof a === "object" && a !== null && "recipient" in (a as object) ? { ...(a as Record<string, unknown>), recipient: account } : a));
+
+  // The sequence exactly as it will be sent: every approval that is still missing, each before its leg.
   if (dryRun) {
     console.log("");
-    console.log("DRY RUN - simulating every leg, sending nothing.");
-    for (const leg of legs) {
-      const callArgs = leg.args.map((a) => (typeof a === "object" && a !== null && "recipient" in (a as object) ? { ...(a as Record<string, unknown>), recipient: account } : a));
-      if (leg.approve) {
-        const allowance = await client.readContract({ address: leg.approve.token, abi: erc20FullAbi, functionName: "allowance", args: [account, leg.approve.spender] });
-        console.log("  approve  " + leg.approve.label.padEnd(40) + (allowance >= leg.approve.amount ? "already sufficient" : "needed (" + Number(formatUnits(leg.approve.amount, 18)).toFixed(4) + ")"));
-      }
-      try {
-        await client.simulateContract({ address: leg.address, abi: leg.abi, functionName: leg.functionName, args: callArgs, account });
-        console.log("  simulate " + leg.label.padEnd(40) + "ok");
-      } catch (e) {
-        // a leg that depends on a previous leg's output cannot simulate standalone (the tokens do not exist yet)
-        const msg = (e as Error).message.split("\n")[0];
-        console.log("  simulate " + leg.label.padEnd(40) + "not simulatable standalone: " + msg.slice(0, 90));
-      }
+    console.log("DRY RUN - sending nothing.");
+  }
+  const sequence: PlannedCall[] = [];
+  for (const leg of legs) {
+    if (leg.approve) {
+      const allowance = await client.readContract({ address: leg.approve.token, abi: erc20FullAbi, functionName: "allowance", args: [account, leg.approve.spender] });
+      if (dryRun) console.log("  approve  " + leg.approve.label.padEnd(44) + " " + (allowance >= leg.approve.amount ? "already sufficient" : "needed (" + Number(formatUnits(leg.approve.amount, 18)).toFixed(4) + ")"));
+      if (allowance < leg.approve.amount) sequence.push({ label: "approve " + leg.approve.label, address: leg.approve.token, abi: erc20FullAbi, functionName: "approve", args: [leg.approve.spender, leg.approve.amount] });
     }
+    sequence.push({ label: leg.label, address: leg.address, abi: leg.abi, functionName: leg.functionName, args: withRecipient(leg) });
+  }
+  console.log("");
+  console.log("SIMULATE the whole sequence in order, " + sequence.length + " call(s) with the approvals, against the current chain state:");
+  const sim = await simulateSequence(client, account, sequence);
+  if (sim.supported) {
+    for (const r of sim.results) console.log("  " + (r.ok ? "ok       " : "REVERTS  ") + r.label + (r.error ? "   <- " + r.error : ""));
+    if (sim.firstFailure >= 0) {
+      console.error("");
+      console.error("REFUSING: the sequence reverts at \"" + sim.results[sim.firstFailure].label + "\". Nothing was sent. A trade that fails part-way");
+      console.error("leaves the wallet holding half of it, so no leg of this one goes out. Re-plan from fresh quotes.");
+      process.exit(1);
+    }
+    console.log("  every call succeeds");
+  } else {
+    console.log("  eth_simulateV1 is not available on this RPC (" + sim.unsupportedReason + ").");
+    if (dryRun) {
+      console.log("  Simulating each leg on its own instead; a leg that needs an earlier leg's tokens cannot pass this way.");
+      for (const leg of legs) {
+        try {
+          await client.simulateContract({ address: leg.address, abi: leg.abi, functionName: leg.functionName, args: withRecipient(leg), account });
+          console.log("  simulate " + leg.label.padEnd(40) + "ok");
+        } catch (e) {
+          // a leg that depends on a previous leg's output cannot simulate standalone (the tokens do not exist yet)
+          const msg = (e as Error).message.split("\n")[0];
+          console.log("  simulate " + leg.label.padEnd(40) + "not simulatable standalone: " + msg.slice(0, 90));
+        }
+      }
+    } else {
+      console.log("  Each leg is still simulated on its own just before it is sent.");
+    }
+  }
+  if (dryRun) {
     console.log("");
     console.log("Dry run complete. Re-run with --yes to send, after a human has approved this plan.");
     process.exit(0);
@@ -306,8 +379,7 @@ try {
         await sendAndWait(walletClient, client, chainId, { address: leg.approve.token, abi: erc20FullAbi, functionName: "approve", args: [leg.approve.spender, leg.approve.amount] }, "approve " + leg.approve.label, (l) => console.log(l));
       }
     }
-    const callArgs = leg.args.map((a) => (typeof a === "object" && a !== null && "recipient" in (a as object) ? { ...(a as Record<string, unknown>), recipient: account } : a));
-    await sendAndWait(walletClient, client, chainId, { address: leg.address, abi: leg.abi, functionName: leg.functionName, args: callArgs }, leg.label, (l) => console.log(l));
+    await sendAndWait(walletClient, client, chainId, { address: leg.address, abi: leg.abi, functionName: leg.functionName, args: withRecipient(leg) }, leg.label, (l) => console.log(l));
   }
 
   console.log("");
@@ -318,8 +390,13 @@ try {
   }
   const after = await client.readContract({ address: snap.collateral, abi: erc20FullAbi, functionName: "balanceOf", args: [account] });
   console.log("  " + snap.collateralSymbol.padEnd(56) + Number(formatUnits(after, snap.collateralDecimals)).toFixed(4) + "   (was " + Number(formatUnits(balance, snap.collateralDecimals)).toFixed(4) + ")");
+  if (snap.parent) {
+    const rootAfter = await client.readContract({ address: snap.rootCollateral, abi: erc20FullAbi, functionName: "balanceOf", args: [account] });
+    console.log("  " + snap.rootCollateralSymbol.padEnd(56) + Number(formatUnits(rootAfter, snap.collateralDecimals)).toFixed(4) + (rootBefore !== undefined ? "   (was " + Number(formatUnits(rootBefore, snap.collateralDecimals)).toFixed(4) + ")" : ""));
+    console.log("  (the other outcome tokens of the parent market, minted alongside, are in the wallet too)");
+  }
   console.log("");
-  console.log("Redeem after the oracle finalizes:  npm run redeem -- " + marketAddress + " --chain " + chainId);
+  console.log("Redeem after the oracle finalizes:  npm run redeem -- " + marketAddress + " --chain " + chainId + (snap.parent ? "   (then the parent: npm run redeem -- " + snap.parent.market + " --chain " + chainId + ")" : ""));
 } finally {
   signer.close();
 }

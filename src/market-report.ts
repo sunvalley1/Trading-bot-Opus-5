@@ -36,6 +36,18 @@ const snap = await snapshot(client, chainId, api.id);
 
 console.log(describeSnapshot(snap));
 console.log("");
+if (snap.parent) {
+  // the chance the condition holds, per the parent's own pools: it scales everything this market can win or lose
+  try {
+    const ps = await snapshot(client, chainId, snap.parent.market);
+    const pool = ps.pools[snap.parent.outcomeIndex];
+    console.log("PARENT     \"" + snap.parent.outcome + "\" trades at " + (pool?.exists ? (pool.price ?? 0).toFixed(4) + " " + ps.collateralSymbol + " (" + ((ps.implied[snap.parent.outcomeIndex] ?? 0) * 100).toFixed(1) + "% implied)" : "no pool") + " in the parent" + (ps.tradeable ? "" : " (parent pools drained)"));
+    console.log("           A trade here risks its stake only in that world: in every other one the stake comes back as the other parent tokens.");
+  } catch (e) {
+    console.log("PARENT     could not read the parent market: " + (e as Error).message.split("\n")[0]);
+  }
+  console.log("");
+}
 console.log("app.seer.pm      " + marketUrl(api));
 console.log("indexed odds     " + api.odds.map((o) => (o === null ? "-" : o.toFixed(1) + "%")).join(" | "));
 console.log("liquidity        $" + api.liquidityUSD.toFixed(2) + " (indexed; can lag the pools by hours)");
@@ -114,4 +126,4 @@ console.log("  split 10 and sell every leg : " + (arb.sellAll === null ? "n/a" :
 console.log("  buy every leg and merge     : " + (arb.buyAll === null ? "n/a (an outcome has no pool, the set cannot be bought)" : (arb.buyAll >= 0 ? "+" : "") + arb.buyAll.toFixed(3) + " " + snap.collateralSymbol));
 if (arb.note) console.log("  " + arb.note);
 console.log("");
-console.log("Next: form your own estimate, then `npm run plan -- " + api.id + " --own <p1,p2,...> --weight <0..1> --bankroll <X>`");
+console.log("Next: form your own estimate, then `npm run plan -- " + api.id + " --chain " + chainId + " --own <p1,p2,...> --weight <0..1> --bankroll <X>`" + (snap.scalar ? "  (scalar: --own is DOWN, UP, Invalid with UP = your expected payout fraction; see the skill)" : ""));

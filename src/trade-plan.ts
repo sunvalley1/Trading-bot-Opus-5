@@ -8,6 +8,11 @@
  *
  * Prints the reconciliation, the depth curve for every outcome that looks mispriced, and the one trade per
  * outcome that clears every limit. Sends nothing: it ends with the exact `npm run trade` command to run.
+ *
+ * Scalar markets (DOWN/UP/Invalid): give UP your EXPECTED payout fraction, E[clamp((answer - lower)/(upper -
+ * lower), 0, 1)], DOWN the rest less Invalid. Expected value is then exact, because a token's payout is linear
+ * in that fraction, and Kelly sizing treats the payout as all-or-nothing, which overstates its risk: conservative.
+ * Conditional markets: sizes and the bankroll are in the parent outcome token, minted 1:1 from sDAI.
  */
 import { formatUnits } from "viem";
 import { parseArgs } from "./args.js";
@@ -182,8 +187,10 @@ for (const { index, trade } of chosen) {
   console.log((trade.kind === "fade" ? "  SELL SHORT \"" : "  buy \"") + snap.outcomes[index] + "\"");
   console.log("    route      " + trade.kind + (trade.kind === "split" ? " (mint a complete set, sell the outcomes we do not want)" : " (swap collateral straight into the pool)"));
   console.log("    stake      " + stake.toFixed(2) + " " + snap.collateralSymbol + "  ->  " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " tokens at " + trade.avgPrice.toFixed(4) + " each");
-  console.log("    pays out   " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " " + snap.collateralSymbol + " if: " + winsIf);
-  console.log("    p(win)     " + (trade.winProb * 100).toFixed(1) + "%   edge " + ((trade.winProb - trade.avgPrice) * 100).toFixed(1) + " pts   EV +" + trade.ev.toFixed(2) + " (" + (trade.evPct * 100).toFixed(1) + "%)");
+  if (snap.scalar) console.log("    pays out   " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " tokens of " + winsIf + ", each worth its share of the range at resolution (not all-or-nothing)");
+  else console.log("    pays out   " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " " + snap.collateralSymbol + " if: " + winsIf);
+  if (snap.parent) console.log("    condition  only if \"" + snap.parent.outcome + "\" wins the parent; otherwise the " + snap.collateralSymbol + " is worthless and the other parent tokens repay the split");
+  console.log("    " + (snap.scalar ? "E[payout]  " : "p(win)     ") + (trade.winProb * 100).toFixed(1) + "%   edge " + ((trade.winProb - trade.avgPrice) * 100).toFixed(1) + " pts   EV +" + trade.ev.toFixed(2) + " (" + (trade.evPct * 100).toFixed(1) + "%)");
   console.log("    full Kelly " + (trade.kelly * 100).toFixed(1) + "% of bankroll; at " + limits.kellyFraction + " Kelly and the caps -> " + stake.toFixed(2));
   if (trade.failed.length) for (const f of trade.failed) console.log("    note       " + f);
   console.log("    run        npm run trade -- " + api.id + " --chain " + chainId + " --outcome " + index + " --route " + trade.kind + " --size " + (trade.kind === "split" ? Number(formatUnits(trade.tokensOut, 18)).toFixed(4) : stake.toFixed(4)) + " --dry-run");

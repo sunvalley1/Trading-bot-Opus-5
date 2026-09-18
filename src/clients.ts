@@ -4,8 +4,17 @@ import { privateKeyToAccount } from "viem/accounts";
 import { CHAINS, DEFAULT_RPC, type ChainId } from "./config.js";
 import { attachToSigner, startMetaMaskBridge } from "./metamask-bridge.js";
 
+/**
+ * Which endpoint to read a chain through: --rpc, then RPC_URL_<chainId>, then RPC_URL only when this is the
+ * folder's own chain (CHAIN_ID, default 10), then the public default. RPC_URL is a key for one network; sending a
+ * Gnosis read to the Optimism endpoint returned "no data" from contracts that do not exist there.
+ */
 export function getRpcUrl(chainId: ChainId, override?: string): string {
-  return override || process.env.RPC_URL || DEFAULT_RPC[chainId];
+  if (override) return override;
+  const perChain = process.env["RPC_URL_" + chainId];
+  if (perChain) return perChain;
+  if (process.env.RPC_URL && Number(process.env.CHAIN_ID ?? 10) === Number(chainId)) return process.env.RPC_URL;
+  return DEFAULT_RPC[chainId];
 }
 
 /**

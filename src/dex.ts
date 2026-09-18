@@ -24,6 +24,11 @@ const SWAPR_GNOSIS = {
   factory: "0xA0864cCA6E114013AB0e27cbd5B6f4c8947da766", // AlgebraFactory (Swapr v3)
   nfpm: "0x91fd594c46d8b01e62dbdebed2401dde01817834", // NonfungiblePositionManager
   router: "0xffb643e73f280b97809a8b41f7232ab401a04ee1", // SwapRouter
+  // Algebra Quoter. Verified 2026-09-18 by reading the chain: factory() returns the AlgebraFactory above, the
+  // bytecode dispatches quoteExactInputSingle(address,address,uint256,uint160) (0x2d9ebd1d) and
+  // quoteExactOutputSingle(address,address,uint256,uint160) (0x9e73c81d), and a live quote on a Seer outcome
+  // pool matched that pool's globalState price to the 4th decimal.
+  quoter: "0xcBaD9FDf0D2814659Eb26f600EFDeAF005Eda0F7",
 } as const satisfies Record<string, Address>;
 
 export type DexKind = "algebra" | "univ3";
@@ -33,7 +38,7 @@ export interface DexConfig {
   name: string;
   factory: Address;
   router: Address;
-  /** QuoterV2-style quoter. Absent for the Algebra deployment (no address we verified). */
+  /** Uniswap QuoterV2 on Optimism; the Algebra Quoter (flat arguments, no fee) on Gnosis. */
   quoter?: Address;
   nfpm: Address;
   /** Uniswap fee tiers to look for, most likely first. Algebra pools have no fee tier. */
@@ -47,6 +52,7 @@ export const DEXES: Partial<Record<ChainId, DexConfig>> = {
     name: "Swapr v3 (Algebra)",
     factory: SWAPR_GNOSIS.factory,
     router: SWAPR_GNOSIS.router,
+    quoter: SWAPR_GNOSIS.quoter,
     nfpm: SWAPR_GNOSIS.nfpm,
     feeTiers: [0],
     poolUrl: (p) => "https://gnosisscan.io/address/" + p,
@@ -169,6 +175,138 @@ export const quoterV2Abi = [
     ],
   },
 ] as const satisfies Abi;
+
+/**
+ * Algebra Quoter (Swapr v3, Gnosis): flat arguments and no fee tier, unlike Uniswap's QuoterV2 tuple. Like
+ * QuoterV2 it is not a view: it runs the swap and reverts with the result, so it is called through eth_call.
+ */
+export const algebraQuoterAbi = [
+  {
+    type: "function",
+    name: "quoteExactInputSingle",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "tokenIn", type: "address" },
+      { name: "tokenOut", type: "address" },
+      { name: "amountIn", type: "uint256" },
+      { name: "limitSqrtPrice", type: "uint160" },
+    ],
+    outputs: [
+      { name: "amountOut", type: "uint256" },
+      { name: "fee", type: "uint16" },
+    ],
+  },
+  {
+    type: "function",
+    name: "quoteExactOutputSingle",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "tokenIn", type: "address" },
+      { name: "tokenOut", type: "address" },
+      { name: "amountOut", type: "uint256" },
+      { name: "limitSqrtPrice", type: "uint160" },
+    ],
+    outputs: [
+      { name: "amountIn", type: "uint256" },
+      { name: "fee", type: "uint16" },
+    ],
+  },
+] as const satisfies Abi;
+
+/**
+ * Algebra SwapRouter (Swapr v3, Gnosis). exactInputSingle has a deadline and no fee field; exactOutputSingle
+ * keeps a uint24 fee field that Algebra ignores. Both selectors (0xbc651188, 0xdb3e2198) are in the deployed
+ * bytecode; the Uniswap-shaped variants are not.
+ */
+export const algebraRouterAbi = [
+  {
+    type: "function",
+    name: "exactInputSingle",
+    stateMutability: "payable",
+    inputs: [
+      {
+        name: "params",
+        type: "tuple",
+        components: [
+          { name: "tokenIn", type: "address" },
+          { name: "tokenOut", type: "address" },
+          { name: "recipient", type: "address" },
+          { name: "deadline", type: "uint256" },
+          { name: "amountIn", type: "uint256" },
+          { name: "amountOutMinimum", type: "uint256" },
+          { name: "limitSqrtPrice", type: "uint160" },
+        ],
+      },
+    ],
+    outputs: [{ name: "amountOut", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "exactOutputSingle",
+    stateMutability: "payable",
+    inputs: [
+      {
+        name: "params",
+        type: "tuple",
+        components: [
+          { name: "tokenIn", type: "address" },
+          { name: "tokenOut", type: "address" },
+          { name: "fee", type: "uint24" },
+          { name: "recipient", type: "address" },
+          { name: "deadline", type: "uint256" },
+          { name: "amountOut", type: "uint256" },
+          { name: "amountInMaximum", type: "uint256" },
+          { name: "limitSqrtPrice", type: "uint160" },
+        ],
+      },
+    ],
+    outputs: [{ name: "amountIn", type: "uint256" }],
+  },
+] as const satisfies Abi;
+
+/** A router call ready to send, with `recipient` left blank for the sender to fill in with its own address. */
+export interface SwapCall {
+  abi: Abi;
+  functionName: "exactInputSingle" | "exactOutputSingle";
+  args: readonly unknown[];
+}
+
+// Algebra's router refuses a swap mined after its deadline. Legs go out one after another, each waiting for its
+// receipt, so half an hour covers a long multi-leg trade without leaving a signed swap valid for days.
+const SWAP_DEADLINE_SECONDS = 30 * 60;
+const swapDeadline = () => BigInt(Math.floor(Date.now() / 1000) + SWAP_DEADLINE_SECONDS);
+
+/** Sell exactly `amountIn` of tokenIn for at least `minOut` of tokenOut, in the call format of this chain's router. */
+export function exactInCall(chainId: ChainId, p: { tokenIn: Address; tokenOut: Address; fee: number; amountIn: bigint; minOut: bigint }): SwapCall {
+  if (getDex(chainId).kind === "algebra") {
+    return {
+      abi: algebraRouterAbi,
+      functionName: "exactInputSingle",
+      args: [{ tokenIn: p.tokenIn, tokenOut: p.tokenOut, recipient: "" as Address, deadline: swapDeadline(), amountIn: p.amountIn, amountOutMinimum: p.minOut, limitSqrtPrice: 0n }],
+    };
+  }
+  return {
+    abi: univ3RouterAbi,
+    functionName: "exactInputSingle",
+    args: [{ tokenIn: p.tokenIn, tokenOut: p.tokenOut, fee: p.fee, recipient: "" as Address, amountIn: p.amountIn, amountOutMinimum: p.minOut, sqrtPriceLimitX96: 0n }],
+  };
+}
+
+/** Buy exactly `amountOut` of tokenOut for at most `maxIn` of tokenIn, in the call format of this chain's router. */
+export function exactOutCall(chainId: ChainId, p: { tokenIn: Address; tokenOut: Address; fee: number; amountOut: bigint; maxIn: bigint }): SwapCall {
+  if (getDex(chainId).kind === "algebra") {
+    return {
+      abi: algebraRouterAbi,
+      functionName: "exactOutputSingle",
+      args: [{ tokenIn: p.tokenIn, tokenOut: p.tokenOut, fee: 0, recipient: "" as Address, deadline: swapDeadline(), amountOut: p.amountOut, amountInMaximum: p.maxIn, limitSqrtPrice: 0n }],
+    };
+  }
+  return {
+    abi: univ3RouterAbi,
+    functionName: "exactOutputSingle",
+    args: [{ tokenIn: p.tokenIn, tokenOut: p.tokenOut, fee: p.fee, recipient: "" as Address, amountOut: p.amountOut, amountInMaximum: p.maxIn, sqrtPriceLimitX96: 0n }],
+  };
+}
 
 /** SwapRouter02 (Uniswap v3, Optimism): the params tuple has NO deadline field. Verified against the bytecode. */
 export const univ3RouterAbi = [
@@ -507,6 +645,16 @@ export async function quoteExactIn(
   if (!quoter) throw new Error("No verified quoter for " + dex.name + " on chain " + chainId + "; quote by simulating the router instead.");
   // A revert here is the honest answer "this pool cannot fill that" -> 0. A transport failure is not an
   // answer at all, and must never be read as "no liquidity": that is how a fundable market looks empty.
+  if (dex.kind === "algebra") {
+    return readOr(
+      async () => {
+        const { result } = await client.simulateContract({ address: quoter, abi: algebraQuoterAbi, functionName: "quoteExactInputSingle", args: [tokenIn, tokenOut, amountIn, 0n] });
+        return result[0];
+      },
+      0n,
+      "quote",
+    );
+  }
   return readOr(
     async () => {
       const { result } = await client.simulateContract({
@@ -539,6 +687,16 @@ export async function quoteExactOut(
   if (amountOut <= 0n) return 0n;
   const quoter = dex.quoter;
   if (!quoter) throw new Error("No verified quoter for " + dex.name + " on chain " + chainId + "; exact-output quotes are not available there.");
+  if (dex.kind === "algebra") {
+    return readOr(
+      async () => {
+        const { result } = await client.simulateContract({ address: quoter, abi: algebraQuoterAbi, functionName: "quoteExactOutputSingle", args: [tokenIn, tokenOut, amountOut, 0n] });
+        return result[0];
+      },
+      0n,
+      "quoteExactOut",
+    );
+  }
   return readOr(
     async () => {
       const { result } = await client.simulateContract({

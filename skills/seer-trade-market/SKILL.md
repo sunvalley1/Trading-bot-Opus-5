@@ -230,6 +230,50 @@ Then, and only then:
 
 Re-quote immediately before executing. These pools are thin enough that an hour-old quote is fiction.
 
+## Conditional and scalar markets
+
+Some markets only count if another market resolves a certain way, and some pay on a range instead of yes/no.
+`npm run market` says which in its header (`CONDITIONAL on ...`, `SCALAR range ...`), and a pass notes it next to
+each market in scope. Both change what every number means, so read this before estimating one.
+
+**Conditional markets** ("If Arcade / Bowling Night is held, how many attendees ...?"):
+
+- **The collateral is not sDAI.** It is one outcome token of the parent market ("Which side event will be
+  chosen?"), minted 1:1 from sDAI by splitting the parent into one of every outcome. Every price, size, stake and
+  `--bankroll` figure on the child is in that token; `npm run market` prints the parent's own price for it.
+- **`npm run trade` mints what it needs.** When the wallet holds fewer parent tokens than the trade spends, its
+  first leg splits sDAI into the parent's complete sets. That leaves one of every *other* parent outcome in the
+  wallet as well. Keep them: they pay the sDAI back in every world where the parent resolves to something else.
+  A conditional trade therefore risks its stake only in the world where its condition holds, and is refunded
+  (less fees and gas) in every other one. That is what these markets are for, not a side effect.
+- **Estimate the child given its condition.** Attendance *if the event is held*, not attendance times the chance
+  it is held. The parent's probability does not enter the child's estimate, and `plan`'s edge and EV are per
+  world in which the condition holds.
+- **Capital is locked until the parent resolves**, and the split takes the full size in sDAI up front. Children
+  of one parent share it: tokens minted for one child are reused by the next child's trade, so positions in
+  several children of the same parent cost little more capital than the largest of them.
+- **Decision markets.** When the parent is decided by people who read these prices (an organiser choosing the
+  side event with the best forecast), the children are a futarchy: the chosen child is the one that pays, and its
+  price is part of what the decision rested on. Trade your estimate; never trade to steer the decision.
+- **Exits.** `npm run unwind` on a child returns parent tokens; once no child position needs them,
+  `npm run unwind -- <parent> --merge-only` turns complete parent sets back into sDAI. After resolution, redeem the
+  child (it pays parent tokens), then the parent. `npm run portfolio -- --chain <id> --scope` shows both books.
+
+**Scalar markets** (DOWN / UP / Invalid over a range lower..upper):
+
+- **Nothing is all-or-nothing.** An UP token pays (answer − lower) / (upper − lower), clamped to 0..1, and DOWN
+  pays the rest. A price is the market's *expected payout*, not a probability: UP at 0.57 on a 0..150 range says
+  "about 85".
+- **Your estimate is a distribution over the answer.** Turn it into f = E[clamp((X − lower) / (upper − lower), 0, 1)],
+  the expected payout fraction; while your distribution sits inside the range that is just (E[X] − lower) /
+  (upper − lower). Then `npm run plan -- <ref> --own <1−f−i>,<f>,<i>` with i your Invalid probability. EV comes
+  out exact; Kelly treats the payout as all-or-nothing, which overstates the risk, so sizing errs small.
+- **Know what an edge means in answer units.** Five points on 0..150 is 7.5 attendees between your expected answer
+  and the market's. Say whether your research can really tell those apart.
+- **Check the range against reality.** Any answer beyond an end pays exactly 0 or 1 however far out it lands, and a
+  range the creator mis-set (a 0..100 range typed without its decimals reads 0..0.0000000000000001) makes the
+  market meaningless. `npm run market` prints the range as the contract holds it.
+
 ## Hard rules
 
 - **Never send a transaction the human has not approved in this conversation**, and never treat approval of
@@ -309,6 +353,7 @@ Every agent returns exactly this, so the orchestrator can compare and the human 
 ```
 MARKET     <question, verbatim from the oracle>
            <app.seer.pm URL>   <address>   chain <id>
+KIND       <yes/no | categorical | scalar lower..upper>   <unconditional | conditional on "<outcome>" of <parent>>
 RESOLVES   <what event, on what date, per what source>
 
 RESEARCH
@@ -343,9 +388,9 @@ RISKS      <the 2-3 things most likely to make this wrong>
 | `npm run plan -- <ref> --own <p,..> --weight <w> --bankroll <X>` | steps 3–4: reconcile, quote both routes at every size, apply limits, print the surviving trade |
 | `npm run fleet -- <fleet.json> --bankroll <X>` | several markets on one event sized as one position: common failure factor applied once, total exposure capped, correlated worst case reported |
 | `npm run trade -- <ref> --outcome <i> --route <direct\|split\|fade> --size <x> --expect-account 0x.. --dry-run\|--yes` | the only command that spends; human signs every transaction. Refuses a wrong wallet, a wrong network, or adding to an open position without `--allow-add`; writes its full output to `.trade-logs/` |
-| `npm run unwind -- <ref> --expect-account 0x.. [--sets <n>] --dry-run|--yes` | the exit before the oracle resolves: sells into the pools or buys back the sold leg and merges complete sets, whichever returns more; `--sets` unwinds a big position in rounds |
+| `npm run unwind -- <ref> --expect-account 0x.. [--sets <n>] [--merge-only] --dry-run|--yes` | the exit before the oracle resolves: sells into the pools or buys back the sold leg and merges complete sets, whichever returns more; `--sets` unwinds a big position in rounds; on a conditional market's parent, `--merge-only` turns leftover parent sets back into sDAI |
 | `npm run watch -- <market...> [--interval 60] [--for 7200]` | poll drained markets and exit the moment any pool has live liquidity again |
-| `npm run portfolio -- --account 0x.. [--filter zcash]` | open positions, marked at what they could really exit at |
+| `npm run portfolio -- --account 0x.. [--filter zcash] [--chain <id> --scope]` | open positions, marked at what they could really exit at; complete sets at 1; `--scope` limits the scan to the markets in scope and their parents |
 | `npm run redeem -- <ref> --yes` | cash in after the oracle finalizes |
 | `npm run verify-dex -- --chain 10` | re-verify every router/factory/quoter address against the live chain |
 | `npm run odds -- "<keywords>"` | the same question on Polymarket / Kalshi, for a second opinion on the price |
@@ -353,7 +398,12 @@ RISKS      <the 2-3 things most likely to make this wrong>
 `<ref>` is an address, a Seer slug, or a full app.seer.pm URL — the chain is taken from the URL.
 
 Supported chains: Gnosis (100, Swapr/Algebra, sDAI) and Optimism (10, Uniswap v3 fee tier 100, sUSDS).
-`npm run verify-dex` must pass on the chain you are trading before you trade on it.
+`npm run verify-dex` must pass on the chain you are trading before you trade on it. Every command takes
+`--chain <id>`; without it, and without an app.seer.pm URL to read the chain from, the folder's `CHAIN_ID` is used.
+
+`npm run trade` and `npm run unwind` simulate the whole sequence of transactions in order (approvals, split,
+every swap) against the live chain before sending the first one, and refuse if any step would revert: a trade
+that fails part-way would leave the wallet holding half of it.
 
 ## References
 

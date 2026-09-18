@@ -5,7 +5,7 @@ wallet.** Each bot runs from its own folder, with its own `.env`, and trades onl
 here. The code is identical in every folder (same git remote, same commit), so the only thing that differs
 between the bots is the model.
 
-| Model | Folder | Wallet (Optimism) | Signer port |
+| Model | Folder | Wallet (same address on Optimism and Gnosis) | Signer port |
 |---|---|---|---|
 | Fable 5.1 (Claude) | `bots/fable-5.1` | `0xf1b285F65A3174c9D6E062F089c5CD1Ea8cF30D9` | 8572 |
 | Opus 5 (Claude) | `bots/opus-5` | `0x6e8211F9059648ee6b88fDCB3dB0415d9015cc9e` | 8573 |
@@ -87,8 +87,39 @@ fared in earlier rounds.
 
 The five NU7 markets of the first round are finished and out of scope: their oracle answers are posted and
 match the published tally, and the winning tokens can be redeemed after 2026-09-18 20:20 UTC with
-`npm run redeem`. Changing the scope is the human's decision, made by editing `PASS_MARKET_LIST` in every
-folder and this table.
+`npm run redeem`. Changing the scope is the human's decision, made by editing `PASS_MARKET_LIST` (and
+`PASS_MARKET_LIST_100` for Gnosis) in every folder and this document.
+
+## Markets in scope on Gnosis (chain 100)
+
+Each bot also trades **the 14 conditional markets under the two "Which side event will be chosen?" parents**
+below, on Gnosis, with the same wallet address, from 500 sDAI plus 1 xDAI for gas per wallet (funded
+18 September 2026). Every folder's `.env` names them in `PASS_MARKET_LIST_100`; `npm run pass -- --chain 100`
+is the Gnosis pass, and the queue refuses any other Gnosis market.
+
+Both parents ask the same Reality.eth question (`0x50f81d7e...`, open since 13 September 12:00 UTC, unanswered
+as of 18 September), with seven outcomes, one per side event, plus Invalid. Under
+[parent `0xd1d81ec6...`](https://app.seer.pm/markets/100/which-side-event-will-be-chosen) each event has a
+scalar market on **unique non-staff attendees, range 0..150**; under
+[parent `0xf094a219...`](https://app.seer.pm/markets/100/which-side-event-will-be-chosen-3) one on **the
+attendees' mean post-event rating, range 0..10**. Each child's collateral is its event's outcome token from its
+parent, so a position there only pays or costs anything if that event is the one chosen; in every other world
+the stake comes back through the other parent tokens. The skill's section "Conditional and scalar markets"
+says how to estimate and size them.
+
+| Side event | Attendees 0..150 | Mean rating 0..10 |
+|---|---|---|
+| Arcade / Bowling Night | `0x97fd5612ec07a6966f9fcaaaab2d5adc1c7bc1c4` | `0x3bd0de16f4e1481c8a96944a4634c2d8e105e188` |
+| Marble Race Game | `0xe079c1a97ab6d9e833774daf0921074b36163682` | `0x8aae56a00c311e3a16095a26b3fdc1ad1969ae55` |
+| Murder Mystery Game | `0x97e5c16b405ed8e098c6351ff8a7f5bb114baedc` | `0x5db467d53408df07d57511f3a816b145b584009e` |
+| Networking Dinner | `0xa137ef6eeb1ded3b21c480717979141d90ca50dd` | `0x2fdd6b081d9faec9b9a6fc23353c98d7d15ffbd3` |
+| Tuk-Tuk Street Food & Cocktail Night | `0xe5e67744d858fdd568bfb1fcdf335bf31a727b1c` | `0x0e78cc36d6c99250639d21e26c039ba5e7590ffb` |
+| Go-Karting | `0xac84fa4f3a3e37befb334db0b58a696e8da8d0a4` | `0x91052d4a4107304b34b5e174536f4dd1c269fd7f` |
+| The Last Mile of a Prediction Market | `0xcf355f361d363220e1eeb63263c8d70a3a7112a0` | `0xa9d3ee5a91ef5a63b7c640cbc858f218c409a610` |
+
+The parents themselves are not in scope, and neither is any Clément's Judgement market until the human adds
+one: the children of the linked Round 3 parent (`0xb3027df9...`) were created with a 0..100 range missing its
+18 decimals and have no liquidity.
 
 ## Rules for every bot
 
@@ -104,7 +135,7 @@ folder and this table.
    estimate and the price are.
 5. **Cadence.** Each bot runs a pass twice a day, at 11:00 and 21:00 in the human's local time, staggered 20
    minutes apart (Fable on the hour, then Opus, Astra and Sol), so each one reads the others' latest trades as
-   prices and volume. The times come from `scripts/schedule-passes.ps1 -DailyAt`. Each pass is the whole skill from
+   prices and volume. Each slot is two passes, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`. Each pass is the whole skill from
    step 0: look at the pools again (the other bots have moved them), re-check the research, re-estimate, and
    plan. A pass that finds nothing to do ends with "no trade"; that is a complete result and gets recorded like
    any other.
@@ -121,8 +152,9 @@ script with no model in it: it runs the queued trades one at a time through `npm
 wallet as `--expect-account`, discards items older than 150 minutes as stale, and files every result under
 `.queue/`. Unattended execution needs `LIQUIDITY_SIGNER=key` and this wallet's `PRIVATE_KEY` in `.env`; with a
 browser wallet the executor prints the commands for the human instead. `scripts/schedule-passes.ps1`, run once
-by the human, registers a Windows task per folder that runs `npm run pass -- --execute` at the times given in
-`-DailyAt` (two a day by default), the bots 20 minutes apart. Registering it is the human's decision; no model
+by the human, registers a Windows task per folder that runs `scripts\run-pass.cmd` at the times given in
+`-DailyAt` (two a day by default), the bots 20 minutes apart: `npm run pass -- --execute` for Optimism, then
+`npm run pass -- --chain 100 --execute` for Gnosis, each executing only its own chain's queue. Registering it is the human's decision; no model
 is ever the one pressing `--yes`.
 
 ## What the human keeps outside git

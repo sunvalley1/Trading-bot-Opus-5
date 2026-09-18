@@ -10,7 +10,8 @@ ending in decisions recorded in the queue. The facts that vary from pass to pass
    table in `MODELS.md`. If either does not match, write a report saying so and stop. Never look at another
    bot's folder, queue, or positions.
 2. **Only the markets listed in the facts below are in scope.** Look at nothing else and queue nothing else; the
-   queue refuses other markets anyway. Then **follow the skill in order**, using this repository's commands from this
+   queue refuses other markets anyway. A pass covers one chain, named in the facts; when it is not the folder's
+   default chain, every command takes `--chain <id>`. Then **follow the skill in order**, using this repository's commands from this
    folder: `npm run market -- <ref>` on each market in scope (`npm run scan` only to confirm they still have
    liquidity; read the `TRADED` line: volume and price-versus-seed, never open interest), research the question
    at its source, write your own
