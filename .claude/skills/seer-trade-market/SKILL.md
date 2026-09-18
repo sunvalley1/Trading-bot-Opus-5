@@ -395,7 +395,7 @@ RISKS      <the 2-3 things most likely to make this wrong>
 | `npm run unwind -- <ref> --expect-account 0x.. [--sets <n>] [--merge-only] --dry-run|--yes` | the exit before the oracle resolves: sells into the pools or buys back the sold leg and merges complete sets, whichever returns more; `--sets` unwinds a big position in rounds; on a conditional market's parent, `--merge-only` turns leftover parent sets back into sDAI |
 | `npm run watch -- <market...> [--interval 60] [--for 7200]` | poll drained markets and exit the moment any pool has live liquidity again |
 | `npm run portfolio -- --account 0x.. [--filter zcash] [--chain <id> --scope]` | open positions, marked at what they could really exit at; complete sets at 1; `--scope` limits the scan to the markets in scope and their parents |
-| `npm run redeem -- <ref> --yes` | cash in after the oracle finalizes |
+| `npm run redeem -- <ref> --yes` | cash in after the oracle finalizes; the queue executor does this by itself for every resolved market the wallet holds, so a pass never needs to |
 | `npm run verify-dex -- --chain 10` | re-verify every router/factory/quoter address against the live chain |
 | `npm run odds -- "<keywords>"` | the same question on Polymarket / Kalshi, for a second opinion on the price |
 

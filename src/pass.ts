@@ -194,6 +194,9 @@ if (/authenticate|OAuth|not logged in|login/i.test(output) && code !== 0) {
 
 if (args.execute && code !== 0) {
   console.log("The model step failed, so the queue is NOT executed this round; whatever it queued waits for the next pass and expires after --max-age-min.");
+  // cashing in a resolved market needs no decision from the model, so it happens anyway
+  const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
+  spawnSync(npmCmd, ["run", "queue", "--", "redeem", "--yes", "--chain", String(chainId)], { cwd: ROOT, encoding: "utf8", shell: process.platform === "win32", env: process.env, stdio: "inherit", timeout: 60 * 60_000 });
   process.exit(code ?? 1);
 }
 if (args.execute) {

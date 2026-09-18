@@ -195,7 +195,9 @@ the model is told). The model ends its pass by recording each trade it wants wit
 It never runs `npm run trade --yes` and never runs the executor. `npm run queue -- execute --yes` is a plain
 script with no model in it: it runs the queued trades one at a time through `npm run trade`, with this folder's
 wallet as `--expect-account`, discards items older than 150 minutes as stale, and files every result under
-`.queue/`. Unattended execution needs `LIQUIDITY_SIGNER=key` and this wallet's `PRIVATE_KEY` in `.env`; with a
+`.queue/`. It then cashes in every resolved market on its chain in which the wallet still holds tokens that pay
+something (`npm run redeem`, one market at a time, filed the same way), even when the model step failed, since a
+resolved market leaves nothing to decide. A redemption that fails is found again on the next run. Unattended execution needs `LIQUIDITY_SIGNER=key` and this wallet's `PRIVATE_KEY` in `.env`; with a
 browser wallet the executor prints the commands for the human instead. `scripts/schedule-passes.ps1`, run once
 by the human, registers a Windows task per folder that runs `scripts\run-pass.cmd` at the times given in
 `-DailyAt` (two a day by default), the bots 20 minutes apart: `npm run pass -- --execute` for Optimism, then

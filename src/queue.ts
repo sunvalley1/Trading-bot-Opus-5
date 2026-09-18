@@ -2,6 +2,7 @@
  * `npm run queue -- add <market> --outcome <i> --route <direct|split|fade> --size <x> [--chain 100] [--allow-add] [--note "..."]`
  * `npm run queue -- list`
  * `npm run queue -- execute [--dry-run | --yes] [--chain 100] [--max-age-min 150] [--max 25]`
+ * `npm run queue -- redeem [--dry-run | --yes] [--chain 100]`
  *
  * The hand-off between a bot's pass and the money. A pass (an AI agent running the skill unattended) records
  * every trade it decided on with `add`; it never runs `npm run trade --yes` itself. `execute` is a plain script
@@ -17,6 +18,11 @@
  * chain is --chain when given, else the one in an app.seer.pm link, else the chain whose scope list names the
  * market, else the folder's CHAIN_ID. `execute --chain <id>` runs only that chain's items.
  *
+ * Redemption: after the trades, `execute` cashes in every resolved market on its chain that the wallet still holds
+ * winning tokens in (redeem-sweep.ts finds them, `npm run redeem` sends), and files each one like a trade. It needs
+ * no decision, so it also runs on its own (`redeem`) when a pass's model step fails, and a redemption that fails
+ * is simply found again on the next run.
+ *
  * Files (both ignored by git): .queue/pending.jsonl and .queue/executed.jsonl, one JSON object per line.
  */
 import { spawnSync } from "node:child_process";
@@ -25,6 +31,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { getAddress, isAddress } from "viem";
 import { parseArgs } from "./args.js";
+import { getPublicClient } from "./clients.js";
+import { parseChainId } from "./config.js";
+import { findRedeemable } from "./redeem-sweep.js";
 import { parseMarketRef } from "./seer-api.js";
 import "dotenv/config";
 
@@ -39,8 +48,11 @@ interface Item {
   model?: string;
   wallet?: string;
   chain: number;
-  /** "trade" (the default) runs `npm run trade`; "unwind" runs `npm run unwind` to exit the market's position */
-  kind?: "trade" | "unwind";
+  /**
+   * "trade" (the default) runs `npm run trade`; "unwind" runs `npm run unwind` to exit the market's position;
+   * "redeem" is never queued, only filed: the executor's sweep cashing in a resolved market
+   */
+  kind?: "trade" | "unwind" | "redeem";
   market: string;
   outcome: number;
   route: "direct" | "split" | "fade";
@@ -90,6 +102,60 @@ function chainFor(market: string): number {
   const m = market.toLowerCase();
   const listing = listedChains.filter((c) => scopeList(c).some((a) => m.includes(a)));
   return listing.length === 1 ? listing[0] : defaultChain;
+}
+
+const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
+
+/**
+ * Cashes in every resolved market on `chain` in which the wallet still holds tokens that pay something, one
+ * `npm run redeem` each, filed in executed.jsonl. A resolved market pays what it pays: there is nothing for a
+ * model to decide, so this runs whether or not a pass queued anything.
+ */
+async function redeemSweep(chain: number, dryRun: boolean): Promise<void> {
+  const account = getAddress(wallet!);
+  const chainId = parseChainId(chain);
+  let sweep: Awaited<ReturnType<typeof findRedeemable>>;
+  try {
+    sweep = await findRedeemable(getPublicClient(chainId), chainId, account);
+  } catch (e) {
+    console.log("");
+    console.log("REDEEM   could not list the resolved markets on chain " + chain + ": " + (e as Error).message.split("\n")[0] + " (the next run tries again)");
+    return;
+  }
+  console.log("");
+  console.log("REDEEM   chain " + chain + ": " + sweep.found.length + " resolved market(s) with something to collect" + (sweep.worthless.length ? "; " + sweep.worthless.length + " hold only losing tokens and are left alone" : "") + (dryRun ? "  (dry run)" : ""));
+  for (const r of sweep.found) {
+    const redeemArgs = ["run", "redeem", "--", r.market, "--chain", String(chain), "--expect-account", account, ...(dryRun ? ["--account", account, "--dry-run"] : ["--yes"])];
+    console.log("  running  npm " + redeemArgs.join(" ") + "   (about " + r.expected.toFixed(4) + " to collect: " + r.name.slice(0, 60) + ")");
+    const res = spawnSync(npmCmd, redeemArgs, { cwd: ROOT, encoding: "utf8", shell: process.platform === "win32", env: process.env, timeout: 15 * 60_000 });
+    const out = (res.stdout ?? "") + (res.stderr ?? "");
+    process.stdout.write(out.split("\n").map((l) => "    | " + l).join("\n") + "\n");
+    if (dryRun) continue;
+    const unverified = out.match(/Transaction (0x[0-9a-fA-F]{64}) was submitted, but its receipt could not be verified/);
+    const now = new Date().toISOString();
+    const result: Executed = {
+      id: now.replace(/[:.]/g, "-") + "-redeem",
+      createdAt: now,
+      model,
+      wallet: account,
+      chain,
+      kind: "redeem",
+      market: r.market,
+      outcome: -1,
+      route: "direct",
+      size: "0",
+      allowAdd: false,
+      note: r.name.slice(0, 100) + ": about " + r.expected.toFixed(4) + " to collect",
+      executedAt: now,
+      status: res.status === 0 ? "done" : unverified ? "unverified" : "failed",
+      exitCode: res.status ?? undefined,
+      log: out.match(/^LOG\s+(.+)$/m)?.[1]?.trim(),
+    };
+    if (unverified) result.reason = "transaction " + unverified[1] + " was SENT but its receipt could not be read; the next run sees whether the tokens are gone";
+    else if (res.status !== 0) result.reason = "redeem exited " + res.status + (res.error ? ": " + res.error.message : "") + "; the next run tries again";
+    appendItem(EXECUTED, result);
+    if (result.status !== "done") console.log("  " + result.status.toUpperCase() + "  " + r.market + "  " + (result.reason ?? ""));
+  }
 }
 
 function requireInScope(market: string, chain: number) {
@@ -164,7 +230,13 @@ if (cmd === "list" || cmd === undefined) {
   console.log("QUEUE  " + (model ?? "(no MODEL_NAME)") + "  wallet " + (wallet ?? "(unset)") + "  home chain " + defaultChain);
   console.log("");
   console.log("pending (" + pending.length + ")");
-  const describe = (p: Item) => "c" + p.chain + "  " + (p.kind === "unwind" ? "unwind" + (p.sets ? " (rounds of " + p.sets + ")" : "") + "  " + p.market : p.route.padEnd(6) + " outcome " + p.outcome + "  size " + String(p.size).padStart(8) + "  " + p.market + (p.allowAdd ? "  --allow-add" : ""));
+  const describe = (p: Item) =>
+    "c" + p.chain + "  " +
+    (p.kind === "redeem"
+      ? "redeem  " + p.market
+      : p.kind === "unwind"
+        ? "unwind" + (p.sets ? " (rounds of " + p.sets + ")" : "") + "  " + p.market
+        : p.route.padEnd(6) + " outcome " + p.outcome + "  size " + String(p.size).padStart(8) + "  " + p.market + (p.allowAdd ? "  --allow-add" : ""));
   for (const p of pending) console.log("  " + p.id + "  " + describe(p) + (p.note ? "   # " + p.note : ""));
   console.log("");
   console.log("executed, last 10 of " + executed.length);
@@ -195,16 +267,12 @@ if (cmd === "execute") {
   // --chain: only that chain's items, so a pass on one chain carries out its own decisions and nothing else
   const onlyChain = args.chain !== undefined ? Number(args.chain) : undefined;
   const todo = pending.filter((p) => onlyChain === undefined || Number(p.chain) === onlyChain);
-  if (!todo.length) {
-    console.log("nothing queued" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + ".");
-    process.exit(0);
-  }
-  console.log("EXECUTE  " + (model ?? "") + "  wallet " + getAddress(wallet) + "  " + todo.length + " pending" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + "  " + (dryRun ? "(dry run: every trade with --dry-run, nothing sent)" : "(LIVE: --yes)"));
+  if (!todo.length) console.log("nothing queued" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + ".");
+  else console.log("EXECUTE  " + (model ?? "") + "  wallet " + getAddress(wallet) + "  " + todo.length + " pending" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + "  " + (dryRun ? "(dry run: every trade with --dry-run, nothing sent)" : "(LIVE: --yes)"));
   let ran = 0;
   for (const item of todo) {
     if (ran >= max) break;
     const ageMin = (Date.now() - Date.parse(item.createdAt)) / 60_000;
-    const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
     // a dry run passes --account so the trade command plans without opening a signer tab
     const tradeArgs =
       item.kind === "unwind"
@@ -238,10 +306,30 @@ if (cmd === "execute") {
     }
     if (result.status === "failed") console.log("  FAILED   " + item.id + "  " + result.reason + "  (see " + (result.log ?? "the output above") + ")");
   }
+  await redeemSweep(onlyChain ?? defaultChain, dryRun);
   console.log("");
   console.log("done. " + pending.length + " still pending. `npm run queue -- list` shows the record; `npm run portfolio -- --account " + getAddress(wallet) + (onlyChain !== undefined && onlyChain !== defaultChain ? " --chain " + onlyChain + " --scope" : "") + "` shows the book.");
   process.exit(0);
 }
 
-console.error("unknown command: " + cmd + ". Use add, list or execute.");
+if (cmd === "redeem") {
+  const dryRun = !!args["dry-run"];
+  const yes = !!args.yes;
+  if (!dryRun && !yes) {
+    console.error("redeem needs --dry-run or --yes.");
+    process.exit(2);
+  }
+  if (!wallet || !isAddress(wallet, { strict: false })) {
+    console.error("LIQUIDITY_WALLET is not set in .env: the executor refuses to guess which wallet it is redeeming for.");
+    process.exit(2);
+  }
+  if (yes && ((process.env.LIQUIDITY_SIGNER || "").toLowerCase() !== "key" || !/^0x[0-9a-fA-F]{64}$/.test(process.env.PRIVATE_KEY || ""))) {
+    console.error("Unattended redemption needs key signing: set LIQUIDITY_SIGNER=key and this wallet's PRIVATE_KEY in .env, or run `npm run redeem -- <market> --yes` yourself.");
+    process.exit(2);
+  }
+  await redeemSweep(args.chain !== undefined ? Number(args.chain) : defaultChain, dryRun);
+  process.exit(0);
+}
+
+console.error("unknown command: " + cmd + ". Use add, add-unwind, list, execute or redeem.");
 process.exit(2);
