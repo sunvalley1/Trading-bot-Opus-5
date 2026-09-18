@@ -185,7 +185,8 @@ for (const { index, trade } of chosen) {
   const winsIf = trade.retained.map((i) => snap.outcomes[i]).join(" or ");
   console.log("");
   console.log((trade.kind === "fade" ? "  SELL SHORT \"" : "  buy \"") + snap.outcomes[index] + "\"");
-  console.log("    route      " + trade.kind + (trade.kind === "split" ? " (mint a complete set, sell the outcomes we do not want)" : " (swap collateral straight into the pool)"));
+  const how = { direct: " (swap collateral straight into the pool)", split: " (mint a complete set, sell the outcomes we do not want)", fade: " (mint a complete set, sell only this outcome, keep all the others)" };
+  console.log("    route      " + trade.kind + how[trade.kind]);
   console.log("    stake      " + stake.toFixed(2) + " " + snap.collateralSymbol + "  ->  " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " tokens at " + trade.avgPrice.toFixed(4) + " each");
   if (snap.scalar) console.log("    pays out   " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " tokens of " + winsIf + ", each worth its share of the range at resolution (not all-or-nothing)");
   else console.log("    pays out   " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " " + snap.collateralSymbol + " if: " + winsIf);
@@ -193,7 +194,7 @@ for (const { index, trade } of chosen) {
   console.log("    " + (snap.scalar ? "E[payout]  " : "p(win)     ") + (trade.winProb * 100).toFixed(1) + "%   edge " + ((trade.winProb - trade.avgPrice) * 100).toFixed(1) + " pts   EV +" + trade.ev.toFixed(2) + " (" + (trade.evPct * 100).toFixed(1) + "%)");
   console.log("    full Kelly " + (trade.kelly * 100).toFixed(1) + "% of bankroll; at " + limits.kellyFraction + " Kelly and the caps -> " + stake.toFixed(2));
   if (trade.failed.length) for (const f of trade.failed) console.log("    note       " + f);
-  console.log("    run        npm run trade -- " + api.id + " --chain " + chainId + " --outcome " + index + " --route " + trade.kind + " --size " + (trade.kind === "split" ? Number(formatUnits(trade.tokensOut, 18)).toFixed(4) : stake.toFixed(4)) + " --dry-run");
+  console.log("    run        npm run trade -- " + api.id + " --chain " + chainId + " --outcome " + index + " --route " + trade.kind + " --size " + (trade.kind === "direct" ? stake.toFixed(4) : Number(formatUnits(trade.tokensOut, 18)).toFixed(4)) + " --dry-run");
 }
 console.log("");
 console.log("  total at risk on this market: " + total.toFixed(2) + " " + snap.collateralSymbol + " (" + ((total / limits.bankroll) * 100).toFixed(1) + "% of bankroll)");
