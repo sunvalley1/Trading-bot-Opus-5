@@ -100,6 +100,7 @@ console.log("SIZE     " + formatUnits(size, snap.collateralDecimals) + (route ==
 if (snap.parent) {
   console.log("PARENT   conditional on \"" + snap.parent.outcome + "\" in " + snap.parent.name);
   console.log("         " + snap.parent.market + "   collateral here is that outcome's token " + snap.collateralSymbol + ", minted 1:1 from " + snap.rootCollateralSymbol);
+  if (snap.parent.multiSelect) console.log("         the parent is multi-select: if " + snap.collateralSymbol + " wins it redeems for 1/k " + snap.rootCollateralSymbol + ", k being how many outcomes win");
   if (!snap.parent.isRoot) {
     console.error("The parent market is itself conditional. Minting through two levels of parents is not supported here.");
     process.exit(1);

@@ -249,6 +249,10 @@ each market in scope. Both change what every number means, so read this before e
 - **Estimate the child given its condition.** Attendance *if the event is held*, not attendance times the chance
   it is held. The parent's probability does not enter the child's estimate, and `plan`'s edge and EV are per
   world in which the condition holds.
+- **Multi-select parents pay 1/k.** When the parent lets several outcomes win ("which movies will Clément
+  watch"), each winning outcome's token redeems for 1/k sDAI, k being how many won. A child's gains and losses in
+  sDAI are then its parent-token figures divided by k; `plan` sizes in parent tokens, so for these it errs small.
+  The estimate does not change: still the child's answer given its condition.
 - **Capital is locked until the parent resolves**, and the split takes the full size in sDAI up front. Children
   of one parent share it: tokens minted for one child are reused by the next child's trade, so positions in
   several children of the same parent cost little more capital than the largest of them.

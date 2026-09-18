@@ -41,7 +41,8 @@ if (snap.parent) {
   try {
     const ps = await snapshot(client, chainId, snap.parent.market);
     const pool = ps.pools[snap.parent.outcomeIndex];
-    console.log("PARENT     \"" + snap.parent.outcome + "\" trades at " + (pool?.exists ? (pool.price ?? 0).toFixed(4) + " " + ps.collateralSymbol + " (" + ((ps.implied[snap.parent.outcomeIndex] ?? 0) * 100).toFixed(1) + "% implied)" : "no pool") + " in the parent" + (ps.tradeable ? "" : " (parent pools drained)"));
+    const reading = snap.parent.multiSelect ? " (multi-select: roughly P(it wins) / k, not a probability)" : " (" + ((ps.implied[snap.parent.outcomeIndex] ?? 0) * 100).toFixed(1) + "% implied)";
+    console.log("PARENT     \"" + snap.parent.outcome + "\" trades at " + (pool?.exists ? (pool.price ?? 0).toFixed(4) + " " + ps.collateralSymbol + reading : "no pool") + " in the parent" + (ps.tradeable ? "" : " (parent pools drained)"));
     console.log("           A trade here risks its stake only in that world: in every other one the stake comes back as the other parent tokens.");
   } catch (e) {
     console.log("PARENT     could not read the parent market: " + (e as Error).message.split("\n")[0]);

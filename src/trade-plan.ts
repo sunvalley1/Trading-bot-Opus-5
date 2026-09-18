@@ -191,6 +191,7 @@ for (const { index, trade } of chosen) {
   if (snap.scalar) console.log("    pays out   " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " tokens of " + winsIf + ", each worth its share of the range at resolution (not all-or-nothing)");
   else console.log("    pays out   " + Number(formatUnits(trade.tokensOut, 18)).toFixed(2) + " " + snap.collateralSymbol + " if: " + winsIf);
   if (snap.parent) console.log("    condition  only if \"" + snap.parent.outcome + "\" wins the parent; otherwise the " + snap.collateralSymbol + " is worthless and the other parent tokens repay the split");
+  if (snap.parent?.multiSelect) console.log("               the parent is multi-select: a winning " + snap.collateralSymbol + " redeems for 1/k " + snap.rootCollateralSymbol + " (k winners), so in " + snap.rootCollateralSymbol + " the stake, payout and EV above are divided by k");
   console.log("    " + (snap.scalar ? "E[payout]  " : "p(win)     ") + (trade.winProb * 100).toFixed(1) + "%   edge " + ((trade.winProb - trade.avgPrice) * 100).toFixed(1) + " pts   EV +" + trade.ev.toFixed(2) + " (" + (trade.evPct * 100).toFixed(1) + "%)");
   console.log("    full Kelly " + (trade.kelly * 100).toFixed(1) + "% of bankroll; at " + limits.kellyFraction + " Kelly and the caps -> " + stake.toFixed(2));
   if (trade.failed.length) for (const f of trade.failed) console.log("    note       " + f);

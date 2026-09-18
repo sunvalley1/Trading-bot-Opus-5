@@ -92,10 +92,13 @@ match the published tally, and the winning tokens can be redeemed after 2026-09-
 
 ## Markets in scope on Gnosis (chain 100)
 
-Each bot also trades **the 14 conditional markets under the two "Which side event will be chosen?" parents**
-below, on Gnosis, with the same wallet address, from 500 sDAI plus 1 xDAI for gas per wallet (funded
-18 September 2026). Every folder's `.env` names them in `PASS_MARKET_LIST_100`; `npm run pass -- --chain 100`
-is the Gnosis pass, and the queue refuses any other Gnosis market.
+Each bot also trades **34 conditional markets on Gnosis**: the 14 under the two "Which side event will be
+chosen?" parents and the 20 under the Clément's Judgement Round 3 parent, all listed below. Same wallet address,
+from 500 sDAI plus 1 xDAI for gas per wallet (funded 18 September 2026). Every folder's `.env` names them in
+`PASS_MARKET_LIST_100`; `npm run pass -- --chain 100` is the Gnosis pass, and the queue refuses any other Gnosis
+market.
+
+### The side events
 
 Both parents ask the same Reality.eth question (`0x50f81d7e...`, open since 13 September 12:00 UTC, unanswered
 as of 18 September), with seven outcomes, one per side event, plus Invalid. Under
@@ -117,9 +120,43 @@ says how to estimate and size them.
 | Go-Karting | `0xac84fa4f3a3e37befb334db0b58a696e8da8d0a4` | `0x91052d4a4107304b34b5e174536f4dd1c269fd7f` |
 | The Last Mile of a Prediction Market | `0xcf355f361d363220e1eeb63263c8d70a3a7112a0` | `0xa9d3ee5a91ef5a63b7c640cbc858f218c409a610` |
 
-The parents themselves are not in scope, and neither is any Clément's Judgement market until the human adds
-one: the children of the linked Round 3 parent (`0xb3027df9...`) were created with a 0..100 range missing its
-18 decimals and have no liquidity.
+### Clément's Judgement, Round 3
+
+Added 18 September 2026 at the human's request. Under
+[parent `0xacc15cfa...`](https://app.seer.pm/markets/100/which-movies-will-clement-watch-as-part-of-the-distilled-clements-judgement-expe-1786570236144),
+"Which movies will Clément watch as part of the Distilled Clément's Judgement experiment, Round 3?", each of 20
+movies has a scalar market on **the percentile score Clément assigns it, range 0..100**, conditional on his
+watching it. The parent is **multi-select**: several movies can be chosen, and each chosen movie's token then
+redeems for 1/k sDAI, k being how many were chosen (Seer's `RealityProxy.resolveMultiCategoricalMarket`). A
+child position's gains and losses, counted in sDAI, are its figures in the movie's token divided by k. The
+parent's question has been open since 13 August and was unanswered on 18 September.
+
+| Movie | Percentile score 0..100 |
+|---|---|
+| Interrogation (1982) | `0x72917b537875c9dad261140684dc0c9f6ca1ea68` |
+| The Suicide Squad (2021) | `0x572389e82e409a4a51f10b58f846554f458c4466` |
+| Citizen Vigilante (2026) | `0xa90db19f8ca09689a8f66a13d64884427362b058` |
+| Backrooms (2026) | `0x9c591ee8395580e44cca5b4e448b5c702857d1dc` |
+| Midsommar (2019) | `0x5fe4134ca8a6e8d15ef792585cd9e66d8564a69d` |
+| La La Land (2016) | `0x5311e959d7201dca87294d196a88988d8d7d412b` |
+| Corpse Bride (2005) | `0x4b3ab1149e17d23555dbfa20dcf4fe612b239824` |
+| Promising Young Woman (2020) | `0x55476566ee8a736b7d6dc45da1c4e60fb9486245` |
+| Alice in Wonderland (2010) | `0x3f24508c255423eec28af62f3ad0180f3674b976` |
+| Elysium (2013) | `0xa5d6da5859a34ba12012e25b5d27fa3e4b378131` |
+| Soylent Green (1973) | `0x6844a88042083de8681ef04a8186de9bc57ad05f` |
+| Tenet (2020) | `0x56a590730d0f3c995c11c314fdd903b311ff550e` |
+| Lolita (1962) | `0x62442648c599eebe8a175aa0568b1c0c71dcc3e2` |
+| Swiss Army Man (2016) | `0xdb0c2dc30a61acadef9a367deb97396c5cb32114` |
+| El Camino: A Breaking Bad Movie (2019) | `0x9cd54d7e2c4d6d2b12590f8cf0ac6828594be2a4` |
+| City of Ember (2008) | `0x32707ed352915812fe462e5bd18a3d41d447fb0c` |
+| Jupiter Ascending (2015) | `0xc32110598c798bd4894767b517f933aa5dfa1a4a` |
+| Poor Things (2023) | `0x8461e8b5ecc43717547c350ab47301fc0794556d` |
+| Kin-dza-dza! (1986) | `0xf8355cd3c90dbe397b3f4575a05606f60254e297` |
+| When the Wind Blows (1986) | `0x8b659e9755f203d5597bc59d7a03d1c19604aaf1` |
+
+The parent markets themselves are not in scope. Neither is the Round 3 parent the human first linked
+(`0xb3027df9...`, slug `-5`): a twin of the one above whose children were created with the 0..100 range missing
+its 18 decimals, and have no liquidity.
 
 ## Rules for every bot
 

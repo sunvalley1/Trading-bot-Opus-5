@@ -55,8 +55,12 @@ export interface MarketSnapshot {
    */
   rootCollateral: Address;
   rootCollateralSymbol: string;
-  /** Set for a conditional market: the parent market, the outcome this market is conditional on, and its token. */
-  parent?: { market: Address; outcomeIndex: number; outcome: string; token: Address; name: string; isRoot: boolean };
+  /**
+   * Set for a conditional market: the parent market, the outcome this market is conditional on, and its token.
+   * `multiSelect`: the parent lets several outcomes win (Reality template 3). Each winning outcome's token then
+   * redeems for 1/k of the root collateral, k being how many won (RealityProxy.resolveMultiCategoricalMarket).
+   */
+  parent?: { market: Address; outcomeIndex: number; outcome: string; token: Address; name: string; isRoot: boolean; multiSelect: boolean };
   /** Set for a scalar market (DOWN/UP): the range the answer is mapped onto. UP pays (answer - lower) / (upper - lower). */
   scalar?: { lower: bigint; upper: bigint };
   pools: OutcomePool[];
@@ -103,6 +107,7 @@ export async function snapshot(client: PublicClient, chainId: ChainId, market: A
       token: collateral,
       name: parentInfo.marketName,
       isRoot: isAddressEqual(parentInfo.parentMarket.id as Address, zeroAddress),
+      multiSelect: Number(parentInfo.templateId) === 3,
     };
   }
   // Seer's scalar markets are the two-outcome DOWN/UP ones with a range; Reality template 1 is "uint"
@@ -484,6 +489,10 @@ export function describeSnapshot(snap: MarketSnapshot): string {
     lines.push("           \"" + snap.parent.name + "\"");
     lines.push("           The collateral is that outcome's token, minted 1:1 from " + snap.rootCollateralSymbol + " by splitting the parent. Every price and size");
     lines.push("           here is in it, and a position here only pays or costs anything if \"" + snap.parent.outcome + "\" wins the parent.");
+    if (snap.parent.multiSelect) {
+      lines.push("           The parent is MULTI-SELECT: several of its outcomes can win, and each winning token then redeems for 1/k " + snap.rootCollateralSymbol + ",");
+      lines.push("           k being how many won. Counted in " + snap.rootCollateralSymbol + ", every gain or loss here is the " + snap.collateralSymbol + " figure divided by k.");
+    }
   }
   if (snap.scalar) {
     const lo = Number(formatUnits(snap.scalar.lower, 18));

@@ -104,7 +104,7 @@ try {
       const pid = info.parentMarket.id.toLowerCase();
       if (!parents.has(pid)) parents.set(pid, await readMarket(client, chainId, getAddress(info.parentMarket.id)));
       const parent = parents.get(pid)!;
-      parts.push('conditional on "' + (parent.outcomes[Number(info.parentOutcome)] ?? "?") + '" of parent ' + getAddress(info.parentMarket.id));
+      parts.push('conditional on "' + (parent.outcomes[Number(info.parentOutcome)] ?? "?") + '" of ' + (Number(parent.templateId) === 3 ? "multi-select " : "") + "parent " + getAddress(info.parentMarket.id));
     }
     if (Number(info.templateId) === 1 && info.upperBound > info.lowerBound) {
       anyScalar = true;
