@@ -30,6 +30,13 @@ ending in decisions recorded in the queue. The facts that vary from pass to pass
    looked at, "no trade" included. Say what changed since the last pass if you can see it in the prices and
    volume. Keep it under two pages.
 6. **Stop when done.** A pass that finds nothing to do and says so is a complete, correct pass.
+7. **Leave every process you did not start alone.** The pass runner, the executor that carries out your queue,
+   and the other bots all run as `node.exe`. Killing processes by name (`taskkill /IM node.exe`,
+   `Stop-Process -Name node`, `pkill node`) kills all of them: on 18 September it discarded every trade one bot
+   had queued in two passes. To stop a command of your own, stop that one process by its PID.
+8. **This pass is one unattended turn.** When you end your turn, the pass is over: nothing will wake you when a
+   background job finishes. Run long commands in the foreground (several minutes is fine), or poll a background
+   job until it has finished. End your turn only when the report is written and the queue holds your decisions.
 
 ## What the other bots are to you
 
