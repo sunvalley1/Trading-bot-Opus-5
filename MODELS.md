@@ -22,7 +22,10 @@ Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
 `scripts\codex-app.cmd exec --disable multi_agent -m gpt-6-astra|gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox
 --skip-git-repo-check` (the Codex CLI shipped inside the Codex app), signed in through its ChatGPT login.
 Helper agents are off so a GPT pass, like a Claude pass, researches every market in one context; those folders
-also set `PASS_TIMEOUT_MIN=150`, because one context working through 37 markets runs longer than 90 minutes. Both read the pass prompt from stdin.
+also set `PASS_TIMEOUT_MIN=150`, because one context working through 37 markets runs longer than 90 minutes. The
+Claude folders set `PASS_TIMEOUT_MIN=75`: they run two passes per slot (Optimism, then Gnosis) inside a scheduled
+task that stops at 3 hours, and 75 + 75 minutes leaves room for both executors. Their passes have taken 9 to 47
+minutes. Both read the pass prompt from stdin.
 
 ## Markets in scope
 
@@ -92,11 +95,17 @@ match the published tally, and the winning tokens can be redeemed after 2026-09-
 
 ## Markets in scope on Gnosis (chain 100)
 
-Each bot also trades **34 conditional markets on Gnosis**: the 14 under the two "Which side event will be
-chosen?" parents and the 20 under the Clément's Judgement Round 3 parent, all listed below. Same wallet address,
-from 500 sDAI plus 1 xDAI for gas per wallet (funded 18 September 2026). Every folder's `.env` names them in
-`PASS_MARKET_LIST_100`; `npm run pass -- --chain 100` is the Gnosis pass, and the queue refuses any other Gnosis
-market.
+**Fable 5.1 and Opus 5 also trade 34 conditional markets on Gnosis**: the 14 under the two "Which side event will
+be chosen?" parents and the 20 under the Clément's Judgement Round 3 parent, all listed below. Same wallet address,
+from 500 sDAI plus 1 xDAI for gas per wallet (funded 18 September 2026, all four wallets). Their `.env` names the
+markets in `PASS_MARKET_LIST_100`; `npm run pass -- --chain 100` is the Gnosis pass, and the queue refuses any
+other Gnosis market.
+
+**Astra and Sol sit Gnosis out**, by the human's call on cost: on 18 September the weekly Codex allowance they
+share with the human stood at 62% used, resetting 23 September 12:31 UTC, and the two of them use about 4% per
+slot on Optimism alone, so a Gnosis pass of the same size would have run it dry within two days and stopped their
+Optimism passes too. The lines are commented out in their `.env`, not deleted; removing the leading `# ` from
+`PASS_MARKET_LIST_100` and `PASS_MARKETS_100` puts them back on Gnosis. Their 500 sDAI stays untouched meanwhile.
 
 ### The side events
 
@@ -172,7 +181,7 @@ its 18 decimals, and have no liquidity.
    estimate and the price are.
 5. **Cadence.** Each bot runs a pass twice a day, at 11:00 and 21:00 in the human's local time, staggered 20
    minutes apart (Fable on the hour, then Opus, Astra and Sol), so each one reads the others' latest trades as
-   prices and volume. Each slot is two passes, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`. Each pass is the whole skill from
+   prices and volume. For Fable and Opus each slot is two passes, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`. Each pass is the whole skill from
    step 0: look at the pools again (the other bots have moved them), re-check the research, re-estimate, and
    plan. A pass that finds nothing to do ends with "no trade"; that is a complete result and gets recorded like
    any other.
