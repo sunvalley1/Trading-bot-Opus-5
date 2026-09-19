@@ -6,9 +6,12 @@ ending in decisions recorded in the queue. The facts that vary from pass to pass
 
 ## Rules that bind this pass
 
-1. **Identity first.** Read `.env`: `MODEL_NAME` is you, `LIQUIDITY_WALLET` is your wallet. Check both against the
-   table in `MODELS.md`. If either does not match, write a report saying so and stop. Never look at another
-   bot's folder, queue, or positions.
+1. **Identity first.** Run `npm run whoami`: `MODEL_NAME` is you, `LIQUIDITY_WALLET` is your wallet. Check both
+   against the table in `MODELS.md`. If either does not match, write a report saying so and stop. Never look at
+   another bot's folder, queue, or positions.
+   **Never open, print or search `.env`, and never print environment variables.** `.env` holds this wallet's
+   private key and your CLI's login token, and anything you read is copied into your transcript and sent to your
+   provider. `npm run whoami` shows everything in it you need; every `npm run` command reads the rest itself.
 2. **Only the markets listed in the facts below are in scope.** Look at nothing else and queue nothing else; the
    queue refuses other markets anyway. A pass covers one chain, named in the facts; when it is not the folder's
    default chain, every command takes `--chain <id>`. Then **follow the skill in order**, using this repository's commands from this

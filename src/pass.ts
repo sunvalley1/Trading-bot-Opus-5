@@ -165,9 +165,12 @@ const started = Date.now();
 // written now and overwritten at the end, so a launcher killed mid-run (scheduler stopped, machine rebooted)
 // still leaves a record of what was started and when
 writeFileSync(path.join(dir, "result.json"), JSON.stringify({ model, wallet: getAddress(wallet), chain: chainId, cash, markets, startedAt: new Date(started).toISOString(), status: "running", pid: process.pid, command: cmdline, report: reportPath, output: outputPath }, null, 2));
-// Python in UTF-8: a model's helper script that prints "→" to a Windows console otherwise dies on cp1252, and on
-// 18 September that ended a pass before its report
-const child = spawn(cmdline, { cwd: ROOT, shell: true, env: { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" }, stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
+// The model's environment. Python in UTF-8: a helper script that prints "→" to a Windows console otherwise dies on
+// cp1252, and on 18 September that ended a pass before its report. No private key: the model never signs, every
+// `npm run` command it starts loads .env for itself, and whatever the model can see can end up in its transcript.
+const modelEnv: NodeJS.ProcessEnv = { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" };
+delete modelEnv.PRIVATE_KEY;
+const child = spawn(cmdline, { cwd: ROOT, shell: true, env: modelEnv, stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
 let output = "";
 const onData = (d: Buffer) => {
   output += d.toString();

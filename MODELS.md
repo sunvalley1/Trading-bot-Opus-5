@@ -170,7 +170,8 @@ its 18 decimals, and have no liquidity.
 
 ## Rules for every bot
 
-1. **Find out which model you are** and read `MODEL_NAME` and `LIQUIDITY_WALLET` from `.env`. If `MODEL_NAME`
+1. **Find out which model you are** with `npm run whoami`, which prints `MODEL_NAME` and `LIQUIDITY_WALLET`
+   from `.env` and nothing else. Never open `.env` itself: it holds the wallet's private key. If `MODEL_NAME`
    is not your model, or `LIQUIDITY_WALLET` is not the address in this table for your model, **stop and say
    so**. You are in the wrong folder. Do not "fix" the `.env`; the human keeps the folders straight.
 2. **Always pass your wallet as `--expect-account`** on every `npm run trade`. The command refuses any other

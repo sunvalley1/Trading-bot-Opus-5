@@ -214,7 +214,8 @@ Then, and only then:
    quotes every leg live and sends nothing. Always pass `--expect-account`: browser wallets connect whichever
    account is selected, and a human with two wallets will eventually have the wrong one selected. **Which
    account is yours is fixed by `MODELS.md`**: several models run this code from separate folders, one wallet
-   each, and `MODEL_NAME` plus `LIQUIDITY_WALLET` in this folder's `.env` must match the row for your model.
+   each, and `MODEL_NAME` plus `LIQUIDITY_WALLET` from `npm run whoami` must match the row for your model. Never
+   open `.env` itself: it holds the wallet's private key, and whatever you read lands in your transcript.
    If they do not, stop and say so rather than trading.
 3. Start the signer **on the market's chain**: `npm run signer -- --chain <id> --wallet <rabby|metamask>`. The
    signer page asks the wallet to switch to the chain *it* serves on every load, so a signer started without
