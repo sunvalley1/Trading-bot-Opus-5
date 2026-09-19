@@ -61,7 +61,7 @@ const cycleStart = new Date(Math.max(...candidates.map((d) => d.getTime())));
 const cycleName = (cycleStart.getHours() < 16 ? "morning" : "night") + " cycle of " + cycleStart.toLocaleDateString("en-GB", { day: "2-digit", month: "short" }) + " (from " + cycleStart.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }) + ")";
 
 // ---------------------------------------------------------------- what already happened in it
-interface PassRecord { dir: string; chain: number; started: Date; status: string; pid?: number; report: boolean }
+interface PassRecord { dir: string; chain: number; started: Date; status: string; pid?: number; exited: boolean; report: boolean }
 const alive = (pid?: number) => {
   if (!pid) return false;
   try {
@@ -79,20 +79,32 @@ function passes(): PassRecord[] {
     if (!m) continue;
     const started = new Date(m[1] + "T" + m[2] + ":" + m[3] + ":" + m[4] + "." + m[5] + "Z");
     const dir = path.join(PASSES, name);
+    // a --prompt-only run writes its prompt and stops before result.json; it was never an attempt
+    if (!existsSync(path.join(dir, "result.json")) && existsSync(path.join(dir, "prompt.md"))) continue;
     let status = "no result";
     let pid: number | undefined;
+    let exited = false;
     try {
       const r = JSON.parse(readFileSync(path.join(dir, "result.json"), "utf8"));
       status = String(r.status ?? "?");
       pid = typeof r.pid === "number" ? r.pid : undefined;
+      exited = !!r.exitedAt;
     } catch {
       /* a pass that died before writing its result is an attempt that failed */
     }
-    out.push({ dir, chain: m[6] ? Number(m[6]) : homeChain, started, status, pid, report: existsSync(path.join(dir, "report.md")) });
+    out.push({ dir, chain: m[6] ? Number(m[6]) : homeChain, started, status, pid, exited, report: existsSync(path.join(dir, "report.md")) });
   }
   return out.sort((a, b) => a.started.getTime() - b.started.getTime());
 }
-const running = (p: PassRecord) => p.status === "running" && alive(p.pid) && now.getTime() - p.started.getTime() < 3 * 3600_000;
+// Alive until pass.ts writes exitedAt, which it does last, after its executor: "finished" alone only means the
+// model is done, and the executor may still be trading. Passes started before PIDs were recorded (19 Sep) count as
+// alive while they could still be running at all.
+const running = (p: PassRecord) => {
+  const age = now.getTime() - p.started.getTime();
+  if (p.exited || age > 3 * 3600_000) return false;
+  if (p.pid) return alive(p.pid);
+  return p.status === "running" && age < 150 * 60_000;
+};
 
 interface QueueItem { id: string; createdAt: string; chain: number; [k: string]: unknown }
 const readQueue = (): QueueItem[] => (existsSync(PENDING) ? readFileSync(PENDING, "utf8").split(/\r?\n/).filter((l) => l.trim()).map((l) => JSON.parse(l)) : []);
@@ -117,8 +129,11 @@ function run(npmArgs: string[]): number {
 
 // ---------------------------------------------------------------- one run at a time
 if (existsSync(LOCK)) {
-  const held = Number(readFileSync(LOCK, "utf8").split(/\s+/)[0]);
-  if (alive(held) && held !== process.pid) {
+  const [pidText, since] = readFileSync(LOCK, "utf8").split(/\s+/);
+  const held = Number(pidText);
+  // a cycle run cannot outlive its task's 3-hour limit, so an older lock is a leftover whose PID may belong to anything
+  const recent = now.getTime() - Date.parse(since ?? "") < 3 * 3600_000;
+  if (recent && alive(held) && held !== process.pid) {
     console.log("CYCLE    " + stamp() + "  another cycle run is going (PID " + held + "); nothing to do.");
     process.exit(0);
   }

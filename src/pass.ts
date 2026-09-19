@@ -192,18 +192,24 @@ if (/authenticate|OAuth|not logged in|login/i.test(output) && code !== 0) {
   console.error("The model CLI could not sign in. For Claude Code run `claude login` once in a terminal on this machine; for another CLI, its own login command. Then run the pass again.");
 }
 
+// The last word in result.json: this process is about to exit, executor included. Until it is written, a live PID
+// means the pass is still running (npm run cycle waits for it); once it is, a reused PID means nothing.
+const exit = (status: number) => {
+  writeFileSync(path.join(dir, "result.json"), JSON.stringify({ ...result, exitedAt: new Date().toISOString() }, null, 2));
+  process.exit(status);
+};
 if (args.execute && code !== 0) {
   console.log("The model step failed, so the queue is NOT executed this round; whatever it queued waits for the next pass and expires after --max-age-min.");
   // cashing in a resolved market needs no decision from the model, so it happens anyway
   const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
   spawnSync(npmCmd, ["run", "queue", "--", "redeem", "--yes", "--chain", String(chainId)], { cwd: ROOT, encoding: "utf8", shell: process.platform === "win32", env: process.env, stdio: "inherit", timeout: 60 * 60_000 });
-  process.exit(code ?? 1);
+  exit(code ?? 1);
 }
 if (args.execute) {
   console.log("");
   console.log("EXECUTE  running this chain's queue (key mode) ...");
   const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
   const r = spawnSync(npmCmd, ["run", "queue", "--", "execute", "--yes", "--chain", String(chainId)], { cwd: ROOT, encoding: "utf8", shell: process.platform === "win32", env: process.env, stdio: "inherit", timeout: 60 * 60_000 });
-  process.exit(r.status ?? 1);
+  exit(r.status ?? 1);
 }
-process.exit(code ?? 1);
+exit(code ?? 1);
