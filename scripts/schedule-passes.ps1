@@ -10,7 +10,7 @@
 
   Each task starts `conhost.exe --headless cmd.exe /c scripts\run-cycle.cmd` in the bot's folder: whatever the
   current cycle (from 11:00 or from 21:00) still lacks, the pass on the folder's own chain and then its Gnosis pass
-  (src\cycle.ts). Every slot's trigger repeats every -RetryEveryMinutes (30) until the next slot, so a pass lost to
+  (src\cycle.ts). Every slot's trigger repeats every -RetryEveryMinutes (30) until the next cycle begins, so a pass lost to
   sleep, a reboot, a killed runner or a failed model step is redone in the same cycle; a run with nothing left to
   do ends in a second. Earlier versions
   ran a visible cmd window, and closing that window (or pressing Ctrl+C in it) killed the pass mid-run. The tasks
@@ -175,11 +175,16 @@ foreach ($bot in $Bots) {
   if ($envText -notmatch "(?m)^PASS_COMMAND=.+") { throw "$folder/.env has no PASS_COMMAND: which CLI runs this model?" }
   if ($envText -notmatch "(?m)^LIQUIDITY_SIGNER=key") { Write-Warning "${bot}: LIQUIDITY_SIGNER is not 'key'; the pass will run but the executor will refuse to send (browser wallet needs a human)." }
   Remove-BotTasks $task
-  # each slot retries until $RetryEveryMinutes before the next slot of the day (the first slot of tomorrow for the last)
+  # Each slot retries until $RetryEveryMinutes before the next CYCLE begins: the next -DailyAt time, unstaggered,
+  # because npm run cycle counts cycles from those times. Retrying until the bot's own next slot instead let a later
+  # bot's morning retries run past 21:00 and start its night pass early, out of turn (19 September).
   $ordered = @($botStarts | Sort-Object { $_.TimeOfDay })
-  $repeatFor = @(for ($k = 0; $k -lt $ordered.Count; $k++) {
-      $next = if ($k + 1 -lt $ordered.Count) { $ordered[$k + 1] } else { $ordered[0].AddDays(1) }
-      ($next - $ordered[$k]) - (New-TimeSpan -Minutes $RetryEveryMinutes)
+  $boundMin = @($slots | ForEach-Object { [int]$_.TimeOfDay.TotalMinutes } | Sort-Object)
+  $repeatFor = @(foreach ($s in $ordered) {
+      $sm = [int]$s.TimeOfDay.TotalMinutes
+      $later = @($boundMin | Where-Object { $_ -gt $sm })
+      $gap = if ($later.Count) { $later[0] - $sm } else { $boundMin[0] + 1440 - $sm }
+      New-TimeSpan -Minutes ($gap - $RetryEveryMinutes)
     })
   Register-BotTask -Name $task -Folder $folder -Argument "--headless cmd.exe /d /c scripts\run-cycle.cmd" -Starts $ordered -RepeatFor $repeatFor
   Write-Host ("registered $task : " + $(if ($TodayOnly) { "once today at " } else { "daily at " }) + ((@($ordered) | ForEach-Object { $_.ToString("HH:mm") }) -join ", ") + $(if ($RetryEveryMinutes -gt 0) { ", each retried every $RetryEveryMinutes min until the next" } else { "" }) + " in $folder (headless)")
