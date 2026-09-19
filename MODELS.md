@@ -211,8 +211,12 @@ by the human, registers a Windows task per folder that runs `scripts\run-cycle.c
 Each run is `npm run cycle -- --execute`: for the current cycle, `npm run pass -- --execute` for Optimism, then
 `npm run pass -- --chain 100 --execute` for Gnosis, each executing only its own chain's queue, and only for a
 chain whose pass has not yet finished with a report this cycle. A pass that failed or died is re-run (its queued
-items are dropped first, so the re-run plans from scratch), at most three times per chain per cycle; a pass whose
-report was written but whose runner died before the executor has its fresh queue executed instead of re-run. Registering it is the human's decision; no model
+items are dropped first, so the re-run plans from scratch), at most three times per chain per cycle. A pass that
+wrote its report decided, "no trade" included, and is not re-run; if its executor was cut off, what it queued is
+executed only where the market's prices have not moved since each trade was queued (`queue add` records them; the
+limit is one point on any outcome, CYCLE_PRICE_TOLERANCE). Where a market has moved, those trades are dropped and
+the pass runs again, since its decision was made at the old prices. A run that finds the cycle complete, or a pass
+still going, does nothing and writes nothing to the log. Registering it is the human's decision; no model
 is ever the one pressing `--yes`.
 
 ## What the human keeps outside git

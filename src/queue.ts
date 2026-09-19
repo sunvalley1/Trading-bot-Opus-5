@@ -1,7 +1,7 @@
 /**
  * `npm run queue -- add <market> --outcome <i> --route <direct|split|fade> --size <x> [--chain 100] [--allow-add] [--note "..."]`
  * `npm run queue -- list`
- * `npm run queue -- execute [--dry-run | --yes] [--chain 100] [--max-age-min 150] [--max 25]`
+ * `npm run queue -- execute [--dry-run | --yes] [--chain 100] [--max-age-min 150] [--max 25] [--unchanged-within 0.01]`
  * `npm run queue -- redeem [--dry-run | --yes] [--chain 100]`
  *
  * The hand-off between a bot's pass and the money. A pass (an AI agent running the skill unattended) records
@@ -23,6 +23,12 @@
  * no decision, so it also runs on its own (`redeem`) when a pass's model step fails, and a redemption that fails
  * is simply found again on the next run.
  *
+ * Prices: `add` records every outcome's spot price when the trade is queued. `execute --unchanged-within <x>`
+ * (what `npm run cycle` uses when it resumes a pass whose executor was cut off) first re-reads the prices of every
+ * market it is about to trade, before executing anything, and files an item as "repriced" instead of trading it if
+ * any outcome has moved more than x (0.01 = one point) since it was queued, or if no prices were recorded: the
+ * decision was made at those prices, and a moved market needs a new pass, not an old order.
+ *
  * Files (both ignored by git): .queue/pending.jsonl and .queue/executed.jsonl, one JSON object per line.
  */
 import { spawnSync } from "node:child_process";
@@ -34,7 +40,8 @@ import { parseArgs } from "./args.js";
 import { getPublicClient } from "./clients.js";
 import { parseChainId } from "./config.js";
 import { findRedeemable } from "./redeem-sweep.js";
-import { parseMarketRef } from "./seer-api.js";
+import { fetchSeerMarket, parseMarketRef } from "./seer-api.js";
+import { snapshot } from "./trade.js";
 import "dotenv/config";
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -61,10 +68,13 @@ interface Item {
   /** unwind only: cap the round at this many complete sets */
   sets?: string;
   note?: string;
+  /** every outcome's spot price when the item was queued (null where there is no pool) */
+  prices?: (number | null)[];
+  pricedAt?: string;
 }
 interface Executed extends Item {
   executedAt: string;
-  status: "done" | "failed" | "stale" | "dry-run" | "unverified";
+  status: "done" | "failed" | "stale" | "dry-run" | "unverified" | "repriced";
   exitCode?: number;
   log?: string;
   reason?: string;
@@ -105,6 +115,32 @@ function chainFor(market: string): number {
 }
 
 const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
+
+/** Every outcome's spot price in the market right now, read from its pools; undefined when it cannot be read. */
+async function pricesNow(market: string, chain: number): Promise<(number | null)[] | undefined> {
+  try {
+    const chainId = parseChainId(chain);
+    const ref = parseMarketRef(market);
+    const address = isAddress(ref.idOrSlug, { strict: false }) ? getAddress(ref.idOrSlug) : (await fetchSeerMarket(chainId, ref.idOrSlug))?.id;
+    if (!address) return undefined;
+    const snap = await snapshot(getPublicClient(chainId), chainId, address);
+    return snap.spot.map((p) => (p === undefined ? null : Number(p.toFixed(6))));
+  } catch {
+    return undefined;
+  }
+}
+
+/** The largest move of any outcome between two price lists, or undefined when they cannot be compared. */
+function largestMove(then?: (number | null)[], now?: (number | null)[]): number | undefined {
+  if (!then || !now || then.length !== now.length) return undefined;
+  let moved: number | undefined;
+  then.forEach((p, i) => {
+    const q = now[i];
+    if (p === null || q === null || q === undefined) return;
+    moved = Math.max(moved ?? 0, Math.abs(q - p));
+  });
+  return moved;
+}
 
 /**
  * Cashes in every resolved market on `chain` in which the wallet still holds tokens that pay something, one
@@ -189,9 +225,12 @@ if (cmd === "add") {
     size,
     allowAdd: !!args["allow-add"],
     note: typeof args.note === "string" ? args.note : undefined,
+    prices: await pricesNow(market, chain),
+    pricedAt: new Date().toISOString(),
   };
   appendItem(PENDING, item);
   console.log("queued " + item.id + ": " + route + " outcome " + outcome + " size " + size + " on " + market + " (chain " + chain + ")" + (item.allowAdd ? "  (--allow-add)" : ""));
+  console.log(item.prices ? "prices when queued: " + item.prices.map((p) => (p === null ? "-" : p.toFixed(4))).join(" / ") : "(prices could not be read; a resumed execution will re-plan this one rather than trade it)");
   console.log("It is executed by `npm run queue -- execute --yes` (key mode) or by a human running the printed trade command.");
   process.exit(0);
 }
@@ -218,6 +257,8 @@ if (cmd === "add-unwind") {
     allowAdd: false,
     sets: typeof args.sets === "string" ? args.sets : undefined,
     note: typeof args.note === "string" ? args.note : undefined,
+    prices: await pricesNow(market, chain),
+    pricedAt: new Date().toISOString(),
   };
   appendItem(PENDING, item);
   console.log("queued " + item.id + ": unwind the position on " + market + " (chain " + chain + ")" + (item.sets ? " in rounds of " + item.sets + " sets" : ""));
@@ -269,6 +310,23 @@ if (cmd === "execute") {
   const todo = pending.filter((p) => onlyChain === undefined || Number(p.chain) === onlyChain);
   if (!todo.length) console.log("nothing queued" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + ".");
   else console.log("EXECUTE  " + (model ?? "") + "  wallet " + getAddress(wallet) + "  " + todo.length + " pending" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + "  " + (dryRun ? "(dry run: every trade with --dry-run, nothing sent)" : "(LIVE: --yes)"));
+  // --unchanged-within: every market's prices are compared with what they were when its item was queued, all of
+  // them before the first trade, so this run's own fills cannot count as the market having moved
+  const tolerance = args["unchanged-within"] !== undefined ? Number(args["unchanged-within"]) : undefined;
+  const repriced = new Map<string, string>();
+  if (tolerance !== undefined) {
+    const seen = new Map<string, (number | null)[] | undefined>();
+    for (const item of todo) {
+      if ((Date.now() - Date.parse(item.createdAt)) / 60_000 > maxAgeMin) continue;
+      const key = item.chain + ":" + item.market.toLowerCase();
+      if (!seen.has(key)) seen.set(key, await pricesNow(item.market, item.chain));
+      const moved = largestMove(item.prices, seen.get(key));
+      if (moved === undefined || moved > tolerance) {
+        repriced.set(item.id, item.prices ? (moved === undefined ? "its prices could not be read again" : "an outcome moved " + (moved * 100).toFixed(1) + " points since it was queued (limit " + (tolerance * 100).toFixed(1) + ")") : "no prices were recorded when it was queued");
+      }
+    }
+    console.log("PRICES   " + (todo.length - repriced.size) + " item(s) at the prices they were queued at, " + repriced.size + " not");
+  }
   let ran = 0;
   for (const item of todo) {
     if (ran >= max) break;
@@ -282,6 +340,9 @@ if (cmd === "execute") {
     if (ageMin > maxAgeMin) {
       result = { ...item, executedAt: new Date().toISOString(), status: "stale", reason: "queued " + ageMin.toFixed(0) + " min ago, older than --max-age-min " + maxAgeMin + ": its quote is fiction now, re-plan instead" };
       console.log("  stale    " + item.id + "  " + result.reason);
+    } else if (repriced.has(item.id)) {
+      result = { ...item, executedAt: new Date().toISOString(), status: "repriced", reason: repriced.get(item.id) + ": not traded, the market needs a new pass" };
+      console.log("  repriced " + item.id + "  " + result.reason);
     } else {
       console.log("");
       console.log("  running  npm " + tradeArgs.join(" "));
@@ -298,7 +359,7 @@ if (cmd === "execute") {
       else if (r.status !== 0) result.reason = "trade exited " + r.status + (r.error ? ": " + r.error.message : "");
       ran++;
     }
-    if (!dryRun || result.status === "stale") {
+    if (!dryRun || result.status === "stale" || result.status === "repriced") {
       // a live run or a stale item leaves the queue; a dry run keeps it so the human can still execute it
       pending = pending.filter((p) => p.id !== item.id);
       writeItems(PENDING, pending);

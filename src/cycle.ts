@@ -6,19 +6,22 @@
  * .env overrides), and every cycle must happen: a pass lost to a sleeping or rebooting laptop, a killed runner or a
  * failed model step is redone within the same cycle, never left for the next one.
  *
- * The scheduled task starts this at the bot's slot and again every 30 minutes until the next cycle begins; each run
- * does only what the current cycle still lacks, chain by chain:
- *   - a pass of this cycle finished and wrote its report: done. If trades it queued are still pending and fresh
- *     (its executor was cut off), the executor runs for that chain.
- *   - the latest attempt wrote its report but its runner died before the executor (on 18 September a model killed
- *     its own runner): its fresh pending trades are executed rather than planned all over again.
- *   - otherwise, below 3 attempts this cycle (CYCLE_MAX_ATTEMPTS): the chain's pending items from the failed attempt
- *     are dropped, since a re-run plans from scratch, and the pass runs again.
+ * The scheduled task starts this at the bot's slot and again every 30 minutes until the next cycle begins. A run
+ * that finds the cycle complete, or a pass still going, does nothing and prints nothing. Otherwise, chain by chain:
+ *   - an attempt of this cycle got as far as its report (the model decided, "no trade" included) and nothing it
+ *     queued is left: done.
+ *   - it decided but its executor was cut off (the runner died after the report, as when a model killed its own
+ *     runner on 18 September, or the laptop slept mid-execution), and trades it queued this cycle are still pending:
+ *     they are executed, but only where the market's prices have not moved since each was queued
+ *     (CYCLE_PRICE_TOLERANCE, default 0.01 = one point on any outcome). If any market has moved, those trades are
+ *     not executed and the pass runs again, because its decision was made at the old prices.
+ *   - otherwise, below 3 attempts this cycle (CYCLE_MAX_ATTEMPTS): what the failed attempt queued is dropped, since a
+ *     re-run plans from scratch, and the pass runs again.
  *   - otherwise it gives up on that chain for this cycle and says so: a model that fails three times in a row is
  *     failing for a reason (a usage limit, a sign-in) that retrying every half hour will not fix.
- * Nothing runs twice at once: the task ignores a start while its previous run is still going, this script holds a
- * lock with its PID, and it will not start while a pass of this folder is still alive (its PID, recorded in
- * result.json, running and under three hours old).
+ * Nothing runs twice at once: the task ignores a start while its previous run is going, this script holds a lock
+ * with its PID, and it will not start while a pass of this folder is still alive (pass.ts records its PID and writes
+ * exitedAt last, after its executor).
  */
 import { spawnSync } from "node:child_process";
 import { appendFileSync, existsSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
@@ -36,7 +39,7 @@ const args = parseArgs(process.argv.slice(2));
 const execute = !!args.execute;
 const dryRun = !!args["dry-run"] || !execute;
 const maxAttempts = Number(process.env.CYCLE_MAX_ATTEMPTS ?? 3);
-const maxAgeMin = 150; // the executor's own staleness limit
+const tolerance = Number(process.env.CYCLE_PRICE_TOLERANCE ?? 0.01);
 const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
 const homeChain = Number(process.env.CHAIN_ID ?? 10);
 const now = new Date();
@@ -97,28 +100,28 @@ function passes(): PassRecord[] {
   return out.sort((a, b) => a.started.getTime() - b.started.getTime());
 }
 // Alive until pass.ts writes exitedAt, which it does last, after its executor: "finished" alone only means the
-// model is done, and the executor may still be trading. Passes started before PIDs were recorded (19 Sep) count as
-// alive while they could still be running at all.
+// model is done, and the executor may still be trading.
 const running = (p: PassRecord) => {
   const age = now.getTime() - p.started.getTime();
   if (p.exited || age > 3 * 3600_000) return false;
   if (p.pid) return alive(p.pid);
-  // no PID recorded: an older pass. Its "finished" may still be executing trades and the old runner starts the
-  // next chain's pass after it, so any such pass under 150 minutes old counts as still going.
+  // no PID recorded: a pass from before 19 September, which may be executing after marking itself finished
   return p.status !== "no result" && age < 150 * 60_000;
 };
 
 interface QueueItem { id: string; createdAt: string; chain: number; [k: string]: unknown }
 const readQueue = (): QueueItem[] => (existsSync(PENDING) ? readFileSync(PENDING, "utf8").split(/\r?\n/).filter((l) => l.trim()).map((l) => JSON.parse(l)) : []);
-const freshPending = (chain: number) => readQueue().filter((q) => Number(q.chain) === chain && now.getTime() - Date.parse(q.createdAt) <= maxAgeMin * 60_000);
+const cyclePending = (chain: number) => readQueue().filter((q) => Number(q.chain) === chain && Date.parse(q.createdAt) >= cycleStart.getTime());
 
-/** A re-run plans from scratch, so what a failed attempt queued is filed away unexecuted. */
+/** A re-run plans from scratch, so what an earlier attempt queued is filed away unexecuted. */
 function dropPending(chain: number, why: string) {
   const items = readQueue();
   const drop = items.filter((q) => Number(q.chain) === chain);
   if (!drop.length) return;
-  writeFileSync(PENDING, items.filter((q) => Number(q.chain) !== chain).map((q) => JSON.stringify(q)).join("\n") + (items.length > drop.length ? "\n" : ""));
-  for (const q of drop) appendFileSync(EXECUTED, JSON.stringify({ ...q, executedAt: new Date().toISOString(), status: "stale", reason: why }) + "\n");
+  if (!dryRun) {
+    writeFileSync(PENDING, items.filter((q) => Number(q.chain) !== chain).map((q) => JSON.stringify(q)).join("\n") + (items.length > drop.length ? "\n" : ""));
+    for (const q of drop) appendFileSync(EXECUTED, JSON.stringify({ ...q, executedAt: new Date().toISOString(), status: "stale", reason: why }) + "\n");
+  }
   console.log("CYCLE    dropped " + drop.length + " pending item(s) on chain " + chain + ": " + why);
 }
 
@@ -129,72 +132,107 @@ function run(npmArgs: string[]): number {
   return r.status ?? 1;
 }
 
+/**
+ * Carries out what a cut-off pass queued this cycle, at unchanged prices only (queue.ts --unchanged-within). Returns
+ * how many items were refused because their market had moved: those need the pass run again.
+ */
+function resume(chain: number): number {
+  const since = new Date().toISOString();
+  const ageLimit = Math.ceil((now.getTime() - cycleStart.getTime()) / 60_000) + 1;
+  run(["run", "queue", "--", "execute", "--yes", "--chain", String(chain), "--unchanged-within", String(tolerance), "--max-age-min", String(ageLimit)]);
+  if (dryRun || !existsSync(EXECUTED)) return 0;
+  return readFileSync(EXECUTED, "utf8")
+    .split(/\r?\n/)
+    .filter((l) => l.includes('"repriced"'))
+    .map((l) => JSON.parse(l))
+    .filter((r) => r.status === "repriced" && Number(r.chain) === chain && r.executedAt >= since).length;
+}
+
+function passAgain(chain: number): number {
+  return run(["run", "pass", "--", ...(chain === homeChain ? [] : ["--chain", String(chain)]), "--execute"]);
+}
+
+/** Records that a chain was given up on this cycle, and says whether that is news (so it is logged once). */
+function firstGiveUp(chain: number): boolean {
+  const marker = path.join(PASSES, "gave-up-" + cycleStart.toISOString().replace(/[:.]/g, "-") + "-chain" + chain);
+  if (existsSync(marker)) return false;
+  if (!dryRun) writeFileSync(marker, new Date().toISOString());
+  return true;
+}
+
+function runCycle() {
+  const chains = [homeChain, ...Object.keys(process.env).map((k) => k.match(/^PASS_MARKET_LIST_(\d+)$/)?.[1]).filter((c): c is string => !!c).map(Number).filter((c) => c !== homeChain && (process.env["PASS_MARKET_LIST_" + c] ?? "").trim())];
+  const summary: string[] = [];
+  let acted = false;
+  for (const chain of chains) {
+    const mine = passes().filter((p) => p.chain === chain && p.started >= cycleStart);
+    // the latest attempt whose model got as far as its report: its decisions are made, whatever became of its runner
+    const decided = [...mine].reverse().find((p) => p.report);
+    const pending = cyclePending(chain);
+    if (decided && !pending.length) {
+      summary.push("chain " + chain + ": done");
+      continue;
+    }
+    if (decided) {
+      // it decided, then its executor was cut off: carry out what it queued, at the prices it decided at
+      acted = true;
+      const moved = resume(chain);
+      if (!moved) {
+        if (decided.status !== "finished" && !dryRun) {
+          try {
+            const f = path.join(decided.dir, "result.json");
+            const r = existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {};
+            writeFileSync(f, JSON.stringify({ ...r, status: "finished", exitedAt: new Date().toISOString(), note: "runner died after the report; cycle.ts executed its queue at unchanged prices" }, null, 2));
+          } catch {
+            /* the record is a convenience; the trades are what mattered */
+          }
+        }
+        summary.push("chain " + chain + ": executed the " + pending.length + " trade(s) a cut-off pass had queued, at unchanged prices");
+        continue;
+      }
+      if (mine.length >= maxAttempts) {
+        if (firstGiveUp(chain)) summary.push("chain " + chain + ": " + moved + " queued trade(s) not executed because their market moved, and no attempts left this cycle");
+        else acted = false;
+        continue;
+      }
+      dropPending(chain, "the market moved since these were queued; the cycle re-runs the pass");
+      const code = passAgain(chain);
+      summary.push("chain " + chain + ": " + moved + " queued trade(s) met moved prices, so the pass ran again (attempt " + (mine.length + 1) + "), exit " + code);
+      continue;
+    }
+    if (mine.length >= maxAttempts) {
+      if (firstGiveUp(chain)) {
+        acted = true;
+        summary.push("chain " + chain + ": GAVE UP after " + mine.length + " failed attempts this cycle (" + mine.map((p) => p.status).join(", ") + ")");
+      }
+      continue;
+    }
+    acted = true;
+    if (mine.length) dropPending(chain, "attempt " + mine.length + " of this cycle did not finish; the cycle re-runs the pass");
+    const code = passAgain(chain);
+    summary.push("chain " + chain + ": " + (mine.length ? "re-run, attempt " + (mine.length + 1) : "ran") + ", exit " + code);
+  }
+  if (acted || dryRun) console.log("CYCLE    " + stamp() + "  " + (process.env.MODEL_NAME ?? "") + " " + cycleName + ": " + summary.join("; ") + (dryRun ? "  (dry run)" : ""));
+}
+
 // ---------------------------------------------------------------- one run at a time
 if (existsSync(LOCK)) {
   const [pidText, since] = readFileSync(LOCK, "utf8").split(/\s+/);
   const held = Number(pidText);
   // a cycle run cannot outlive its task's 3-hour limit, so an older lock is a leftover whose PID may belong to anything
   const recent = now.getTime() - Date.parse(since ?? "") < 3 * 3600_000;
-  if (recent && alive(held) && held !== process.pid) {
-    console.log("CYCLE    " + stamp() + "  another cycle run is going (PID " + held + "); nothing to do.");
-    process.exit(0);
-  }
+  if (recent && alive(held) && held !== process.pid) process.exit(0);
 }
 if (!dryRun) writeFileSync(LOCK, process.pid + " " + new Date().toISOString());
-const release = () => {
+try {
+  // a pass still going, or a cycle already complete, is the usual case every 30 minutes: say nothing then
+  const live = passes().filter(running);
+  if (!live.length) runCycle();
+  else if (dryRun) console.log("CYCLE    " + stamp() + "  a pass is still running (" + path.basename(live[0].dir) + "); nothing to do  (dry run)");
+} finally {
   try {
     if (!dryRun && existsSync(LOCK) && readFileSync(LOCK, "utf8").startsWith(String(process.pid))) unlinkSync(LOCK);
   } catch {
     /* a stale lock is harmless: the next run sees its PID is gone */
   }
-};
-
-try {
-  const live = passes().filter(running);
-  if (live.length) console.log("CYCLE    " + stamp() + "  a pass is still running (" + path.basename(live[0].dir) + ", PID " + live[0].pid + "); leaving it be.");
-  else runCycle();
-} finally {
-  release();
-}
-
-function runCycle() {
-  const chains =[homeChain, ...Object.keys(process.env).map((k) => k.match(/^PASS_MARKET_LIST_(\d+)$/)?.[1]).filter((c): c is string => !!c).map(Number).filter((c) => c !== homeChain && (process.env["PASS_MARKET_LIST_" + c] ?? "").trim())];
-  const summary: string[] = [];
-  for (const chain of chains) {
-    const mine = passes().filter((p) => p.chain === chain && p.started >= cycleStart);
-    const done = mine.find((p) => p.status === "finished" && p.report);
-    const latest = mine[mine.length - 1];
-    const fresh = freshPending(chain);
-    if (done) {
-      if (fresh.length) {
-        // the pass finished but its executor was cut off: carry out what it decided
-        run(["run", "queue", "--", "execute", "--yes", "--chain", String(chain)]);
-        summary.push("chain " + chain + ": done, " + fresh.length + " pending trade(s) executed");
-      } else summary.push("chain " + chain + ": done");
-      continue;
-    }
-    if (latest && latest.report && latest.status !== "finished" && fresh.length) {
-      // the model finished its report but its runner died before the executor: its decisions are still good
-      run(["run", "queue", "--", "execute", "--yes", "--chain", String(chain)]);
-      if (!dryRun) {
-        try {
-          const f = path.join(latest.dir, "result.json");
-          const r = existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {};
-          writeFileSync(f, JSON.stringify({ ...r, status: "finished", finishedAt: new Date().toISOString(), note: "runner died after the report; cycle.ts executed its queue" }, null, 2));
-        } catch {
-          /* the record is a convenience; the trades are what mattered */
-        }
-      }
-      summary.push("chain " + chain + ": runner died after the report, its " + fresh.length + " queued trade(s) executed");
-      continue;
-    }
-    if (mine.length >= maxAttempts) {
-      summary.push("chain " + chain + ": GAVE UP after " + mine.length + " failed attempts this cycle (" + mine.map((p) => p.status).join(", ") + ")");
-      continue;
-    }
-    if (mine.length) dropPending(chain, "attempt " + mine.length + " of this cycle did not finish; the cycle re-runs the pass");
-    const code = run(["run", "pass", "--", ...(chain === homeChain ? [] : ["--chain", String(chain)]), "--execute"]);
-    summary.push("chain " + chain + ": " + (mine.length ? "re-run, attempt " + (mine.length + 1) : "ran") + ", exit " + code);
-  }
-  console.log("CYCLE    " + stamp() + "  " + (process.env.MODEL_NAME ?? "") + " " + cycleName + ": " + summary.join("; ") + (dryRun ? "  (dry run)" : ""));
 }
