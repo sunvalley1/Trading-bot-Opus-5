@@ -13,7 +13,7 @@
  *   - it decided but its executor was cut off (the runner died after the report, as when a model killed its own
  *     runner on 18 September, or the laptop slept mid-execution), and trades it queued this cycle are still pending:
  *     they are executed, but only where the market's prices have not moved since each was queued
- *     (CYCLE_PRICE_TOLERANCE, default 0.01 = one point on any outcome). If any market has moved, those trades are
+ *     (CYCLE_PRICE_TOLERANCE, default 0.02 = two points on any outcome, set by the human on 19 September). If any market has moved, those trades are
  *     not executed and the pass runs again, because its decision was made at the old prices.
  *   - otherwise, below 3 attempts this cycle (CYCLE_MAX_ATTEMPTS): what the failed attempt queued is dropped, since a
  *     re-run plans from scratch, and the pass runs again.
@@ -39,7 +39,7 @@ const args = parseArgs(process.argv.slice(2));
 const execute = !!args.execute;
 const dryRun = !!args["dry-run"] || !execute;
 const maxAttempts = Number(process.env.CYCLE_MAX_ATTEMPTS ?? 3);
-const tolerance = Number(process.env.CYCLE_PRICE_TOLERANCE ?? 0.01);
+const tolerance = Number(process.env.CYCLE_PRICE_TOLERANCE ?? 0.02);
 const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
 const homeChain = Number(process.env.CHAIN_ID ?? 10);
 const now = new Date();

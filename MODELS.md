@@ -214,7 +214,7 @@ chain whose pass has not yet finished with a report this cycle. A pass that fail
 items are dropped first, so the re-run plans from scratch), at most three times per chain per cycle. A pass that
 wrote its report decided, "no trade" included, and is not re-run; if its executor was cut off, what it queued is
 executed only where the market's prices have not moved since each trade was queued (`queue add` records them; the
-limit is one point on any outcome, CYCLE_PRICE_TOLERANCE). Where a market has moved, those trades are dropped and
+limit is two points on any outcome, e.g. 0.57 may be anywhere from 0.55 to 0.59; CYCLE_PRICE_TOLERANCE). Where a market has moved, those trades are dropped and
 the pass runs again, since its decision was made at the old prices. A run that finds the cycle complete, or a pass
 still going, does nothing and writes nothing to the log. Registering it is the human's decision; no model
 is ever the one pressing `--yes`.
