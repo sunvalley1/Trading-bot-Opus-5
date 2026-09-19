@@ -1,9 +1,9 @@
 # Which wallet is yours
 
-Four models run this same code side by side, so their results can be compared. **One model, one checkout, one
+Five bots run this same code side by side, so their results can be compared. **One model, one checkout, one
 wallet.** Each bot runs from its own folder, with its own `.env`, and trades only from the wallet listed for it
 here. The code is identical in every folder (same git remote, same commit), so the only thing that differs
-between the bots is the model.
+between the bots is the model (for the Jev bot, a scripted forecaster: see "The Jev bot" below).
 
 | Model | Folder | Wallet (same address on Optimism and Gnosis) | Signer port |
 |---|---|---|---|
@@ -11,10 +11,38 @@ between the bots is the model.
 | Opus 5 (Claude) | `bots/opus-5` | `0x6e8211F9059648ee6b88fDCB3dB0415d9015cc9e` | 8573 |
 | GPT-6 Astra | `bots/astra-gpt-6b` | `0x017859431458cEdac674344f6031d41c9A68a858` | 8574 |
 | GPT-5.6 Sol | `bots/gpt-5.6-sol` | `0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe` | 8575 |
+| Jev (TypeSafe, via classifier.dev) | `bots/jev` | `0xBa097EdCd5dde78f2990Af8db2bAb7D98BfFd5d0` | 8576 |
 
 Astra's folder is `astra-gpt-6b` because the security software on this machine quarantined four files inside
 the original `astra-gpt-6` and then refused to let anything recreate those paths; the folder was copied to a
 clean path and the files restored there. Same model, same wallet, same key.
+
+## The Jev bot
+
+Added 19 September 2026 at the human's boss's request: a fifth bot whose forecaster is **Jev**, TypeSafe AI's
+"System One" decision model (launched 15 September 2026), reached through **classifier.dev**, a free keyless API
+whose own documentation says "The model behind this service is Jev". Jev does not research, deliberate or use tools:
+it reads a state and returns a calibrated probability for each label it is given, in well under a second. So the
+Jev bot is a script, not an agent: `PASS_COMMAND=npm run -s jev` in its `.env` (src/jev.ts, src/jev-pass.ts). It
+runs in the same cycles as the others, in its own slot at 12:20 and 22:20, with the same automatic redo.
+
+For every market in scope it gathers a fixed set of public facts and asks Jev:
+- **grants**: "approved" or "not approved", given the proposal as the Valar poll lists it (title, amount, what it
+  delivered), its live ballot counts, the voting dates and the approval rule. Invalid gets a fixed 3%.
+- **side events** and **Clément films**: the range the answer will fall in (rating 0-10 in one-point steps from 5,
+  attendance in steps of 25, percentile in steps of 20), with Clément's published session 1 and 2 scores included.
+  The scores become an expected answer, and UP gets the expected payout fraction.
+
+Jev is never shown the market price. From its estimate on, the Jev bot follows the skill's defaults, as the human
+chose: blended with the market at weight 0.25 for Jev (`JEV_WEIGHT`), quarter Kelly against live quotes, at most
+20% of the bankroll per market, fills at most 15% worse than spot, at least 5 points of edge on the fill, one trade
+per market at most, queued for the same executor. It neither adds to nor unwinds a position it already holds.
+
+**Secrets never reach classifier.dev.** Only public market facts are sent; the process that talks to classifier.dev
+is started without the private key and does not load it (src/jev.ts); every request is checked first and refused if
+it contains a value from `.env` that looks secret, anything shaped like a private key, a token or the name of a
+secret (src/classifier.ts); classifier.dev takes no key of ours; and every request and response is written to
+`classifier-requests.jsonl` in the pass's folder. Only the executor, a separate process, signs with the key.
 
 Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
 `claude -p --model claude-fable-5-1|claude-opus-5 --allowedTools Bash,Read,Grep,Glob,WebFetch,WebSearch` with a
@@ -182,7 +210,7 @@ its 18 decimals, and have no liquidity.
    Another bot holding the other side of a market is not a reason to trade or not to trade; only your own
    estimate and the price are.
 5. **Cadence.** Each bot runs a pass twice a day, at 11:00 and 21:00 in the human's local time, staggered 20
-   minutes apart (Fable on the hour, then Opus, Astra and Sol), so each one reads the others' latest trades as
+   minutes apart (Fable on the hour, then Opus, Astra, Sol and Jev), so each one reads the others' latest trades as
    prices and volume. Each slot is two passes per bot, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`.
    **Every cycle must happen, by the human's rule of 19 September 2026**: the morning cycle (from 11:00) and the
    night cycle (from 21:00) are separate, and a pass that failed or never ran is redone within its own cycle, never

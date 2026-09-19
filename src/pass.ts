@@ -170,6 +170,8 @@ writeFileSync(path.join(dir, "result.json"), JSON.stringify({ model, wallet: get
 // `npm run` command it starts loads .env for itself, and whatever the model can see can end up in its transcript.
 const modelEnv: NodeJS.ProcessEnv = { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" };
 delete modelEnv.PRIVATE_KEY;
+// the facts of the pass for a runner that is a script rather than a model reading the prompt (the Jev bot)
+Object.assign(modelEnv, { PASS_CHAIN: String(chainId), PASS_REPORT: reportPath, PASS_DIR: dir, PASS_CASH: cash.toFixed(6) });
 const child = spawn(cmdline, { cwd: ROOT, shell: true, env: modelEnv, stdio: ["pipe", "pipe", "pipe"], windowsHide: true });
 let output = "";
 const onData = (d: Buffer) => {
@@ -178,6 +180,8 @@ const onData = (d: Buffer) => {
 };
 child.stdout.on("data", onData);
 child.stderr.on("data", onData);
+// a runner that never reads stdin (the Jev bot) may close it first; that is not an error
+child.stdin.on("error", () => {});
 child.stdin.write(prompt);
 child.stdin.end();
 const timer = setTimeout(() => {

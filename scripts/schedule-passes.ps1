@@ -34,7 +34,7 @@
 #>
 param(
   [Parameter(Mandatory = $true)] [string] $BotsRoot,
-  [string[]] $Bots = @("fable-5.1", "opus-5", "astra-gpt-6b", "gpt-5.6-sol"),
+  [string[]] $Bots = @("fable-5.1", "opus-5", "astra-gpt-6b", "gpt-5.6-sol", "jev"),
   # local times of day, one pass each, every day; "now" means two minutes from now, for a schedule that should
   # start a round at once instead of waiting for tomorrow
   [string[]] $DailyAt = @("11:00", "21:00"),
@@ -44,6 +44,9 @@ param(
   # every slot's trigger fires again this often until the next slot, and each firing redoes whatever the cycle
   # still lacks (src\cycle.ts); 0 turns the retries off
   [int] $RetryEveryMinutes = 30,
+  # register only these bots, keeping the stagger slot each has in -Bots: adding a bot must not touch the tasks of
+  # the others, which may be running
+  [string[]] $Only = @(),
   # task names are <prefix><bot>; a second prefix lets a new schedule live beside tasks that a security
   # product refuses to delete
   [string] $TaskPrefix = "SeerBot-",
@@ -151,6 +154,7 @@ if ($SelfTest) {
 
 # -File passes a list as one string ("-Bots a,b" / "-DailyAt now,21:00"), so split on commas before use
 $Bots = @($Bots | ForEach-Object { $_ -split "," } | Where-Object { $_.Trim() } | ForEach-Object { $_.Trim() })
+$Only = @($Only | ForEach-Object { $_ -split "," } | Where-Object { $_.Trim() } | ForEach-Object { $_.Trim() })
 # same for the times
 $slots = @($DailyAt | ForEach-Object { $_ -split "," } | Where-Object { $_.Trim() } | ForEach-Object { Resolve-DailyTime $_ })
 $i = 0
@@ -159,6 +163,7 @@ foreach ($bot in $Bots) {
   $task = $TaskPrefix + $bot
   $botStarts = @($slots | ForEach-Object { $_.AddMinutes($i * $StaggerMinutes) })
   $i++
+  if ($Only.Count -gt 0 -and $Only -notcontains $bot) { continue }
   if ($Unregister) {
     Remove-BotTasks $task
     Write-Host "removed $task"

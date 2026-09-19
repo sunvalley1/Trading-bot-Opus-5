@@ -16,6 +16,7 @@
     "pass": "tsx src/pass.ts",
     "cycle": "tsx src/cycle.ts",
     "whoami": "tsx src/whoami.ts",
+    "jev": "tsx src/jev.ts",
     "watch": "tsx src/watch-liquidity.ts",
     "portfolio": "tsx src/portfolio.ts",
     "redeem": "tsx src/redeem.ts",
