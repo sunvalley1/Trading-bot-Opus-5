@@ -164,7 +164,7 @@ console.log("         running " + cmdline);
 const started = Date.now();
 // written now and overwritten at the end, so a launcher killed mid-run (scheduler stopped, machine rebooted)
 // still leaves a record of what was started and when
-writeFileSync(path.join(dir, "result.json"), JSON.stringify({ model, wallet: getAddress(wallet), chain: chainId, cash, markets, startedAt: new Date(started).toISOString(), status: "running", command: cmdline, report: reportPath, output: outputPath }, null, 2));
+writeFileSync(path.join(dir, "result.json"), JSON.stringify({ model, wallet: getAddress(wallet), chain: chainId, cash, markets, startedAt: new Date(started).toISOString(), status: "running", pid: process.pid, command: cmdline, report: reportPath, output: outputPath }, null, 2));
 // Python in UTF-8: a model's helper script that prints "→" to a Windows console otherwise dies on cp1252, and on
 // 18 September that ended a pass before its report
 const child = spawn(cmdline, { cwd: ROOT, shell: true, env: { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" }, stdio: ["pipe", "pipe", "pipe"], windowsHide: true });

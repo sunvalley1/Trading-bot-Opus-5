@@ -8,7 +8,11 @@
   the queue executor, which signs with the key that the human placed in that folder's .env (LIQUIDITY_SIGNER=key).
   No model ever runs `--yes`; the executor is a plain script.
 
-  Each task starts `conhost.exe --headless cmd.exe /c scripts\run-pass.cmd` in the bot's folder. Earlier versions
+  Each task starts `conhost.exe --headless cmd.exe /c scripts\run-cycle.cmd` in the bot's folder: whatever the
+  current cycle (from 11:00 or from 21:00) still lacks, the pass on the folder's own chain and then its Gnosis pass
+  (src\cycle.ts). Every slot's trigger repeats every -RetryEveryMinutes (30) until the next slot, so a pass lost to
+  sleep, a reboot, a killed runner or a failed model step is redone in the same cycle; a run with nothing left to
+  do ends in a second. Earlier versions
   ran a visible cmd window, and closing that window (or pressing Ctrl+C in it) killed the pass mid-run. The tasks
   also keep running on battery power, ignore a new start while the previous pass is still going, and give up after
   3 hours so a hung pass cannot block the next slots forever. A slot missed while the PC was off runs as soon as it is
@@ -30,13 +34,16 @@
 #>
 param(
   [Parameter(Mandatory = $true)] [string] $BotsRoot,
-  [string[]] $Bots = @("fable-5.1", "opus-5", "astra-gpt-6", "gpt-5.6-sol"),
+  [string[]] $Bots = @("fable-5.1", "opus-5", "astra-gpt-6b", "gpt-5.6-sol"),
   # local times of day, one pass each, every day; "now" means two minutes from now, for a schedule that should
   # start a round at once instead of waiting for tomorrow
   [string[]] $DailyAt = @("11:00", "21:00"),
   # each bot starts this many minutes after the previous one, so they take turns reading each other's trades
   # instead of all hitting the pools at the same minute: 20 -> Fable 11:00, Opus 11:20, Astra 11:40, Sol 12:00
   [int] $StaggerMinutes = 20,
+  # every slot's trigger fires again this often until the next slot, and each firing redoes whatever the cycle
+  # still lacks (src\cycle.ts); 0 turns the retries off
+  [int] $RetryEveryMinutes = 30,
   # task names are <prefix><bot>; a second prefix lets a new schedule live beside tasks that a security
   # product refuses to delete
   [string] $TaskPrefix = "SeerBot-",
@@ -50,7 +57,7 @@ $ErrorActionPreference = "Stop"
 $conhost = Join-Path $env:WINDIR "System32\conhost.exe"
 $user = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 
-function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, [datetime[]] $Starts) {
+function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, [datetime[]] $Starts, [timespan[]] $RepeatFor = @()) {
   # Preferred route: one task with every slot as a trigger, and the settings that matter for a laptop that
   # may be unplugged or asleep (start on battery, keep running unplugged, catch up a missed slot, ignore a
   # second start, give up after 3 h).
@@ -59,7 +66,15 @@ function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, 
   # there because behaviour-blocking security software (Bitdefender here) can answer "Access is denied" to
   # the WMI route and to schtasks /xml while leaving the plain command line alone, and can delete tasks that
   # were made through WMI. run-pass.cmd cd's to its own folder, so the fallback needs no working directory.
-  $triggers = @(foreach ($s in $Starts) { if ($TodayOnly) { New-ScheduledTaskTrigger -Once -At $s } else { New-ScheduledTaskTrigger -Daily -At $s } })
+  $triggers = @(for ($k = 0; $k -lt $Starts.Count; $k++) {
+      $s = $Starts[$k]
+      $trig = if ($TodayOnly) { New-ScheduledTaskTrigger -Once -At $s } else { New-ScheduledTaskTrigger -Daily -At $s }
+      if ($RetryEveryMinutes -gt 0 -and $k -lt $RepeatFor.Count) {
+        # the retries: fire again every few minutes until shortly before the next slot
+        $trig.Repetition = (New-ScheduledTaskTrigger -Once -At $s -RepetitionInterval (New-TimeSpan -Minutes $RetryEveryMinutes) -RepetitionDuration $RepeatFor[$k]).Repetition
+      }
+      $trig
+    })
   $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 3)
   $principal = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
   $action = New-ScheduledTaskAction -Execute $conhost -Argument $Argument -WorkingDirectory $Folder
@@ -69,14 +84,14 @@ function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, 
   } catch {
     Write-Warning ("$Name : Register-ScheduledTask was refused (" + $_.Exception.Message.Trim() + "); falling back to schtasks.exe with default settings.")
   }
-  $target = Join-Path $Folder "scripts
-un-pass.cmd"
-  $tr = $conhost + " " + ($Argument -replace [regex]::Escape("scripts
-un-pass.cmd"), ('"' + $target + '"'))
-  foreach ($s in $Starts) {
+  $target = Join-Path $Folder "scripts\run-cycle.cmd"
+  $tr = $conhost + " " + ($Argument -replace [regex]::Escape("scripts\run-cycle.cmd"), ('"' + $target + '"'))
+  for ($k = 0; $k -lt $Starts.Count; $k++) {
+    $s = $Starts[$k]
     $slotName = $Name + "-" + $s.ToString("HHmm")
     $sched = if ($TodayOnly) { @("/sc", "once") } else { @("/sc", "daily") }
-    $out = & schtasks /create /tn $slotName /tr $tr @sched /st $s.ToString("HH:mm") /f 2>&1
+    $repeat = if ($RetryEveryMinutes -gt 0 -and $k -lt $RepeatFor.Count) { @("/ri", $RetryEveryMinutes, "/du", ("{0:0000}:{1:00}" -f [math]::Floor($RepeatFor[$k].TotalHours), $RepeatFor[$k].Minutes)) } else { @() }
+    $out = & schtasks /create /tn $slotName /tr $tr @sched /st $s.ToString("HH:mm") @repeat /f 2>&1
     if ($LASTEXITCODE -ne 0) { throw ("schtasks refused to register " + $slotName + ": " + ($out -join " ")) }
   }
 }
@@ -150,13 +165,19 @@ foreach ($bot in $Bots) {
     continue
   }
   if (-not (Test-Path (Join-Path $folder ".env"))) { throw "$folder has no .env; set it up first (MODELS.md)" }
-  if (-not (Test-Path (Join-Path $folder "scripts\run-pass.cmd"))) { throw "$folder has no scripts\run-pass.cmd; run git pull in that folder first" }
+  if (-not (Test-Path (Join-Path $folder "scripts\run-cycle.cmd"))) { throw "$folder has no scripts\run-cycle.cmd; run git pull in that folder first" }
   $envText = Get-Content (Join-Path $folder ".env") -Raw
   if ($envText -notmatch "(?m)^PASS_COMMAND=.+") { throw "$folder/.env has no PASS_COMMAND: which CLI runs this model?" }
   if ($envText -notmatch "(?m)^LIQUIDITY_SIGNER=key") { Write-Warning "${bot}: LIQUIDITY_SIGNER is not 'key'; the pass will run but the executor will refuse to send (browser wallet needs a human)." }
   Remove-BotTasks $task
-  Register-BotTask -Name $task -Folder $folder -Argument "--headless cmd.exe /d /c scripts\run-pass.cmd" -Starts $botStarts
-  Write-Host ("registered $task : " + $(if ($TodayOnly) { "once today at " } else { "daily at " }) + ((@($botStarts) | ForEach-Object { $_.ToString("HH:mm") }) -join ", ") + " in $folder (headless)")
+  # each slot retries until $RetryEveryMinutes before the next slot of the day (the first slot of tomorrow for the last)
+  $ordered = @($botStarts | Sort-Object { $_.TimeOfDay })
+  $repeatFor = @(for ($k = 0; $k -lt $ordered.Count; $k++) {
+      $next = if ($k + 1 -lt $ordered.Count) { $ordered[$k + 1] } else { $ordered[0].AddDays(1) }
+      ($next - $ordered[$k]) - (New-TimeSpan -Minutes $RetryEveryMinutes)
+    })
+  Register-BotTask -Name $task -Folder $folder -Argument "--headless cmd.exe /d /c scripts\run-cycle.cmd" -Starts $ordered -RepeatFor $repeatFor
+  Write-Host ("registered $task : " + $(if ($TodayOnly) { "once today at " } else { "daily at " }) + ((@($ordered) | ForEach-Object { $_.ToString("HH:mm") }) -join ", ") + $(if ($RetryEveryMinutes -gt 0) { ", each retried every $RetryEveryMinutes min until the next" } else { "" }) + " in $folder (headless)")
 }
 if (-not $Unregister) {
   Write-Host ""

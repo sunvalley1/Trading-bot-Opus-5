@@ -182,7 +182,11 @@ its 18 decimals, and have no liquidity.
    estimate and the price are.
 5. **Cadence.** Each bot runs a pass twice a day, at 11:00 and 21:00 in the human's local time, staggered 20
    minutes apart (Fable on the hour, then Opus, Astra and Sol), so each one reads the others' latest trades as
-   prices and volume. Each slot is two passes per bot, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`. Each pass is the whole skill from
+   prices and volume. Each slot is two passes per bot, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`.
+   **Every cycle must happen, by the human's rule of 19 September 2026**: the morning cycle (from 11:00) and the
+   night cycle (from 21:00) are separate, and a pass that failed or never ran is redone within its own cycle, never
+   left for the next one. Each bot's task fires again every 30 minutes until the next cycle starts, and
+   `npm run cycle` redoes whatever the current cycle still lacks, chain by chain, up to three attempts each. Each pass is the whole skill from
    step 0: look at the pools again (the other bots have moved them), re-check the research, re-estimate, and
    plan. A pass that finds nothing to do ends with "no trade"; that is a complete result and gets recorded like
    any other.
@@ -201,9 +205,13 @@ wallet as `--expect-account`, discards items older than 150 minutes as stale, an
 something (`npm run redeem`, one market at a time, filed the same way), even when the model step failed, since a
 resolved market leaves nothing to decide. A redemption that fails is found again on the next run. Unattended execution needs `LIQUIDITY_SIGNER=key` and this wallet's `PRIVATE_KEY` in `.env`; with a
 browser wallet the executor prints the commands for the human instead. `scripts/schedule-passes.ps1`, run once
-by the human, registers a Windows task per folder that runs `scripts\run-pass.cmd` at the times given in
-`-DailyAt` (two a day by default), the bots 20 minutes apart: `npm run pass -- --execute` for Optimism, then
-`npm run pass -- --chain 100 --execute` for Gnosis, each executing only its own chain's queue. Registering it is the human's decision; no model
+by the human, registers a Windows task per folder that runs `scripts\run-cycle.cmd` at the times given in
+`-DailyAt` (two a day by default), the bots 20 minutes apart, and again every 30 minutes until the next slot.
+Each run is `npm run cycle -- --execute`: for the current cycle, `npm run pass -- --execute` for Optimism, then
+`npm run pass -- --chain 100 --execute` for Gnosis, each executing only its own chain's queue, and only for a
+chain whose pass has not yet finished with a report this cycle. A pass that failed or died is re-run (its queued
+items are dropped first, so the re-run plans from scratch), at most three times per chain per cycle; a pass whose
+report was written but whose runner died before the executor has its fresh queue executed instead of re-run. Registering it is the human's decision; no model
 is ever the one pressing `--yes`.
 
 ## What the human keeps outside git
