@@ -20,11 +20,16 @@ Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
 `claude -p --model claude-fable-5-1|claude-opus-5 --allowedTools Bash,Read,Grep,Glob,WebFetch,WebSearch` with a
 `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token`; the GPT bots run
 `scripts\codex-app.cmd exec --disable multi_agent -m gpt-6-astra|gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox
---skip-git-repo-check` (the Codex CLI shipped inside the Codex app), signed in through its ChatGPT login.
-Helper agents are off so a GPT pass, like a Claude pass, researches every market in one context. The folders
-that run two passes per slot (Optimism, then Gnosis: Fable, Opus and Astra) set `PASS_TIMEOUT_MIN=75`, because
-the scheduled task stops at 3 hours and 75 + 75 minutes leaves room for both executors; their passes have taken
-9 to 47 minutes. Sol, on Optimism only, keeps `PASS_TIMEOUT_MIN=150`. Both read the pass prompt from stdin.
+--skip-git-repo-check` (the Codex CLI shipped inside the Codex app), each on its own ChatGPT account, by the
+human's decision of 19 September 2026: **Astra** uses the default Codex home (`C:\Users\12\.codex`, signed in as
+faceexpress9@gmail.com), **Sol** the home named by `CODEX_HOME` in its `.env` (`C:\Users\12\.codex-sol`, signed
+in as ieltsbustan@gmail.com); both are Pro 5x plans with separate weekly allowances. Sol's home carries only the
+settings that shape a pass (model, `xhigh` reasoning), because a pass uses nothing but the shell tool. To sign
+Sol in again, from Sol's folder: `$env:CODEX_HOME="C:\Users\12\.codex-sol"; scripts\codex-app.cmd login`.
+Helper agents are off so a GPT pass, like a Claude pass, researches every market in one context. Every folder
+runs two passes per slot (Optimism, then Gnosis) and sets `PASS_TIMEOUT_MIN=75`, because the scheduled task
+stops at 3 hours and 75 + 75 minutes leaves room for both executors; passes have taken 9 to 47 minutes. Both
+CLIs read the pass prompt from stdin.
 
 ## Markets in scope
 
@@ -94,17 +99,14 @@ match the published tally, and the winning tokens can be redeemed after 2026-09-
 
 ## Markets in scope on Gnosis (chain 100)
 
-**Fable 5.1, Opus 5 and GPT-6 Astra also trade 34 conditional markets on Gnosis**: the 14 under the two "Which side event will
+**All four bots also trade 34 conditional markets on Gnosis**: the 14 under the two "Which side event will
 be chosen?" parents and the 20 under the Clément's Judgement Round 3 parent, all listed below. Same wallet address,
 from 500 sDAI plus 1 xDAI for gas per wallet (funded 18 September 2026, all four wallets). Their `.env` names the
 markets in `PASS_MARKET_LIST_100`; `npm run pass -- --chain 100` is the Gnosis pass, and the queue refuses any
 other Gnosis market.
 
-**Sol sits Gnosis out for now**, by the human's call on cost: the weekly Codex allowance Astra and Sol share with
-the human stood at 62% used on 18 September, resetting 23 September 12:31 UTC, and the two bots use about 4% per
-slot on Optimism alone. Sol joins Gnosis once the human has arranged more Codex capacity for it. Its lines are
-commented out in its `.env`, not deleted; removing the leading `# ` from `PASS_MARKET_LIST_100` and
-`PASS_MARKETS_100` puts it on Gnosis. Its 500 sDAI stays untouched meanwhile.
+Sol sat Gnosis out from 18 to 19 September, while it shared one Codex allowance with Astra and the human; it
+joined on its own ChatGPT account on 19 September.
 
 ### The side events
 
@@ -180,7 +182,7 @@ its 18 decimals, and have no liquidity.
    estimate and the price are.
 5. **Cadence.** Each bot runs a pass twice a day, at 11:00 and 21:00 in the human's local time, staggered 20
    minutes apart (Fable on the hour, then Opus, Astra and Sol), so each one reads the others' latest trades as
-   prices and volume. For Fable, Opus and Astra each slot is two passes, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`. Each pass is the whole skill from
+   prices and volume. Each slot is two passes per bot, one after the other: Optimism, then Gnosis. The times come from `scripts/schedule-passes.ps1 -DailyAt`. Each pass is the whole skill from
    step 0: look at the pools again (the other bots have moved them), re-check the research, re-estimate, and
    plan. A pass that finds nothing to do ends with "no trade"; that is a complete result and gets recorded like
    any other.
