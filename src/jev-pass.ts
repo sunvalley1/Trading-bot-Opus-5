@@ -86,6 +86,30 @@ async function liveGrantBallots(): Promise<{ byName: Map<string, Proposal>; tota
   return undefined;
 }
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+const STOP = new Set(["for", "and", "of", "the", "a", "an", "to", "in", "on"]);
+const words = (s: string) => new Set(norm(s).split(" ").filter((w) => w && !STOP.has(w)));
+
+/**
+ * The poll's entry for a market's grant. The market names and the poll's titles differ ("ZAP1 Attestation Protocol
+ * and Verification Tooling" is "ZAP1" in the poll, "Bonus Grant - ..." is "Bonus Grant for ..."), so an exact match
+ * comes first and otherwise the best word overlap in both directions, which also keeps a bonus grant apart from the
+ * grant it is a bonus for. Too weak or tied a match counts as no match.
+ */
+function findProposal(name: string, ballots: Awaited<ReturnType<typeof liveGrantBallots>>): Proposal | undefined {
+  if (!ballots) return undefined;
+  const exact = ballots.byName.get(norm(name));
+  if (exact) return exact;
+  const m = words(name);
+  const scored = [...ballots.byName.entries()]
+    .map(([key, p]) => {
+      const w = words(key);
+      const common = [...m].filter((x) => w.has(x)).length;
+      return { p, score: m.size && w.size ? common / m.size + common / w.size : 0 };
+    })
+    .sort((a, b) => b.score - a.score);
+  if (!scored.length || scored[0].score < 1 || (scored[1] && scored[1].score === scored[0].score)) return undefined;
+  return scored[0].p;
+}
 
 // Clément's published scores (his Criticker percentile, the market's closing estimate in brackets), from
 // https://blog.kleros.io/what-the-first-foresight-experiment-taught-us-about-predicting-clements-movie-taste/ and
@@ -127,7 +151,7 @@ interface Ask { kind: string; state: string; labels: string[]; instructions: str
 
 function grantAsk(snap: MarketSnapshot, question: string, ballots: Awaited<ReturnType<typeof liveGrantBallots>>): Ask {
   const name = question.match(/^Will (.+?) be approved in the/i)?.[1] ?? snap.name;
-  const p = ballots?.byName.get(norm(name));
+  const p = findProposal(name, ballots);
   const counts = p ? p.options.map((o) => o.label + " " + (o.ballot_count ?? 0)).join("; ") : undefined;
   const state = [
     "Zcash Q3 2026 Coinholder-Directed Retroactive Grants: a coinholder poll decides which of 37 retroactive grant proposals are paid. Voting runs 17 to 29 September 2026 on the Valar shielded vote chain. A proposal is approved with a simple majority of the ZEC voting on it and at least about 420,000 ZEC of participation on that proposal, about 2% of the supply.",
