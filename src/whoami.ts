@@ -9,7 +9,7 @@
  */
 import "dotenv/config";
 
-const line = (k: string, v: string) => console.log(k.padEnd(20) + v);
+const line = (k: string, v: string) => console.log(k.padEnd(22) + v);
 line("MODEL_NAME", process.env.MODEL_NAME ?? "(not set)");
 line("LIQUIDITY_WALLET", process.env.LIQUIDITY_WALLET ?? "(not set)");
 line("CHAIN_ID", process.env.CHAIN_ID ?? "(not set)");
