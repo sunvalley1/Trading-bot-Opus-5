@@ -103,7 +103,9 @@ const running = (p: PassRecord) => {
   const age = now.getTime() - p.started.getTime();
   if (p.exited || age > 3 * 3600_000) return false;
   if (p.pid) return alive(p.pid);
-  return p.status === "running" && age < 150 * 60_000;
+  // no PID recorded: an older pass. Its "finished" may still be executing trades and the old runner starts the
+  // next chain's pass after it, so any such pass under 150 minutes old counts as still going.
+  return p.status !== "no result" && age < 150 * 60_000;
 };
 
 interface QueueItem { id: string; createdAt: string; chain: number; [k: string]: unknown }
