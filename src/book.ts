@@ -174,7 +174,14 @@ export async function inRootCollateral(
       if (rest > 0n) {
         const pool = await readOutcomePool(client, chainId, e.index, parent.outcomes[e.index] ?? "?", e.token, parent.collateralToken);
         if (!pool.exists) {
-          notes.push(Number(formatUnits(rest, 18)).toFixed(2) + " beyond that has no pool: nothing until the parent resolves");
+          notes.push(
+            Number(formatUnits(rest, 18)).toFixed(2) +
+              " completes no set the wallet can assemble" +
+              (merged > 0n || entries.length > 1 ? " (its siblings' marks took the rest)" : "") +
+              " and has no pool, so it counts for nothing until " +
+              (parent.outcomes[e.index] ?? "that outcome") +
+              " wins",
+          );
         } else {
           const got = await quoteExactIn(client, chainId, e.token, parent.collateralToken, rest, pool.fee);
           if (got > 0n) {

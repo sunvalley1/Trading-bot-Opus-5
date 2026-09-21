@@ -111,7 +111,8 @@ interface Row {
   given: number;
   delta: number;
   markets: number;
-  left: string[];
+  unpriced: number;
+  unpricedNote: string;
 }
 
 const bots = findBots();
@@ -153,6 +154,8 @@ for (const chainId of chains) {
     const book = await valueBook(client, chainId, bot.wallet, mine);
     const valued = await inRootCollateral(client, chainId, mine, root, book, bot.wallet);
     const given = (funded.get(chainId) ?? 0) + redeemed(bot, chainId);
+    // parent tokens with no pool and no set to complete: real claims, but nothing can be realised before the parent resolves
+    const unpriced = valued.parts.filter((p) => p.value === 0 && p.amount > 0);
     rows.push({
       bot: bot.name,
       cash,
@@ -161,7 +164,8 @@ for (const chainId of chains) {
       given,
       delta: cash + valued.total - given,
       markets: book.positions.length,
-      left: valued.parts.filter((p) => p.value === 0 && p.amount > 0).map((p) => p.amount.toFixed(2) + " " + p.symbol + " - " + p.note),
+      unpriced: unpriced.reduce((a, p) => a + p.amount, 0),
+      unpricedNote: unpriced.length ? unpriced.map((p) => p.amount.toFixed(2) + " " + p.symbol).join(", ") : "",
     });
   }
   byChain.set(chainId, { symbol, rows });
@@ -174,11 +178,22 @@ if (args.json) {
   for (const [chainId, { symbol, rows }] of byChain) {
     console.log("");
     console.log("CHAIN " + chainId + "  (" + symbol + ")");
-    console.log("  " + "bot".padEnd(14) + "cash".padStart(10) + "book".padStart(10) + "total".padStart(11) + "given".padStart(11) + "P&L".padStart(10) + "   markets");
+    console.log("  " + "bot".padEnd(14) + "cash".padStart(10) + "book".padStart(10) + "total".padStart(11) + "given".padStart(11) + "P&L".padStart(10) + "   markets   not counted");
     for (const r of [...rows].sort((a, b) => b.delta - a.delta)) {
-      console.log("  " + r.bot.padEnd(14) + r.cash.toFixed(2).padStart(10) + r.book.toFixed(2).padStart(10) + r.total.toFixed(2).padStart(11) + r.given.toFixed(2).padStart(11) + ((r.delta >= 0 ? "+" : "") + r.delta.toFixed(2)).padStart(10) + "   " + r.markets);
+      console.log(
+        "  " +
+          r.bot.padEnd(14) +
+          r.cash.toFixed(2).padStart(10) +
+          r.book.toFixed(2).padStart(10) +
+          r.total.toFixed(2).padStart(11) +
+          r.given.toFixed(2).padStart(11) +
+          ((r.delta >= 0 ? "+" : "") + r.delta.toFixed(2)).padStart(10) +
+          "   " +
+          String(r.markets).padStart(7) +
+          (r.unpriced ? "   " + r.unpriced.toFixed(2) + " in parent tokens with no pool and no set to complete" : ""),
+      );
       totals.set(r.bot, (totals.get(r.bot) ?? 0) + r.delta);
-      for (const note of r.left) console.log("  " + "".padEnd(14) + "left out: " + note);
+      if (r.unpricedNote) console.log("  " + "".padEnd(14) + "(" + r.unpricedNote + ": each pays only if its own outcome wins, so none of it is counted above)");
     }
   }
   if (byChain.size > 1) {
