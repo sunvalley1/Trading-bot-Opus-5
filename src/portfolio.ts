@@ -9,15 +9,16 @@
  *
  * Complete sets (one of every outcome, Invalid included) are marked at 1 collateral each: that is what merging
  * them returns, whatever the pools say. A conditional market's collateral is an outcome token of its parent, so
- * its marks are in that token, and totals are kept per collateral rather than added across them.
+ * its marks are in that token; the totals are kept per collateral and then quoted back into the chain's own
+ * collateral, which is the figure to compare against cash. Valuation lives in src/book.ts.
  *
  * Read-only.
  */
 import { formatUnits, type Address } from "viem";
 import { parseArgs } from "./args.js";
+import { inRootCollateral, symbolOf, valueBook } from "./book.js";
 import { getAccount, getPublicClient } from "./clients.js";
-import { parseChainId } from "./config.js";
-import { erc20FullAbi, quoteExactIn, readOutcomePool } from "./dex.js";
+import { EXPECTED_FACTORY_CONFIG, parseChainId } from "./config.js";
 import { marketUrl, searchSeerMarkets, type SeerMarket } from "./seer-api.js";
 
 const args = parseArgs(process.argv.slice(2));
@@ -56,59 +57,33 @@ if (args.scope) {
 console.log("scanning " + markets.length + " market(s) matching " + filter + " ...");
 console.log("");
 
-const symbols = new Map<string, string>();
-const symbolOf = async (token: Address) => {
-  const k = token.toLowerCase();
-  if (!symbols.has(k)) symbols.set(k, await client.readContract({ address: token, abi: erc20FullAbi, functionName: "symbol" }).catch(() => "?"));
-  return symbols.get(k)!;
-};
+const book = await valueBook(client, chainId, account, markets);
 
-const totals = new Map<string, number>();
-let held = 0;
-for (const m of markets) {
-  const tokens = m.wrappedTokens ?? [];
-  const bals: bigint[] = [];
-  for (const token of tokens) bals.push(await client.readContract({ address: token, abi: erc20FullAbi, functionName: "balanceOf", args: [account] }).catch(() => 0n));
-  if (bals.every((b) => b === 0n)) continue;
-  // complete sets merge into exactly 1 collateral each, so they are marked at that and only the rest is quoted
-  const sets = bals.length && bals.every((b) => b > 0n) ? bals.reduce((a, b) => (b < a ? b : a)) : 0n;
-  const collateralSymbol = await symbolOf(m.collateralToken);
-  const rows: string[] = [];
-  let marketMark = Number(formatUnits(sets, 18));
-  for (const [i, token] of tokens.entries()) {
-    const bal = bals[i];
-    if (bal === 0n) continue;
-    const rest = bal - sets;
-    let exit = 0;
-    let exitNote = rest === 0n ? "all in complete sets" : "no pool - only redeemable if this outcome wins";
-    if (rest > 0n) {
-      const pool = await readOutcomePool(client, chainId, i, m.outcomes[i] ?? "?", token, m.collateralToken);
-      if (pool.exists) {
-        const got = await quoteExactIn(client, chainId, token, m.collateralToken, rest, pool.fee);
-        exit = Number(formatUnits(got, 18));
-        exitNote = got > 0n ? "exit @ " + (exit / Number(formatUnits(rest, 18))).toFixed(4) + " (spot " + (pool.price ?? 0).toFixed(4) + ")" : "pool cannot absorb this size";
-      }
-      if (sets > 0n) exitNote = "beyond the sets: " + exitNote;
-    }
-    marketMark += exit;
-    rows.push("    " + (m.outcomes[i] ?? "?").slice(0, 46).padEnd(48) + Number(formatUnits(bal, 18)).toFixed(4).padStart(12) + "   " + exit.toFixed(4).padStart(10) + "   " + exitNote);
-  }
-  held++;
-  totals.set(collateralSymbol, (totals.get(collateralSymbol) ?? 0) + marketMark);
+for (const p of book.positions) {
+  const m = p.market;
   console.log("  " + m.marketName.slice(0, 100));
   console.log("  " + marketUrl(m));
-  if (m.parentMarket && !/^0x0{40}$/i.test(m.parentMarket.id)) console.log("  conditional: collateral " + collateralSymbol + " is an outcome token of parent " + m.parentMarket.id + "; marks below are in it");
+  if (m.parentMarket && !/^0x0{40}$/i.test(m.parentMarket.id)) console.log("  conditional: collateral " + p.collateralSymbol + " is an outcome token of parent " + m.parentMarket.id + "; marks below are in it");
   console.log("    " + "outcome".padEnd(48) + "      tokens".padStart(12) + "   exit value   note");
-  for (const r of rows) console.log(r);
-  if (sets > 0n) console.log("    " + ("complete sets: " + Number(formatUnits(sets, 18)).toFixed(4) + ", merge 1:1 -> " + collateralSymbol).padEnd(60) + "   " + Number(formatUnits(sets, 18)).toFixed(4).padStart(10) + "   `npm run unwind -- " + m.id + " --chain " + chainId + " --merge-only`");
-  console.log("    " + "".padEnd(48) + "".padStart(12) + "   " + marketMark.toFixed(4).padStart(10) + "   mark-to-exit for this market, in " + collateralSymbol);
+  for (const r of p.rows) console.log("    " + r.outcome.slice(0, 46).padEnd(48) + Number(formatUnits(r.tokens, 18)).toFixed(4).padStart(12) + "   " + r.exit.toFixed(4).padStart(10) + "   " + r.note);
+  if (p.sets > 0n) console.log("    " + ("complete sets: " + Number(formatUnits(p.sets, 18)).toFixed(4) + ", merge 1:1 -> " + p.collateralSymbol).padEnd(60) + "   " + Number(formatUnits(p.sets, 18)).toFixed(4).padStart(10) + "   `npm run unwind -- " + m.id + " --chain " + chainId + " --merge-only`");
+  console.log("    " + "".padEnd(48) + "".padStart(12) + "   " + p.mark.toFixed(4).padStart(10) + "   mark-to-exit for this market, in " + p.collateralSymbol);
   console.log("    resolved: " + (m.payoutReported ? "YES - run `npm run redeem -- " + m.id + " --chain " + chainId + "`" : "not yet"));
   console.log("");
 }
 
-if (!held) {
+if (!book.positions.length) {
   console.log("No outcome-token positions found in markets matching " + filter + ".");
 } else {
-  console.log("positions in " + held + " market(s); total mark-to-exit " + [...totals.entries()].map(([sym, v]) => v.toFixed(4) + " " + sym).join(" + "));
+  console.log("positions in " + book.positions.length + " market(s); total mark-to-exit " + [...book.perCollateral.values()].map((c) => c.total.toFixed(4) + " " + c.symbol).join(" + "));
   console.log("(mark-to-exit quotes selling the whole position at once; it is the honest number on pools this thin)");
+  const root = (markets.find((m) => !m.parentMarket || /^0x0{40}$/i.test(m.parentMarket.id))?.collateralToken ?? EXPECTED_FACTORY_CONFIG[chainId]?.collateralToken) as Address | undefined;
+  if (root && (book.perCollateral.size > 1 || !book.perCollateral.has(root.toLowerCase()))) {
+    const rootSymbol = await symbolOf(client, root);
+    const valued = await inRootCollateral(client, chainId, markets, root, book, account);
+    console.log("");
+    console.log("in " + rootSymbol + ", parent tokens quoted back through their parents' pools:");
+    for (const part of valued.parts) console.log("  " + (part.amount.toFixed(4) + " " + part.symbol).padEnd(28) + "-> " + part.value.toFixed(4).padStart(10) + " " + rootSymbol + "   " + part.note);
+    console.log("  " + "whole book".padEnd(28) + "-> " + valued.total.toFixed(4).padStart(10) + " " + rootSymbol);
+  }
 }

@@ -247,6 +247,22 @@ the pass runs again, since its decision was made at the old prices. A run that f
 still going, does nothing and writes nothing to the log. Registering it is the human's decision; no model
 is ever the one pressing `--yes`.
 
+## Standings
+
+`npm run scoreboard` puts every bot on one line per chain: cash, the book marked to what selling it now would
+return, the two together, and what the wallet was ever given - its funding plus every redemption it has
+collected. The last part is the whole point: a wallet that cashed 356 sUSDS of NU7 winnings starts this round
+that far ahead of one that cashed none, so only the difference says what the model itself has done. Cash alone
+flatters whichever bot is holding least.
+
+It reads the wallet from each folder's `.passes/scheduler.log`, the markets from the prompt that folder's last
+pass was given, and the redemptions from its `.trade-logs`, so it opens no `.env` and touches no key, and it
+runs from this folder for all five bots at once. On Gnosis a conditional market's mark comes out in one of its
+parent's outcome tokens; `src/book.ts` quotes those back through the parent pools into sDAI, without which the
+positions cannot be added up at all. Parent tokens with no pool of their own are shown as left out rather than
+guessed at. Run it when no pass is running: it is read-only, but it makes about a thousand calls and the passes
+need the same node.
+
 ## What the human keeps outside git
 
 `.env` is ignored by git in every folder. It holds the model name, the wallet, the signer port and, if the
