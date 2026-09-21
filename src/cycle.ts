@@ -21,9 +21,10 @@
  *     failing for a reason (a usage limit, a sign-in) that retrying every half hour will not fix.
  * Nothing runs twice at once: the task ignores a start while its previous run is going, this script holds a lock
  * with its PID, and it will not start while a pass of this folder is still alive (pass.ts records its PID and writes
- * exitedAt last, after its executor).
+ * exitedAt last, after its executor). While it does have work to do it holds off sleep (scripts/keep-awake.ps1),
+ * because the laptop's idle timer cannot see that a headless pass is running.
  */
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { appendFileSync, existsSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -125,9 +126,33 @@ function dropPending(chain: number, why: string) {
   console.log("CYCLE    dropped " + drop.length + " pending item(s) on chain " + chain + ": " + why);
 }
 
+let holdingAwake = false;
+
+/**
+ * Asks Windows not to sleep while this cycle works. A pass takes no input, so the idle timer sleeps the laptop under
+ * it: on 21 September it slept at 21:48 and killed two passes mid-run, and a killed pass costs the model's usage as
+ * well as the pass. The helper holds the request only until this process exits, so an idle bot never keeps the
+ * machine up, and -WakeToRun on the task covers the slots the machine is already asleep for.
+ */
+function keepAwake(): void {
+  if (holdingAwake || dryRun || process.platform !== "win32") return;
+  holdingAwake = true;
+  try {
+    const helper = spawn(
+      "powershell.exe",
+      ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", path.join(ROOT, "scripts", "keep-awake.ps1"), "-ParentPid", String(process.pid)],
+      { detached: true, stdio: "ignore", windowsHide: true },
+    );
+    helper.unref();
+  } catch {
+    /* a laptop that sleeps under a pass is a nuisance, not a reason to skip the cycle */
+  }
+}
+
 function run(npmArgs: string[]): number {
   console.log("CYCLE    " + stamp() + "  npm " + npmArgs.join(" "));
   if (dryRun) return 0;
+  keepAwake();
   const r = spawnSync(npmCmd, npmArgs, { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32", env: process.env, timeout: 3 * 3600_000 });
   return r.status ?? 1;
 }

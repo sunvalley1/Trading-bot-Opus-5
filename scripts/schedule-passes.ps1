@@ -78,7 +78,10 @@ function Register-BotTask([string] $Name, [string] $Folder, [string] $Argument, 
       }
       $trig
     })
-  $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 3)
+  # -WakeToRun because the machine sleeps in the evening: on 20 and 21 September it slept through slots and killed
+  # passes mid-run, and a killed pass costs the model's usage as well as the pass. The retries still cover a slot
+  # the machine cannot make, but waking for it is what actually keeps two cycles a day.
+  $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -MultipleInstances IgnoreNew -StartWhenAvailable -WakeToRun -ExecutionTimeLimit (New-TimeSpan -Hours 3)
   $principal = New-ScheduledTaskPrincipal -UserId $user -LogonType Interactive -RunLevel Limited
   $action = New-ScheduledTaskAction -Execute $conhost -Argument $Argument -WorkingDirectory $Folder
   try {
@@ -141,7 +144,7 @@ if ($SelfTest) {
     Write-Host ("daily triggers:         " + ((@($t.Triggers) | ForEach-Object { ([datetime]$_.StartBoundary).ToString("HH:mm") }) -join ", "))
     Write-Host ("runs on battery:        " + (-not $t.Settings.DisallowStartIfOnBatteries) + ", keeps running if unplugged: " + (-not $t.Settings.StopIfGoingOnBatteries))
     Write-Host ("overlapping starts:     " + $t.Settings.MultipleInstances + ", time limit " + $t.Settings.ExecutionTimeLimit)
-    Write-Host ("missed slot runs at boot: " + $t.Settings.StartWhenAvailable)
+    Write-Host ("missed slot runs at boot: " + $t.Settings.StartWhenAvailable + ", wakes the machine: " + $t.Settings.WakeToRun)
   } finally {
     # the throwaway task and folder go away whatever happened above
     Remove-BotTasks $name

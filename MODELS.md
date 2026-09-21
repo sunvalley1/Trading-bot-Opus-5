@@ -244,7 +244,9 @@ wrote its report decided, "no trade" included, and is not re-run; if its executo
 executed only where the market's prices have not moved since each trade was queued (`queue add` records them; the
 limit is two points on any outcome, e.g. 0.57 may be anywhere from 0.55 to 0.59; CYCLE_PRICE_TOLERANCE). Where a market has moved, those trades are dropped and
 the pass runs again, since its decision was made at the old prices. A run that finds the cycle complete, or a pass
-still going, does nothing and writes nothing to the log. Registering it is the human's decision; no model
+still going, does nothing and writes nothing to the log. Each task may wake the machine for its slot, and a run with
+work to do holds off sleep until it is finished (`scripts/keep-awake.ps1`), because a headless pass gives the idle
+timer nothing to see: on 21 September the laptop slept at 21:48 and killed two passes in the middle of their work. Registering it is the human's decision; no model
 is ever the one pressing `--yes`.
 
 ## Standings
