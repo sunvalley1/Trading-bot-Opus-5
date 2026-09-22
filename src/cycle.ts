@@ -19,6 +19,8 @@
  *     re-run plans from scratch, and the pass runs again.
  *   - otherwise it gives up on that chain for this cycle and says so: a model that fails three times in a row is
  *     failing for a reason (a usage limit, a sign-in) that retrying every half hour will not fix.
+ * A launch Windows itself refuses (0xC0000142, the session out of room while five bots work) is not a failed pass:
+ * nothing ran, so it is started again a minute later, up to three times, rather than left for the next run.
  * Nothing runs twice at once: the task ignores a start while its previous run is going, this script holds a lock
  * with its PID, and it will not start while a pass of this folder is still alive (pass.ts records its PID and writes
  * exitedAt last, after its executor). While it does have work to do it holds off sleep (scripts/keep-awake.ps1),
@@ -149,12 +151,28 @@ function keepAwake(): void {
   }
 }
 
+/** 0xC0000142 (STATUS_DLL_INIT_FAILED): Windows refused to start the process. Nothing ran, so no model failed. */
+const DID_NOT_START = 3221225794;
+
+const sleepFor = (ms: number) => void Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+
+/** How a run ended, for the one-line summary: a launch Windows refused is not a pass that failed. */
+const outcome = (code: number) => (code === DID_NOT_START ? "Windows would not start it (0xC0000142), so nothing ran" : "exit " + code);
+
 function run(npmArgs: string[]): number {
   console.log("CYCLE    " + stamp() + "  npm " + npmArgs.join(" "));
   if (dryRun) return 0;
   keepAwake();
-  const r = spawnSync(npmCmd, npmArgs, { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32", env: process.env, timeout: 3 * 3600_000 });
-  return r.status ?? 1;
+  // With five bots at work the session runs out of room and Windows fails the launch itself, which cost Sol both of
+  // its chains on 22 September. Starting again a minute later costs nothing; waiting for the next half-hourly run
+  // would cost the pass, and a launch that never happened leaves no attempt behind to show what went wrong.
+  for (let attempt = 1; ; attempt++) {
+    const r = spawnSync(npmCmd, npmArgs, { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32", env: process.env, timeout: 3 * 3600_000 });
+    const code = r.status ?? 1;
+    if (code !== DID_NOT_START || attempt >= 3) return code;
+    console.log("CYCLE    " + stamp() + "  " + outcome(code) + "; starting again in " + attempt + " minute(s) (attempt " + attempt + " of 3)");
+    sleepFor(attempt * 60_000);
+  }
 }
 
 /**
@@ -222,7 +240,7 @@ function runCycle() {
       }
       dropPending(chain, "the market moved since these were queued; the cycle re-runs the pass");
       const code = passAgain(chain);
-      summary.push("chain " + chain + ": " + moved + " queued trade(s) met moved prices, so the pass ran again (attempt " + (mine.length + 1) + "), exit " + code);
+      summary.push("chain " + chain + ": " + moved + " queued trade(s) met moved prices, so the pass ran again (attempt " + (mine.length + 1) + "), " + outcome(code));
       continue;
     }
     if (mine.length >= maxAttempts) {
@@ -235,7 +253,7 @@ function runCycle() {
     acted = true;
     if (mine.length) dropPending(chain, "attempt " + mine.length + " of this cycle did not finish; the cycle re-runs the pass");
     const code = passAgain(chain);
-    summary.push("chain " + chain + ": " + (mine.length ? "re-run, attempt " + (mine.length + 1) : "ran") + ", exit " + code);
+    summary.push("chain " + chain + ": " + (mine.length ? "re-run, attempt " + (mine.length + 1) : "ran") + ", " + outcome(code));
   }
   if (acted || dryRun) console.log("CYCLE    " + stamp() + "  " + (process.env.MODEL_NAME ?? "") + " " + cycleName + ": " + summary.join("; ") + (dryRun ? "  (dry run)" : ""));
 }
