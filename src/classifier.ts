@@ -19,6 +19,13 @@ const ENDPOINT = "https://classifier.dev";
 // the service blocks some default client signatures at its edge; say who we are instead
 const USER_AGENT = "seer-jev-bot/1.0 (+https://github.com/sunvalley1/Trading-bot-Opus-5)";
 
+/**
+ * A workspace key (CLASSIFIER_API_KEY, `classifier_agent_...`), sent as a bearer credential per classifier.dev's
+ * auth.md. It goes in the header and never in the body, so the audit file - which records the body - never holds it.
+ * Without one the service bills the free per-IP allowance, which is what the bot ran on until 22 September.
+ */
+const apiKey = () => (process.env.CLASSIFIER_API_KEY ?? "").trim();
+
 export interface ClassifyRequest {
   labels: string[];
   input: string;
@@ -84,7 +91,10 @@ export async function classify(req: ClassifyRequest, audit?: string): Promise<Cl
     let status = 0;
     let text = "";
     try {
-      const r = await fetch(ENDPOINT, { method: "POST", headers: { "content-type": "application/json", "user-agent": USER_AGENT }, body, signal: AbortSignal.timeout(60_000) });
+      const key = apiKey();
+      const headers: Record<string, string> = { "content-type": "application/json", "user-agent": USER_AGENT };
+      if (key) headers.authorization = "Bearer " + key;
+      const r = await fetch(key ? ENDPOINT + "/v1/classify" : ENDPOINT, { method: "POST", headers, body, signal: AbortSignal.timeout(60_000) });
       status = r.status;
       text = await r.text();
     } catch (e) {

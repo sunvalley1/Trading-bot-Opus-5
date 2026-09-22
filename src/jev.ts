@@ -16,7 +16,7 @@ process.env.DOTENV_CONFIG_PATH = path.join(ROOT, ".env.jev-loads-nothing");
 delete process.env.PRIVATE_KEY;
 
 // the settings a Jev pass may read; nothing else from .env enters this process
-const ALLOWED = /^(MODEL_NAME|CHAIN_ID|LIQUIDITY_WALLET|RPC_URL(_\d+)?|PASS_MARKET_LIST(_\d+)?|PASS_MARKETS(_\d+)?|JEV_[A-Z_]+)$/;
+const ALLOWED = /^(MODEL_NAME|CHAIN_ID|LIQUIDITY_WALLET|RPC_URL(_\d+)?|PASS_MARKET_LIST(_\d+)?|PASS_MARKETS(_\d+)?|JEV_[A-Z_]+|CLASSIFIER_API_KEY)$/;
 const envFile = path.join(ROOT, ".env");
 if (existsSync(envFile)) {
   for (const line of readFileSync(envFile, "utf8").split(/\r?\n/)) {
