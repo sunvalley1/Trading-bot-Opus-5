@@ -30,7 +30,7 @@ import { fileURLToPath } from "node:url";
 import { formatUnits, getAddress, isAddress, type Address } from "viem";
 import { marketFactoryAbi } from "./abis.js";
 import { parseArgs } from "./args.js";
-import { classify, type ClassifyResult } from "./classifier.js";
+import { ClassifierUnavailableError, classify, type ClassifyResult } from "./classifier.js";
 import { getPublicClient } from "./clients.js";
 import { parseChainId, SEER_ADDRESSES } from "./config.js";
 import { erc20FullAbi } from "./dex.js";
@@ -246,6 +246,7 @@ report.push("");
 
 let answered = 0;
 let queued = 0;
+let denied = "";
 for (const market of scope) {
   const address = getAddress(market);
   const block: string[] = [];
@@ -339,12 +340,16 @@ for (const market of scope) {
     }
   } catch (e) {
     block.push("ERROR       " + (e as Error).message.split("\n")[0]);
+    if (e instanceof ClassifierUnavailableError) denied = (e as Error).message;
   }
   report.push(...block, "");
   console.log(block.slice(0, 1).concat(block.filter((l) => l.startsWith("TRADE") || l.startsWith("ERROR") || l.startsWith("JEV"))).join("\n"));
+  // the forecaster is shut out, so every remaining market would fail the same way: stop rather than spend an hour proving it
+  if (denied) break;
 }
 
 report.splice(4, 0, "Summary: " + answered + " of " + scope.length + " markets answered by Jev, " + queued + " trade(s) queued" + (dryRun ? " (dry run: none queued)" : "") + ", " + (startingCash - cash).toFixed(2) + " " + collateralSymbol + " committed.", "");
+if (denied) report.splice(5, 0, "This pass stopped at the first market: " + denied + " Jev cannot forecast until that is settled - a funded classifier.dev workspace key bypasses the proxy check - and every retry this cycle will stop here too.", "");
 writeFileSync(reportPath, report.join("\n"));
 console.log("report: " + reportPath);
 // a pass in which Jev answered nothing did not happen: the cycle runner redoes it

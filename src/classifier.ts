@@ -60,6 +60,18 @@ export function assertNothingSecret(text: string): void {
 }
 
 /**
+ * A refusal that is about us, not about this request: no retry and no other market will get past it, so a caller
+ * asking a hundred questions should stop at the first one. On 22 September every call started coming back
+ * "Anonymous proxy traffic requires a funded API key" - the free tier refuses traffic it reads as a proxy - and the
+ * Jev pass ground through all 71 markets before reporting 71 identical failures.
+ */
+export class ClassifierUnavailableError extends Error {}
+
+/** 401/402/403, or a body that names payment or the proxy check: the service is not going to answer us at all. */
+const deniedAccess = (status: number, message: string) =>
+  status === 401 || status === 402 || status === 403 || /requires_payment|requires a funded|unauthorized|forbidden/i.test(message);
+
+/**
  * One text against `labels`. Retries a rate limit or a server error with backoff; any other refusal is an error.
  * `audit`, when given, receives one JSON line per attempt: the exact request, the status and the response.
  */
@@ -67,6 +79,7 @@ export async function classify(req: ClassifyRequest, audit?: string): Promise<Cl
   const body = JSON.stringify(req);
   assertNothingSecret(body);
   let last = "";
+  let lastStatus = 0;
   for (let attempt = 1; attempt <= 4; attempt++) {
     let status = 0;
     let text = "";
@@ -90,8 +103,10 @@ export async function classify(req: ClassifyRequest, audit?: string): Promise<Cl
       return { label: String(r.label), confidence: r.confidence ?? null, scores: r.scores ?? null, model: r.model ?? d.model };
     }
     last = status ? "HTTP " + status + ": " + text.slice(0, 200) : text;
+    lastStatus = status;
     if (status && status !== 429 && status < 500) break;
     await new Promise((res) => setTimeout(res, 2000 * attempt * attempt));
   }
+  if (deniedAccess(lastStatus, last)) throw new ClassifierUnavailableError("classifier.dev will not answer this machine at all: " + last);
   throw new Error("classifier.dev did not classify: " + last);
 }
