@@ -28,11 +28,17 @@ export const CHAIN_NAMES: Record<ChainId, string> = {
 };
 
 /** Public RPCs (override with RPC_URL). */
+/**
+ * Where to read a chain when nothing is configured. The official public endpoints (mainnet.optimism.io,
+ * rpc.gnosischain.com) answered 403 to every request from here on 22 September, which cost a wasted round trip on
+ * every single call before the fallback list answered, so the default is now an endpoint that actually replies and
+ * they are tried last instead (FALLBACK_RPC in src/clients.ts).
+ */
 export const DEFAULT_RPC: Record<ChainId, string> = {
-  100: "https://rpc.gnosischain.com",
+  100: "https://gnosis.drpc.org",
   1: "https://ethereum-rpc.publicnode.com",
   8453: "https://mainnet.base.org",
-  10: "https://mainnet.optimism.io",
+  10: "https://optimism.drpc.org",
 };
 
 /** Native token used for gas AND for Reality.eth bonds (minBond is denominated in this). */

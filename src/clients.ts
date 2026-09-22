@@ -5,32 +5,40 @@ import { CHAINS, DEFAULT_RPC, type ChainId } from "./config.js";
 import { attachToSigner, startMetaMaskBridge } from "./metamask-bridge.js";
 
 /**
- * Which endpoint to read a chain through: --rpc, then RPC_URL_<chainId>, then RPC_URL only when this is the
- * folder's own chain (CHAIN_ID, default 10), then the public default. RPC_URL is a key for one network; sending a
- * Gnosis read to the Optimism endpoint returned "no data" from contracts that do not exist there.
+ * Every endpoint for a chain, best first: --rpc, then RPC_URL_<chainId>, then RPC_URL only when this is the folder's
+ * own chain (CHAIN_ID, default 10), and then the public ones. RPC_URL is a key for one network; sending a Gnosis read
+ * to the Optimism endpoint returned "no data" from contracts that do not exist there.
+ *
+ * The configured value may list several endpoints, comma separated, and they are tried in that order before any
+ * public one: that is where a second paid node goes, for the day the first runs out of credit.
  */
-export function getRpcUrl(chainId: ChainId, override?: string): string {
-  if (override) return override;
+export function getRpcUrls(chainId: ChainId, override?: string): string[] {
   const perChain = process.env["RPC_URL_" + chainId];
-  if (perChain) return perChain;
-  if (process.env.RPC_URL && Number(process.env.CHAIN_ID ?? 10) === Number(chainId)) return process.env.RPC_URL;
-  return DEFAULT_RPC[chainId];
+  const own = process.env.RPC_URL && Number(process.env.CHAIN_ID ?? 10) === Number(chainId) ? process.env.RPC_URL : undefined;
+  const configured = (override ?? perChain ?? own ?? DEFAULT_RPC[chainId]).split(",").map((u) => u.trim()).filter(Boolean);
+  const public_ = [DEFAULT_RPC[chainId], ...(FALLBACK_RPC[chainId] ?? [])];
+  return [...configured, ...public_.filter((u) => !configured.includes(u))];
+}
+
+/** The endpoint a chain is read through first - what a command prints, and what the MetaMask page is pointed at. */
+export function getRpcUrl(chainId: ChainId, override?: string): string {
+  return getRpcUrls(chainId, override)[0];
 }
 
 /**
- * Public endpoints that answer when the default one rate-limits. Four bots reading the same pools every two
- * hours, plus a pass that fans out market reports in parallel, is more than mainnet.optimism.io tolerates;
- * viem's fallback transport moves to the next endpoint on an error, so a read that fails on one still lands.
- * Sending (the wallet client) stays on a single endpoint, so nonces are never split across providers.
+ * Public endpoints to fall through to, in order. Five bots reading the same pools twice a day, plus a pass that fans
+ * out market reports in parallel, is more than the free endpoints tolerate, and a paid node can run out of credit
+ * mid-cycle; viem's fallback transport moves to the next endpoint on any error that is not deterministic (a revert or
+ * a rejected transaction), so a rate limit, a 402 for exhausted credit or a dead host all land on the next one.
+ * The chains' own official endpoints come last because both answered 403 from here on 22 September.
  */
 const FALLBACK_RPC: Partial<Record<ChainId, string[]>> = {
-  10: ["https://optimism.drpc.org", "https://optimism-rpc.publicnode.com", "https://1rpc.io/op"],
-  100: ["https://gnosis.drpc.org", "https://gnosis-rpc.publicnode.com", "https://1rpc.io/gnosis"],
+  10: ["https://optimism-rpc.publicnode.com", "https://1rpc.io/op", "https://mainnet.optimism.io"],
+  100: ["https://gnosis-rpc.publicnode.com", "https://1rpc.io/gnosis", "https://rpc.gnosischain.com"],
 };
 
 export function getPublicClient(chainId: ChainId, rpcUrl?: string) {
-  const primary = getRpcUrl(chainId, rpcUrl);
-  const others = (FALLBACK_RPC[chainId] ?? []).filter((u) => u !== primary);
+  const [primary, ...others] = getRpcUrls(chainId, rpcUrl);
   const transport = others.length
     ? fallback([http(primary, { retryCount: 2, retryDelay: 400 }), ...others.map((u) => http(u, { retryCount: 1, retryDelay: 400 }))], { rank: false, retryCount: 1 })
     : http(primary, { retryCount: 3, retryDelay: 400 });
@@ -47,14 +55,14 @@ export function getAccount() {
 }
 
 /**
- * Key-mode wallet client. Sends are sequential and each waits for its receipt, so a fallback list is safe here
- * too; what matters is patience: the public endpoint answers "requests per second exceeded" when several bots
- * run at once, and viem's retry backoff doubles each time (1s, 2s, 4s, 8s, 16s), which outlasts a rate-limit
- * window. A broadcast that fails is never a double send: the error comes back before anything leaves.
+ * Key-mode wallet client. Sends are sequential and each waits for its receipt, so a fallback list is safe here too:
+ * a signed transaction has one nonce and one hash whichever endpoint carries it, so a re-send after a failed
+ * response is the same transaction, not a second one. What matters is patience: the free endpoints answer "requests
+ * per second exceeded" when several bots run at once, and viem's retry backoff doubles each time (1s, 2s, 4s, 8s,
+ * 16s), which outlasts a rate-limit window.
  */
 export function getWalletClient(chainId: ChainId, rpcUrl?: string) {
-  const primary = getRpcUrl(chainId, rpcUrl);
-  const others = (FALLBACK_RPC[chainId] ?? []).filter((u) => u !== primary);
+  const [primary, ...others] = getRpcUrls(chainId, rpcUrl);
   const transport = others.length
     ? fallback([http(primary, { retryCount: 5, retryDelay: 1000 }), ...others.map((u) => http(u, { retryCount: 2, retryDelay: 1000 }))], { rank: false, retryCount: 1 })
     : http(primary, { retryCount: 5, retryDelay: 1000 });

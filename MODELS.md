@@ -270,3 +270,9 @@ need the same node.
 `.env` is ignored by git in every folder. It holds the model name, the wallet, the signer port and, if the
 experiment runs in key mode, that wallet's `PRIVATE_KEY`. Nothing in this table is secret: wallet addresses
 are public onchain. Keys never are, and never go into any file that git tracks.
+
+`RPC_URL` (the folder's own chain) and `RPC_URL_<chainId>` also belong there, because a paid endpoint's URL carries
+its API key. Either may list several endpoints, comma separated, tried in that order: that is where a second paid node
+goes for the day the first runs out of credit. Whatever is configured, the free public endpoints follow it
+(`FALLBACK_RPC` in `src/clients.ts`), so a dead or exhausted node costs speed rather than the cycle - viem's fallback
+transport moves on for anything that is not a revert or a rejected transaction, a 402 or a rate limit included.
