@@ -262,7 +262,12 @@ each market in scope. Both change what every number means, so read this before e
   price is part of what the decision rested on. Trade your estimate; never trade to steer the decision.
 - **Exits.** `npm run unwind` on a child returns parent tokens; once no child position needs them,
   `npm run unwind -- <parent> --merge-only` turns complete parent sets back into sDAI. After resolution, redeem the
-  child (it pays parent tokens), then the parent. `npm run portfolio -- --chain <id> --scope` shows both books.
+  child (it pays parent tokens), then the parent. `npm run portfolio -- --chain <id> --scope` shows both books: a
+  child's marks come out in the parent outcome token, and the block at the end turns them into the chain's own
+  collateral. That conversion is not a pool sale, because a parent whose tokens were minted rather than bought
+  usually has no depth to sell into: each parent token is credited at 1 for every complete set it would finish once
+  the child is sold, which is what merging returns, and the excess is quoted, marked at spot, or left out of the
+  total when there is no pool at all. So the figure is a floor, and it says which of the three each part was.
 
 **Scalar markets** (DOWN / UP / Invalid over a range lower..upper):
 
@@ -395,7 +400,7 @@ RISKS      <the 2-3 things most likely to make this wrong>
 | `npm run trade -- <ref> --outcome <i> --route <direct\|split\|fade> --size <x> --expect-account 0x.. --dry-run\|--yes` | the only command that spends; human signs every transaction. Refuses a wrong wallet, a wrong network, or adding to an open position without `--allow-add`; writes its full output to `.trade-logs/` |
 | `npm run unwind -- <ref> --expect-account 0x.. [--sets <n>] [--merge-only] --dry-run|--yes` | the exit before the oracle resolves: sells into the pools or buys back the sold leg and merges complete sets, whichever returns more; `--sets` unwinds a big position in rounds; on a conditional market's parent, `--merge-only` turns leftover parent sets back into sDAI |
 | `npm run watch -- <market...> [--interval 60] [--for 7200]` | poll drained markets and exit the moment any pool has live liquidity again |
-| `npm run portfolio -- --account 0x.. [--filter zcash] [--chain <id> --scope]` | open positions, marked at what they could really exit at; complete sets at 1; `--scope` limits the scan to the markets in scope and their parents |
+| `npm run portfolio -- --account 0x.. [--filter zcash] [--chain <id> --scope]` | open positions, marked at what they could really exit at; complete sets at 1; a conditional book also totalled in the chain's own collateral; `--scope` limits the scan to the markets in scope and their parents |
 | `npm run redeem -- <ref> --yes` | cash in after the oracle finalizes; the queue executor does this by itself for every resolved market the wallet holds, so a pass never needs to |
 | `npm run verify-dex -- --chain 10` | re-verify every router/factory/quoter address against the live chain |
 | `npm run odds -- "<keywords>"` | the same question on Polymarket / Kalshi, for a second opinion on the price |
