@@ -38,11 +38,14 @@ const PASSES = path.join(ROOT, ".passes");
 const PENDING = path.join(ROOT, ".queue", "pending.jsonl");
 const EXECUTED = path.join(ROOT, ".queue", "executed.jsonl");
 const LOCK = path.join(PASSES, "cycle.lock");
+// one lock for every bot on this machine: passes take 25-60 minutes but start 20 apart, so they overlap by default
+const FLEET_LOCK = path.join(ROOT, "..", "pass-in-progress.lock");
 const args = parseArgs(process.argv.slice(2));
 const execute = !!args.execute;
 const dryRun = !!args["dry-run"] || !execute;
 const maxAttempts = Number(process.env.CYCLE_MAX_ATTEMPTS ?? 3);
 const tolerance = Number(process.env.CYCLE_PRICE_TOLERANCE ?? 0.02);
+const waitForOthers = Number(process.env.CYCLE_WAIT_FOR_OTHERS_MIN ?? 45);
 const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
 const homeChain = Number(process.env.CHAIN_ID ?? 10);
 const now = new Date();
@@ -159,17 +162,67 @@ const sleepFor = (ms: number) => void Atomics.wait(new Int32Array(new SharedArra
 /** How a run ended, for the one-line summary: a launch Windows refused is not a pass that failed. */
 const outcome = (code: number) => (code === DID_NOT_START ? "Windows would not start it (0xC0000142), so nothing ran" : "exit " + code);
 
+/**
+ * Waits for whichever bot is mid-pass, then claims the turn. Five bots working at once exhausts what one Windows
+ * session can start: on 24 September Opus and Astra each had all three launches refused with 0xC0000142 while Fable
+ * and Sol were mid-pass, which is a lost pass for a reason that has nothing to do with either model. Taking turns
+ * costs an hour of wall clock inside a ten-hour cycle and buys back the whole pass.
+ *
+ * Deliberately forgiving: a lock whose process is gone, or one older than the task's own three-hour limit, is
+ * ignored, and after CYCLE_WAIT_FOR_OTHERS_MIN it goes ahead anyway rather than skip the pass.
+ */
+function waitForTurn(): void {
+  if (dryRun || !waitForOthers) return;
+  const until = Date.now() + waitForOthers * 60_000;
+  let said = false;
+  while (Date.now() < until) {
+    let holder = "";
+    try {
+      if (!existsSync(FLEET_LOCK)) break;
+      const [bot, pidText, since] = readFileSync(FLEET_LOCK, "utf8").split(/\s+/);
+      const pid = Number(pidText);
+      const fresh = Date.now() - Date.parse(since ?? "") < 3 * 3600_000;
+      if (!fresh || !alive(pid) || pid === process.pid) break;
+      holder = bot ?? "another bot";
+    } catch {
+      break; // an unreadable lock is not a reason to skip a pass
+    }
+    if (!said) {
+      console.log("CYCLE    " + stamp() + "  " + holder + " is mid-pass; waiting up to " + waitForOthers + " min for its turn to end");
+      said = true;
+    }
+    sleepFor(60_000);
+  }
+  try {
+    writeFileSync(FLEET_LOCK, (process.env.MODEL_NAME ?? path.basename(ROOT)) + " " + process.pid + " " + new Date().toISOString());
+  } catch {
+    /* the lock is a courtesy between bots, not a gate */
+  }
+}
+
+function releaseTurn(): void {
+  try {
+    if (existsSync(FLEET_LOCK) && readFileSync(FLEET_LOCK, "utf8").includes(" " + process.pid + " ")) unlinkSync(FLEET_LOCK);
+  } catch {
+    /* it ages out by itself */
+  }
+}
+
 function run(npmArgs: string[]): number {
   console.log("CYCLE    " + stamp() + "  npm " + npmArgs.join(" "));
   if (dryRun) return 0;
   keepAwake();
+  waitForTurn();
   // With five bots at work the session runs out of room and Windows fails the launch itself, which cost Sol both of
   // its chains on 22 September. Starting again a minute later costs nothing; waiting for the next half-hourly run
   // would cost the pass, and a launch that never happened leaves no attempt behind to show what went wrong.
   for (let attempt = 1; ; attempt++) {
     const r = spawnSync(npmCmd, npmArgs, { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32", env: process.env, timeout: 3 * 3600_000 });
     const code = r.status ?? 1;
-    if (code !== DID_NOT_START || attempt >= 3) return code;
+    if (code !== DID_NOT_START || attempt >= 3) {
+      releaseTurn();
+      return code;
+    }
     console.log("CYCLE    " + stamp() + "  " + outcome(code) + "; starting again in " + attempt + " minute(s) (attempt " + attempt + " of 3)");
     sleepFor(attempt * 60_000);
   }
