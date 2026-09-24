@@ -212,7 +212,10 @@ function run(npmArgs: string[]): number {
   console.log("CYCLE    " + stamp() + "  npm " + npmArgs.join(" "));
   if (dryRun) return 0;
   keepAwake();
-  waitForTurn();
+  // only a pass takes a turn: the executor and the redeem sweep start a handful of processes, but they kept the lock
+  // for the rest of the cycle, which is why Opus waited its full 45 minutes on 24 September after Astra had finished
+  const isPass = npmArgs.includes("pass");
+  if (isPass) waitForTurn();
   // With five bots at work the session runs out of room and Windows fails the launch itself, which cost Sol both of
   // its chains on 22 September. Starting again a minute later costs nothing; waiting for the next half-hourly run
   // would cost the pass, and a launch that never happened leaves no attempt behind to show what went wrong.
@@ -220,7 +223,7 @@ function run(npmArgs: string[]): number {
     const r = spawnSync(npmCmd, npmArgs, { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32", env: process.env, timeout: 3 * 3600_000 });
     const code = r.status ?? 1;
     if (code !== DID_NOT_START || attempt >= 3) {
-      releaseTurn();
+      if (isPass) releaseTurn();
       return code;
     }
     console.log("CYCLE    " + stamp() + "  " + outcome(code) + "; starting again in " + attempt + " minute(s) (attempt " + attempt + " of 3)");
