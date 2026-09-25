@@ -153,8 +153,7 @@ function keepAwake(): void {
     // was running, and there was no way to tell a failed spawn from a sleep no request can stop (a closed lid)
     console.log("CYCLE    " + stamp() + "  holding off idle sleep while this cycle works (helper " + helper.pid + ")");
   } catch (e) {
-    console.log("CYCLE    " + stamp() + "  could not hold off sleep: " + (e as Error).message.split("
-")[0]);
+    console.log("CYCLE    " + stamp() + "  could not hold off sleep: " + (e as Error).message);
   }
 }
 
