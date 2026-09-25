@@ -149,8 +149,12 @@ function keepAwake(): void {
       { detached: true, stdio: "ignore", windowsHide: true },
     );
     helper.unref();
-  } catch {
-    /* a laptop that sleeps under a pass is a nuisance, not a reason to skip the cycle */
+    // logged because it is otherwise invisible: on 25 September the laptop slept at 16:02 under a pass and no helper
+    // was running, and there was no way to tell a failed spawn from a sleep no request can stop (a closed lid)
+    console.log("CYCLE    " + stamp() + "  holding off idle sleep while this cycle works (helper " + helper.pid + ")");
+  } catch (e) {
+    console.log("CYCLE    " + stamp() + "  could not hold off sleep: " + (e as Error).message.split("
+")[0]);
   }
 }
 
