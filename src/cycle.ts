@@ -208,6 +208,9 @@ function releaseTurn(): void {
   }
 }
 
+/** Which script `npm run <x>` would have started, for the shell-free retry: the package scripts are all `tsx src/<x>.ts`. */
+const scriptFor = (npmArgs: string[]) => (npmArgs[1] === "queue" ? "queue" : npmArgs[1] === "pass" ? "pass" : npmArgs[1]) + ".ts";
+
 function run(npmArgs: string[]): number {
   console.log("CYCLE    " + stamp() + "  npm " + npmArgs.join(" "));
   if (dryRun) return 0;
@@ -219,15 +222,22 @@ function run(npmArgs: string[]): number {
   // With five bots at work the session runs out of room and Windows fails the launch itself, which cost Sol both of
   // its chains on 22 September. Starting again a minute later costs nothing; waiting for the next half-hourly run
   // would cost the pass, and a launch that never happened leaves no attempt behind to show what went wrong.
+  const waits = [60_000, 120_000, 300_000, 600_000];
   for (let attempt = 1; ; attempt++) {
-    const r = spawnSync(npmCmd, npmArgs, { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32", env: process.env, timeout: 3 * 3600_000 });
+    // `npm run x` on Windows is cmd.exe -> npm.cmd -> node -> tsx -> node: five process creations before ours runs, and
+    // 0xC0000142 kills one of them. From the second try, start tsx directly instead - two fewer, and no shell at all.
+    const direct = attempt > 1 && npmArgs[0] === "run" && npmArgs.includes("--");
+    const r = direct
+      ? spawnSync(process.execPath, [path.join(ROOT, "node_modules", "tsx", "dist", "cli.mjs"), path.join(ROOT, "src", scriptFor(npmArgs)), ...npmArgs.slice(npmArgs.indexOf("--") + 1)], { cwd: ROOT, stdio: "inherit", env: process.env, timeout: 3 * 3600_000 })
+      : spawnSync(npmCmd, npmArgs, { cwd: ROOT, stdio: "inherit", shell: process.platform === "win32", env: process.env, timeout: 3 * 3600_000 });
     const code = r.status ?? 1;
-    if (code !== DID_NOT_START || attempt >= 3) {
+    if (code !== DID_NOT_START || attempt > waits.length) {
       if (isPass) releaseTurn();
       return code;
     }
-    console.log("CYCLE    " + stamp() + "  " + outcome(code) + "; starting again in " + attempt + " minute(s) (attempt " + attempt + " of 3)");
-    sleepFor(attempt * 60_000);
+    const wait = waits[attempt - 1];
+    console.log("CYCLE    " + stamp() + "  " + outcome(code) + "; starting again in " + wait / 60_000 + " minute(s) (attempt " + (attempt + 1) + " of " + (waits.length + 1) + (attempt === 1 ? ", this time without npm" : "") + ")");
+    sleepFor(wait);
   }
 }
 
