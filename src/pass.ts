@@ -26,7 +26,7 @@ import { formatUnits, getAddress, isAddress, type Address } from "viem";
 import { parseArgs } from "./args.js";
 import { getPublicClient } from "./clients.js";
 import { CHAINS, parseChainId, SEER_ADDRESSES } from "./config.js";
-import { erc20FullAbi } from "./dex.js";
+import { erc20FullAbi, withRetry } from "./dex.js";
 import { marketFactoryAbi } from "./abis.js";
 import { readMarket } from "./market-view.js";
 import "dotenv/config";
@@ -74,11 +74,14 @@ let cash = 0;
 let collateralSymbol = "collateral";
 try {
   // the chain's collateral is whatever the Seer MarketFactory mints sets against (sUSDS on Optimism, sDAI on Gnosis)
-  const collateral = (await client.readContract({ address: SEER_ADDRESSES[chainId].MarketFactory, abi: marketFactoryAbi, functionName: "collateralToken" })) as Address;
+  // patient on purpose: a laptop that just woke has DNS and the VPN still settling, and on 26 September a single
+  // timed-out read here killed two of Opus's passes outright ("could not read the wallet's collateral balance"),
+  // each costing an attempt of the cycle. Eight tries back off to about a minute, which a wake comfortably fits.
+  const collateral = (await withRetry(() => client.readContract({ address: SEER_ADDRESSES[chainId].MarketFactory, abi: marketFactoryAbi, functionName: "collateralToken" }), "collateralToken", 8)) as Address;
   const [bal, sym, dec] = await Promise.all([
-    client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "balanceOf", args: [getAddress(wallet)] }),
-    client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "symbol" }),
-    client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "decimals" }),
+    withRetry(() => client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "balanceOf", args: [getAddress(wallet)] }), "balanceOf", 8),
+    withRetry(() => client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "symbol" }), "symbol", 8),
+    withRetry(() => client.readContract({ address: collateral, abi: erc20FullAbi, functionName: "decimals" }), "decimals", 8),
   ]);
   cash = Number(formatUnits(bal, Number(dec)));
   collateralSymbol = sym;
