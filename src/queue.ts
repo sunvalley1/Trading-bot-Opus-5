@@ -307,6 +307,21 @@ if (cmd === "execute") {
   let pending = readItems<Item>(PENDING);
   // --chain: only that chain's items, so a pass on one chain carries out its own decisions and nothing else
   const onlyChain = args.chain !== undefined ? Number(args.chain) : undefined;
+  // A nonce the chain has not mined blocks every transaction behind it, so sending more only lengthens the queue:
+  // Opus spent 27 September adding trades behind one Gnosis transaction an endpoint had accepted and never gossiped.
+  if (yes && onlyChain !== undefined) {
+    const nonceClient = getPublicClient(parseChainId(String(onlyChain)));
+    const [minedNonce, pendingNonce] = await Promise.all([
+      nonceClient.getTransactionCount({ address: getAddress(wallet), blockTag: "latest" }),
+      nonceClient.getTransactionCount({ address: getAddress(wallet), blockTag: "pending" }),
+    ]);
+    if (pendingNonce > minedNonce) {
+      console.error("STUCK    " + (pendingNonce - minedNonce) + " transaction(s) of this wallet are pending on chain " + onlyChain + " (nonce " + minedNonce + " next to mine, " + pendingNonce + " sent).");
+      console.error("         Nothing new can be mined behind them, so no trade is executed. Clear them first:");
+      console.error("         npm run unstick -- --expect-account " + getAddress(wallet) + " --chain " + onlyChain + " --dry-run");
+      process.exit(3);
+    }
+  }
   const todo = pending.filter((p) => onlyChain === undefined || Number(p.chain) === onlyChain);
   if (!todo.length) console.log("nothing queued" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + ".");
   else console.log("EXECUTE  " + (model ?? "") + "  wallet " + getAddress(wallet) + "  " + todo.length + " pending" + (onlyChain !== undefined ? " on chain " + onlyChain : "") + "  " + (dryRun ? "(dry run: every trade with --dry-run, nothing sent)" : "(LIVE: --yes)"));
