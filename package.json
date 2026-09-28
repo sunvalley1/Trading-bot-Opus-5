@@ -23,7 +23,8 @@
     "signer": "tsx src/signer.ts",
     "verify-dex": "tsx src/verify-dex.ts",
     "typecheck": "tsc --noEmit",
-    "scoreboard": "tsx src/scoreboard.ts"
+    "scoreboard": "tsx src/scoreboard.ts",
+    "unstick": "tsx src/unstick.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
