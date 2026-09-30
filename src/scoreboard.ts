@@ -111,6 +111,7 @@ interface Row {
   given: number;
   delta: number;
   markets: number;
+  stranded: number;
   unpriced: number;
   unpricedNote: string;
 }
@@ -164,6 +165,7 @@ for (const chainId of chains) {
       given,
       delta: cash + valued.total - given,
       markets: book.positions.length,
+      stranded: book.positions.reduce((a, p) => a + p.stranded, 0),
       unpriced: unpriced.reduce((a, p) => a + p.amount, 0),
       unpricedNote: unpriced.length ? unpriced.map((p) => p.amount.toFixed(2) + " " + p.symbol).join(", ") : "",
     });
@@ -178,7 +180,7 @@ if (args.json) {
   for (const [chainId, { symbol, rows }] of byChain) {
     console.log("");
     console.log("CHAIN " + chainId + "  (" + symbol + ")");
-    console.log("  " + "bot".padEnd(14) + "cash".padStart(10) + "book".padStart(10) + "total".padStart(11) + "given".padStart(11) + "P&L".padStart(10) + "   markets   not counted");
+    console.log("  " + "bot".padEnd(14) + "cash".padStart(10) + "book".padStart(10) + "total".padStart(11) + "given".padStart(11) + "P&L".padStart(10) + "  unsellable" + "   markets   not counted");
     for (const r of [...rows].sort((a, b) => b.delta - a.delta)) {
       console.log(
         "  " +
@@ -188,6 +190,7 @@ if (args.json) {
           r.total.toFixed(2).padStart(11) +
           r.given.toFixed(2).padStart(11) +
           ((r.delta >= 0 ? "+" : "") + r.delta.toFixed(2)).padStart(10) +
+          r.stranded.toFixed(2).padStart(12) +
           "   " +
           String(r.markets).padStart(7) +
           (r.unpriced ? "   " + r.unpriced.toFixed(2) + " in parent tokens with no pool and no set to complete" : ""),
@@ -202,5 +205,6 @@ if (args.json) {
     for (const [bot, delta] of [...totals].sort((a, b) => b[1] - a[1])) console.log("  " + bot.padEnd(14) + ((delta >= 0 ? "+" : "") + delta.toFixed(2)).padStart(10));
   }
   console.log("");
+  console.log("unsellable = tokens no pool will buy, at 1 each if they win: a market whose liquidity has left marks at nothing, so P&L there is the stake, not a loss.");
   console.log("given = funding (" + [...funded].map(([c, f]) => f + " on chain " + c).join(", ") + ") plus every redemption the wallet has collected, so P&L is what the model itself has done.");
 }

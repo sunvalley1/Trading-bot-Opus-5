@@ -27,6 +27,13 @@ export interface MarketBook {
   sets: bigint;
   /** the whole position in this market, in the market's own collateral */
   mark: number;
+  /**
+   * Tokens no pool will buy, at their redemption value of 1 each: what the position pays if those outcomes win.
+   * A market whose liquidity has left marks at nothing, which is honest about selling and silent about owning - on
+   * 29 September the grant pools were drained the moment the vote closed and every Optimism book read 0.00, making
+   * five wallets look 100-500 down when they were holding claims worth up to their full stake.
+   */
+  stranded: number;
   rows: BookRow[];
 }
 
@@ -67,6 +74,7 @@ export async function valueBook(client: PublicClient, chainId: ChainId, account:
     const sets = bals.every((b) => b > 0n) ? bals.reduce((a, b) => (b < a ? b : a)) : 0n;
     const rows: BookRow[] = [];
     let mark = Number(formatUnits(sets, 18));
+    let stranded = 0;
     for (const [i, token] of tokens.entries()) {
       const bal = bals[i];
       if (bal === 0n) continue;
@@ -83,10 +91,11 @@ export async function valueBook(client: PublicClient, chainId: ChainId, account:
         if (sets > 0n) note = "beyond the sets: " + note;
       }
       mark += exit;
+      if (rest > 0n && exit === 0) stranded += Number(formatUnits(rest, 18));
       rows.push({ outcome: m.outcomes[i] ?? "?", tokens: bal, exit, note });
     }
     const collateralSymbol = await symbolOf(client, m.collateralToken);
-    return { market: m, collateral: m.collateralToken, collateralSymbol, sets, mark, rows } satisfies MarketBook;
+    return { market: m, collateral: m.collateralToken, collateralSymbol, sets, mark, stranded, rows } satisfies MarketBook;
   });
 
   const positions = books.filter((b): b is MarketBook => !!b);
