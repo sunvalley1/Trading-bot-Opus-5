@@ -1,0 +1,2575 @@
+{
+ "truth": {
+  "1": {
+   "title": "Zcash Grants Hub \u2014 $3,050 USD (Daniel Goh)",
+   "accept": 79508.0,
+   "reject": 1391660.5,
+   "outcome": 0,
+   "share": 0.05404411527299558,
+   "ballotsAccept": 1336,
+   "ballotsReject": 2210
+  },
+  "2": {
+   "title": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+   "accept": 524770.25,
+   "reject": 1651358.0,
+   "outcome": 0,
+   "share": 0.24114858579681597,
+   "ballotsAccept": 1464,
+   "ballotsReject": 2194
+  },
+  "3": {
+   "title": "ZecKit Post-M3 Stabilization and Developer Adoption \u2014 $5,000 USD (Dapps over Apps)",
+   "accept": 396819.875,
+   "reject": 1671151.75,
+   "outcome": 0,
+   "share": 0.19188845253135425,
+   "ballotsAccept": 1366,
+   "ballotsReject": 2050
+  },
+  "4": {
+   "title": "zcashtocash via ZcashLabs \u2014 $6,000 USD (ZcashLabs)",
+   "accept": 1566863.75,
+   "reject": 2135.25,
+   "outcome": 1,
+   "share": 0.9986391004710646,
+   "ballotsAccept": 3352,
+   "ballotsReject": 291
+  },
+  "5": {
+   "title": "zec-ironwood-reconcile \u2014 $8,250 USD (Steven Hert)",
+   "accept": 408984.0,
+   "reject": 1660852.625,
+   "outcome": 0,
+   "share": 0.19759240659875751,
+   "ballotsAccept": 1192,
+   "ballotsReject": 2176
+  },
+  "6": {
+   "title": "Gleyo \u2014 $9,081.20 USD (Gleyo)",
+   "accept": 63859.75,
+   "reject": 2006187.625,
+   "outcome": 0,
+   "share": 0.030849414738636116,
+   "ballotsAccept": 869,
+   "ballotsReject": 2453
+  },
+  "7": {
+   "title": "Self-Sovereign Zcash Testnet Faucet \u2014 $9,280 USD (Jino Labs)",
+   "accept": 106078.375,
+   "reject": 1965684.0,
+   "outcome": 0,
+   "share": 0.05120199897442389,
+   "ballotsAccept": 965,
+   "ballotsReject": 2453
+  },
+  "8": {
+   "title": "CyphZec.com \u2014 $10,000 USD (Thomas Zarebczan)",
+   "accept": 60769.125,
+   "reject": 2014008.375,
+   "outcome": 0,
+   "share": 0.029289465978882073,
+   "ballotsAccept": 1494,
+   "ballotsReject": 2020
+  },
+  "9": {
+   "title": "ZecLedger \u2014 $10,000 USD (ZecLedger)",
+   "accept": 404349.125,
+   "reject": 1664625.625,
+   "outcome": 0,
+   "share": 0.19543453829003954,
+   "ballotsAccept": 1268,
+   "ballotsReject": 2131
+  },
+  "10": {
+   "title": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+   "accept": 104752.875,
+   "reject": 1793152.875,
+   "outcome": 0,
+   "share": 0.055193928887143105,
+   "ballotsAccept": 1079,
+   "ballotsReject": 2304
+  },
+  "11": {
+   "title": "Blindvault \u2014 $17,000 USD (TIDJANI Walid)",
+   "accept": 88976.625,
+   "reject": 1983715.875,
+   "outcome": 0,
+   "share": 0.042928039253290105,
+   "ballotsAccept": 995,
+   "ballotsReject": 2518
+  },
+  "12": {
+   "title": "Zallet RPC Parity Harness \u2014 $20,000 USD (Creativesonchain)",
+   "accept": 86930.75,
+   "reject": 1810948.5,
+   "outcome": 0,
+   "share": 0.045804152187237414,
+   "ballotsAccept": 803,
+   "ballotsReject": 2519
+  },
+  "13": {
+   "title": "Zecmap \u2014 $21,300 USD (Batuhan)",
+   "accept": 178398.625,
+   "reject": 1395186.5,
+   "outcome": 0,
+   "share": 0.11337081303434411,
+   "ballotsAccept": 1304,
+   "ballotsReject": 2213
+  },
+  "14": {
+   "title": "Connaugh Zcash Videos \u2014 $22,000 USD (Connaugh)",
+   "accept": 757044.25,
+   "reject": 383280.625,
+   "outcome": 1,
+   "share": 0.6638847109250335,
+   "ballotsAccept": 1096,
+   "ballotsReject": 1154
+  },
+  "15": {
+   "title": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+   "accept": 87143.875,
+   "reject": 1806368.75,
+   "outcome": 0,
+   "share": 0.04602233639714971,
+   "ballotsAccept": 867,
+   "ballotsReject": 2403
+  },
+  "16": {
+   "title": "ZecBooks \u2014 $32,000 USD (SaneApps)",
+   "accept": 101026.0,
+   "reject": 1969797.875,
+   "outcome": 0,
+   "share": 0.04878541396959701,
+   "ballotsAccept": 710,
+   "ballotsReject": 2593
+  },
+  "17": {
+   "title": "CipherPay \u2014 $35,000 USD (Atmosphere Labs (Kenbak))",
+   "accept": 1988112.0,
+   "reject": 84894.75,
+   "outcome": 1,
+   "share": 0.9590475284270058,
+   "ballotsAccept": 3530,
+   "ballotsReject": 259
+  },
+  "18": {
+   "title": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+   "accept": 92628.75,
+   "reject": 1800834.25,
+   "outcome": 0,
+   "share": 0.0489202852128613,
+   "ballotsAccept": 740,
+   "ballotsReject": 2451
+  },
+  "19": {
+   "title": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+   "accept": 92218.375,
+   "reject": 1979515.25,
+   "outcome": 0,
+   "share": 0.044512660260558355,
+   "ballotsAccept": 965,
+   "ballotsReject": 2516
+  },
+  "20": {
+   "title": "Open-Source Zcash Hardware-Wallet SDK \u2014 $40,000 USD (wh00hw)",
+   "accept": 123819.75,
+   "reject": 1946938.375,
+   "outcome": 0,
+   "share": 0.05979440500806921,
+   "ballotsAccept": 948,
+   "ballotsReject": 2468
+  },
+  "21": {
+   "title": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+   "accept": 521243.625,
+   "reject": 1652156.75,
+   "outcome": 0,
+   "share": 0.23982862568522378,
+   "ballotsAccept": 1173,
+   "ballotsReject": 2291
+  },
+  "22": {
+   "title": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+   "accept": 1467036.75,
+   "reject": 9113.625,
+   "outcome": 1,
+   "share": 0.9938260863159013,
+   "ballotsAccept": 2889,
+   "ballotsReject": 820
+  },
+  "23": {
+   "title": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+   "accept": 1436595.0,
+   "reject": 141004.5,
+   "outcome": 1,
+   "share": 0.9106208514898744,
+   "ballotsAccept": 2663,
+   "ballotsReject": 983
+  },
+  "24": {
+   "title": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+   "accept": 44642.375,
+   "reject": 1426511.125,
+   "outcome": 0,
+   "share": 0.030345150930885186,
+   "ballotsAccept": 802,
+   "ballotsReject": 2679
+  },
+  "25": {
+   "title": "Frontier Compute Zcash Security Research and Remediation Pack \u2014 $136,250 USD (Frontier Compute LLC.)",
+   "accept": 171960.0,
+   "reject": 1898183.75,
+   "outcome": 0,
+   "share": 0.08306669524761263,
+   "ballotsAccept": 1431,
+   "ballotsReject": 2161
+  },
+  "26": {
+   "title": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+   "accept": 1392929.25,
+   "reject": 626383.375,
+   "outcome": 1,
+   "share": 0.6898036652447513,
+   "ballotsAccept": 3270,
+   "ballotsReject": 436
+  },
+  "27": {
+   "title": "Bonus Grant for Ironwood zk-SNARK Formal Verification \u2014 $261,058 USD (Jason McGee)",
+   "accept": 2170803.125,
+   "reject": 5095.0,
+   "outcome": 1,
+   "share": 0.9976584381679174,
+   "ballotsAccept": 3609,
+   "ballotsReject": 196
+  },
+  "28": {
+   "title": "CipherScan \u2014 $375,000 USD (Kenbak)",
+   "accept": 2169040.625,
+   "reject": 5979.5,
+   "outcome": 1,
+   "share": 0.9972508300354233,
+   "ballotsAccept": 3255,
+   "ballotsReject": 435
+  },
+  "29": {
+   "title": "Temporary Detectable Unlimited mint and sell Exploit \u2014 $400,000 USD (Alex Sol)",
+   "accept": 2145016.875,
+   "reject": 29078.125,
+   "outcome": 1,
+   "share": 0.9866251819722689,
+   "ballotsAccept": 3364,
+   "ballotsReject": 276
+  },
+  "30": {
+   "title": "Five Critical Zebra Consensus Divergence Vulnerabilities \u2014 $425,000 USD (sangsoo-osec)",
+   "accept": 2095860.875,
+   "reject": 79852.75,
+   "outcome": 1,
+   "share": 0.9632981339628279,
+   "ballotsAccept": 2857,
+   "ballotsReject": 788
+  },
+  "31": {
+   "title": "Zec.rocks (16 months of uptime for Zcash wallets) \u2014 $584,992 USD (Zec.rocks)",
+   "accept": 1970715.0,
+   "reject": 103790.75,
+   "outcome": 1,
+   "share": 0.9499684442908871,
+   "ballotsAccept": 3469,
+   "ballotsReject": 384
+  },
+  "32": {
+   "title": "Ironwood external audit reimbursement \u2014 $599,000 USD (ValarGroup)",
+   "accept": 2175934.375,
+   "reject": 377.25,
+   "outcome": 1,
+   "share": 0.999826656258384,
+   "ballotsAccept": 3725,
+   "ballotsReject": 176
+  },
+  "33": {
+   "title": "Ironwood zk-SNARK Formal Verification (Project Tachyon) \u2014 $738,942 USD (Tachyon Foundation)",
+   "accept": 2177498.25,
+   "reject": 7.5,
+   "outcome": 1,
+   "share": 0.999996555692218,
+   "ballotsAccept": 3885,
+   "ballotsReject": 80
+  },
+  "34": {
+   "title": "Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Taylor Hornby)",
+   "accept": 2179062.5,
+   "reject": 117.25,
+   "outcome": 1,
+   "share": 0.9999461953517144,
+   "ballotsAccept": 3760,
+   "ballotsReject": 128
+  },
+  "35": {
+   "title": "Taylor Hornby - Bonus Grant for Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Jason McGee)",
+   "accept": 2174540.625,
+   "reject": 2920.375,
+   "outcome": 1,
+   "share": 0.9986588163921191,
+   "ballotsAccept": 3578,
+   "ballotsReject": 195
+  },
+  "36": {
+   "title": "ValarGroup Ironwood Work \u2014 $1,203,000 USD (ValarGroup)",
+   "accept": 2174891.5,
+   "reject": 3169.25,
+   "outcome": 1,
+   "share": 0.9985449212103014,
+   "ballotsAccept": 3786,
+   "ballotsReject": 197
+  },
+  "37": {
+   "title": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+   "accept": 1755093.0,
+   "reject": 423736.625,
+   "outcome": 1,
+   "share": 0.8055209915736298,
+   "ballotsAccept": 3015,
+   "ballotsReject": 963
+  }
+ },
+ "refForProposal": {
+  "25": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+  "33": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+  "30": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+  "29": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+  "27": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+  "26": "0xda375fa265997b5b408fa94d9c834693861bceca",
+  "37": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+  "35": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+  "20": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+  "7": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+  "3": "0x8f62c36678044f5be39de143c01d652919e59a31",
+  "34": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+  "32": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+  "23": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+  "36": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+  "31": "0x91736993fd987c230244825a27c3e531c66fe63b",
+  "18": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+  "14": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+  "12": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+  "22": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+  "21": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+  "5": "0x55094376a3283512a8144fa9a251e430195286e2",
+  "4": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+  "1": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+  "28": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+  "24": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+  "19": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+  "17": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+  "16": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+  "15": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+  "13": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+  "11": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+  "10": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+  "9": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+  "8": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+  "6": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+  "2": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec"
+ },
+ "forecasters": [
+  {
+   "name": "fable-5.1",
+   "n": 37,
+   "brier": 0.06988133845398167,
+   "logloss": 0.29112488118499824,
+   "accuracy": 1,
+   "meanForecast": 0.5419336862635832,
+   "baseRate": 0.4594594594594595,
+   "rows": [
+    {
+     "ref": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+     "proposal": "Zcash Grants Hub \u2014 $3,050 USD (Daniel Goh)",
+     "p": 0.3505154639175258,
+     "outcome": 0,
+     "brier": 0.12286109044531833,
+     "logloss": 0.43157625211185024,
+     "hit": 1
+    },
+    {
+     "ref": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+     "proposal": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+     "p": 0.3711340206185567,
+     "outcome": 0,
+     "brier": 0.13774046126049527,
+     "logloss": 0.4638371143300716,
+     "hit": 1
+    },
+    {
+     "ref": "0x8f62c36678044f5be39de143c01d652919e59a31",
+     "proposal": "ZecKit Post-M3 Stabilization and Developer Adoption \u2014 $5,000 USD (Dapps over Apps)",
+     "p": 0.3711340206185567,
+     "outcome": 0,
+     "brier": 0.13774046126049527,
+     "logloss": 0.4638371143300716,
+     "hit": 1
+    },
+    {
+     "ref": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+     "proposal": "zcashtocash via ZcashLabs \u2014 $6,000 USD (ZcashLabs)",
+     "p": 0.7525773195876289,
+     "outcome": 1,
+     "brier": 0.061217982782442344,
+     "logloss": 0.2842515373549917,
+     "hit": 1
+    },
+    {
+     "ref": "0x55094376a3283512a8144fa9a251e430195286e2",
+     "proposal": "zec-ironwood-reconcile \u2014 $8,250 USD (Steven Hert)",
+     "p": 0.32989690721649484,
+     "outcome": 0,
+     "brier": 0.1088319693910086,
+     "logloss": 0.40032370860774563,
+     "hit": 1
+    },
+    {
+     "ref": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+     "proposal": "Gleyo \u2014 $9,081.20 USD (Gleyo)",
+     "p": 0.26804123711340205,
+     "outcome": 0,
+     "brier": 0.07184610479328302,
+     "logloss": 0.3120311014620673,
+     "hit": 1
+    },
+    {
+     "ref": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+     "proposal": "Self-Sovereign Zcash Testnet Faucet \u2014 $9,280 USD (Jino Labs)",
+     "p": 0.27835051546391754,
+     "outcome": 0,
+     "brier": 0.0774790094590286,
+     "logloss": 0.32621573645402385,
+     "hit": 1
+    },
+    {
+     "ref": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+     "proposal": "CyphZec.com \u2014 $10,000 USD (Thomas Zarebczan)",
+     "p": 0.3917525773195876,
+     "outcome": 0,
+     "brier": 0.15347008183653948,
+     "logloss": 0.4971735345976633,
+     "hit": 1
+    },
+    {
+     "ref": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+     "proposal": "ZecLedger \u2014 $10,000 USD (ZecLedger)",
+     "p": 0.3402061855670103,
+     "outcome": 0,
+     "brier": 0.11574024869805506,
+     "logloss": 0.415827895143711,
+     "hit": 1
+    },
+    {
+     "ref": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+     "proposal": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+     "p": 0.29896907216494845,
+     "outcome": 0,
+     "brier": 0.08938250611117016,
+     "logloss": 0.3552032733272762,
+     "hit": 1
+    },
+    {
+     "ref": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+     "proposal": "Blindvault \u2014 $17,000 USD (TIDJANI Walid)",
+     "p": 0.27835051546391754,
+     "outcome": 0,
+     "brier": 0.0774790094590286,
+     "logloss": 0.32621573645402385,
+     "hit": 1
+    },
+    {
+     "ref": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+     "proposal": "Zallet RPC Parity Harness \u2014 $20,000 USD (Creativesonchain)",
+     "p": 0.2577319587628866,
+     "outcome": 0,
+     "brier": 0.06642576256775429,
+     "logloss": 0.29804485948732745,
+     "hit": 1
+    },
+    {
+     "ref": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+     "proposal": "Zecmap \u2014 $21,300 USD (Batuhan)",
+     "p": 0.3402061855670103,
+     "outcome": 0,
+     "brier": 0.11574024869805506,
+     "logloss": 0.415827895143711,
+     "hit": 1
+    },
+    {
+     "ref": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+     "proposal": "Connaugh Zcash Videos \u2014 $22,000 USD (Connaugh)",
+     "p": 0.5154639175257733,
+     "outcome": 1,
+     "brier": 0.23477521521947067,
+     "logloss": 0.6626879730752366,
+     "hit": 1
+    },
+    {
+     "ref": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+     "proposal": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+     "p": 0.26804123711340205,
+     "outcome": 0,
+     "brier": 0.07184610479328302,
+     "logloss": 0.3120311014620673,
+     "hit": 1
+    },
+    {
+     "ref": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+     "proposal": "ZecBooks \u2014 $32,000 USD (SaneApps)",
+     "p": 0.24742268041237114,
+     "outcome": 0,
+     "brier": 0.061217982782442344,
+     "logloss": 0.2842515373549917,
+     "hit": 1
+    },
+    {
+     "ref": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+     "proposal": "CipherPay \u2014 $35,000 USD (Atmosphere Labs (Kenbak))",
+     "p": 0.7525773195876289,
+     "outcome": 1,
+     "brier": 0.061217982782442344,
+     "logloss": 0.2842515373549917,
+     "hit": 1
+    },
+    {
+     "ref": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+     "proposal": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+     "p": 0.24742268041237114,
+     "outcome": 0,
+     "brier": 0.061217982782442344,
+     "logloss": 0.2842515373549917,
+     "hit": 1
+    },
+    {
+     "ref": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+     "proposal": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+     "p": 0.27835051546391754,
+     "outcome": 0,
+     "brier": 0.0774790094590286,
+     "logloss": 0.32621573645402385,
+     "hit": 1
+    },
+    {
+     "ref": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+     "proposal": "Open-Source Zcash Hardware-Wallet SDK \u2014 $40,000 USD (wh00hw)",
+     "p": 0.27835051546391754,
+     "outcome": 0,
+     "brier": 0.0774790094590286,
+     "logloss": 0.32621573645402385,
+     "hit": 1
+    },
+    {
+     "ref": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+     "proposal": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+     "p": 0.29896907216494845,
+     "outcome": 0,
+     "brier": 0.08938250611117016,
+     "logloss": 0.3552032733272762,
+     "hit": 1
+    },
+    {
+     "ref": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+     "proposal": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+     "p": 0.7835051546391752,
+     "outcome": 1,
+     "brier": 0.04687001806780742,
+     "logloss": 0.24397763821705176,
+     "hit": 1
+    },
+    {
+     "ref": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+     "proposal": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+     "p": 0.7525773195876289,
+     "outcome": 1,
+     "brier": 0.061217982782442344,
+     "logloss": 0.2842515373549917,
+     "hit": 1
+    },
+    {
+     "ref": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+     "proposal": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+     "p": 0.2268041237113402,
+     "outcome": 0,
+     "brier": 0.05144011053246891,
+     "logloss": 0.25722286496707236,
+     "hit": 1
+    },
+    {
+     "ref": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+     "proposal": "Frontier Compute Zcash Security Research and Remediation Pack \u2014 $136,250 USD (Frontier Compute LLC.)",
+     "p": 0.36082474226804123,
+     "outcome": 0,
+     "brier": 0.1301944946327984,
+     "logloss": 0.44757659345829137,
+     "hit": 1
+    },
+    {
+     "ref": "0xda375fa265997b5b408fa94d9c834693861bceca",
+     "proposal": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+     "p": 0.8144329896907218,
+     "outcome": 1,
+     "brier": 0.03443511531512378,
+     "logloss": 0.2052631260363612,
+     "hit": 1
+    },
+    {
+     "ref": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+     "proposal": "Bonus Grant for Ironwood zk-SNARK Formal Verification \u2014 $261,058 USD (Jason McGee)",
+     "p": 0.8350515463917526,
+     "outcome": 1,
+     "brier": 0.027207992347752143,
+     "logloss": 0.18026182383094402,
+     "hit": 1
+    },
+    {
+     "ref": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+     "proposal": "CipherScan \u2014 $375,000 USD (Kenbak)",
+     "p": 0.8350515463917526,
+     "outcome": 1,
+     "brier": 0.027207992347752143,
+     "logloss": 0.18026182383094402,
+     "hit": 1
+    },
+    {
+     "ref": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+     "proposal": "Temporary Detectable Unlimited mint and sell Exploit \u2014 $400,000 USD (Alex Sol)",
+     "p": 0.8969072164948454,
+     "outcome": 1,
+     "brier": 0.010628122010840678,
+     "logloss": 0.10880285984879906,
+     "hit": 1
+    },
+    {
+     "ref": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+     "proposal": "Five Critical Zebra Consensus Divergence Vulnerabilities \u2014 $425,000 USD (sangsoo-osec)",
+     "p": 0.845360824742268,
+     "outcome": 1,
+     "brier": 0.023913274524391542,
+     "logloss": 0.16799173123912972,
+     "hit": 1
+    },
+    {
+     "ref": "0x91736993fd987c230244825a27c3e531c66fe63b",
+     "proposal": "Zec.rocks (16 months of uptime for Zcash wallets) \u2014 $584,992 USD (Zec.rocks)",
+     "p": 0.8247422680412371,
+     "outcome": 1,
+     "brier": 0.030715272611329593,
+     "logloss": 0.19268434382950125,
+     "hit": 1
+    },
+    {
+     "ref": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+     "proposal": "Ironwood external audit reimbursement \u2014 $599,000 USD (ValarGroup)",
+     "p": 0.9072164948453608,
+     "outcome": 1,
+     "brier": 0.008608778828780955,
+     "logloss": 0.09737416402517636,
+     "hit": 1
+    },
+    {
+     "ref": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+     "proposal": "Ironwood zk-SNARK Formal Verification (Project Tachyon) \u2014 $738,942 USD (Tachyon Foundation)",
+     "p": 0.9072164948453608,
+     "outcome": 1,
+     "brier": 0.008608778828780955,
+     "logloss": 0.09737416402517636,
+     "hit": 1
+    },
+    {
+     "ref": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+     "proposal": "Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Taylor Hornby)",
+     "p": 0.9072164948453608,
+     "outcome": 1,
+     "brier": 0.008608778828780955,
+     "logloss": 0.09737416402517636,
+     "hit": 1
+    },
+    {
+     "ref": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+     "proposal": "Taylor Hornby - Bonus Grant for Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Jason McGee)",
+     "p": 0.8865979381443299,
+     "outcome": 1,
+     "brier": 0.012860027633117237,
+     "logloss": 0.12036368224987513,
+     "hit": 1
+    },
+    {
+     "ref": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+     "proposal": "ValarGroup Ironwood Work \u2014 $1,203,000 USD (ValarGroup)",
+     "p": 0.9072164948453608,
+     "outcome": 1,
+     "brier": 0.008608778828780955,
+     "logloss": 0.09737416402517636,
+     "hit": 1
+    },
+    {
+     "ref": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+     "proposal": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+     "p": 0.845360824742268,
+     "outcome": 1,
+     "brier": 0.023913274524391542,
+     "logloss": 0.16799173123912972,
+     "hit": 1
+    }
+   ],
+   "source": "fleet-grants.json",
+   "asOf": "2026-09-29T17-30-04-930Z"
+  },
+  {
+   "name": "opus-5",
+   "n": 12,
+   "brier": 0.22520808333333334,
+   "logloss": 0.6280586943948275,
+   "accuracy": 0.5,
+   "meanForecast": 0.5200833333333333,
+   "baseRate": 0.4166666666666667,
+   "rows": [
+    {
+     "ref": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+     "proposal": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+     "p": 0.76,
+     "outcome": 0,
+     "brier": 0.5776,
+     "logloss": 1.4271163556401458,
+     "hit": 0
+    },
+    {
+     "ref": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+     "proposal": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+     "p": 0.05,
+     "outcome": 0,
+     "brier": 0.0025000000000000005,
+     "logloss": 0.05129329438755058,
+     "hit": 1
+    },
+    {
+     "ref": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+     "proposal": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+     "p": 0.577,
+     "outcome": 0,
+     "brier": 0.332929,
+     "logloss": 0.8603830999358589,
+     "hit": 0
+    },
+    {
+     "ref": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+     "proposal": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+     "p": 0.576,
+     "outcome": 0,
+     "brier": 0.33177599999999996,
+     "logloss": 0.8580218237501792,
+     "hit": 0
+    },
+    {
+     "ref": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+     "proposal": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+     "p": 0.797,
+     "outcome": 0,
+     "brier": 0.635209,
+     "logloss": 1.5945492999403499,
+     "hit": 0
+    },
+    {
+     "ref": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+     "proposal": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+     "p": 0.472,
+     "outcome": 1,
+     "brier": 0.27878400000000003,
+     "logloss": 0.7507762933965817,
+     "hit": 0
+    },
+    {
+     "ref": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+     "proposal": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+     "p": 0.483,
+     "outcome": 1,
+     "brier": 0.267289,
+     "logloss": 0.7277386253295643,
+     "hit": 0
+    },
+    {
+     "ref": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+     "proposal": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+     "p": 0.691,
+     "outcome": 1,
+     "brier": 0.09548100000000004,
+     "logloss": 0.36961545521446726,
+     "hit": 1
+    },
+    {
+     "ref": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+     "proposal": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+     "p": 0.252,
+     "outcome": 0,
+     "brier": 0.063504,
+     "logloss": 0.2903523010076598,
+     "hit": 1
+    },
+    {
+     "ref": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+     "proposal": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+     "p": 0.06,
+     "outcome": 0,
+     "brier": 0.0036,
+     "logloss": 0.06187540371808753,
+     "hit": 1
+    },
+    {
+     "ref": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+     "proposal": "CipherScan \u2014 $375,000 USD (Kenbak)",
+     "p": 0.756,
+     "outcome": 1,
+     "brier": 0.059536,
+     "logloss": 0.27971390280260405,
+     "hit": 1
+    },
+    {
+     "ref": "0xda375fa265997b5b408fa94d9c834693861bceca",
+     "proposal": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+     "p": 0.767,
+     "outcome": 1,
+     "brier": 0.05428899999999999,
+     "logloss": 0.26526847761488087,
+     "hit": 1
+    }
+   ],
+   "source": "queue notes (trade-time)",
+   "asOf": "16-29 Sep"
+  },
+  {
+   "name": "astra-gpt-6b",
+   "n": 37,
+   "brier": 0.12577054998309023,
+   "logloss": 0.4197724324333966,
+   "accuracy": 0.8918918918918919,
+   "meanForecast": 0.5541511920499015,
+   "baseRate": 0.4594594594594595,
+   "rows": [
+    {
+     "ref": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+     "proposal": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+     "p": 0.7216494845360825,
+     "outcome": 1,
+     "brier": 0.0774790094590286,
+     "logloss": 0.32621573645402385,
+     "hit": 1
+    },
+    {
+     "ref": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+     "proposal": "ValarGroup Ironwood Work \u2014 $1,203,000 USD (ValarGroup)",
+     "p": 0.8247422680412371,
+     "outcome": 1,
+     "brier": 0.030715272611329593,
+     "logloss": 0.19268434382950125,
+     "hit": 1
+    },
+    {
+     "ref": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+     "proposal": "Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Taylor Hornby)",
+     "p": 0.9183673469387755,
+     "outcome": 1,
+     "brier": 0.006663890045814241,
+     "logloss": 0.08515780834030683,
+     "hit": 1
+    },
+    {
+     "ref": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+     "proposal": "Ironwood zk-SNARK Formal Verification (Project Tachyon) \u2014 $738,942 USD (Tachyon Foundation)",
+     "p": 0.9278350515463918,
+     "outcome": 1,
+     "brier": 0.00520777978531193,
+     "logloss": 0.07490130817311771,
+     "hit": 1
+    },
+    {
+     "ref": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+     "proposal": "Ironwood external audit reimbursement \u2014 $599,000 USD (ValarGroup)",
+     "p": 0.8247422680412371,
+     "outcome": 1,
+     "brier": 0.030715272611329593,
+     "logloss": 0.19268434382950125,
+     "hit": 1
+    },
+    {
+     "ref": "0x91736993fd987c230244825a27c3e531c66fe63b",
+     "proposal": "Zec.rocks (16 months of uptime for Zcash wallets) \u2014 $584,992 USD (Zec.rocks)",
+     "p": 0.6185567010309279,
+     "outcome": 1,
+     "brier": 0.14549899032840896,
+     "logloss": 0.4803664162812821,
+     "hit": 1
+    },
+    {
+     "ref": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+     "proposal": "Five Critical Zebra Consensus Divergence Vulnerabilities \u2014 $425,000 USD (sangsoo-osec)",
+     "p": 0.8247422680412371,
+     "outcome": 1,
+     "brier": 0.030715272611329593,
+     "logloss": 0.19268434382950125,
+     "hit": 1
+    },
+    {
+     "ref": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+     "proposal": "Temporary Detectable Unlimited mint and sell Exploit \u2014 $400,000 USD (Alex Sol)",
+     "p": 0.8247422680412371,
+     "outcome": 1,
+     "brier": 0.030715272611329593,
+     "logloss": 0.19268434382950125,
+     "hit": 1
+    },
+    {
+     "ref": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+     "proposal": "CipherScan \u2014 $375,000 USD (Kenbak)",
+     "p": 0.6185567010309279,
+     "outcome": 1,
+     "brier": 0.14549899032840896,
+     "logloss": 0.4803664162812821,
+     "hit": 1
+    },
+    {
+     "ref": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+     "proposal": "Bonus Grant for Ironwood zk-SNARK Formal Verification \u2014 $261,058 USD (Jason McGee)",
+     "p": 0.7731958762886598,
+     "outcome": 1,
+     "brier": 0.0514401105324689,
+     "logloss": 0.25722286496707236,
+     "hit": 1
+    },
+    {
+     "ref": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+     "proposal": "Taylor Hornby - Bonus Grant for Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Jason McGee)",
+     "p": 0.8333333333333333,
+     "outcome": 1,
+     "brier": 0.027777777777777804,
+     "logloss": 0.1823215567939547,
+     "hit": 1
+    },
+    {
+     "ref": "0xda375fa265997b5b408fa94d9c834693861bceca",
+     "proposal": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+     "p": 0.7216494845360825,
+     "outcome": 1,
+     "brier": 0.0774790094590286,
+     "logloss": 0.32621573645402385,
+     "hit": 1
+    },
+    {
+     "ref": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+     "proposal": "Frontier Compute Zcash Security Research and Remediation Pack \u2014 $136,250 USD (Frontier Compute LLC.)",
+     "p": 0.42105263157894735,
+     "outcome": 0,
+     "brier": 0.17728531855955676,
+     "logloss": 0.5465437063680699,
+     "hit": 1
+    },
+    {
+     "ref": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+     "proposal": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+     "p": 0.2631578947368421,
+     "outcome": 0,
+     "brier": 0.06925207756232686,
+     "logloss": 0.30538164955118174,
+     "hit": 1
+    },
+    {
+     "ref": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+     "proposal": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+     "p": 0.8247422680412371,
+     "outcome": 1,
+     "brier": 0.030715272611329593,
+     "logloss": 0.19268434382950125,
+     "hit": 1
+    },
+    {
+     "ref": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+     "proposal": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+     "p": 0.8247422680412371,
+     "outcome": 1,
+     "brier": 0.030715272611329593,
+     "logloss": 0.19268434382950125,
+     "hit": 1
+    },
+    {
+     "ref": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+     "proposal": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+     "p": 0.3684210526315789,
+     "outcome": 0,
+     "brier": 0.13573407202216065,
+     "logloss": 0.4595323293784402,
+     "hit": 1
+    },
+    {
+     "ref": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+     "proposal": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+     "p": 0.4123711340206186,
+     "outcome": 0,
+     "brier": 0.17004995217345098,
+     "logloss": 0.5316597106688328,
+     "hit": 1
+    },
+    {
+     "ref": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+     "proposal": "Open-Source Zcash Hardware-Wallet SDK \u2014 $40,000 USD (wh00hw)",
+     "p": 0.36082474226804123,
+     "outcome": 0,
+     "brier": 0.1301944946327984,
+     "logloss": 0.44757659345829137,
+     "hit": 1
+    },
+    {
+     "ref": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+     "proposal": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+     "p": 0.3125,
+     "outcome": 0,
+     "brier": 0.09765625,
+     "logloss": 0.3746934494414107,
+     "hit": 1
+    },
+    {
+     "ref": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+     "proposal": "CipherPay \u2014 $35,000 USD (Atmosphere Labs (Kenbak))",
+     "p": 0.7216494845360825,
+     "outcome": 1,
+     "brier": 0.0774790094590286,
+     "logloss": 0.32621573645402385,
+     "hit": 1
+    },
+    {
+     "ref": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+     "proposal": "ZecBooks \u2014 $32,000 USD (SaneApps)",
+     "p": 0.2604166666666667,
+     "outcome": 0,
+     "brier": 0.06781684027777779,
+     "logloss": 0.3016683144265209,
+     "hit": 1
+    },
+    {
+     "ref": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+     "proposal": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+     "p": 0.2631578947368421,
+     "outcome": 0,
+     "brier": 0.06925207756232686,
+     "logloss": 0.30538164955118174,
+     "hit": 1
+    },
+    {
+     "ref": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+     "proposal": "Connaugh Zcash Videos \u2014 $22,000 USD (Connaugh)",
+     "p": 0.2577319587628866,
+     "outcome": 1,
+     "brier": 0.5509618450419811,
+     "logloss": 1.355835153635182,
+     "hit": 0
+    },
+    {
+     "ref": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+     "proposal": "Zecmap \u2014 $21,300 USD (Batuhan)",
+     "p": 0.4639175257731959,
+     "outcome": 0,
+     "brier": 0.21521947071952388,
+     "logloss": 0.6234672599219555,
+     "hit": 1
+    },
+    {
+     "ref": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+     "proposal": "Zallet RPC Parity Harness \u2014 $20,000 USD (Creativesonchain)",
+     "p": 0.2577319587628866,
+     "outcome": 0,
+     "brier": 0.06642576256775429,
+     "logloss": 0.29804485948732745,
+     "hit": 1
+    },
+    {
+     "ref": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+     "proposal": "Blindvault \u2014 $17,000 USD (TIDJANI Walid)",
+     "p": 0.2604166666666667,
+     "outcome": 0,
+     "brier": 0.06781684027777779,
+     "logloss": 0.3016683144265209,
+     "hit": 1
+    },
+    {
+     "ref": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+     "proposal": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+     "p": 0.5670103092783506,
+     "outcome": 0,
+     "brier": 0.3215006908279308,
+     "logloss": 0.8370413602200147,
+     "hit": 0
+    },
+    {
+     "ref": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+     "proposal": "CyphZec.com \u2014 $10,000 USD (Thomas Zarebczan)",
+     "p": 0.5154639175257733,
+     "outcome": 0,
+     "brier": 0.26570305027101715,
+     "logloss": 0.7245633767933244,
+     "hit": 0
+    },
+    {
+     "ref": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+     "proposal": "ZecLedger \u2014 $10,000 USD (ZecLedger)",
+     "p": 0.4123711340206186,
+     "outcome": 0,
+     "brier": 0.17004995217345098,
+     "logloss": 0.5316597106688328,
+     "hit": 1
+    },
+    {
+     "ref": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+     "proposal": "Self-Sovereign Zcash Testnet Faucet \u2014 $9,280 USD (Jino Labs)",
+     "p": 0.4123711340206186,
+     "outcome": 0,
+     "brier": 0.17004995217345098,
+     "logloss": 0.5316597106688328,
+     "hit": 1
+    },
+    {
+     "ref": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+     "proposal": "Gleyo \u2014 $9,081.20 USD (Gleyo)",
+     "p": 0.46875000000000006,
+     "outcome": 0,
+     "brier": 0.21972656250000006,
+     "logloss": 0.6325225587435105,
+     "hit": 1
+    },
+    {
+     "ref": "0x55094376a3283512a8144fa9a251e430195286e2",
+     "proposal": "zec-ironwood-reconcile \u2014 $8,250 USD (Steven Hert)",
+     "p": 0.36082474226804123,
+     "outcome": 0,
+     "brier": 0.1301944946327984,
+     "logloss": 0.44757659345829137,
+     "hit": 1
+    },
+    {
+     "ref": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+     "proposal": "zcashtocash via ZcashLabs \u2014 $6,000 USD (ZcashLabs)",
+     "p": 0.6701030927835052,
+     "outcome": 1,
+     "brier": 0.10883196939100857,
+     "logloss": 0.40032370860774563,
+     "hit": 1
+    },
+    {
+     "ref": "0x8f62c36678044f5be39de143c01d652919e59a31",
+     "proposal": "ZecKit Post-M3 Stabilization and Developer Adoption \u2014 $5,000 USD (Dapps over Apps)",
+     "p": 0.4123711340206186,
+     "outcome": 0,
+     "brier": 0.17004995217345098,
+     "logloss": 0.5316597106688328,
+     "hit": 1
+    },
+    {
+     "ref": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+     "proposal": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+     "p": 0.5154639175257733,
+     "outcome": 0,
+     "brier": 0.26570305027101715,
+     "logloss": 0.7245633767933244,
+     "hit": 0
+    },
+    {
+     "ref": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+     "proposal": "Zcash Grants Hub \u2014 $3,050 USD (Daniel Goh)",
+     "p": 0.4639175257731959,
+     "outcome": 0,
+     "brier": 0.21521947071952388,
+     "logloss": 0.6234672599219555,
+     "hit": 1
+    }
+   ],
+   "source": "estimates.json",
+   "asOf": "2026-09-29T18-43-46-117Z"
+  },
+  {
+   "name": "gpt-5.6-sol",
+   "n": 37,
+   "brier": 0.05694123875942058,
+   "logloss": 0.24012133238017655,
+   "accuracy": 0.972972972972973,
+   "meanForecast": 0.5618345618345618,
+   "baseRate": 0.4594594594594595,
+   "rows": [
+    {
+     "ref": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+     "proposal": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+     "p": 0.898989898989899,
+     "outcome": 1,
+     "brier": 0.010203040506070805,
+     "logloss": 0.10648348040245006,
+     "hit": 1
+    },
+    {
+     "ref": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+     "proposal": "ValarGroup Ironwood Work \u2014 $1,203,000 USD (ValarGroup)",
+     "p": 0.9595959595959596,
+     "outcome": 1,
+     "brier": 0.0016324864809713325,
+     "logloss": 0.041242958534049134,
+     "hit": 1
+    },
+    {
+     "ref": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+     "proposal": "Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Taylor Hornby)",
+     "p": 0.9797979797979798,
+     "outcome": 1,
+     "brier": 0.0004081216202428331,
+     "logloss": 0.020408871631207123,
+     "hit": 1
+    },
+    {
+     "ref": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+     "proposal": "Ironwood zk-SNARK Formal Verification (Project Tachyon) \u2014 $738,942 USD (Tachyon Foundation)",
+     "p": 0.98989898989899,
+     "outcome": 1,
+     "brier": 0.00010203040506070717,
+     "logloss": 0.010152371464017962,
+     "hit": 1
+    },
+    {
+     "ref": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+     "proposal": "Ironwood external audit reimbursement \u2014 $599,000 USD (ValarGroup)",
+     "p": 0.9494949494949495,
+     "outcome": 1,
+     "brier": 0.0025507601265177013,
+     "logloss": 0.05182506786458602,
+     "hit": 1
+    },
+    {
+     "ref": "0x91736993fd987c230244825a27c3e531c66fe63b",
+     "proposal": "Zec.rocks (16 months of uptime for Zcash wallets) \u2014 $584,992 USD (Zec.rocks)",
+     "p": 0.8787878787878788,
+     "outcome": 1,
+     "brier": 0.014692378328741967,
+     "logloss": 0.12921173148000623,
+     "hit": 1
+    },
+    {
+     "ref": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+     "proposal": "Five Critical Zebra Consensus Divergence Vulnerabilities \u2014 $425,000 USD (sangsoo-osec)",
+     "p": 0.9090909090909092,
+     "outcome": 1,
+     "brier": 0.00826446280991734,
+     "logloss": 0.09531017980432477,
+     "hit": 1
+    },
+    {
+     "ref": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+     "proposal": "Temporary Detectable Unlimited mint and sell Exploit \u2014 $400,000 USD (Alex Sol)",
+     "p": 0.9494949494949495,
+     "outcome": 1,
+     "brier": 0.0025507601265177013,
+     "logloss": 0.05182506786458602,
+     "hit": 1
+    },
+    {
+     "ref": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+     "proposal": "CipherScan \u2014 $375,000 USD (Kenbak)",
+     "p": 0.8686868686868687,
+     "outcome": 1,
+     "brier": 0.017243138455259654,
+     "logloss": 0.14077255388108215,
+     "hit": 1
+    },
+    {
+     "ref": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+     "proposal": "Bonus Grant for Ironwood zk-SNARK Formal Verification \u2014 $261,058 USD (Jason McGee)",
+     "p": 0.9595959595959596,
+     "outcome": 1,
+     "brier": 0.0016324864809713325,
+     "logloss": 0.041242958534049134,
+     "hit": 1
+    },
+    {
+     "ref": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+     "proposal": "Taylor Hornby - Bonus Grant for Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Jason McGee)",
+     "p": 0.9494949494949495,
+     "outcome": 1,
+     "brier": 0.0025507601265177013,
+     "logloss": 0.05182506786458602,
+     "hit": 1
+    },
+    {
+     "ref": "0xda375fa265997b5b408fa94d9c834693861bceca",
+     "proposal": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+     "p": 0.888888888888889,
+     "outcome": 1,
+     "brier": 0.012345679012345664,
+     "logloss": 0.11778303565638339,
+     "hit": 1
+    },
+    {
+     "ref": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+     "proposal": "Frontier Compute Zcash Security Research and Remediation Pack \u2014 $136,250 USD (Frontier Compute LLC.)",
+     "p": 0.35353535353535354,
+     "outcome": 0,
+     "brier": 0.12498724619936741,
+     "logloss": 0.4362367667749182,
+     "hit": 1
+    },
+    {
+     "ref": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+     "proposal": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+     "p": 0.21212121212121213,
+     "outcome": 0,
+     "brier": 0.044995408631772274,
+     "logloss": 0.23841102344499823,
+     "hit": 1
+    },
+    {
+     "ref": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+     "proposal": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+     "p": 0.8181818181818182,
+     "outcome": 1,
+     "brier": 0.0330578512396694,
+     "logloss": 0.2006706954621511,
+     "hit": 1
+    },
+    {
+     "ref": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+     "proposal": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+     "p": 0.8383838383838383,
+     "outcome": 1,
+     "brier": 0.026119783695541285,
+     "logloss": 0.17627924233799205,
+     "hit": 1
+    },
+    {
+     "ref": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+     "proposal": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+     "p": 0.25252525252525254,
+     "outcome": 0,
+     "brier": 0.06376900316294257,
+     "logloss": 0.29105475693042027,
+     "hit": 1
+    },
+    {
+     "ref": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+     "proposal": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+     "p": 0.24242424242424243,
+     "outcome": 0,
+     "brier": 0.05876951331496787,
+     "logloss": 0.2776317365982795,
+     "hit": 1
+    },
+    {
+     "ref": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+     "proposal": "Open-Source Zcash Hardware-Wallet SDK \u2014 $40,000 USD (wh00hw)",
+     "p": 0.26262626262626265,
+     "outcome": 0,
+     "brier": 0.06897255382103869,
+     "logloss": 0.30466040898619884,
+     "hit": 1
+    },
+    {
+     "ref": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+     "proposal": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+     "p": 0.18181818181818182,
+     "outcome": 0,
+     "brier": 0.03305785123966942,
+     "logloss": 0.20067069546215124,
+     "hit": 1
+    },
+    {
+     "ref": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+     "proposal": "CipherPay \u2014 $35,000 USD (Atmosphere Labs (Kenbak))",
+     "p": 0.9393939393939394,
+     "outcome": 1,
+     "brier": 0.0036730945821854847,
+     "logloss": 0.06252035698133393,
+     "hit": 1
+    },
+    {
+     "ref": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+     "proposal": "ZecBooks \u2014 $32,000 USD (SaneApps)",
+     "p": 0.19191919191919193,
+     "outcome": 0,
+     "brier": 0.03683297622691563,
+     "logloss": 0.21309321546070834,
+     "hit": 1
+    },
+    {
+     "ref": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+     "proposal": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+     "p": 0.23232323232323235,
+     "outcome": 0,
+     "brier": 0.053974084277114594,
+     "logloss": 0.2643865098482589,
+     "hit": 1
+    },
+    {
+     "ref": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+     "proposal": "Connaugh Zcash Videos \u2014 $22,000 USD (Connaugh)",
+     "p": 0.4545454545454546,
+     "outcome": 1,
+     "brier": 0.29752066115702475,
+     "logloss": 0.78845736036427,
+     "hit": 0
+    },
+    {
+     "ref": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+     "proposal": "Zecmap \u2014 $21,300 USD (Batuhan)",
+     "p": 0.36363636363636365,
+     "outcome": 0,
+     "brier": 0.1322314049586777,
+     "logloss": 0.45198512374305727,
+     "hit": 1
+    },
+    {
+     "ref": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+     "proposal": "Zallet RPC Parity Harness \u2014 $20,000 USD (Creativesonchain)",
+     "p": 0.22222222222222224,
+     "outcome": 0,
+     "brier": 0.04938271604938272,
+     "logloss": 0.25131442828090605,
+     "hit": 1
+    },
+    {
+     "ref": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+     "proposal": "Blindvault \u2014 $17,000 USD (TIDJANI Walid)",
+     "p": 0.2828282828282829,
+     "outcome": 0,
+     "brier": 0.07999183756759518,
+     "logloss": 0.33243997309327455,
+     "hit": 1
+    },
+    {
+     "ref": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+     "proposal": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+     "p": 0.31313131313131315,
+     "outcome": 0,
+     "brier": 0.09805121926334048,
+     "logloss": 0.3756121449584833,
+     "hit": 1
+    },
+    {
+     "ref": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+     "proposal": "CyphZec.com \u2014 $10,000 USD (Thomas Zarebczan)",
+     "p": 0.3434343434343435,
+     "outcome": 0,
+     "brier": 0.11794714825017859,
+     "logloss": 0.4207325802389528,
+     "hit": 1
+    },
+    {
+     "ref": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+     "proposal": "ZecLedger \u2014 $10,000 USD (ZecLedger)",
+     "p": 0.30303030303030304,
+     "outcome": 0,
+     "brier": 0.09182736455463729,
+     "logloss": 0.3610133455373305,
+     "hit": 1
+    },
+    {
+     "ref": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+     "proposal": "Self-Sovereign Zcash Testnet Faucet \u2014 $9,280 USD (Jino Labs)",
+     "p": 0.27272727272727276,
+     "outcome": 0,
+     "brier": 0.07438016528925621,
+     "logloss": 0.3184537311185346,
+     "hit": 1
+    },
+    {
+     "ref": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+     "proposal": "Gleyo \u2014 $9,081.20 USD (Gleyo)",
+     "p": 0.24242424242424243,
+     "outcome": 0,
+     "brier": 0.05876951331496787,
+     "logloss": 0.2776317365982795,
+     "hit": 1
+    },
+    {
+     "ref": "0x55094376a3283512a8144fa9a251e430195286e2",
+     "proposal": "zec-ironwood-reconcile \u2014 $8,250 USD (Steven Hert)",
+     "p": 0.29292929292929293,
+     "outcome": 0,
+     "brier": 0.0858075706560555,
+     "logloss": 0.34662460808523093,
+     "hit": 1
+    },
+    {
+     "ref": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+     "proposal": "zcashtocash via ZcashLabs \u2014 $6,000 USD (ZcashLabs)",
+     "p": 0.9090909090909092,
+     "outcome": 1,
+     "brier": 0.00826446280991734,
+     "logloss": 0.09531017980432477,
+     "hit": 1
+    },
+    {
+     "ref": "0x8f62c36678044f5be39de143c01d652919e59a31",
+     "proposal": "ZecKit Post-M3 Stabilization and Developer Adoption \u2014 $5,000 USD (Dapps over Apps)",
+     "p": 0.35353535353535354,
+     "outcome": 0,
+     "brier": 0.12498724619936741,
+     "logloss": 0.4362367667749182,
+     "hit": 1
+    },
+    {
+     "ref": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+     "proposal": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+     "p": 0.3434343434343435,
+     "outcome": 0,
+     "brier": 0.11794714825017859,
+     "logloss": 0.4207325802389528,
+     "hit": 1
+    },
+    {
+     "ref": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+     "proposal": "Zcash Grants Hub \u2014 $3,050 USD (Daniel Goh)",
+     "p": 0.38383838383838387,
+     "outcome": 0,
+     "brier": 0.14733190490766251,
+     "logloss": 0.4842459859612787,
+     "hit": 1
+    }
+   ],
+   "source": "fleet.json",
+   "asOf": "2026-09-29T13-14-06-195Z"
+  },
+  {
+   "name": "jev",
+   "n": 37,
+   "brier": 0.029778754761754303,
+   "logloss": 0.12367541249715162,
+   "accuracy": 0.9459459459459459,
+   "meanForecast": 0.40783504580737745,
+   "baseRate": 0.4594594594594595,
+   "rows": [
+    {
+     "ref": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+     "proposal": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+     "p": 0.9103092783505154,
+     "outcome": 1,
+     "brier": 0.008044425550005316,
+     "logloss": 0.0939708708934685,
+     "hit": 1
+    },
+    {
+     "ref": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+     "proposal": "ValarGroup Ironwood Work \u2014 $1,203,000 USD (ValarGroup)",
+     "p": 0.9701030927835051,
+     "outcome": 1,
+     "brier": 0.0008938250611117019,
+     "logloss": 0.030352931912048877,
+     "hit": 1
+    },
+    {
+     "ref": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+     "proposal": "Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Taylor Hornby)",
+     "p": 0.9804123711340206,
+     "outcome": 1,
+     "brier": 0.0003836752045913503,
+     "logloss": 0.019782008952038244,
+     "hit": 1
+    },
+    {
+     "ref": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+     "proposal": "Ironwood zk-SNARK Formal Verification (Project Tachyon) \u2014 $738,942 USD (Tachyon Foundation)",
+     "p": 0.9402061855670103,
+     "outcome": 1,
+     "brier": 0.0035753002444468074,
+     "logloss": 0.06165608142309713,
+     "hit": 1
+    },
+    {
+     "ref": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+     "proposal": "Ironwood external audit reimbursement \u2014 $599,000 USD (ValarGroup)",
+     "p": 0.9103092783505154,
+     "outcome": 1,
+     "brier": 0.008044425550005316,
+     "logloss": 0.0939708708934685,
+     "hit": 1
+    },
+    {
+     "ref": "0x91736993fd987c230244825a27c3e531c66fe63b",
+     "proposal": "Zec.rocks (16 months of uptime for Zcash wallets) \u2014 $584,992 USD (Zec.rocks)",
+     "p": 0.9701030927835051,
+     "outcome": 1,
+     "brier": 0.0008938250611117019,
+     "logloss": 0.030352931912048877,
+     "hit": 1
+    },
+    {
+     "ref": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+     "proposal": "Five Critical Zebra Consensus Divergence Vulnerabilities \u2014 $425,000 USD (sangsoo-osec)",
+     "p": 0.8896907216494845,
+     "outcome": 1,
+     "brier": 0.012168136890211512,
+     "logloss": 0.11688138041400062,
+     "hit": 1
+    },
+    {
+     "ref": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+     "proposal": "Temporary Detectable Unlimited mint and sell Exploit \u2014 $400,000 USD (Alex Sol)",
+     "p": 0.4298969072164949,
+     "outcome": 1,
+     "brier": 0.32501753640131786,
+     "logloss": 0.844209849698627,
+     "hit": 0
+    },
+    {
+     "ref": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+     "proposal": "CipherScan \u2014 $375,000 USD (Kenbak)",
+     "p": 0.9495365602471678,
+     "outcome": 1,
+     "brier": 0.0025465587516877238,
+     "logloss": 0.05178124473473114,
+     "hit": 1
+    },
+    {
+     "ref": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+     "proposal": "Bonus Grant for Ironwood zk-SNARK Formal Verification \u2014 $261,058 USD (Jason McGee)",
+     "p": 0.8195876288659794,
+     "outcome": 1,
+     "brier": 0.032548623658199605,
+     "logloss": 0.19895395684309664,
+     "hit": 1
+    },
+    {
+     "ref": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+     "proposal": "Taylor Hornby - Bonus Grant for Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Jason McGee)",
+     "p": 0.7497425334706488,
+     "outcome": 1,
+     "brier": 0.06262879955368934,
+     "logloss": 0.288025420094639,
+     "hit": 1
+    },
+    {
+     "ref": "0xda375fa265997b5b408fa94d9c834693861bceca",
+     "proposal": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+     "p": 0.5896907216494846,
+     "outcome": 1,
+     "brier": 0.16835370390052076,
+     "logloss": 0.5281570801176306,
+     "hit": 1
+    },
+    {
+     "ref": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+     "proposal": "Frontier Compute Zcash Security Research and Remediation Pack \u2014 $136,250 USD (Frontier Compute LLC.)",
+     "p": 0.07010309278350516,
+     "outcome": 0,
+     "brier": 0.0049144436178127325,
+     "logloss": 0.07268155143480481,
+     "hit": 1
+    },
+    {
+     "ref": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+     "proposal": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+     "p": 0.029896907216494843,
+     "outcome": 0,
+     "brier": 0.0008938250611117014,
+     "logloss": 0.030352931912048877,
+     "hit": 1
+    },
+    {
+     "ref": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+     "proposal": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+     "p": 0.8804123711340207,
+     "outcome": 1,
+     "brier": 0.014301200977787204,
+     "logloss": 0.12736487770885854,
+     "hit": 1
+    },
+    {
+     "ref": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+     "proposal": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+     "p": 0.9402061855670103,
+     "outcome": 1,
+     "brier": 0.0035753002444468074,
+     "logloss": 0.06165608142309713,
+     "hit": 1
+    },
+    {
+     "ref": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+     "proposal": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+     "p": 0.05046343975283213,
+     "outcome": 0,
+     "brier": 0.002546558751687718,
+     "logloss": 0.05178124473473102,
+     "hit": 1
+    },
+    {
+     "ref": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+     "proposal": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+     "p": 0.029896907216494843,
+     "outcome": 0,
+     "brier": 0.0008938250611117014,
+     "logloss": 0.030352931912048877,
+     "hit": 1
+    },
+    {
+     "ref": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+     "proposal": "Open-Source Zcash Hardware-Wallet SDK \u2014 $40,000 USD (wh00hw)",
+     "p": 0.05046343975283213,
+     "outcome": 0,
+     "brier": 0.002546558751687718,
+     "logloss": 0.05178124473473102,
+     "hit": 1
+    },
+    {
+     "ref": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+     "proposal": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+     "p": 0.029896907216494843,
+     "outcome": 0,
+     "brier": 0.0008938250611117014,
+     "logloss": 0.030352931912048877,
+     "hit": 1
+    },
+    {
+     "ref": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+     "proposal": "CipherPay \u2014 $35,000 USD (Atmosphere Labs (Kenbak))",
+     "p": 0.9495365602471678,
+     "outcome": 1,
+     "brier": 0.0025465587516877238,
+     "logloss": 0.05178124473473114,
+     "hit": 1
+    },
+    {
+     "ref": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+     "proposal": "ZecBooks \u2014 $32,000 USD (SaneApps)",
+     "p": 0.01958762886597938,
+     "outcome": 0,
+     "brier": 0.0003836752045913487,
+     "logloss": 0.019782008952038244,
+     "hit": 1
+    },
+    {
+     "ref": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+     "proposal": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+     "p": 0.059793814432989686,
+     "outcome": 0,
+     "brier": 0.0035753002444468057,
+     "logloss": 0.06165608142309713,
+     "hit": 1
+    },
+    {
+     "ref": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+     "proposal": "Connaugh Zcash Videos \u2014 $22,000 USD (Connaugh)",
+     "p": 0.3597938144329897,
+     "outcome": 1,
+     "brier": 0.40986396003826114,
+     "logloss": 1.0222241492950013,
+     "hit": 0
+    },
+    {
+     "ref": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+     "proposal": "Zecmap \u2014 $21,300 USD (Batuhan)",
+     "p": 0.040206185567010305,
+     "outcome": 0,
+     "brier": 0.0016165373578488679,
+     "logloss": 0.041036794220361404,
+     "hit": 1
+    },
+    {
+     "ref": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+     "proposal": "Zallet RPC Parity Harness \u2014 $20,000 USD (Creativesonchain)",
+     "p": 0.040206185567010305,
+     "outcome": 0,
+     "brier": 0.0016165373578488679,
+     "logloss": 0.041036794220361404,
+     "hit": 1
+    },
+    {
+     "ref": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+     "proposal": "Blindvault \u2014 $17,000 USD (TIDJANI Walid)",
+     "p": 0.029896907216494843,
+     "outcome": 0,
+     "brier": 0.0008938250611117014,
+     "logloss": 0.030352931912048877,
+     "hit": 1
+    },
+    {
+     "ref": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+     "proposal": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+     "p": 0.029896907216494843,
+     "outcome": 0,
+     "brier": 0.0008938250611117014,
+     "logloss": 0.030352931912048877,
+     "hit": 1
+    },
+    {
+     "ref": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+     "proposal": "CyphZec.com \u2014 $10,000 USD (Thomas Zarebczan)",
+     "p": 0.07010309278350516,
+     "outcome": 0,
+     "brier": 0.0049144436178127325,
+     "logloss": 0.07268155143480481,
+     "hit": 1
+    },
+    {
+     "ref": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+     "proposal": "ZecLedger \u2014 $10,000 USD (ZecLedger)",
+     "p": 0.040206185567010305,
+     "outcome": 0,
+     "brier": 0.0016165373578488679,
+     "logloss": 0.041036794220361404,
+     "hit": 1
+    },
+    {
+     "ref": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+     "proposal": "Self-Sovereign Zcash Testnet Faucet \u2014 $9,280 USD (Jino Labs)",
+     "p": 0.01958762886597938,
+     "outcome": 0,
+     "brier": 0.0003836752045913487,
+     "logloss": 0.019782008952038244,
+     "hit": 1
+    },
+    {
+     "ref": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+     "proposal": "Gleyo \u2014 $9,081.20 USD (Gleyo)",
+     "p": 0.059793814432989686,
+     "outcome": 0,
+     "brier": 0.0035753002444468057,
+     "logloss": 0.06165608142309713,
+     "hit": 1
+    },
+    {
+     "ref": "0x55094376a3283512a8144fa9a251e430195286e2",
+     "proposal": "zec-ironwood-reconcile \u2014 $8,250 USD (Steven Hert)",
+     "p": 0.059793814432989686,
+     "outcome": 0,
+     "brier": 0.0035753002444468057,
+     "logloss": 0.06165608142309713,
+     "hit": 1
+    },
+    {
+     "ref": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+     "proposal": "zcashtocash via ZcashLabs \u2014 $6,000 USD (ZcashLabs)",
+     "p": 0.9597938144329896,
+     "outcome": 1,
+     "brier": 0.0016165373578488744,
+     "logloss": 0.041036794220361515,
+     "hit": 1
+    },
+    {
+     "ref": "0x8f62c36678044f5be39de143c01d652919e59a31",
+     "proposal": "ZecKit Post-M3 Stabilization and Developer Adoption \u2014 $5,000 USD (Dapps over Apps)",
+     "p": 0.07010309278350516,
+     "outcome": 0,
+     "brier": 0.0049144436178127325,
+     "logloss": 0.07268155143480481,
+     "hit": 1
+    },
+    {
+     "ref": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+     "proposal": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+     "p": 0.05046343975283213,
+     "outcome": 0,
+     "brier": 0.002546558751687718,
+     "logloss": 0.05178124473473102,
+     "hit": 1
+    },
+    {
+     "ref": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+     "proposal": "Zcash Grants Hub \u2014 $3,050 USD (Daniel Goh)",
+     "p": 0.040206185567010305,
+     "outcome": 0,
+     "brier": 0.0016165373578488679,
+     "logloss": 0.041036794220361404,
+     "hit": 1
+    }
+   ],
+   "source": "report.md",
+   "asOf": "2026-09-29T18-43-46-129Z"
+  },
+  {
+   "name": "market (closing pool price)",
+   "n": 37,
+   "brier": 0.16319867567567567,
+   "logloss": 0.493105002572133,
+   "accuracy": 0.6756756756756757,
+   "meanForecast": 0.6064594594594594,
+   "baseRate": 0.4594594594594595,
+   "rows": [
+    {
+     "ref": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+     "proposal": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+     "p": 0.82,
+     "outcome": 1,
+     "brier": 0.03240000000000002,
+     "logloss": 0.19845093872383832,
+     "hit": 1
+    },
+    {
+     "ref": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+     "proposal": "ValarGroup Ironwood Work \u2014 $1,203,000 USD (ValarGroup)",
+     "p": 0.8740000000000001,
+     "outcome": 1,
+     "brier": 0.015875999999999973,
+     "logloss": 0.13467490332660145,
+     "hit": 1
+    },
+    {
+     "ref": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+     "proposal": "Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Taylor Hornby)",
+     "p": 0.9209999999999999,
+     "outcome": 1,
+     "brier": 0.006241000000000011,
+     "logloss": 0.08229524272683028,
+     "hit": 1
+    },
+    {
+     "ref": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+     "proposal": "Ironwood zk-SNARK Formal Verification (Project Tachyon) \u2014 $738,942 USD (Tachyon Foundation)",
+     "p": 0.919,
+     "outcome": 1,
+     "brier": 0.006560999999999994,
+     "logloss": 0.08446915662644996,
+     "hit": 1
+    },
+    {
+     "ref": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+     "proposal": "Ironwood external audit reimbursement \u2014 $599,000 USD (ValarGroup)",
+     "p": 0.887,
+     "outcome": 1,
+     "brier": 0.012768999999999997,
+     "logloss": 0.11991029667255755,
+     "hit": 1
+    },
+    {
+     "ref": "0x91736993fd987c230244825a27c3e531c66fe63b",
+     "proposal": "Zec.rocks (16 months of uptime for Zcash wallets) \u2014 $584,992 USD (Zec.rocks)",
+     "p": 0.6459999999999999,
+     "outcome": 1,
+     "brier": 0.12531600000000007,
+     "logloss": 0.4369557751995353,
+     "hit": 1
+    },
+    {
+     "ref": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+     "proposal": "Five Critical Zebra Consensus Divergence Vulnerabilities \u2014 $425,000 USD (sangsoo-osec)",
+     "p": 0.738,
+     "outcome": 1,
+     "brier": 0.06864400000000001,
+     "logloss": 0.30381145438166457,
+     "hit": 1
+    },
+    {
+     "ref": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+     "proposal": "Temporary Detectable Unlimited mint and sell Exploit \u2014 $400,000 USD (Alex Sol)",
+     "p": 0.825,
+     "outcome": 1,
+     "brier": 0.030625000000000017,
+     "logloss": 0.19237189264745613,
+     "hit": 1
+    },
+    {
+     "ref": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+     "proposal": "CipherScan \u2014 $375,000 USD (Kenbak)",
+     "p": 0.607,
+     "outcome": 1,
+     "brier": 0.154449,
+     "logloss": 0.4992264879226388,
+     "hit": 1
+    },
+    {
+     "ref": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+     "proposal": "Bonus Grant for Ironwood zk-SNARK Formal Verification \u2014 $261,058 USD (Jason McGee)",
+     "p": 0.804,
+     "outcome": 1,
+     "brier": 0.03841599999999998,
+     "logloss": 0.21815600980317063,
+     "hit": 1
+    },
+    {
+     "ref": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+     "proposal": "Taylor Hornby - Bonus Grant for Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Jason McGee)",
+     "p": 0.867,
+     "outcome": 1,
+     "brier": 0.017689000000000003,
+     "logloss": 0.1427163022015952,
+     "hit": 1
+    },
+    {
+     "ref": "0xda375fa265997b5b408fa94d9c834693861bceca",
+     "proposal": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+     "p": 0.644,
+     "outcome": 1,
+     "brier": 0.126736,
+     "logloss": 0.4400565528777834,
+     "hit": 1
+    },
+    {
+     "ref": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+     "proposal": "Frontier Compute Zcash Security Research and Remediation Pack \u2014 $136,250 USD (Frontier Compute LLC.)",
+     "p": 0.34700000000000003,
+     "outcome": 0,
+     "brier": 0.12040900000000002,
+     "logloss": 0.42617814970570594,
+     "hit": 1
+    },
+    {
+     "ref": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+     "proposal": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+     "p": 0.265,
+     "outcome": 0,
+     "brier": 0.07022500000000001,
+     "logloss": 0.3078847797693004,
+     "hit": 1
+    },
+    {
+     "ref": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+     "proposal": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+     "p": 0.831,
+     "outcome": 1,
+     "brier": 0.028561000000000013,
+     "logloss": 0.18512548412668892,
+     "hit": 1
+    },
+    {
+     "ref": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+     "proposal": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+     "p": 0.8809999999999999,
+     "outcome": 1,
+     "brier": 0.014161000000000026,
+     "logloss": 0.12669765304595768,
+     "hit": 1
+    },
+    {
+     "ref": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+     "proposal": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+     "p": 0.39799999999999996,
+     "outcome": 0,
+     "brier": 0.15840399999999996,
+     "logloss": 0.5074978336733159,
+     "hit": 1
+    },
+    {
+     "ref": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+     "proposal": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+     "p": 0.318,
+     "outcome": 0,
+     "brier": 0.101124,
+     "logloss": 0.38272562113867503,
+     "hit": 1
+    },
+    {
+     "ref": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+     "proposal": "Open-Source Zcash Hardware-Wallet SDK \u2014 $40,000 USD (wh00hw)",
+     "p": 0.515,
+     "outcome": 0,
+     "brier": 0.265225,
+     "logloss": 0.7236063880446539,
+     "hit": 0
+    },
+    {
+     "ref": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+     "proposal": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+     "p": 0.297,
+     "outcome": 0,
+     "brier": 0.088209,
+     "logloss": 0.35239838717147204,
+     "hit": 1
+    },
+    {
+     "ref": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+     "proposal": "CipherPay \u2014 $35,000 USD (Atmosphere Labs (Kenbak))",
+     "p": 0.742,
+     "outcome": 1,
+     "brier": 0.066564,
+     "logloss": 0.2984060358147566,
+     "hit": 1
+    },
+    {
+     "ref": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+     "proposal": "ZecBooks \u2014 $32,000 USD (SaneApps)",
+     "p": 0.217,
+     "outcome": 0,
+     "brier": 0.047089,
+     "logloss": 0.2446225829913339,
+     "hit": 1
+    },
+    {
+     "ref": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+     "proposal": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+     "p": 0.265,
+     "outcome": 0,
+     "brier": 0.07022500000000001,
+     "logloss": 0.3078847797693004,
+     "hit": 1
+    },
+    {
+     "ref": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+     "proposal": "Connaugh Zcash Videos \u2014 $22,000 USD (Connaugh)",
+     "p": 0.431,
+     "outcome": 1,
+     "brier": 0.32376099999999997,
+     "logloss": 0.8416471888783893,
+     "hit": 0
+    },
+    {
+     "ref": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+     "proposal": "Zecmap \u2014 $21,300 USD (Batuhan)",
+     "p": 0.5429999999999999,
+     "outcome": 0,
+     "brier": 0.2948489999999999,
+     "logloss": 0.7830718880879322,
+     "hit": 0
+    },
+    {
+     "ref": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+     "proposal": "Zallet RPC Parity Harness \u2014 $20,000 USD (Creativesonchain)",
+     "p": 0.251,
+     "outcome": 0,
+     "brier": 0.063001,
+     "logloss": 0.2890162954649176,
+     "hit": 1
+    },
+    {
+     "ref": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+     "proposal": "Blindvault \u2014 $17,000 USD (TIDJANI Walid)",
+     "p": 0.25,
+     "outcome": 0,
+     "brier": 0.0625,
+     "logloss": 0.2876820724517809,
+     "hit": 1
+    },
+    {
+     "ref": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+     "proposal": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+     "p": 0.737,
+     "outcome": 0,
+     "brier": 0.543169,
+     "logloss": 1.3356012468043725,
+     "hit": 0
+    },
+    {
+     "ref": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+     "proposal": "CyphZec.com \u2014 $10,000 USD (Thomas Zarebczan)",
+     "p": 0.7140000000000001,
+     "outcome": 0,
+     "brier": 0.5097960000000001,
+     "logloss": 1.2517634681622847,
+     "hit": 0
+    },
+    {
+     "ref": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+     "proposal": "ZecLedger \u2014 $10,000 USD (ZecLedger)",
+     "p": 0.574,
+     "outcome": 0,
+     "brier": 0.32947599999999994,
+     "logloss": 0.8533159327127665,
+     "hit": 0
+    },
+    {
+     "ref": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+     "proposal": "Self-Sovereign Zcash Testnet Faucet \u2014 $9,280 USD (Jino Labs)",
+     "p": 0.578,
+     "outcome": 0,
+     "brier": 0.33408399999999994,
+     "logloss": 0.8627499649461251,
+     "hit": 0
+    },
+    {
+     "ref": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+     "proposal": "Gleyo \u2014 $9,081.20 USD (Gleyo)",
+     "p": 0.518,
+     "outcome": 0,
+     "brier": 0.268324,
+     "logloss": 0.7298111649315367,
+     "hit": 0
+    },
+    {
+     "ref": "0x55094376a3283512a8144fa9a251e430195286e2",
+     "proposal": "zec-ironwood-reconcile \u2014 $8,250 USD (Steven Hert)",
+     "p": 0.564,
+     "outcome": 0,
+     "brier": 0.31809599999999993,
+     "logloss": 0.8301130356331026,
+     "hit": 0
+    },
+    {
+     "ref": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+     "proposal": "zcashtocash via ZcashLabs \u2014 $6,000 USD (ZcashLabs)",
+     "p": 0.726,
+     "outcome": 1,
+     "brier": 0.07507600000000002,
+     "logloss": 0.320205264157341,
+     "hit": 1
+    },
+    {
+     "ref": "0x8f62c36678044f5be39de143c01d652919e59a31",
+     "proposal": "ZecKit Post-M3 Stabilization and Developer Adoption \u2014 $5,000 USD (Dapps over Apps)",
+     "p": 0.5720000000000001,
+     "outcome": 0,
+     "brier": 0.3271840000000001,
+     "logloss": 0.8486320834003405,
+     "hit": 0
+    },
+    {
+     "ref": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+     "proposal": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+     "p": 0.7390000000000001,
+     "outcome": 0,
+     "brier": 0.5461210000000002,
+     "logloss": 1.343234871659444,
+     "hit": 0
+    },
+    {
+     "ref": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+     "proposal": "Zcash Grants Hub \u2014 $3,050 USD (Daniel Goh)",
+     "p": 0.614,
+     "outcome": 0,
+     "brier": 0.376996,
+     "logloss": 0.9519179095173061,
+     "hit": 0
+    }
+   ],
+   "source": "jev report MARKET lines",
+   "asOf": "2026-09-29T18-43-46-129Z"
+  },
+  {
+   "name": "always 50/50",
+   "n": 37,
+   "brier": 0.25,
+   "logloss": 0.6931471805599453,
+   "accuracy": 0.4594594594594595,
+   "meanForecast": 0.5,
+   "baseRate": 0.4594594594594595,
+   "rows": [
+    {
+     "ref": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+     "proposal": "Frontier Compute Zcash Security Research and Remediation Pack \u2014 $136,250 USD (Frontier Compute LLC.)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+     "proposal": "Ironwood zk-SNARK Formal Verification (Project Tachyon) \u2014 $738,942 USD (Tachyon Foundation)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+     "proposal": "Five Critical Zebra Consensus Divergence Vulnerabilities \u2014 $425,000 USD (sangsoo-osec)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+     "proposal": "Temporary Detectable Unlimited mint and sell Exploit \u2014 $400,000 USD (Alex Sol)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+     "proposal": "Bonus Grant for Ironwood zk-SNARK Formal Verification \u2014 $261,058 USD (Jason McGee)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xda375fa265997b5b408fa94d9c834693861bceca",
+     "proposal": "Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) \u2014 $150,000 USD (robustfengbin)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+     "proposal": "ZODL Q1 2026 Core Protocol Development \u2014 $1,950,000 USD (ZODL)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+     "proposal": "Taylor Hornby - Bonus Grant for Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Jason McGee)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+     "proposal": "Open-Source Zcash Hardware-Wallet SDK \u2014 $40,000 USD (wh00hw)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+     "proposal": "Self-Sovereign Zcash Testnet Faucet \u2014 $9,280 USD (Jino Labs)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x8f62c36678044f5be39de143c01d652919e59a31",
+     "proposal": "ZecKit Post-M3 Stabilization and Developer Adoption \u2014 $5,000 USD (Dapps over Apps)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+     "proposal": "Orchard Counterfeiting Vulnerability Bug Bounty \u2014 $750,000 USD (Taylor Hornby)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+     "proposal": "Ironwood external audit reimbursement \u2014 $599,000 USD (ValarGroup)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+     "proposal": "Expanding Zcash In Unstoppable Wallet \u2014 $80,000 USD (Horizontal Systems - Unstoppable Wallet)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+     "proposal": "ValarGroup Ironwood Work \u2014 $1,203,000 USD (ValarGroup)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x91736993fd987c230244825a27c3e531c66fe63b",
+     "proposal": "Zec.rocks (16 months of uptime for Zcash wallets) \u2014 $584,992 USD (Zec.rocks)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+     "proposal": "Zafu Browser Extension \u2014 $38,000 USD (Rotko Networks OU)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+     "proposal": "Connaugh Zcash Videos \u2014 $22,000 USD (Connaugh)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+     "proposal": "Zallet RPC Parity Harness \u2014 $20,000 USD (Creativesonchain)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+     "proposal": "THORSwap/Metro \u2014 $60,000 USD (THORSwap Labs)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+     "proposal": "Nozy Wallet \u2014 $60,000 USD (Leonine DAO)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x55094376a3283512a8144fa9a251e430195286e2",
+     "proposal": "zec-ironwood-reconcile \u2014 $8,250 USD (Steven Hert)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+     "proposal": "zcashtocash via ZcashLabs \u2014 $6,000 USD (ZcashLabs)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+     "proposal": "Zcash Grants Hub \u2014 $3,050 USD (Daniel Goh)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+     "proposal": "CipherScan \u2014 $375,000 USD (Kenbak)",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+     "proposal": "ZcashNames \u2014 $122,400 USD (ZcashMe, Inc.)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+     "proposal": "Zapp \u2014 $40,000 USD (Renee Chiu)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+     "proposal": "CipherPay \u2014 $35,000 USD (Atmosphere Labs (Kenbak))",
+     "p": 0.5,
+     "outcome": 1,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 1
+    },
+    {
+     "ref": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+     "proposal": "ZecBooks \u2014 $32,000 USD (SaneApps)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+     "proposal": "ZAP1 \u2014 $28,000 USD (Frontier Compute)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+     "proposal": "Zecmap \u2014 $21,300 USD (Batuhan)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+     "proposal": "Blindvault \u2014 $17,000 USD (TIDJANI Walid)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+     "proposal": "lightwalletd-rs \u2014 $10,720 USD (jpgonzalezra)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+     "proposal": "ZecLedger \u2014 $10,000 USD (ZecLedger)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+     "proposal": "CyphZec.com \u2014 $10,000 USD (Thomas Zarebczan)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+     "proposal": "Gleyo \u2014 $9,081.20 USD (Gleyo)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    },
+    {
+     "ref": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+     "proposal": "ShieldedScan \u2014 $4,060 USD (ShieldedScan)",
+     "p": 0.5,
+     "outcome": 0,
+     "brier": 0.25,
+     "logloss": 0.6931471805599453,
+     "hit": 0
+    }
+   ],
+   "source": "benchmark",
+   "asOf": "-"
+  }
+ ]
+}

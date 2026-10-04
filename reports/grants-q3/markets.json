@@ -1,0 +1,409 @@
+[
+ {
+  "id": "0xdc8cde1236921607e18382710d42de2a8ccdd491",
+  "marketName": "Will zcashtocash via ZcashLabs be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zcashtocash-via-zcashlabs-be-approved-in-the-q3-2026-coinholder-directed-re"
+ },
+ {
+  "id": "0x751047dc87049eb122cdbf570a591eceeb81b984",
+  "marketName": "Will Frontier Compute Zcash Security Research and Remediation Pack be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-frontier-compute-zcash-security-research-and-remediation-pack-be-approved-i"
+ },
+ {
+  "id": "0x78a72380c7936f2cb3574d2302e8437aeebab93c",
+  "marketName": "Will Zecmap be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zecmap-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grants-po"
+ },
+ {
+  "id": "0xda375fa265997b5b408fa94d9c834693861bceca",
+  "marketName": "Will Zebra Critical Vulnerability Bug Bounty (CVE-2026-34202) be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zebra-critical-vulnerability-bug-bounty-cve-2026-34202-be-approved-in-the-q"
+ },
+ {
+  "id": "0x0900986e76a3a75ce4dfd3615aaa5e388d1a7870",
+  "marketName": "Will CipherPay be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-cipherpay-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grants"
+ },
+ {
+  "id": "0xe599669a0cb02128fa0463953f9f70fde240921a",
+  "marketName": "Will Zcash Grants Hub be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zcash-grants-hub-be-approved-in-the-q3-2026-coinholder-directed-retroactive"
+ },
+ {
+  "id": "0xddbe118c992fc4165291ead70b64c33db037eb67",
+  "marketName": "Will Bonus Grant - Ironwood zk-SNARK Formal Verification be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-bonus-grant-ironwood-zk-snark-formal-verification-be-approved-in-the-q3-202"
+ },
+ {
+  "id": "0xbdb8245fb6e4c6df77bb6b28af7c7691572805ec",
+  "marketName": "Will ShieldedScan be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-shieldedscan-be-approved-in-the-q3-2026-coinholder-directed-retroactive-gra"
+ },
+ {
+  "id": "0xace4327ac96e15040474065dc6aa0da0751bcbca",
+  "marketName": "Will Gleyo be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-gleyo-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grants-pol"
+ },
+ {
+  "id": "0x73d8a605e090c267d18506a2eeef5b0a6d22fae9",
+  "marketName": "Will CipherScan be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-cipherscan-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grant"
+ },
+ {
+  "id": "0x725337ef90be0a5a7064098d6a0191d93f8c1b70",
+  "marketName": "Will Zafu Browser Extension be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zafu-browser-extension-be-approved-in-the-q3-2026-coinholder-directed-retro"
+ },
+ {
+  "id": "0x781fc94cf2a362c29cb08c86f8dcd1ea8181a158",
+  "marketName": "Will Zallet RPC Parity Harness be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zallet-rpc-parity-harness-be-approved-in-the-q3-2026-coinholder-directed-re"
+ },
+ {
+  "id": "0x55094376a3283512a8144fa9a251e430195286e2",
+  "marketName": "Will zec-ironwood-reconcile be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zec-ironwood-reconcile-be-approved-in-the-q3-2026-coinholder-directed-retro"
+ },
+ {
+  "id": "0xa58c14daf5c0f14adfe08b2c672ab361948758d2",
+  "marketName": "Will Open-Source Zcash Hardware-Wallet SDK be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-open-source-zcash-hardware-wallet-sdk-be-approved-in-the-q3-2026-coinholder"
+ },
+ {
+  "id": "0x06277fcef6340930b0f08b90032edaf07ce36b6a",
+  "marketName": "Will Zapp be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zapp-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grants-poll"
+ },
+ {
+  "id": "0xb6bb6a1e1f02a11afae1de272c94a78bd4673f37",
+  "marketName": "Will ZcashNames be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zcashnames-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grant"
+ },
+ {
+  "id": "0xff4553ad2539b2722b322d10930f1b85969dee6a",
+  "marketName": "Will ZecLedger be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zecledger-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grants"
+ },
+ {
+  "id": "0xe3a5794dfdcccbc964574bc6a5e3cab92f198f03",
+  "marketName": "Will CyphZec.com be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-cyphzeccom-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grant"
+ },
+ {
+  "id": "0x91736993fd987c230244825a27c3e531c66fe63b",
+  "marketName": "Will Zec.rocks (16 months of uptime) be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zecrocks-16-months-of-uptime-be-approved-in-the-q3-2026-coinholder-directed"
+ },
+ {
+  "id": "0x64a3ab58337ca2d6ddcdd6ab6712b3e57626ee1f",
+  "marketName": "Will Connaugh Zcash Videos be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-connaugh-zcash-videos-be-approved-in-the-q3-2026-coinholder-directed-retroa"
+ },
+ {
+  "id": "0x140654d12ac41a2d946e6dec85d07a0252b0bf20",
+  "marketName": "Will ZecBooks be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zecbooks-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grants-"
+ },
+ {
+  "id": "0x8f62c36678044f5be39de143c01d652919e59a31",
+  "marketName": "Will ZecKit Post-M3 Stabilization and Developer Adoption be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zeckit-post-m3-stabilization-and-developer-adoption-be-approved-in-the-q3-2"
+ },
+ {
+  "id": "0x0586c5bf8a0137d3da895e59663b760b5e39c340",
+  "marketName": "Will ZAP1 Attestation Protocol and Verification Tooling be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zap1-attestation-protocol-and-verification-tooling-be-approved-in-the-q3-20"
+ },
+ {
+  "id": "0x45ef7f50825619aea0070d7d0147dae5a26fc50b",
+  "marketName": "Will Nozy Wallet be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-nozy-wallet-be-approved-in-the-q3-2026-coinholder-directed-retroactive-gran"
+ },
+ {
+  "id": "0xb4485e5404178444fbf3f279eddf2b5c4b421e39",
+  "marketName": "Will Self-Sovereign Zcash Testnet Faucet be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-self-sovereign-zcash-testnet-faucet-be-approved-in-the-q3-2026-coinholder-d"
+ },
+ {
+  "id": "0x5395fd696b64d1d3e9295e09bfaf038e0c8f05f6",
+  "marketName": "Will Blindvault be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-blindvault-be-approved-in-the-q3-2026-coinholder-directed-retroactive-grant"
+ },
+ {
+  "id": "0x6a2efde79d7e7df689cb17fd0663b3455d838dd4",
+  "marketName": "Will Ironwood external audit reimbursement be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-ironwood-external-audit-reimbursement-be-approved-in-the-q3-2026-coinholder"
+ },
+ {
+  "id": "0xd058cc42d014810b15a93874b3f11b02bfad9732",
+  "marketName": "Will lightwalletd-rs be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-lightwalletd-rs-be-approved-in-the-q3-2026-coinholder-directed-retroactive-"
+ },
+ {
+  "id": "0xe7d2d53d782b13d1de2361ae458367eb3a85b191",
+  "marketName": "Will Five Critical Zebra Consensus Divergence Vulnerabilities be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-five-critical-zebra-consensus-divergence-vulnerabilities-be-approved-in-the"
+ },
+ {
+  "id": "0x404ccb09e7f47de56b64253d9e2f839d555366b8",
+  "marketName": "Will Expanding Zcash In Unstoppable Wallet be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-expanding-zcash-in-unstoppable-wallet-be-approved-in-the-q3-2026-coinholder"
+ },
+ {
+  "id": "0x777b50f83e76acd9e520abf6a258cc218b1ad054",
+  "marketName": "Will THORSwap / Metro be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-thorswap-metro-be-approved-in-the-q3-2026-coinholder-directed-retroactive-g"
+ },
+ {
+  "id": "0xbfa2f5855527b8fa1fdb648065fc172ea41c6d94",
+  "marketName": "Will Bonus Grant - Orchard Counterfeiting Bug Bounty be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-bonus-grant-orchard-counterfeiting-bug-bounty-be-approved-in-the-q3-2026-co"
+ },
+ {
+  "id": "0x74a5f36e0af651a1e577b40c2167ac62fd4012d7",
+  "marketName": "Will Ironwood zk-SNARK Formal Verification (Project Tachyon) be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-ironwood-zk-snark-formal-verification-project-tachyon-be-approved-in-the-q3"
+ },
+ {
+  "id": "0x2766ef544445b8247adb241a5c2792aac31ef133",
+  "marketName": "Will ZODL Q1 2026 Core Protocol Development be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-zodl-q1-2026-core-protocol-development-be-approved-in-the-q3-2026-coinholde"
+ },
+ {
+  "id": "0xd2dc10fa13cac63abfc098e7be89214eba6c38ec",
+  "marketName": "Will Orchard Counterfeiting Vulnerability Bug Bounty be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-orchard-counterfeiting-vulnerability-bug-bounty-be-approved-in-the-q3-2026-"
+ },
+ {
+  "id": "0xc0e29b80a74287cfef882a4d425d06117aa09c07",
+  "marketName": "Will Temporary Detectable Unlimited Mint and Sell Exploit be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-temporary-detectable-unlimited-mint-and-sell-exploit-be-approved-in-the-q3-"
+ },
+ {
+  "id": "0x8dfd98175eaeb4c512113f88eccba1c9bd281742",
+  "marketName": "Will ValarGroup Ironwood Work be approved in the Q3 2026 Coinholder-Directed Retroactive Grants poll?",
+  "outcomes": [
+   "Yes",
+   "No",
+   "Invalid"
+  ],
+  "payoutReported": true,
+  "url": "will-valargroup-ironwood-work-be-approved-in-the-q3-2026-coinholder-directed-ret"
+ }
+]
