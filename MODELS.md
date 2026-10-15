@@ -23,8 +23,11 @@ Since 15 October 2026, at the human's request, the `bots/opus-5` folder runs Opu
 `claude-opus-5-5` in `PASS_COMMAND`; the folder keeps its old name so its paths and logs stay valid) and trades
 only when the human asks, never on a schedule. Every `SeerBot-daily-*` task has been disabled since 1 October.
 
-- The human sends a market link in chat, with a budget. Opus 5.5 runs the whole skill on it: research, estimate,
-  plan and a dry run from that folder, which signs with its own key, so no signer page opens.
+- The human sends a market link in chat. Opus 5.5 runs the whole skill on it: research, estimate, plan and a dry
+  run from that folder, which signs with its own key, so no signer page opens.
+- Budget: a figure the human names ("max 10 xDAI") is the cap. With none named, the bankroll is the wallet's whole
+  collateral balance on the market's chain, sized by the planner's defaults: quarter Kelly, at most 20% of that
+  bankroll on one market, fills at most 15% worse than spot, at least 5 points of edge.
 - Any market the human sends may be traded: Opus 5.5 appends it to that folder's `PASS_MARKET_LIST_<chain>` (an
   in-place edit of those lines that never displays `.env`), then queues the trade with `npm run queue -- add`.
 - The human sends it by double-clicking `Send Seer trades.cmd` on the desktop. That runs
