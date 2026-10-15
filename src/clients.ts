@@ -90,17 +90,18 @@ export interface Signer {
  * Resolves who signs the transactions of a liquidity command.
  *  - "key": the bot wallet from .env (PRIVATE_KEY).
  *  - "metamask": the user's browser wallet through the local bridge page (no key on this machine).
- * Default comes from LIQUIDITY_SIGNER in .env, then "key". `--account 0x..` plans a MetaMask run without opening
- * the browser (dry runs).
+ * Default comes from LIQUIDITY_SIGNER in .env, then "key". A dry run never opens the browser: it plans as
+ * `--account 0x..`, or failing that as `--expect-account 0x..`, since nothing is signed.
  */
-export async function resolveSigner(chainId: ChainId, opts: { signer?: string; rpc?: string; account?: string; dryRun?: boolean; noBatch?: boolean }): Promise<Signer> {
+export async function resolveSigner(chainId: ChainId, opts: { signer?: string; rpc?: string; account?: string; expectAccount?: string; dryRun?: boolean; noBatch?: boolean }): Promise<Signer> {
   const mode = ((opts.signer || process.env.LIQUIDITY_SIGNER || "key").toLowerCase() as SignerMode) === "metamask" ? "metamask" : "key";
   if (mode === "key") {
     const address = getAccount().address;
     return { mode, address, walletClient: () => getWalletClient(chainId, opts.rpc), close: () => {} };
   }
-  if (opts.dryRun && opts.account && isAddress(opts.account)) {
-    return { mode, address: opts.account as Address, walletClient: () => { throw new Error("dry run: no signer"); }, close: () => {} };
+  const planned = opts.account ?? opts.expectAccount;
+  if (opts.dryRun && planned && isAddress(planned)) {
+    return { mode, address: planned as Address, walletClient: () => { throw new Error("dry run: no signer"); }, close: () => {} };
   }
   const rpcUrl = getRpcUrl(chainId, opts.rpc);
   // a signer page started with `npm run signer` takes the work (one tab for the whole session); otherwise open our own

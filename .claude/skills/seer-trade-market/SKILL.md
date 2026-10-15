@@ -10,14 +10,16 @@ One market, one pass, four steps, in this order and never out of it:
 1. **Research** the question until you understand what actually decides it.
 2. **Estimate** your own probability for every outcome, before looking hard at the price.
 3. **Reconcile** your estimate with the market price, weighted by how much you trust each.
-4. **Trade** what survives — sized against real quotes, approved by a human, executed with their wallet.
+4. **Trade** what survives — sized against real quotes, and sent only by the human or the executor they installed.
 
 Read https://ethskills.com/SKILL.md if you have not this session. The rules from it that bind here: never
 invent an address, never hardcode or print a private key, simulate before sending, keep a human approval step
 in front of anything that spends, and say "onchain" (one word).
 
-This repository's money rules in `AGENTS.md` apply unchanged. The one that matters most here: **the human
-signs.** This skill builds, quotes, simulates and submits; it never holds a key that can trade.
+This repository's money rules in `AGENTS.md` apply unchanged. The one that matters most here: **you never
+send.** This skill researches, builds, quotes and simulates. The send is a command the human runs, or the queue
+executor the human installed, and it signs with the key the human placed in that wallet's own folder. Never
+start the browser signer, and never ask the human to confirm anything in a wallet.
 
 ## When to use
 
@@ -211,23 +213,24 @@ Then, and only then:
    market price, the blended number and the weight with its justification, the fill price, the edge, the
    stake, the route, and the worst case. Never present a command and ask them to trust it.
 2. `npm run trade -- <market> --outcome <i> --route <direct|split|fade> --size <x> --expect-account <0x..> --dry-run`
-   quotes every leg live and sends nothing. Always pass `--expect-account`: browser wallets connect whichever
-   account is selected, and a human with two wallets will eventually have the wrong one selected. **Which
+   quotes every leg live, simulates the whole sequence from that account, and sends nothing. It never opens a
+   signer page: a dry run plans as the `--expect-account` address. Always pass `--expect-account`; every
+   command refuses any other account. **Which
    account is yours is fixed by `MODELS.md`**: several models run this code from separate folders, one wallet
    each, and `MODEL_NAME` plus `LIQUIDITY_WALLET` from `npm run whoami` must match the row for your model. Never
    open `.env` itself: it holds the wallet's private key, and whatever you read lands in your transcript.
    If they do not, stop and say so rather than trading.
-3. Start the signer **on the market's chain**: `npm run signer -- --chain <id> --wallet <rabby|metamask>`. The
-   signer page asks the wallet to switch to the chain *it* serves on every load, so a signer started without
-   `--chain` silently drags the wallet back to the repository default (Gnosis) every time the human refreshes.
-   Set `CHAIN_ID` in `.env` to match the markets being traded. Keep one signer tab open, not two: a second tab
-   competes for the wallet. While idle the page may flip to "not answering" every half minute because Chrome
-   suspends the extension; that is noise, and the page reconnects by itself once a transaction is queued.
-4. Only after an explicit go-ahead does the human run it with `--yes`, **exactly once**, confirming each
-   transaction in their wallet. Verify the resulting balances onchain before doing anything else. The `--yes` run goes in a terminal
-   separate from the one running `npm run signer`: the signer window only waits, and a human watching it sees
-   no wallet prompt until the trade command has queued something. Every run also writes its full output to
-   `.trade-logs/<timestamp>-<pid>.log`; read that file instead of asking for a paste.
+3. **No browser signer, ever.** Do not run `npm run signer`, and do not ask the human to connect or confirm
+   anything in a wallet. Each wallet's folder signs with its own key (`LIQUIDITY_SIGNER=key`; `npm run whoami`
+   in that folder shows the mode and whether a key is set, never the key), so a trade for a wallet runs from
+   the folder whose `.env` holds it (`MODELS.md` lists them). Pass `--chain <id>`, or a full app.seer.pm URL, on
+   every command, so it runs on the market's chain whatever `CHAIN_ID` that folder's `.env` holds. If the
+   wallet's folder is not in key mode, say so and stop; never fall back to the browser.
+4. The send is never yours. The human runs the `--yes` command, **exactly once**, from that wallet's folder,
+   or the queue executor they installed runs it. A trade the human asks for in chat is queued in that wallet's
+   folder for the human to send (`MODELS.md`, "On-request trades"). Verify the resulting balances onchain before doing anything
+   else. Every run also writes its full output to `.trade-logs/<timestamp>-<pid>.log` in the folder it ran in;
+   read that file instead of asking for a paste.
 
 Re-quote immediately before executing. These pools are thin enough that an hour-old quote is fiction.
 
@@ -397,7 +400,7 @@ RISKS      <the 2-3 things most likely to make this wrong>
 | `npm run market -- <ref>` | step 0: question, pool prices, real depth, timetable, complete-set check |
 | `npm run plan -- <ref> --own <p,..> --weight <w> --bankroll <X>` | steps 3–4: reconcile, quote both routes at every size, apply limits, print the surviving trade |
 | `npm run fleet -- <fleet.json> --bankroll <X>` | several markets on one event sized as one position: common failure factor applied once, total exposure capped, correlated worst case reported |
-| `npm run trade -- <ref> --outcome <i> --route <direct\|split\|fade> --size <x> --expect-account 0x.. --dry-run\|--yes` | the only command that spends; human signs every transaction. Refuses a wrong wallet, a wrong network, or adding to an open position without `--allow-add`; writes its full output to `.trade-logs/` |
+| `npm run trade -- <ref> --outcome <i> --route <direct\|split\|fade> --size <x> --expect-account 0x.. --dry-run\|--yes` | the only command that spends; `--yes` is run only by the human or their executor, from the wallet's own key-mode folder. Refuses a wrong wallet, a wrong network, or adding to an open position without `--allow-add`; writes its full output to `.trade-logs/` |
 | `npm run unwind -- <ref> --expect-account 0x.. [--sets <n>] [--merge-only] --dry-run|--yes` | the exit before the oracle resolves: sells into the pools or buys back the sold leg and merges complete sets, whichever returns more; `--sets` unwinds a big position in rounds; on a conditional market's parent, `--merge-only` turns leftover parent sets back into sDAI |
 | `npm run watch -- <market...> [--interval 60] [--for 7200]` | poll drained markets and exit the moment any pool has live liquidity again |
 | `npm run portfolio -- --account 0x.. [--filter zcash] [--chain <id> --scope]` | open positions, marked at what they could really exit at; complete sets at 1; a conditional book also totalled in the chain's own collateral; `--scope` limits the scan to the markets in scope and their parents |

@@ -85,7 +85,7 @@ console.log("         " + (api ? marketUrl(api) : "https://app.seer.pm/markets/"
 if (snap.parent) console.log("PARENT   conditional on \"" + snap.parent.outcome + "\": this unwinds into " + snap.collateralSymbol + ", that outcome's token of " + snap.parent.market);
 console.log("");
 
-const signer = await resolveSigner(chainId, { signer: args.signer as string | undefined, rpc: args.rpc as string | undefined, account: args.account as string | undefined, dryRun, noBatch: !!args["no-batch"] });
+const signer = await resolveSigner(chainId, { signer: args.signer as string | undefined, rpc: args.rpc as string | undefined, account: args.account as string | undefined, expectAccount: args["expect-account"] as string | undefined, dryRun, noBatch: !!args["no-batch"] });
 try {
   const account = signer.address;
   console.log("SIGNER   " + signer.mode + "  " + account);

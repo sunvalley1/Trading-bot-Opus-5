@@ -211,7 +211,7 @@ console.log("LEGS     " + legs.length + " transaction(s) plus approvals");
 
 // ---------------------------------------------------------------- send
 
-const signer = await resolveSigner(chainId, { signer: args.signer as string | undefined, rpc: args.rpc as string | undefined, account: args.account as string | undefined, dryRun, noBatch: !!args["no-batch"] });
+const signer = await resolveSigner(chainId, { signer: args.signer as string | undefined, rpc: args.rpc as string | undefined, account: args.account as string | undefined, expectAccount: args["expect-account"] as string | undefined, dryRun, noBatch: !!args["no-batch"] });
 try {
   const account = signer.address;
   console.log("SIGNER   " + signer.mode + "  " + account);

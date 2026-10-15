@@ -8,7 +8,7 @@ between the bots is the model (for the Jev bot, a scripted forecaster: see "The 
 | Model | Folder | Wallet (same address on Optimism and Gnosis) | Signer port |
 |---|---|---|---|
 | Fable 5.1 (Claude) | `bots/fable-5.1` | `0xf1b285F65A3174c9D6E062F089c5CD1Ea8cF30D9` | 8572 |
-| Opus 5 (Claude) | `bots/opus-5` | `0x6e8211F9059648ee6b88fDCB3dB0415d9015cc9e` | 8573 |
+| Opus 5.5 (Claude; Opus 5 until 15 October 2026) | `bots/opus-5` | `0x6e8211F9059648ee6b88fDCB3dB0415d9015cc9e` | 8573 |
 | GPT-6 Astra | `bots/astra-gpt-6b` | `0x017859431458cEdac674344f6031d41c9A68a858` | 8574 |
 | GPT-5.6 Sol | `bots/gpt-5.6-sol` | `0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe` | 8575 |
 | Jev (TypeSafe, via classifier.dev) | `bots/jev` | `0xBa097EdCd5dde78f2990Af8db2bAb7D98BfFd5d0` | 8576 |
@@ -16,6 +16,21 @@ between the bots is the model (for the Jev bot, a scripted forecaster: see "The 
 Astra's folder is `astra-gpt-6b` because the security software on this machine quarantined four files inside
 the original `astra-gpt-6` and then refused to let anything recreate those paths; the folder was copied to a
 clean path and the files restored there. Same model, same wallet, same key.
+
+## On-request trades (Opus 5.5)
+
+Since 15 October 2026, at the human's request, the `bots/opus-5` folder runs Opus 5.5 (`MODEL_NAME=opus-5.5`,
+`claude-opus-5-5` in `PASS_COMMAND`; the folder keeps its old name so its paths and logs stay valid) and trades
+only when the human asks, never on a schedule. Every `SeerBot-daily-*` task has been disabled since 1 October.
+
+- The human sends a market link in chat, with a budget. Opus 5.5 runs the whole skill on it: research, estimate,
+  plan and a dry run from that folder, which signs with its own key, so no signer page opens.
+- Any market the human sends may be traded: Opus 5.5 appends it to that folder's `PASS_MARKET_LIST_<chain>` (an
+  in-place edit of those lines that never displays `.env`), then queues the trade with `npm run queue -- add`.
+- The human sends it by double-clicking `Send Seer trades.cmd` on the desktop. That runs
+  `npm run queue -- execute --yes --unchanged-within 0.02` for Gnosis, then Optimism: each queued trade is sent
+  once; one queued over 150 minutes ago, or whose prices moved over 2 points since, is dropped unsent; resolved
+  markets the wallet holds are cashed in afterwards. Opus 5.5 never sends anything itself.
 
 ## The Jev bot
 
@@ -45,7 +60,7 @@ secret (src/classifier.ts); classifier.dev takes no key of ours; and every reque
 `classifier-requests.jsonl` in the pass's folder. Only the executor, a separate process, signs with the key.
 
 Pass commands (`PASS_COMMAND` in each folder's `.env`): the Claude bots run
-`claude -p --model claude-fable-5-1|claude-opus-5 --allowedTools Bash,Read,Grep,Glob,WebFetch,WebSearch` with a
+`claude -p --model claude-fable-5-1|claude-opus-5-5 --allowedTools Bash,Read,Grep,Glob,WebFetch,WebSearch` with a
 `CLAUDE_CODE_OAUTH_TOKEN` from `claude setup-token`; the GPT bots run
 `scripts\codex-app.cmd exec --disable multi_agent -m gpt-6-astra|gpt-5.6-sol --dangerously-bypass-approvals-and-sandbox
 --skip-git-repo-check` (the Codex CLI shipped inside the Codex app), each on its own ChatGPT account, by the
