@@ -1,0 +1,73 @@
+
+> trading-bot-opus-5@1.0.0 market
+> tsx src/market-report.ts 0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6
+
+MARKET   0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6  (chain 10, Uniswap v3)
+When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?
+
+collateral sUSDS 0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0
+
+#  outcome                                        spot   implied  pool depth (outcome / collateral)   pool
+0  Immediately at NU7 activation                 0.3311   34.5%        0.01 /       0.00   0xBc906179042Ea00eD3e4a7Dc955a412c5eC71087   DRAINED
+1  One year after this poll concludes            0.1660   17.3%        0.01 /       0.00   0x2002Bcda29203b95ee7e8059011BF4308306e87f   DRAINED
+2  Do not set a date to disable v4 transactions  0.4630   48.2%        0.01 /       0.00   0x8619E06F6C606B9Cf0f1331C081ab9914fbcE95A   DRAINED
+3  Invalid result                                   -        -    no pool
+
+spot prices sum to 0.9602  <- a complete set is mispriced against its 1.0000 mint/redeem value
+
+*** NOT TRADEABLE: every outcome pool has zero active liquidity. ***
+    The prices above are the last trade's leftovers - a drained pool keeps its final price forever,
+    so it still looks like a normal quote. app.seer.pm's own liquidity figure is indexed and can stay
+    stale for hours after the money has gone; only the pool's own liquidity, read here, can be trusted.
+    Nothing can be bought or sold on this market until somebody provides liquidity again.
+
+app.seer.pm      https://app.seer.pm/markets/10/when-will-v4-transactions-be-disabled-per-the-zcash-nu7-coinholder-poll-2
+indexed odds     33.1% | 16.6% | 46.3% | -
+liquidity        $0.01 (indexed; can lag the pools by hours)
+sets minted      221.53  (what app.seer.pm calls open interest, $245.79: counts the creator's seed and every split, but no direct swap - not a measure of trading)
+TRADED           29 swaps   470.73 sUSDS volume   6 traders   last trade 9.2 h ago   (Swap events on the outcome pools since the market was created, block 156661841)
+  outcome                                    seed -> now         swaps  buys/sells   volume
+  Immediately at NU7 activation              0.3000 -> 0.3311    3.1 pts    10        3/7      183.01
+  One year after this poll concludes         0.2000 -> 0.1660   -3.4 pts     8        1/7       57.40
+  Do not set a date to disable v4 trans...   0.5000 -> 0.4630   -3.7 pts    11        3/8      230.31
+category         misc    verification: ?
+opening time     2026-09-09T00:00:00Z  (open: the oracle can be answered now)
+answers so far   none     payout reported: no
+  reality q      0xa2f954bdd65c9bdf8f05ab49ac06044523ac46d0bc6d686368ec0544e4e90ca1  min bond 0.005  current bond 0  timeout 84.0h
+
+question as the oracle sees it:
+  When will v4 transactions be disabled, per the Zcash NU7 coinholder poll?␟"Immediately at NU7 activation","One year after this poll concludes","Do not set a date to disable v4 transactions"␟misc␟en_US
+
+DEPTH  buying "Immediately at NU7 activation"  (spot 0.3311)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       4.1%          One year after this poll concludes / Do not set a date to disable v4 transactions / Invalid result
+   5   split       5.00       5.00   1.0000       4.1%          One year after this poll concludes / Do not set a date to disable v4 transactions / Invalid result
+  10   split      10.00      10.00   1.0000       4.1%          One year after this poll concludes / Do not set a date to disable v4 transactions / Invalid result
+  25   split      25.00      25.00   1.0000       4.1%          One year after this poll concludes / Do not set a date to disable v4 transactions / Invalid result
+  50   split      50.00      50.00   1.0000       4.1%          One year after this poll concludes / Do not set a date to disable v4 transactions / Invalid result
+ 100   split     100.00     100.00   1.0000       4.1%          One year after this poll concludes / Do not set a date to disable v4 transactions / Invalid result
+
+DEPTH  buying "One year after this poll concludes"  (spot 0.1660)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       4.1%          Immediately at NU7 activation / Do not set a date to disable v4 transactions / Invalid result
+   5   split       5.00       5.00   1.0000       4.1%          Immediately at NU7 activation / Do not set a date to disable v4 transactions / Invalid result
+  10   split      10.00      10.00   1.0000       4.1%          Immediately at NU7 activation / Do not set a date to disable v4 transactions / Invalid result
+  25   split      25.00      25.00   1.0000       4.1%          Immediately at NU7 activation / Do not set a date to disable v4 transactions / Invalid result
+  50   split      50.00      50.00   1.0000       4.1%          Immediately at NU7 activation / Do not set a date to disable v4 transactions / Invalid result
+ 100   split     100.00     100.00   1.0000       4.1%          Immediately at NU7 activation / Do not set a date to disable v4 transactions / Invalid result
+
+DEPTH  buying "Do not set a date to disable v4 transactions"  (spot 0.4630)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       4.1%          Immediately at NU7 activation / One year after this poll concludes / Invalid result
+   5   split       5.00       5.00   1.0000       4.1%          Immediately at NU7 activation / One year after this poll concludes / Invalid result
+  10   split      10.00      10.00   1.0000       4.1%          Immediately at NU7 activation / One year after this poll concludes / Invalid result
+  25   split      25.00      25.00   1.0000       4.1%          Immediately at NU7 activation / One year after this poll concludes / Invalid result
+  50   split      50.00      50.00   1.0000       4.1%          Immediately at NU7 activation / One year after this poll concludes / Invalid result
+ 100   split     100.00     100.00   1.0000       4.1%          Immediately at NU7 activation / One year after this poll concludes / Invalid result
+
+COMPLETE-SET CHECK (10 sUSDS notional)
+  split 10 and sell every leg : -10.000 sUSDS
+  buy every leg and merge     : n/a (an outcome has no pool, the set cannot be bought)
+  no pool for: Invalid result
+
+Next: form your own estimate, then `npm run plan -- 0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6 --own <p1,p2,...> --weight <0..1> --bankroll <X>`

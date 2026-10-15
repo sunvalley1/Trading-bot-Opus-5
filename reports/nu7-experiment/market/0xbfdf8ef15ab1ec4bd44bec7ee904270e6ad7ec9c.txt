@@ -1,0 +1,73 @@
+
+> trading-bot-opus-5@1.0.0 market
+> tsx src/market-report.ts 0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c
+
+MARKET   0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c  (chain 10, Uniswap v3)
+When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?
+
+collateral sUSDS 0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0
+
+#  outcome                                         spot   implied  pool depth (outcome / collateral)   pool
+0  As soon as possible                            0.4389   45.2%        0.02 /       0.01   0xd687CE332eD59306a1Be5cCa84EB3F9d892eb01b   DRAINED
+1  February 2027 regardless of the outcome of Q1  0.1052   10.8%        0.01 /       0.00   0xC49fF843c4700Aa9F879418bdeB7Fb7EebbB7B19   DRAINED
+2  February 2031 regardless of the outcome of Q1  0.4270   44.0%        0.01 /       0.00   0xABA6d5eA27605383e3d52e77266d8562d47FBb54   DRAINED
+3  Invalid result                                    -        -    no pool
+
+spot prices sum to 0.9711  <- a complete set is mispriced against its 1.0000 mint/redeem value
+
+*** NOT TRADEABLE: every outcome pool has zero active liquidity. ***
+    The prices above are the last trade's leftovers - a drained pool keeps its final price forever,
+    so it still looks like a normal quote. app.seer.pm's own liquidity figure is indexed and can stay
+    stale for hours after the money has gone; only the pool's own liquidity, read here, can be trusted.
+    Nothing can be bought or sold on this market until somebody provides liquidity again.
+
+app.seer.pm      https://app.seer.pm/markets/10/when-will-nsm-reissuance-of-funds-removed-from-circulation-begin-per-the-zcash-n-2
+indexed odds     43.9% | 10.5% | 42.7% | -
+liquidity        $0.03 (indexed; can lag the pools by hours)
+sets minted      489.08  (what app.seer.pm calls open interest, $542.64: counts the creator's seed and every split, but no direct swap - not a measure of trading)
+TRADED           36 swaps   988.47 sUSDS volume   6 traders   last trade 11.3 h ago   (Swap events on the outcome pools since the market was created, block 156661838)
+  outcome                                    seed -> now         swaps  buys/sells   volume
+  As soon as possible                        0.5500 -> 0.4389  -11.1 pts    13       1/12      645.35
+  February 2027 regardless of the outco...   0.1500 -> 0.1052   -4.5 pts    10        1/9       39.88
+  February 2031 regardless of the outco...   0.3000 -> 0.4270   12.7 pts    13        5/8      303.24
+category         misc    verification: ?
+opening time     2026-09-09T00:00:00Z  (open: the oracle can be answered now)
+answers so far   none     payout reported: no
+  reality q      0xdb2d1e109293164cbd9c5c8d94ed561f3ca65252b5944a1f8f3ecb4a0a44e5a5  min bond 0.005  current bond 0  timeout 84.0h
+
+question as the oracle sees it:
+  When will NSM reissuance of funds removed from circulation begin, per the Zcash NU7 coinholder poll?␟"As soon as possible","February 2027 regardless of the outcome of Q1","February 2031 regardless of the outcome of Q1"␟misc␟en_US
+
+DEPTH  buying "As soon as possible"  (spot 0.4389)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       3.0%          February 2027 regardless of the outcome of Q1 / February 2031 regardless of the outcome of Q1 / Invalid result
+   5   split       5.00       5.00   1.0000       3.0%          February 2027 regardless of the outcome of Q1 / February 2031 regardless of the outcome of Q1 / Invalid result
+  10   split      10.00      10.00   1.0000       3.0%          February 2027 regardless of the outcome of Q1 / February 2031 regardless of the outcome of Q1 / Invalid result
+  25   split      25.00      25.00   1.0000       3.0%          February 2027 regardless of the outcome of Q1 / February 2031 regardless of the outcome of Q1 / Invalid result
+  50   split      50.00      50.00   1.0000       3.0%          February 2027 regardless of the outcome of Q1 / February 2031 regardless of the outcome of Q1 / Invalid result
+ 100   split     100.00     100.00   1.0000       3.0%          February 2027 regardless of the outcome of Q1 / February 2031 regardless of the outcome of Q1 / Invalid result
+
+DEPTH  buying "February 2027 regardless of the outcome of Q1"  (spot 0.1052)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       3.0%          As soon as possible / February 2031 regardless of the outcome of Q1 / Invalid result
+   5   split       5.00       5.00   1.0000       3.0%          As soon as possible / February 2031 regardless of the outcome of Q1 / Invalid result
+  10   split      10.00      10.00   1.0000       3.0%          As soon as possible / February 2031 regardless of the outcome of Q1 / Invalid result
+  25   split      25.00      25.00   1.0000       3.0%          As soon as possible / February 2031 regardless of the outcome of Q1 / Invalid result
+  50   split      50.00      50.00   1.0000       3.0%          As soon as possible / February 2031 regardless of the outcome of Q1 / Invalid result
+ 100   split     100.00     100.00   1.0000       3.0%          As soon as possible / February 2031 regardless of the outcome of Q1 / Invalid result
+
+DEPTH  buying "February 2031 regardless of the outcome of Q1"  (spot 0.4270)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       3.0%          As soon as possible / February 2027 regardless of the outcome of Q1 / Invalid result
+   5   split       5.00       5.00   1.0000       3.0%          As soon as possible / February 2027 regardless of the outcome of Q1 / Invalid result
+  10   split      10.00      10.00   1.0000       3.0%          As soon as possible / February 2027 regardless of the outcome of Q1 / Invalid result
+  25   split      25.00      25.00   1.0000       3.0%          As soon as possible / February 2027 regardless of the outcome of Q1 / Invalid result
+  50   split      50.00      50.00   1.0000       3.0%          As soon as possible / February 2027 regardless of the outcome of Q1 / Invalid result
+ 100   split     100.00     100.00   1.0000       3.0%          As soon as possible / February 2027 regardless of the outcome of Q1 / Invalid result
+
+COMPLETE-SET CHECK (10 sUSDS notional)
+  split 10 and sell every leg : -10.000 sUSDS
+  buy every leg and merge     : n/a (an outcome has no pool, the set cannot be bought)
+  no pool for: Invalid result
+
+Next: form your own estimate, then `npm run plan -- 0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c --own <p1,p2,...> --weight <0..1> --bankroll <X>`

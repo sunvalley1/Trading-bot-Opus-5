@@ -1,0 +1,3775 @@
+{
+ "generatedAt": "2026-09-14T15:10Z",
+ "pollCloses": "2026-09-14T19:00Z",
+ "now": "2026-09-14T14:45Z",
+ "models": [
+  {
+   "key": "fable-5.1",
+   "name": "Claude Fable 5.1",
+   "vendor": "Anthropic",
+   "wallet": "0xf1b285F65A3174c9D6E062F089c5CD1Ea8cF30D9",
+   "slot": "xx:35 UTC, even hours",
+   "passes": {
+    "finished": 10,
+    "failed": 0,
+    "killed": 2
+   },
+   "firstPass": "2026-09-13T16:35Z",
+   "lastPass": "2026-09-14T10:35Z",
+   "startCash": 916.63,
+   "cash": 837.42,
+   "spent": 79.21,
+   "tradesDone": 3,
+   "tradesFailed": 1,
+   "holdings": [
+    {
+     "market": "features",
+     "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+     "ticker": "ZNU7V3Q5SHIP",
+     "tokens": 50.0
+    },
+    {
+     "market": "features",
+     "outcome": "I do not support this NU7 plan",
+     "ticker": "ZNU7V3Q5NOSUPPORT",
+     "tokens": 50.0
+    },
+    {
+     "market": "features",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 50.0
+    },
+    {
+     "market": "smoothing",
+     "outcome": "Do not include issuance smoothing in NU7",
+     "ticker": "ZNU7V3Q1NONE",
+     "tokens": 10.0
+    },
+    {
+     "market": "smoothing",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 10.0
+    },
+    {
+     "market": "reissuance",
+     "outcome": "February 2031 regardless of the outcome of Q1",
+     "ticker": "ZNU7V3Q2FEB2031",
+     "tokens": 100.0
+    },
+    {
+     "market": "reissuance",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 100.0
+    }
+   ],
+   "payoffIfLeaders": 150.0,
+   "pnlIfLeaders": 70.79
+  },
+  {
+   "key": "opus-5",
+   "name": "Claude Opus 5",
+   "vendor": "Anthropic",
+   "wallet": "0x6e8211F9059648ee6b88fDCB3dB0415d9015cc9e",
+   "slot": "xx:55 UTC, even hours",
+   "passes": {
+    "finished": 9,
+    "failed": 1,
+    "killed": 1
+   },
+   "firstPass": "2026-09-13T16:55Z",
+   "lastPass": "2026-09-14T08:55Z",
+   "startCash": 901.38,
+   "cash": 751.38,
+   "spent": 150.0,
+   "tradesDone": 3,
+   "tradesFailed": 2,
+   "holdings": [
+    {
+     "market": "reissuance",
+     "outcome": "February 2031 regardless of the outcome of Q1",
+     "ticker": "ZNU7V3Q2FEB2031",
+     "tokens": 126.7861
+    },
+    {
+     "market": "features",
+     "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+     "ticker": "ZNU7V3Q5SHIP",
+     "tokens": 68.1298
+    },
+    {
+     "market": "v4",
+     "outcome": "Immediately at NU7 activation",
+     "ticker": "ZNU7V3Q3IMMEDIATE",
+     "tokens": 161.5258
+    }
+   ],
+   "payoffIfLeaders": 356.44,
+   "pnlIfLeaders": 206.44
+  },
+  {
+   "key": "astra-gpt-6",
+   "name": "GPT-6 Astra",
+   "vendor": "OpenAI",
+   "wallet": "0x017859431458cEdac674344f6031d41c9A68a858",
+   "slot": "xx:15 UTC, odd hours",
+   "passes": {
+    "finished": 11,
+    "failed": 0,
+    "killed": 1
+   },
+   "firstPass": "2026-09-13T15:41Z",
+   "lastPass": "2026-09-14T13:15Z",
+   "startCash": 901.66,
+   "cash": 866.95,
+   "spent": 34.71,
+   "tradesDone": 4,
+   "tradesFailed": 1,
+   "holdings": [
+    {
+     "market": "reissuance",
+     "outcome": "February 2031 regardless of the outcome of Q1",
+     "ticker": "ZNU7V3Q2FEB2031",
+     "tokens": 55.0
+    },
+    {
+     "market": "reissuance",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 55.0
+    },
+    {
+     "market": "features",
+     "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+     "ticker": "ZNU7V3Q5SHIP",
+     "tokens": 9.0
+    },
+    {
+     "market": "features",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 9.0
+    },
+    {
+     "market": "v4",
+     "outcome": "Immediately at NU7 activation",
+     "ticker": "ZNU7V3Q3IMMEDIATE",
+     "tokens": 10.0
+    },
+    {
+     "market": "v4",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 10.0
+    }
+   ],
+   "payoffIfLeaders": 74.0,
+   "pnlIfLeaders": 39.29
+  },
+  {
+   "key": "gpt-5.6-sol",
+   "name": "GPT-5.6 Sol",
+   "vendor": "OpenAI",
+   "wallet": "0x6156D8DEe1Cf1b8BC22261D5D98E5bBEC1eEA6fe",
+   "slot": "xx:35 UTC, odd hours",
+   "passes": {
+    "finished": 9,
+    "failed": 0,
+    "killed": 1
+   },
+   "firstPass": "2026-09-13T17:35Z",
+   "lastPass": "2026-09-14T09:35Z",
+   "startCash": 902.25,
+   "cash": 817.02,
+   "spent": 85.23,
+   "tradesDone": 4,
+   "tradesFailed": 0,
+   "holdings": [
+    {
+     "market": "zip218",
+     "outcome": "Yes",
+     "ticker": "ZNU7V3Q4YES",
+     "tokens": 8.88
+    },
+    {
+     "market": "zip218",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 8.88
+    },
+    {
+     "market": "features",
+     "outcome": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+     "ticker": "ZNU7V3Q5SHIP",
+     "tokens": 14.089
+    },
+    {
+     "market": "v4",
+     "outcome": "Immediately at NU7 activation",
+     "ticker": "ZNU7V3Q3IMMEDIATE",
+     "tokens": 50.0
+    },
+    {
+     "market": "v4",
+     "outcome": "Invalid result",
+     "ticker": "SER-INVALID",
+     "tokens": 50.0
+    },
+    {
+     "market": "reissuance",
+     "outcome": "February 2031 regardless of the outcome of Q1",
+     "ticker": "ZNU7V3Q2FEB2031",
+     "tokens": 151.2659
+    }
+   ],
+   "payoffIfLeaders": 224.23,
+   "pnlIfLeaders": 139.0
+  }
+ ],
+ "markets": [
+  {
+   "key": "zip218",
+   "q": "Q4",
+   "short": "ZIP-218 faster blocks",
+   "title": "Will the poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)?",
+   "address": "0xc38fa340cfdc9c758826dd4a8dc15b58728d0418",
+   "keyOutcome": "Yes",
+   "ballotQ": 4,
+   "ballotKw": "Yes",
+   "ballots": [
+    {
+     "label": "Yes",
+     "count": 18588,
+     "share": 0.9462431276725718
+    },
+    {
+     "label": "No",
+     "count": 1056,
+     "share": 0.05375687232742822
+    }
+   ],
+   "abstain": 1009,
+   "ballotShare": 0.9462431276725718,
+   "ballotsTotal": 20653,
+   "swaps": 7,
+   "volume": 27.36,
+   "traders": 4,
+   "lastTradeH": 20.5,
+   "drained": true,
+   "outcomes": [
+    {
+     "label": "Yes",
+     "seed": 0.9001,
+     "now": 0.88,
+     "swaps": 4,
+     "buys": 0,
+     "sells": 4,
+     "volume": 24.9
+    },
+    {
+     "label": "No",
+     "seed": 0.1,
+     "now": 0.1061,
+     "swaps": 3,
+     "buys": 2,
+     "sells": 1,
+     "volume": 2.46
+    }
+   ],
+   "seed": 0.9001,
+   "priceNow": 0.88
+  },
+  {
+   "key": "smoothing",
+   "q": "Q1",
+   "short": "NSM issuance smoothing",
+   "title": "Which NSM issuance smoothing approach will be selected?",
+   "address": "0x29bcd2cee8d413a2235f7970fcdde432dcaf10fc",
+   "keyOutcome": "Preserve halvings",
+   "ballotQ": 1,
+   "ballotKw": "Preserve",
+   "ballots": [
+    {
+     "label": "Smooth issuance curve",
+     "count": 3965,
+     "share": 0.1955128205128205
+    },
+    {
+     "label": "Preserve halvings",
+     "count": 11787,
+     "share": 0.5812130177514793
+    },
+    {
+     "label": "Do not include issuance smoothing in NU7",
+     "count": 4528,
+     "share": 0.2232741617357002
+    }
+   ],
+   "abstain": 880,
+   "ballotShare": 0.5812130177514793,
+   "ballotsTotal": 21160,
+   "swaps": 14,
+   "volume": 63.76,
+   "traders": 5,
+   "lastTradeH": 21.8,
+   "drained": true,
+   "outcomes": [
+    {
+     "label": "Smooth issuance curve",
+     "seed": 0.15,
+     "now": 0.1373,
+     "swaps": 5,
+     "buys": 3,
+     "sells": 2,
+     "volume": 3.64
+    },
+    {
+     "label": "Preserve halvings",
+     "seed": 0.75,
+     "now": 0.7133,
+     "swaps": 7,
+     "buys": 0,
+     "sells": 7,
+     "volume": 47.44
+    },
+    {
+     "label": "Do not include issuance smoothing in NU7",
+     "seed": 0.1,
+     "now": 0.1392,
+     "swaps": 2,
+     "buys": 1,
+     "sells": 1,
+     "volume": 12.68
+    }
+   ],
+   "seed": 0.75,
+   "priceNow": 0.7133
+  },
+  {
+   "key": "features",
+   "q": "Q5",
+   "short": "Sept-30 feature deadline",
+   "title": "How will features not ready by the September 30th deadline be handled?",
+   "address": "0xc03bf1725b72ab5765b639c582853ede9afb26a6",
+   "keyOutcome": "Ship NU7 as soon as possible",
+   "ballotQ": 5,
+   "ballotKw": "Ship",
+   "ballots": [
+    {
+     "label": "Ship NU7 as soon as possible, removing any feature that is not implemented by the September 30th deadline",
+     "count": 17203,
+     "share": 0.876094927683846
+    },
+    {
+     "label": "Delay NU7 until every applicable feature approved in this poll is deemed complete",
+     "count": 1969,
+     "share": 0.1002750050926869
+    },
+    {
+     "label": "I do not support this NU7 plan",
+     "count": 464,
+     "share": 0.0236300672234671
+    }
+   ],
+   "abstain": 976,
+   "ballotShare": 0.876094927683846,
+   "ballotsTotal": 20612,
+   "swaps": 19,
+   "volume": 361.65,
+   "traders": 6,
+   "lastTradeH": 9.2,
+   "drained": true,
+   "outcomes": [
+    {
+     "label": "Ship NU7 as soon as possible, removin...",
+     "seed": 0.7,
+     "now": 0.75,
+     "swaps": 8,
+     "buys": 5,
+     "sells": 3,
+     "volume": 287.79
+    },
+    {
+     "label": "Delay NU7 until every applicable appr...",
+     "seed": 0.25,
+     "now": 0.194,
+     "swaps": 6,
+     "buys": 1,
+     "sells": 5,
+     "volume": 63.77
+    },
+    {
+     "label": "I do not support this NU7 plan",
+     "seed": 0.05,
+     "now": 0.0503,
+     "swaps": 5,
+     "buys": 2,
+     "sells": 3,
+     "volume": 10.09
+    }
+   ],
+   "seed": 0.7,
+   "priceNow": 0.75
+  },
+  {
+   "key": "v4",
+   "q": "Q3",
+   "short": "Disable v4 transactions",
+   "title": "When will v4 transactions be disabled?",
+   "address": "0xd21eadcf5c30475244aea8a9cf7cb6759f0bdae6",
+   "keyOutcome": "Immediately at NU7 activation",
+   "ballotQ": 3,
+   "ballotKw": "Immediately",
+   "ballots": [
+    {
+     "label": "Immediately at NU7 activation",
+     "count": 15923,
+     "share": 0.8079050180120757
+    },
+    {
+     "label": "One year after this poll concludes",
+     "count": 2240,
+     "share": 0.11365366076411791
+    },
+    {
+     "label": "Do not set a date to disable v4 transactions",
+     "count": 1546,
+     "share": 0.07844132122380638
+    }
+   ],
+   "abstain": 980,
+   "ballotShare": 0.8079050180120757,
+   "ballotsTotal": 20689,
+   "swaps": 29,
+   "volume": 470.73,
+   "traders": 6,
+   "lastTradeH": 9.2,
+   "drained": true,
+   "outcomes": [
+    {
+     "label": "Immediately at NU7 activation",
+     "seed": 0.3,
+     "now": 0.3311,
+     "swaps": 10,
+     "buys": 3,
+     "sells": 7,
+     "volume": 183.01
+    },
+    {
+     "label": "One year after this poll concludes",
+     "seed": 0.2,
+     "now": 0.166,
+     "swaps": 8,
+     "buys": 1,
+     "sells": 7,
+     "volume": 57.4
+    },
+    {
+     "label": "Do not set a date to disable v4 trans...",
+     "seed": 0.5,
+     "now": 0.463,
+     "swaps": 11,
+     "buys": 3,
+     "sells": 8,
+     "volume": 230.31
+    }
+   ],
+   "seed": 0.3,
+   "priceNow": 0.3311
+  },
+  {
+   "key": "reissuance",
+   "q": "Q2",
+   "short": "NSM reissuance start",
+   "title": "When will NSM reissuance of funds removed from circulation begin?",
+   "address": "0xbfdf8ef15ab1ec4bd44bec7ee904270e6ad7ec9c",
+   "keyOutcome": "February 2031",
+   "ballotQ": 2,
+   "ballotKw": "2031",
+   "ballots": [
+    {
+     "label": "As soon as possible",
+     "count": 4178,
+     "share": 0.2153164296021439
+    },
+    {
+     "label": "February 2027, regardless of the outcome of Q1",
+     "count": 1226,
+     "share": 0.06318284889713462
+    },
+    {
+     "label": "February 2031, regardless of the outcome of Q1",
+     "count": 14000,
+     "share": 0.7215007215007215
+    }
+   ],
+   "abstain": 1424,
+   "ballotShare": 0.7215007215007215,
+   "ballotsTotal": 20828,
+   "swaps": 36,
+   "volume": 988.47,
+   "traders": 6,
+   "lastTradeH": 11.3,
+   "drained": true,
+   "outcomes": [
+    {
+     "label": "As soon as possible",
+     "seed": 0.55,
+     "now": 0.4389,
+     "swaps": 13,
+     "buys": 1,
+     "sells": 12,
+     "volume": 645.35
+    },
+    {
+     "label": "February 2027 regardless of the outco...",
+     "seed": 0.15,
+     "now": 0.1052,
+     "swaps": 10,
+     "buys": 1,
+     "sells": 9,
+     "volume": 39.88
+    },
+    {
+     "label": "February 2031 regardless of the outco...",
+     "seed": 0.3,
+     "now": 0.427,
+     "swaps": 13,
+     "buys": 5,
+     "sells": 8,
+     "volume": 303.24
+    }
+   ],
+   "seed": 0.3,
+   "priceNow": 0.427
+  }
+ ],
+ "estimates": [
+  {
+   "t": "2026-09-13T14:38Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.79,
+   "price": 0.706
+  },
+  {
+   "t": "2026-09-13T14:38Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.293
+  },
+  {
+   "t": "2026-09-13T14:38Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.719
+  },
+  {
+   "t": "2026-09-13T14:38Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.46,
+   "price": 0.276
+  },
+  {
+   "t": "2026-09-13T14:38Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T15:41Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.7057
+  },
+  {
+   "t": "2026-09-13T15:41Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.6,
+   "price": 0.2927
+  },
+  {
+   "t": "2026-09-13T15:41Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.8,
+   "price": 0.7188
+  },
+  {
+   "t": "2026-09-13T15:41Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.2758
+  },
+  {
+   "t": "2026-09-13T16:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.706
+  },
+  {
+   "t": "2026-09-13T16:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.293
+  },
+  {
+   "t": "2026-09-13T16:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.719
+  },
+  {
+   "t": "2026-09-13T16:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.46,
+   "price": 0.276
+  },
+  {
+   "t": "2026-09-13T16:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T16:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.7057
+  },
+  {
+   "t": "2026-09-13T16:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.2927
+  },
+  {
+   "t": "2026-09-13T16:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.83,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T16:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.2758
+  },
+  {
+   "t": "2026-09-13T16:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.921
+  },
+  {
+   "t": "2026-09-13T17:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.7057
+  },
+  {
+   "t": "2026-09-13T17:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.6,
+   "price": 0.2927
+  },
+  {
+   "t": "2026-09-13T17:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.75,
+   "price": 0.55
+  },
+  {
+   "t": "2026-09-13T17:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.2758
+  },
+  {
+   "t": "2026-09-13T17:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T17:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.7057
+  },
+  {
+   "t": "2026-09-13T17:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.68,
+   "price": 0.2927
+  },
+  {
+   "t": "2026-09-13T17:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.66,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T17:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.52,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T17:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T18:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.714
+  },
+  {
+   "t": "2026-09-13T18:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.353
+  },
+  {
+   "t": "2026-09-13T18:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-13T18:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.46,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-13T18:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T18:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.7137
+  },
+  {
+   "t": "2026-09-13T18:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.3528
+  },
+  {
+   "t": "2026-09-13T18:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.8,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T18:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T18:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.921
+  },
+  {
+   "t": "2026-09-13T19:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T19:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.6,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T19:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.7,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T19:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T19:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.93,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T19:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T19:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.69,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T19:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.68,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T19:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.52,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T19:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T20:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T20:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T20:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-13T20:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-13T20:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T20:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T20:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T20:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.8,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T20:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T20:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.933
+  },
+  {
+   "t": "2026-09-13T21:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T21:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.6,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T21:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.7,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T21:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T21:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.93,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T21:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T21:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.69,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T21:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.68,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T21:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.52,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T21:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T22:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T22:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T22:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-13T22:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-13T22:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T22:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T22:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T22:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.79,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T22:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T22:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T23:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T23:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.6,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T23:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.7,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T23:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T23:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-13T23:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-13T23:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.69,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-13T23:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.66,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-13T23:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.53,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-13T23:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T00:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T00:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T00:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-14T00:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-14T00:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T01:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T01:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.6,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T01:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.7,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T01:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T01:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T01:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T01:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.69,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T01:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.64,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T01:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.53,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T01:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T02:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T02:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T02:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-14T02:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-14T02:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T02:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T02:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T02:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.76,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T02:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T02:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T03:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T03:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T03:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.75,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T03:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T03:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.93,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T03:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T03:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.7,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T03:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.63,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T03:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.53,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T03:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T04:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T04:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T04:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-14T04:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-14T04:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T04:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T04:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T04:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.76,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T04:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T04:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T05:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.9,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T05:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T05:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.75,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T05:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.6,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T05:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T05:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T05:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.7,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T05:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.64,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T05:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.53,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T05:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T06:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T06:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T06:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-14T06:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-14T06:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T06:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T06:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T06:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.74,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T06:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T06:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T07:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T07:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.6,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T07:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.75,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T07:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.6,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T07:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T07:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T07:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.7,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T07:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.63,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T07:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.53,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T07:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T08:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T08:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T08:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-14T08:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-14T08:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T08:55Z",
+   "model": "opus-5",
+   "market": "features",
+   "est": 0.89,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T08:55Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "est": 0.82,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T08:55Z",
+   "model": "opus-5",
+   "market": "smoothing",
+   "est": 0.72,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T08:55Z",
+   "model": "opus-5",
+   "market": "v4",
+   "est": 0.77,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T08:55Z",
+   "model": "opus-5",
+   "market": "zip218",
+   "est": 0.96,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T09:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.88,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T09:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.3
+  },
+  {
+   "t": "2026-09-14T09:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.7,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T09:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.6,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T09:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.93,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T09:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T09:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "est": 0.7,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T09:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "smoothing",
+   "est": 0.63,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T09:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "est": 0.53,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T09:35Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "est": 0.95,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T10:35Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "est": 0.8,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T10:35Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T10:35Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "est": 0.71,
+   "price": 0.713
+  },
+  {
+   "t": "2026-09-14T10:35Z",
+   "model": "fable-5.1",
+   "market": "v4",
+   "est": 0.5,
+   "price": 0.331
+  },
+  {
+   "t": "2026-09-14T10:35Z",
+   "model": "fable-5.1",
+   "market": "zip218",
+   "est": 0.9,
+   "price": 0.88
+  },
+  {
+   "t": "2026-09-14T13:15Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "est": 0.85,
+   "price": 0.75
+  },
+  {
+   "t": "2026-09-14T13:15Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "est": 0.65,
+   "price": 0.427
+  },
+  {
+   "t": "2026-09-14T13:15Z",
+   "model": "astra-gpt-6",
+   "market": "smoothing",
+   "est": 0.7,
+   "price": 0.7133
+  },
+  {
+   "t": "2026-09-14T13:15Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "est": 0.6,
+   "price": 0.3311
+  },
+  {
+   "t": "2026-09-14T13:15Z",
+   "model": "astra-gpt-6",
+   "market": "zip218",
+   "est": 0.92,
+   "price": 0.88
+  }
+ ],
+ "prices": {
+  "features": [
+   [
+    "2026-09-13T14:38Z",
+    0.706
+   ],
+   [
+    "2026-09-13T15:41Z",
+    0.7057
+   ],
+   [
+    "2026-09-13T16:35Z",
+    0.706
+   ],
+   [
+    "2026-09-13T16:55Z",
+    0.7057
+   ],
+   [
+    "2026-09-13T17:15Z",
+    0.7057
+   ],
+   [
+    "2026-09-13T17:35Z",
+    0.7057
+   ],
+   [
+    "2026-09-13T18:35Z",
+    0.714
+   ],
+   [
+    "2026-09-13T18:55Z",
+    0.7137
+   ],
+   [
+    "2026-09-13T19:15Z",
+    0.75
+   ],
+   [
+    "2026-09-13T19:35Z",
+    0.75
+   ],
+   [
+    "2026-09-13T20:35Z",
+    0.75
+   ],
+   [
+    "2026-09-13T20:55Z",
+    0.75
+   ],
+   [
+    "2026-09-13T21:15Z",
+    0.75
+   ],
+   [
+    "2026-09-13T21:35Z",
+    0.75
+   ],
+   [
+    "2026-09-13T22:35Z",
+    0.75
+   ],
+   [
+    "2026-09-13T22:55Z",
+    0.75
+   ],
+   [
+    "2026-09-13T23:15Z",
+    0.75
+   ],
+   [
+    "2026-09-13T23:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T00:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T01:15Z",
+    0.75
+   ],
+   [
+    "2026-09-14T01:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T02:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T02:55Z",
+    0.75
+   ],
+   [
+    "2026-09-14T03:15Z",
+    0.75
+   ],
+   [
+    "2026-09-14T03:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T04:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T04:55Z",
+    0.75
+   ],
+   [
+    "2026-09-14T05:15Z",
+    0.75
+   ],
+   [
+    "2026-09-14T05:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T06:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T06:55Z",
+    0.75
+   ],
+   [
+    "2026-09-14T07:15Z",
+    0.75
+   ],
+   [
+    "2026-09-14T07:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T08:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T08:55Z",
+    0.75
+   ],
+   [
+    "2026-09-14T09:15Z",
+    0.75
+   ],
+   [
+    "2026-09-14T09:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T10:35Z",
+    0.75
+   ],
+   [
+    "2026-09-14T13:15Z",
+    0.75
+   ],
+   [
+    "2026-09-14T14:45Z",
+    0.75
+   ]
+  ],
+  "reissuance": [
+   [
+    "2026-09-13T14:38Z",
+    0.293
+   ],
+   [
+    "2026-09-13T15:41Z",
+    0.2927
+   ],
+   [
+    "2026-09-13T16:35Z",
+    0.293
+   ],
+   [
+    "2026-09-13T16:55Z",
+    0.2927
+   ],
+   [
+    "2026-09-13T17:15Z",
+    0.2927
+   ],
+   [
+    "2026-09-13T17:35Z",
+    0.2927
+   ],
+   [
+    "2026-09-13T18:35Z",
+    0.353
+   ],
+   [
+    "2026-09-13T18:55Z",
+    0.3528
+   ],
+   [
+    "2026-09-13T19:15Z",
+    0.427
+   ],
+   [
+    "2026-09-13T19:35Z",
+    0.427
+   ],
+   [
+    "2026-09-13T20:35Z",
+    0.427
+   ],
+   [
+    "2026-09-13T20:55Z",
+    0.427
+   ],
+   [
+    "2026-09-13T21:15Z",
+    0.427
+   ],
+   [
+    "2026-09-13T21:35Z",
+    0.427
+   ],
+   [
+    "2026-09-13T22:35Z",
+    0.427
+   ],
+   [
+    "2026-09-13T22:55Z",
+    0.427
+   ],
+   [
+    "2026-09-13T23:15Z",
+    0.427
+   ],
+   [
+    "2026-09-13T23:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T00:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T01:15Z",
+    0.427
+   ],
+   [
+    "2026-09-14T01:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T02:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T02:55Z",
+    0.427
+   ],
+   [
+    "2026-09-14T03:15Z",
+    0.427
+   ],
+   [
+    "2026-09-14T03:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T04:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T04:55Z",
+    0.427
+   ],
+   [
+    "2026-09-14T05:15Z",
+    0.427
+   ],
+   [
+    "2026-09-14T05:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T06:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T06:55Z",
+    0.427
+   ],
+   [
+    "2026-09-14T07:15Z",
+    0.427
+   ],
+   [
+    "2026-09-14T07:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T08:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T08:55Z",
+    0.427
+   ],
+   [
+    "2026-09-14T09:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T10:35Z",
+    0.427
+   ],
+   [
+    "2026-09-14T13:15Z",
+    0.427
+   ],
+   [
+    "2026-09-14T14:45Z",
+    0.427
+   ]
+  ],
+  "smoothing": [
+   [
+    "2026-09-13T14:38Z",
+    0.719
+   ],
+   [
+    "2026-09-13T15:41Z",
+    0.7188
+   ],
+   [
+    "2026-09-13T16:35Z",
+    0.719
+   ],
+   [
+    "2026-09-13T16:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T17:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T18:35Z",
+    0.713
+   ],
+   [
+    "2026-09-13T18:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T19:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T19:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T20:35Z",
+    0.713
+   ],
+   [
+    "2026-09-13T20:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T21:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T21:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T22:35Z",
+    0.713
+   ],
+   [
+    "2026-09-13T22:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T23:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-13T23:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T00:35Z",
+    0.713
+   ],
+   [
+    "2026-09-14T01:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T01:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T02:35Z",
+    0.713
+   ],
+   [
+    "2026-09-14T02:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T03:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T03:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T04:35Z",
+    0.713
+   ],
+   [
+    "2026-09-14T04:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T05:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T05:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T06:35Z",
+    0.713
+   ],
+   [
+    "2026-09-14T06:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T07:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T07:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T08:35Z",
+    0.713
+   ],
+   [
+    "2026-09-14T08:55Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T09:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T09:35Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T10:35Z",
+    0.713
+   ],
+   [
+    "2026-09-14T13:15Z",
+    0.7133
+   ],
+   [
+    "2026-09-14T14:45Z",
+    0.7133
+   ]
+  ],
+  "v4": [
+   [
+    "2026-09-13T14:38Z",
+    0.276
+   ],
+   [
+    "2026-09-13T15:41Z",
+    0.2758
+   ],
+   [
+    "2026-09-13T16:35Z",
+    0.276
+   ],
+   [
+    "2026-09-13T16:55Z",
+    0.2758
+   ],
+   [
+    "2026-09-13T17:15Z",
+    0.2758
+   ],
+   [
+    "2026-09-13T17:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T18:35Z",
+    0.331
+   ],
+   [
+    "2026-09-13T18:55Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T19:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T19:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T20:35Z",
+    0.331
+   ],
+   [
+    "2026-09-13T20:55Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T21:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T21:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T22:35Z",
+    0.331
+   ],
+   [
+    "2026-09-13T22:55Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T23:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-13T23:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T00:35Z",
+    0.331
+   ],
+   [
+    "2026-09-14T01:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T01:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T02:35Z",
+    0.331
+   ],
+   [
+    "2026-09-14T02:55Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T03:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T03:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T04:35Z",
+    0.331
+   ],
+   [
+    "2026-09-14T04:55Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T05:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T05:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T06:35Z",
+    0.331
+   ],
+   [
+    "2026-09-14T06:55Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T07:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T07:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T08:35Z",
+    0.331
+   ],
+   [
+    "2026-09-14T08:55Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T09:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T09:35Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T10:35Z",
+    0.331
+   ],
+   [
+    "2026-09-14T13:15Z",
+    0.3311
+   ],
+   [
+    "2026-09-14T14:45Z",
+    0.3311
+   ]
+  ],
+  "zip218": [
+   [
+    "2026-09-13T14:38Z",
+    0.88
+   ],
+   [
+    "2026-09-13T16:35Z",
+    0.88
+   ],
+   [
+    "2026-09-13T17:15Z",
+    0.88
+   ],
+   [
+    "2026-09-13T17:35Z",
+    0.88
+   ],
+   [
+    "2026-09-13T18:35Z",
+    0.88
+   ],
+   [
+    "2026-09-13T19:15Z",
+    0.88
+   ],
+   [
+    "2026-09-13T19:35Z",
+    0.88
+   ],
+   [
+    "2026-09-13T20:35Z",
+    0.88
+   ],
+   [
+    "2026-09-13T21:15Z",
+    0.88
+   ],
+   [
+    "2026-09-13T21:35Z",
+    0.88
+   ],
+   [
+    "2026-09-13T22:35Z",
+    0.88
+   ],
+   [
+    "2026-09-13T22:55Z",
+    0.88
+   ],
+   [
+    "2026-09-13T23:15Z",
+    0.88
+   ],
+   [
+    "2026-09-13T23:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T00:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T01:15Z",
+    0.88
+   ],
+   [
+    "2026-09-14T01:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T02:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T02:55Z",
+    0.88
+   ],
+   [
+    "2026-09-14T03:15Z",
+    0.88
+   ],
+   [
+    "2026-09-14T03:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T04:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T04:55Z",
+    0.88
+   ],
+   [
+    "2026-09-14T05:15Z",
+    0.88
+   ],
+   [
+    "2026-09-14T05:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T06:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T06:55Z",
+    0.88
+   ],
+   [
+    "2026-09-14T07:15Z",
+    0.88
+   ],
+   [
+    "2026-09-14T07:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T08:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T08:55Z",
+    0.88
+   ],
+   [
+    "2026-09-14T09:15Z",
+    0.88
+   ],
+   [
+    "2026-09-14T09:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T10:35Z",
+    0.88
+   ],
+   [
+    "2026-09-14T13:15Z",
+    0.88
+   ],
+   [
+    "2026-09-14T14:45Z",
+    0.88
+   ]
+  ]
+ },
+ "trades": [
+  {
+   "t": "2026-09-13T16:58Z",
+   "model": "fable-5.1",
+   "market": "features",
+   "action": "Short Delay NU7 until every applicable approved feature is deemed complete",
+   "target": "Delay NU7 until every applicable approved feature is deemed complete",
+   "route": "fade",
+   "size": 50.0,
+   "fill": 0.7866,
+   "spot": 0.7594,
+   "slip": 3.6,
+   "cost": 39.33,
+   "tx": "0xf17cf5458f63ed2f33cde889550592594707ff41141c749d90e2b387adc434c2",
+   "position": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline50.0000 ZNU7V3Q5SHIP | I do not support this NU7 plan 50.0000 ZNU7V3Q5NOSUPPORT | Invalid result 50.0000 SER-INVALID"
+  },
+  {
+   "t": "2026-09-13T16:59Z",
+   "model": "fable-5.1",
+   "market": "smoothing",
+   "action": "Buy Do not include issuance smoothing in NU7 (split)",
+   "target": "Do not include issuance smoothing in NU7",
+   "route": "split",
+   "size": 10.0,
+   "fill": 0.1442,
+   "spot": 0.1392,
+   "slip": 3.5,
+   "cost": 1.44,
+   "tx": "0x5e4c868a7b5bc025ac896d62a7b0948dc4314bffeca28e0caa2e08093b94c3d3",
+   "position": "Do not include issuance smoothing in NU7 10.0000 ZNU7V3Q1NONE | Invalid result 10.0000 SER-INVALID"
+  },
+  {
+   "t": "2026-09-13T17:39Z",
+   "model": "opus-5",
+   "market": "v4",
+   "action": "Buy Immediately at NU7 activation",
+   "target": "Immediately at NU7 activation",
+   "route": "direct",
+   "size": 50.0,
+   "fill": 0.3095,
+   "spot": 0.2758,
+   "slip": 12.2,
+   "cost": 50.0,
+   "tx": "",
+   "position": ""
+  },
+  {
+   "t": "2026-09-13T18:15Z",
+   "model": "gpt-5.6-sol",
+   "market": "zip218",
+   "action": "Short No",
+   "target": "No",
+   "route": "fade",
+   "size": 8.88,
+   "fill": 0.8872,
+   "spot": 0.88,
+   "slip": 0.8,
+   "cost": 7.88,
+   "tx": "0x738a028057daf0e5baf5b7a2481d5d4b4816584f84949d9513826c13204a98c7",
+   "position": "Yes 8.8800 ZNU7V3Q4YES | Invalid result 8.8800 SER-INVALID"
+  },
+  {
+   "t": "2026-09-13T18:16Z",
+   "model": "gpt-5.6-sol",
+   "market": "features",
+   "action": "Buy Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+   "target": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+   "route": "direct",
+   "size": 10.0,
+   "fill": 0.7098,
+   "spot": 0.7057,
+   "slip": 0.6,
+   "cost": 10.0,
+   "tx": "0xa4686f25d6abc7d00aec33c439f3831af1ebb14df3c994713f0e030e3014d421",
+   "position": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline14.0890 ZNU7V3Q5SHIP"
+  },
+  {
+   "t": "2026-09-13T18:18Z",
+   "model": "gpt-5.6-sol",
+   "market": "v4",
+   "action": "Buy Immediately at NU7 activation (split)",
+   "target": "Immediately at NU7 activation",
+   "route": "split",
+   "size": 50.0,
+   "fill": 0.347,
+   "spot": 0.3311,
+   "slip": 4.8,
+   "cost": 17.35,
+   "tx": "0xf280b7f9f97a9fb8cea7ddc1d6f65cffef1280fc41fce13f9d4c52f2c01c74c9",
+   "position": "Immediately at NU7 activation 50.0000 ZNU7V3Q3IMMEDIATE | Invalid result 50.0000 SER-INVALID"
+  },
+  {
+   "t": "2026-09-13T18:19Z",
+   "model": "gpt-5.6-sol",
+   "market": "reissuance",
+   "action": "Buy February 2031 regardless of the outcome of Q1",
+   "target": "February 2031 regardless of the outcome of Q1",
+   "route": "direct",
+   "size": 50.0,
+   "fill": 0.3305,
+   "spot": 0.2927,
+   "slip": 12.9,
+   "cost": 50.0,
+   "tx": "0x8bb29699df4fc45c23c2a26d459c979d6af8ad6b7967f92d97c155636a8aef75",
+   "position": "February 2031 regardless of the outcome of Q1 151.2659 ZNU7V3Q2FEB2031"
+  },
+  {
+   "t": "2026-09-13T19:04Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "action": "Buy February 2031 regardless of the outcome of Q1 (split)",
+   "target": "February 2031 regardless of the outcome of Q1",
+   "route": "split",
+   "size": 100.0,
+   "fill": 0.3844,
+   "spot": 0.3528,
+   "slip": 9.0,
+   "cost": 38.44,
+   "tx": "0x45460a7c8967646a5f6858674ba703185b626c61078a31ce14e8acba5f3292d2",
+   "position": "February 2031 regardless of the outcome of Q1 100.0000 ZNU7V3Q2FEB2031 | Invalid result 100.0000 SER-INVALID"
+  },
+  {
+   "t": "2026-09-13T19:14Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "action": "Buy February 2031 regardless of the outcome of Q1",
+   "target": "February 2031 regardless of the outcome of Q1",
+   "route": "direct",
+   "size": 50.0,
+   "fill": 0.3944,
+   "spot": 0.3528,
+   "slip": 11.8,
+   "cost": 50.0,
+   "tx": "0x7b42c0c6276312cd1a1d8b561898ec0b1aabcd3d0765a6799dd24e619c252f1c",
+   "position": "February 2031 regardless of the outcome of Q1 126.7861 ZNU7V3Q2FEB2031"
+  },
+  {
+   "t": "2026-09-13T19:15Z",
+   "model": "opus-5",
+   "market": "features",
+   "action": "Buy Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+   "target": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+   "route": "direct",
+   "size": 50.0,
+   "fill": 0.7339,
+   "spot": 0.7137,
+   "slip": 2.8,
+   "cost": 50.0,
+   "tx": "0x216fbfd533e21e8598f01063249cd60a869fa23e9e45e152a22acd17476bd53f",
+   "position": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline68.1298 ZNU7V3Q5SHIP"
+  },
+  {
+   "t": "2026-09-13T19:27Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "action": "Buy February 2031 regardless of the outcome of Q1 (split)",
+   "target": "February 2031 regardless of the outcome of Q1",
+   "route": "split",
+   "size": 25.0,
+   "fill": 0.4329,
+   "spot": 0.427,
+   "slip": 1.4,
+   "cost": 10.82,
+   "tx": "0x91154e7fee39b57a6941feaa85137bbedbad4ef5f85f4f8b10f4ad40f1564ce2",
+   "position": "February 2031 regardless of the outcome of Q1 25.0000 ZNU7V3Q2FEB2031 | Invalid result 25.0000 SER-INVALID"
+  },
+  {
+   "t": "2026-09-14T03:29Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "action": "Buy February 2031 regardless of the outcome of Q1 (split)",
+   "target": "February 2031 regardless of the outcome of Q1",
+   "route": "split",
+   "size": 30.0,
+   "fill": 0.4479,
+   "spot": 0.427,
+   "slip": 4.9,
+   "cost": 13.44,
+   "tx": "0x6418dff6a53562bf68702e9d85c84044e0699b7872ce51cb6ac1c4e420f8235f",
+   "position": "February 2031 regardless of the outcome of Q1 55.0000 ZNU7V3Q2FEB2031 | Invalid result 55.0000 SER-INVALID"
+  },
+  {
+   "t": "2026-09-14T05:32Z",
+   "model": "astra-gpt-6",
+   "market": "features",
+   "action": "Buy Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline (split)",
+   "target": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline",
+   "route": "split",
+   "size": 9.0,
+   "fill": 0.7529,
+   "spot": 0.75,
+   "slip": 0.4,
+   "cost": 6.78,
+   "tx": "0x40a173d1b74614289a8381cf6ae54a3220b15a4f1461a0bfebbad8f57d7be9e1",
+   "position": "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline9.0000 ZNU7V3Q5SHIP | Invalid result 9.0000 SER-INVALID"
+  },
+  {
+   "t": "2026-09-14T05:33Z",
+   "model": "astra-gpt-6",
+   "market": "v4",
+   "action": "Buy Immediately at NU7 activation (split)",
+   "target": "Immediately at NU7 activation",
+   "route": "split",
+   "size": 10.0,
+   "fill": 0.3677,
+   "spot": 0.3311,
+   "slip": 11.0,
+   "cost": 3.68,
+   "tx": "0xf8ea6d9975baa518a1908a19274e7402e0cb771936a9b3e5ba9470026b31e53e",
+   "position": "Immediately at NU7 activation 10.0000 ZNU7V3Q3IMMEDIATE | Invalid result 10.0000 SER-INVALID"
+  }
+ ],
+ "failed": [
+  {
+   "t": "2026-09-13T16:51Z",
+   "model": "fable-5.1",
+   "market": "reissuance",
+   "route": "direct",
+   "size": "25",
+   "reason": "trade exited 1"
+  },
+  {
+   "t": "2026-09-13T17:32Z",
+   "model": "opus-5",
+   "market": "reissuance",
+   "route": "direct",
+   "size": "50.0000",
+   "reason": "trade exited 1 | verified onchain: only the sUSDS approval landed, the swap was never sent, no position."
+  },
+  {
+   "t": "2026-09-13T17:32Z",
+   "model": "opus-5",
+   "market": "features",
+   "route": "direct",
+   "size": "50.0000",
+   "reason": "trade exited 1 | verified onchain: only the sUSDS approval landed, the swap was never sent, no position."
+  },
+  {
+   "t": "2026-09-13T17:28Z",
+   "model": "astra-gpt-6",
+   "market": "reissuance",
+   "route": "fade",
+   "size": "25",
+   "reason": "trade exited 1"
+  }
+ ],
+ "metrics": {
+  "zip218": [
+   {
+    "t": "2026-09-13T18:00Z",
+    "n": 4,
+    "mean": 0.9275,
+    "sd": 0.0277,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.0475,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.9,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-13T20:00Z",
+    "n": 4,
+    "mean": 0.935,
+    "sd": 0.0229,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.055,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.93,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-13T22:00Z",
+    "n": 4,
+    "mean": 0.935,
+    "sd": 0.0229,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.055,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.93,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T00:00Z",
+    "n": 4,
+    "mean": 0.9275,
+    "sd": 0.0277,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.0475,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.9,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T02:00Z",
+    "n": 4,
+    "mean": 0.9275,
+    "sd": 0.0277,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.0475,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.9,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T04:00Z",
+    "n": 4,
+    "mean": 0.935,
+    "sd": 0.0229,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.055,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.93,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T06:00Z",
+    "n": 4,
+    "mean": 0.9275,
+    "sd": 0.0277,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.0475,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.9,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T08:00Z",
+    "n": 4,
+    "mean": 0.9275,
+    "sd": 0.0277,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.0475,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.9,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T10:00Z",
+    "n": 4,
+    "mean": 0.935,
+    "sd": 0.0229,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.055,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.93,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T12:00Z",
+    "n": 4,
+    "mean": 0.935,
+    "sd": 0.0229,
+    "spread": 0.06,
+    "price": 0.88,
+    "gap": 0.055,
+    "vals": {
+     "fable-5.1": 0.9,
+     "opus-5": 0.96,
+     "astra-gpt-6": 0.93,
+     "gpt-5.6-sol": 0.95
+    }
+   },
+   {
+    "t": "2026-09-14T14:00Z",
+    "n": 3,
+    "mean": 0.9233,
+    "sd": 0.0205,
+    "spread": 0.05,
+    "price": 0.88,
+    "gap": 0.0433,
+    "vals": {
+     "fable-5.1": 0.9,
+     "astra-gpt-6": 0.92,
+     "gpt-5.6-sol": 0.95
+    }
+   }
+  ],
+  "smoothing": [
+   {
+    "t": "2026-09-13T18:00Z",
+    "n": 4,
+    "mean": 0.7375,
+    "sd": 0.0622,
+    "spread": 0.17,
+    "price": 0.7133,
+    "gap": 0.0525,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.83,
+     "astra-gpt-6": 0.75,
+     "gpt-5.6-sol": 0.66
+    }
+   },
+   {
+    "t": "2026-09-13T20:00Z",
+    "n": 4,
+    "mean": 0.7225,
+    "sd": 0.046,
+    "spread": 0.12,
+    "price": 0.7133,
+    "gap": 0.0342,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.8,
+     "astra-gpt-6": 0.7,
+     "gpt-5.6-sol": 0.68
+    }
+   },
+   {
+    "t": "2026-09-13T22:00Z",
+    "n": 4,
+    "mean": 0.7225,
+    "sd": 0.046,
+    "spread": 0.12,
+    "price": 0.7133,
+    "gap": 0.0342,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.8,
+     "astra-gpt-6": 0.7,
+     "gpt-5.6-sol": 0.68
+    }
+   },
+   {
+    "t": "2026-09-14T00:00Z",
+    "n": 4,
+    "mean": 0.715,
+    "sd": 0.0472,
+    "spread": 0.13,
+    "price": 0.7133,
+    "gap": 0.0367,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.79,
+     "astra-gpt-6": 0.7,
+     "gpt-5.6-sol": 0.66
+    }
+   },
+   {
+    "t": "2026-09-14T02:00Z",
+    "n": 4,
+    "mean": 0.71,
+    "sd": 0.0534,
+    "spread": 0.15,
+    "price": 0.7133,
+    "gap": 0.0417,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.79,
+     "astra-gpt-6": 0.7,
+     "gpt-5.6-sol": 0.64
+    }
+   },
+   {
+    "t": "2026-09-14T04:00Z",
+    "n": 4,
+    "mean": 0.7125,
+    "sd": 0.0512,
+    "spread": 0.13,
+    "price": 0.7133,
+    "gap": 0.0425,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.76,
+     "astra-gpt-6": 0.75,
+     "gpt-5.6-sol": 0.63
+    }
+   },
+   {
+    "t": "2026-09-14T06:00Z",
+    "n": 4,
+    "mean": 0.715,
+    "sd": 0.0472,
+    "spread": 0.12,
+    "price": 0.7133,
+    "gap": 0.04,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.76,
+     "astra-gpt-6": 0.75,
+     "gpt-5.6-sol": 0.64
+    }
+   },
+   {
+    "t": "2026-09-14T08:00Z",
+    "n": 4,
+    "mean": 0.7075,
+    "sd": 0.0471,
+    "spread": 0.12,
+    "price": 0.7133,
+    "gap": 0.0375,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.74,
+     "astra-gpt-6": 0.75,
+     "gpt-5.6-sol": 0.63
+    }
+   },
+   {
+    "t": "2026-09-14T10:00Z",
+    "n": 4,
+    "mean": 0.69,
+    "sd": 0.0354,
+    "spread": 0.09,
+    "price": 0.7133,
+    "gap": 0.0267,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.72,
+     "astra-gpt-6": 0.7,
+     "gpt-5.6-sol": 0.63
+    }
+   },
+   {
+    "t": "2026-09-14T12:00Z",
+    "n": 4,
+    "mean": 0.69,
+    "sd": 0.0354,
+    "spread": 0.09,
+    "price": 0.713,
+    "gap": 0.0265,
+    "vals": {
+     "fable-5.1": 0.71,
+     "opus-5": 0.72,
+     "astra-gpt-6": 0.7,
+     "gpt-5.6-sol": 0.63
+    }
+   },
+   {
+    "t": "2026-09-14T14:00Z",
+    "n": 3,
+    "mean": 0.68,
+    "sd": 0.0356,
+    "spread": 0.08,
+    "price": 0.7133,
+    "gap": 0.0333,
+    "vals": {
+     "fable-5.1": 0.71,
+     "astra-gpt-6": 0.7,
+     "gpt-5.6-sol": 0.63
+    }
+   }
+  ],
+  "features": [
+   {
+    "t": "2026-09-13T18:00Z",
+    "n": 4,
+    "mean": 0.835,
+    "sd": 0.0377,
+    "spread": 0.09,
+    "price": 0.7057,
+    "gap": 0.1293,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.85,
+     "gpt-5.6-sol": 0.8
+    }
+   },
+   {
+    "t": "2026-09-13T20:00Z",
+    "n": 4,
+    "mean": 0.8225,
+    "sd": 0.039,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.0725,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.8,
+     "gpt-5.6-sol": 0.8
+    }
+   },
+   {
+    "t": "2026-09-13T22:00Z",
+    "n": 4,
+    "mean": 0.8225,
+    "sd": 0.039,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.0725,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.8,
+     "gpt-5.6-sol": 0.8
+    }
+   },
+   {
+    "t": "2026-09-14T00:00Z",
+    "n": 4,
+    "mean": 0.835,
+    "sd": 0.0377,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.085,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.85,
+     "gpt-5.6-sol": 0.8
+    }
+   },
+   {
+    "t": "2026-09-14T02:00Z",
+    "n": 4,
+    "mean": 0.835,
+    "sd": 0.0377,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.085,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.85,
+     "gpt-5.6-sol": 0.8
+    }
+   },
+   {
+    "t": "2026-09-14T04:00Z",
+    "n": 4,
+    "mean": 0.835,
+    "sd": 0.0377,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.085,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.85,
+     "gpt-5.6-sol": 0.8
+    }
+   },
+   {
+    "t": "2026-09-14T06:00Z",
+    "n": 4,
+    "mean": 0.86,
+    "sd": 0.0394,
+    "spread": 0.1,
+    "price": 0.75,
+    "gap": 0.11,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.9,
+     "gpt-5.6-sol": 0.85
+    }
+   },
+   {
+    "t": "2026-09-14T08:00Z",
+    "n": 4,
+    "mean": 0.8475,
+    "sd": 0.0319,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.0975,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.85,
+     "gpt-5.6-sol": 0.85
+    }
+   },
+   {
+    "t": "2026-09-14T10:00Z",
+    "n": 4,
+    "mean": 0.855,
+    "sd": 0.035,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.105,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.88,
+     "gpt-5.6-sol": 0.85
+    }
+   },
+   {
+    "t": "2026-09-14T12:00Z",
+    "n": 4,
+    "mean": 0.855,
+    "sd": 0.035,
+    "spread": 0.09,
+    "price": 0.75,
+    "gap": 0.105,
+    "vals": {
+     "fable-5.1": 0.8,
+     "opus-5": 0.89,
+     "astra-gpt-6": 0.88,
+     "gpt-5.6-sol": 0.85
+    }
+   },
+   {
+    "t": "2026-09-14T14:00Z",
+    "n": 3,
+    "mean": 0.8333,
+    "sd": 0.0236,
+    "spread": 0.05,
+    "price": 0.75,
+    "gap": 0.0833,
+    "vals": {
+     "fable-5.1": 0.8,
+     "astra-gpt-6": 0.85,
+     "gpt-5.6-sol": 0.85
+    }
+   }
+  ],
+  "v4": [
+   {
+    "t": "2026-09-13T18:00Z",
+    "n": 4,
+    "mean": 0.5625,
+    "sd": 0.1217,
+    "spread": 0.31,
+    "price": 0.3311,
+    "gap": 0.2314,
+    "vals": {
+     "fable-5.1": 0.46,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.5,
+     "gpt-5.6-sol": 0.52
+    }
+   },
+   {
+    "t": "2026-09-13T20:00Z",
+    "n": 4,
+    "mean": 0.5625,
+    "sd": 0.1217,
+    "spread": 0.31,
+    "price": 0.3311,
+    "gap": 0.2314,
+    "vals": {
+     "fable-5.1": 0.46,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.5,
+     "gpt-5.6-sol": 0.52
+    }
+   },
+   {
+    "t": "2026-09-13T22:00Z",
+    "n": 4,
+    "mean": 0.5725,
+    "sd": 0.1143,
+    "spread": 0.27,
+    "price": 0.3311,
+    "gap": 0.2414,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.5,
+     "gpt-5.6-sol": 0.52
+    }
+   },
+   {
+    "t": "2026-09-14T00:00Z",
+    "n": 4,
+    "mean": 0.575,
+    "sd": 0.1132,
+    "spread": 0.27,
+    "price": 0.3311,
+    "gap": 0.2439,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.5,
+     "gpt-5.6-sol": 0.53
+    }
+   },
+   {
+    "t": "2026-09-14T02:00Z",
+    "n": 4,
+    "mean": 0.575,
+    "sd": 0.1132,
+    "spread": 0.27,
+    "price": 0.3311,
+    "gap": 0.2439,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.5,
+     "gpt-5.6-sol": 0.53
+    }
+   },
+   {
+    "t": "2026-09-14T04:00Z",
+    "n": 4,
+    "mean": 0.575,
+    "sd": 0.1132,
+    "spread": 0.27,
+    "price": 0.3311,
+    "gap": 0.2439,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.5,
+     "gpt-5.6-sol": 0.53
+    }
+   },
+   {
+    "t": "2026-09-14T06:00Z",
+    "n": 4,
+    "mean": 0.6,
+    "sd": 0.1046,
+    "spread": 0.27,
+    "price": 0.3311,
+    "gap": 0.2689,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.53
+    }
+   },
+   {
+    "t": "2026-09-14T08:00Z",
+    "n": 4,
+    "mean": 0.6,
+    "sd": 0.1046,
+    "spread": 0.27,
+    "price": 0.3311,
+    "gap": 0.2689,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.53
+    }
+   },
+   {
+    "t": "2026-09-14T10:00Z",
+    "n": 4,
+    "mean": 0.6,
+    "sd": 0.1046,
+    "spread": 0.27,
+    "price": 0.3311,
+    "gap": 0.2689,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.53
+    }
+   },
+   {
+    "t": "2026-09-14T12:00Z",
+    "n": 4,
+    "mean": 0.6,
+    "sd": 0.1046,
+    "spread": 0.27,
+    "price": 0.331,
+    "gap": 0.269,
+    "vals": {
+     "fable-5.1": 0.5,
+     "opus-5": 0.77,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.53
+    }
+   },
+   {
+    "t": "2026-09-14T14:00Z",
+    "n": 3,
+    "mean": 0.5433,
+    "sd": 0.0419,
+    "spread": 0.1,
+    "price": 0.3311,
+    "gap": 0.2122,
+    "vals": {
+     "fable-5.1": 0.5,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.53
+    }
+   }
+  ],
+  "reissuance": [
+   {
+    "t": "2026-09-13T18:00Z",
+    "n": 4,
+    "mean": 0.6875,
+    "sd": 0.0817,
+    "spread": 0.22,
+    "price": 0.2927,
+    "gap": 0.3948,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.68
+    }
+   },
+   {
+    "t": "2026-09-13T20:00Z",
+    "n": 4,
+    "mean": 0.69,
+    "sd": 0.0815,
+    "spread": 0.22,
+    "price": 0.427,
+    "gap": 0.263,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.69
+    }
+   },
+   {
+    "t": "2026-09-13T22:00Z",
+    "n": 4,
+    "mean": 0.69,
+    "sd": 0.0815,
+    "spread": 0.22,
+    "price": 0.427,
+    "gap": 0.263,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.69
+    }
+   },
+   {
+    "t": "2026-09-14T00:00Z",
+    "n": 4,
+    "mean": 0.69,
+    "sd": 0.0815,
+    "spread": 0.22,
+    "price": 0.427,
+    "gap": 0.263,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.69
+    }
+   },
+   {
+    "t": "2026-09-14T02:00Z",
+    "n": 4,
+    "mean": 0.69,
+    "sd": 0.0815,
+    "spread": 0.22,
+    "price": 0.427,
+    "gap": 0.263,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.69
+    }
+   },
+   {
+    "t": "2026-09-14T04:00Z",
+    "n": 4,
+    "mean": 0.705,
+    "sd": 0.0695,
+    "spread": 0.17,
+    "price": 0.427,
+    "gap": 0.278,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.65,
+     "gpt-5.6-sol": 0.7
+    }
+   },
+   {
+    "t": "2026-09-14T06:00Z",
+    "n": 4,
+    "mean": 0.705,
+    "sd": 0.0695,
+    "spread": 0.17,
+    "price": 0.427,
+    "gap": 0.278,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.65,
+     "gpt-5.6-sol": 0.7
+    }
+   },
+   {
+    "t": "2026-09-14T08:00Z",
+    "n": 4,
+    "mean": 0.6925,
+    "sd": 0.0817,
+    "spread": 0.22,
+    "price": 0.427,
+    "gap": 0.2655,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.6,
+     "gpt-5.6-sol": 0.7
+    }
+   },
+   {
+    "t": "2026-09-14T10:00Z",
+    "n": 4,
+    "mean": 0.705,
+    "sd": 0.0695,
+    "spread": 0.17,
+    "price": 0.427,
+    "gap": 0.278,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.65,
+     "gpt-5.6-sol": 0.7
+    }
+   },
+   {
+    "t": "2026-09-14T12:00Z",
+    "n": 4,
+    "mean": 0.705,
+    "sd": 0.0695,
+    "spread": 0.17,
+    "price": 0.427,
+    "gap": 0.278,
+    "vals": {
+     "fable-5.1": 0.65,
+     "opus-5": 0.82,
+     "astra-gpt-6": 0.65,
+     "gpt-5.6-sol": 0.7
+    }
+   },
+   {
+    "t": "2026-09-14T14:00Z",
+    "n": 3,
+    "mean": 0.6667,
+    "sd": 0.0236,
+    "spread": 0.05,
+    "price": 0.427,
+    "gap": 0.2397,
+    "vals": {
+     "fable-5.1": 0.65,
+     "astra-gpt-6": 0.65,
+     "gpt-5.6-sol": 0.7
+    }
+   }
+  ]
+ }
+}

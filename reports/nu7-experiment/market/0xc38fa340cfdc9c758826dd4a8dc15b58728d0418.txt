@@ -1,0 +1,62 @@
+
+> trading-bot-opus-5@1.0.0 market
+> tsx src/market-report.ts 0xc38fa340cfdc9c758826dd4a8dc15b58728d0418
+
+MARKET   0xc38fa340cfdc9c758826dd4a8dc15b58728d0418  (chain 10, Uniswap v3)
+Will the Zcash NU7 coinholder poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)?
+
+collateral sUSDS 0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0
+
+#  outcome          spot   implied  pool depth (outcome / collateral)   pool
+0  Yes             0.8800   89.2%        0.00 /       0.00   0x5dB57bDf0c7ddd6ecbf8267D5F77a0B5C7eF6c31   DRAINED
+1  No              0.1061   10.8%        0.00 /       0.00   0xc6Fe8548a11c469A4b00962Bb762feF4f88eAaA2   DRAINED
+2  Invalid result     -        -    no pool
+
+spot prices sum to 0.9861
+
+*** NOT TRADEABLE: every outcome pool has zero active liquidity. ***
+    The prices above are the last trade's leftovers - a drained pool keeps its final price forever,
+    so it still looks like a normal quote. app.seer.pm's own liquidity figure is indexed and can stay
+    stale for hours after the money has gone; only the pool's own liquidity, read here, can be trusted.
+    Nothing can be bought or sold on this market until somebody provides liquidity again.
+
+app.seer.pm      https://app.seer.pm/markets/10/will-the-zcash-nu7-coinholder-poll-approve-zip-218-block-spacing-75s-to-25s-per-
+indexed odds     88.0% | 10.6% | -
+liquidity        $0.00 (indexed; can lag the pools by hours)
+sets minted      41.33  (what app.seer.pm calls open interest, $45.85: counts the creator's seed and every split, but no direct swap - not a measure of trading)
+TRADED           7 swaps   27.36 sUSDS volume   4 traders   last trade 20.5 h ago   (Swap events on the outcome pools since the market was created, block 156661845)
+  outcome          seed -> now         swaps  buys/sells   volume
+  Yes              0.9001 -> 0.8800   -2.0 pts     4        0/4       24.90
+  No               0.1000 -> 0.1061    0.6 pts     3        2/1        2.46
+category         misc    verification: ?
+opening time     2026-09-09T00:00:00Z  (open: the oracle can be answered now)
+answers so far   none     payout reported: no
+  reality q      0x4803dd44bbb7bbed9a4a190cb74dabe6671d41d6f40787ff481731631ab3b8c1  min bond 0.005  current bond 0  timeout 84.0h
+
+question as the oracle sees it:
+  Will the Zcash NU7 coinholder poll approve ZIP-218 (block spacing 75s to 25s, per-pool action limits)?␟"Yes","No"␟misc␟en_US
+
+DEPTH  buying "Yes"  (spot 0.8800)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       1.4%          No / Invalid result
+   5   split       5.00       5.00   1.0000       1.4%          No / Invalid result
+  10   split      10.00      10.00   1.0000       1.4%          No / Invalid result
+  25   split      25.00      25.00   1.0000       1.4%          No / Invalid result
+  50   split      50.00      50.00   1.0000       1.4%          No / Invalid result
+ 100   split     100.00     100.00   1.0000       1.4%          No / Invalid result
+
+DEPTH  buying "No"  (spot 0.1061)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       1.4%          Yes / Invalid result
+   5   split       5.00       5.00   1.0000       1.4%          Yes / Invalid result
+  10   split      10.00      10.00   1.0000       1.4%          Yes / Invalid result
+  25   split      25.00      25.00   1.0000       1.4%          Yes / Invalid result
+  50   split      50.00      50.00   1.0000       1.4%          Yes / Invalid result
+ 100   split     100.00     100.00   1.0000       1.4%          Yes / Invalid result
+
+COMPLETE-SET CHECK (10 sUSDS notional)
+  split 10 and sell every leg : -10.000 sUSDS
+  buy every leg and merge     : n/a (an outcome has no pool, the set cannot be bought)
+  no pool for: Invalid result
+
+Next: form your own estimate, then `npm run plan -- 0xc38fa340cfdc9c758826dd4a8dc15b58728d0418 --own <p1,p2,...> --weight <0..1> --bankroll <X>`

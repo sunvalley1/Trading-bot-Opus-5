@@ -1,0 +1,73 @@
+
+> trading-bot-opus-5@1.0.0 market
+> tsx src/market-report.ts 0xc03bf1725b72ab5765b639c582853ede9afb26a6
+
+MARKET   0xc03bf1725b72ab5765b639c582853ede9afb26a6  (chain 10, Uniswap v3)
+How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?
+
+collateral sUSDS 0xb5B2dc7fd34C249F4be7fB1fCea07950784229e0
+
+#  outcome                                                spot   implied  pool depth (outcome / collateral)   pool
+0  Ship NU7 as soon as possible, removing any featur...  0.7500   75.4%        0.00 /       0.00   0x5619D7A10569Cd88569FAfDF175F3FDAB9971662   DRAINED
+1  Delay NU7 until every applicable approved feature...  0.1940   19.5%        0.01 /       0.00   0xF379528546C11F69118118A34685ad45394380C0   DRAINED
+2  I do not support this NU7 plan                        0.0503    5.1%        0.00 /       0.00   0x4362Dec96d3ad27d924c0B363D3D1Db4fca53Bd6   DRAINED
+3  Invalid result                                           -        -    no pool
+
+spot prices sum to 0.9943
+
+*** NOT TRADEABLE: every outcome pool has zero active liquidity. ***
+    The prices above are the last trade's leftovers - a drained pool keeps its final price forever,
+    so it still looks like a normal quote. app.seer.pm's own liquidity figure is indexed and can stay
+    stale for hours after the money has gone; only the pool's own liquidity, read here, can be trusted.
+    Nothing can be bought or sold on this market until somebody provides liquidity again.
+
+app.seer.pm      https://app.seer.pm/markets/10/how-will-features-not-ready-by-the-september-30th-deadline-be-handled-per-the-zc-3
+indexed odds     75.0% | 19.4% | 5.0% | -
+liquidity        $0.01 (indexed; can lag the pools by hours)
+sets minted      191.39  (what app.seer.pm calls open interest, $212.35: counts the creator's seed and every split, but no direct swap - not a measure of trading)
+TRADED           19 swaps   361.65 sUSDS volume   6 traders   last trade 9.2 h ago   (Swap events on the outcome pools since the market was created, block 156661850)
+  outcome                                    seed -> now         swaps  buys/sells   volume
+  Ship NU7 as soon as possible, removin...   0.7000 -> 0.7500    5.0 pts     8        5/3      287.79
+  Delay NU7 until every applicable appr...   0.2500 -> 0.1940   -5.6 pts     6        1/5       63.77
+  I do not support this NU7 plan             0.0500 -> 0.0503    0.0 pts     5        2/3       10.09
+category         misc    verification: ?
+opening time     2026-09-09T00:00:00Z  (open: the oracle can be answered now)
+answers so far   none     payout reported: no
+  reality q      0x8f52209cc84918c9aa7e5c94ecf0b9c9b5d49efb3f47ae480a3a7e5bafe79de0  min bond 0.005  current bond 0  timeout 84.0h
+
+question as the oracle sees it:
+  How will features not ready by the September 30th deadline be handled, per the Zcash NU7 coinholder poll?␟"Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline","Delay NU7 until every applicable approved feature is deemed complete","I do not support this NU7 plan"␟misc␟en_US
+
+DEPTH  buying "Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline"  (spot 0.7500)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       0.6%          Delay NU7 until every applicable approved feature is deemed complete / I do not support this NU7 plan / Invalid result
+   5   split       5.00       5.00   1.0000       0.6%          Delay NU7 until every applicable approved feature is deemed complete / I do not support this NU7 plan / Invalid result
+  10   split      10.00      10.00   1.0000       0.6%          Delay NU7 until every applicable approved feature is deemed complete / I do not support this NU7 plan / Invalid result
+  25   split      25.00      25.00   1.0000       0.6%          Delay NU7 until every applicable approved feature is deemed complete / I do not support this NU7 plan / Invalid result
+  50   split      50.00      50.00   1.0000       0.6%          Delay NU7 until every applicable approved feature is deemed complete / I do not support this NU7 plan / Invalid result
+ 100   split     100.00     100.00   1.0000       0.6%          Delay NU7 until every applicable approved feature is deemed complete / I do not support this NU7 plan / Invalid result
+
+DEPTH  buying "Delay NU7 until every applicable approved feature is deemed complete"  (spot 0.1940)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / I do not support this NU7 plan / Invalid result
+   5   split       5.00       5.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / I do not support this NU7 plan / Invalid result
+  10   split      10.00      10.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / I do not support this NU7 plan / Invalid result
+  25   split      25.00      25.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / I do not support this NU7 plan / Invalid result
+  50   split      50.00      50.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / I do not support this NU7 plan / Invalid result
+ 100   split     100.00     100.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / I do not support this NU7 plan / Invalid result
+
+DEPTH  buying "I do not support this NU7 plan"  (spot 0.0503)
+size   route   net cost   tokens      avg fill   slippage vs spot   also wins if
+   1   split       1.00       1.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / Delay NU7 until every applicable approved feature is deemed complete / Invalid result
+   5   split       5.00       5.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / Delay NU7 until every applicable approved feature is deemed complete / Invalid result
+  10   split      10.00      10.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / Delay NU7 until every applicable approved feature is deemed complete / Invalid result
+  25   split      25.00      25.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / Delay NU7 until every applicable approved feature is deemed complete / Invalid result
+  50   split      50.00      50.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / Delay NU7 until every applicable approved feature is deemed complete / Invalid result
+ 100   split     100.00     100.00   1.0000       0.6%          Ship NU7 as soon as possible, removing any feature not implemented by the September 30th deadline / Delay NU7 until every applicable approved feature is deemed complete / Invalid result
+
+COMPLETE-SET CHECK (10 sUSDS notional)
+  split 10 and sell every leg : -10.000 sUSDS
+  buy every leg and merge     : n/a (an outcome has no pool, the set cannot be bought)
+  no pool for: Invalid result
+
+Next: form your own estimate, then `npm run plan -- 0xc03bf1725b72ab5765b639c582853ede9afb26a6 --own <p1,p2,...> --weight <0..1> --bankroll <X>`
